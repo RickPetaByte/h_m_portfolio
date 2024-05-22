@@ -13,7 +13,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 
@@ -49,34 +49,51 @@
 
         <div>
             <x-input-label for="age" :value="__('Age')" />
-            <x-text-input id="age" name="age" type="number" class="mt-1 block w-full" :value="old('age', $user->age)" required />
+            <x-text-input id="age" name="age" type="number" class="mt-1 block w-full" :value="old('age', $user->age)" />
             <x-input-error class="mt-2" :messages="$errors->get('age')" />
         </div>
 
         <div>
             <x-input-label for="phone" :value="__('Phone')" />
-            <x-text-input id="phone" name="phone" type="tel" class="mt-1 block w-full" :value="old('phone', $user->phone)" required />
+            <x-text-input id="phone" name="phone" type="tel" class="mt-1 block w-full" :value="old('phone', $user->phone)" />
             <x-input-error class="mt-2" :messages="$errors->get('phone')" />
         </div>
-        
+
         <div>
             <x-input-label for="about" :value="__('About Yourself')" />
             <textarea id="about" name="about" class="mt-1 block w-full" rows="5" style="resize: none;">{{ old('about', $user->about) }}</textarea>
             <x-input-error class="mt-2" :messages="$errors->get('about')" />
         </div>
 
+        <div>
+            <x-input-label for="picture" :value="__('Profile Picture')" />
+            <input id="picture" name="picture" type="file" class="mt-1 block w-full pictureInput" accept="image/*" onchange="previewImage(event)" />
+            <img id="picture-preview" src="{{ $user->picture ? asset('storage/img/profile-pictures/' . $user->picture) : asset('img/Standaard.png') }}" class="mt-2 pictureImg" style="max-height: 200px;" />            <x-input-error class="mt-2" :messages="$errors->get('picture')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600 dark:text-gray-400"
-                >{{ __('Saved.') }}</p>
+                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600 dark:text-gray-400">
+                    {{ __('Saved.') }}
+                </p>
             @endif
         </div>
     </form>
 </section>
+
+<script>
+    function previewImage(event) {
+        const reader = new FileReader();
+        reader.onload = function(){
+            const output = document.getElementById('picture-preview');
+            output.src = reader.result;
+            output.style.maxHeight = '200px'; // Max hoogte instellen
+            output.style.maxWidth = '200px'; // Max breedte instellen
+            output.style.minHeight = '200px'; // Min hoogte instellen
+            output.style.minWidth = '200px'; // Min breedte instellen
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>

@@ -15,6 +15,25 @@ select, textarea
 
 .colorSecond
 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+    --tw-bg-opacity: 1 !important;
+    background-color: rgb(31 41 55 / var(--tw-bg-opacity)) !important;
+}
+
+.pictureInput
+{
+    margin: 10px 0px 20px 0px;
+    
+    color: white;
+}
+
+.pictureImg
+{
+    margin: 20px 0px 20px 0px;
+    border-radius: 5px;
+    border: 2px solid;
+
+    min-width: 200px;
+    min-height: 200px;
+    max-width: 200px;
+    min-width: 200px;
 }
