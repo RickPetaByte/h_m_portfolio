@@ -47,6 +47,24 @@
             @endif
         </div>
 
+        <div>
+            <x-input-label for="age" :value="__('Age')" />
+            <x-text-input id="age" name="age" type="number" class="mt-1 block w-full" :value="old('age', $user->age)" required />
+            <x-input-error class="mt-2" :messages="$errors->get('age')" />
+        </div>
+
+        <div>
+            <x-input-label for="phone" :value="__('Phone')" />
+            <x-text-input id="phone" name="phone" type="tel" class="mt-1 block w-full" :value="old('phone', $user->phone)" required />
+            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
+        </div>
+        
+        <div>
+            <x-input-label for="about" :value="__('About Yourself')" />
+            <textarea id="about" name="about" class="mt-1 block w-full" rows="5" style="resize: none;">{{ old('about', $user->about) }}</textarea>
+            <x-input-error class="mt-2" :messages="$errors->get('about')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
