@@ -2,17 +2,114 @@
 @tailwind components;
 @tailwind utilities;
 
+:root
+{
+    --text-color: black;
+    --second-color: white;
+    --hover-color: lightgray;
+    --main-color: #efefef;
+    --placeholder-color: none;
+}
+
+.dark-theme
+{
+    --text-color: white;
+    --second-color: #1e1e1e;
+    --hover-color: #252526;
+    --main-color: #2d2d30;
+    --placeholder-color: lightgray;
+}
+
 *
 {
     font-family: "Radio Canada Big", sans-serif;
-    font-optical-sizing: auto;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 
-    color: black !important;
+    color: var(--text-color) !important;
 }
 
-select, textarea
+.colorSecond
+{
+    background-color: var(--second-color) !important;
+}
+
+.colorSecondHover:hover
+{
+    background-color: var(--hover-color) !important;
+}
+
+.colorSecondBorder
+{
+    background-color: var(--hover-color) !important;
+}
+
+main, body, main
+{
+    background-color: var(--main-color) !important;
+}
+
+.themeSwitch
+{
+    background-color: var(--main-color) !important;
+}
+
+.buttonsHome:hover
+{
+    background-color: var(--main-color) !important;
+}
+
+.backgroundTransparant::placeholder 
+{
+    color: var(--placeholder-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+#icon
+{
+    width: 30px;
+    cursor: pointer;
+}
+
+select, textarea, input
 {
     border-radius: 0.375rem;
+    background: none;
+}
+
+.backgroundTransparant
+{
+    background: none;
+}
+
+.backgroundTransparant:focus 
+{
+    background: none;
+}
+
+.loginRegistrationButton
+{
+    width: 50% !important;
+}
+
+.genderDropdown
+{
+    border: 1px solid #6b7280;
+}
+
+.borderNavDropdown
+{
+    border-radius: 3px;
 }
 
 .colorFirst
@@ -20,49 +117,32 @@ select, textarea
     font-size: 18px;
 }
 
-.colorSecond
+.welcomeText 
 {
-    background-color: white !important;
+    font-size: 30px;
+    letter-spacing: 2px; 
+    font-family: 'Roboto', sans-serif; 
 }
 
-.colorSecondHover:hover
+.borderNav 
 {
-    background-color: lightgray !important;
-}
-
-.colorSecondBorder
-{
-    border: 2px solid lightgray !important;
-    border-radius: 3px;
-}
-
-.borderNav {
     position: relative;
 }
 
-main, body
+.textColor
 {
-    background-color: #efefef;
+    color: black;
 }
-
-
-
 
 .pictureInput
 {
     margin: 10px 0px 20px 0px;
-    
-    color: white;
 }
 
-
-
-
-
-
-
-
-
+.imageLoginRegistration
+{
+    margin-top: -25px;
+}
 
 .pictureImg
 {
@@ -74,4 +154,14 @@ main, body
     min-height: 200px;
     max-width: 200px;
     min-width: 200px;
+}
+
+.custom-file-upload 
+{
+    cursor: pointer;
+}
+
+.custom-file-upload input[type="file"] 
+{
+    display: none;
 }

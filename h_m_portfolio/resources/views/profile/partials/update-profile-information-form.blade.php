@@ -22,12 +22,12 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <x-input-label for="name" :value="__('Name')" />
-                            <x-text-input id="name" name="name" type="text" class="mt-1 block w-100" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+                            <x-text-input id="name" name="name" type="text" class="mt-1 block w-100 backgroundTransparant" :value="old('name', $user->name)" required autofocus autocomplete="name" />
                             <x-input-error class="mt-2" :messages="$errors->get('name')" />
                         </div>
                         <div class="col-md-6">
                             <x-input-label for="email" :value="__('Email')" />
-                            <x-text-input id="email" name="email" type="email" class="mt-1 block w-100" :value="old('email', $user->email)" required autocomplete="username" />
+                            <x-text-input id="email" name="email" type="email" class="mt-1 block w-100 backgroundTransparant" :value="old('email', $user->email)" required autocomplete="username" />
                             <x-input-error class="mt-2" :messages="$errors->get('email')" />
                             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                                 <div class="mt-2">
@@ -50,12 +50,12 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <x-input-label for="age" :value="__('Age')" />
-                            <x-text-input id="age" name="age" type="number" class="mt-1 block w-100" :value="old('age', $user->age)" />
+                            <x-text-input id="age" name="age" type="number" class="mt-1 block w-100 backgroundTransparant" :value="old('age', $user->age)" />
                             <x-input-error class="mt-2" :messages="$errors->get('age')" />
                         </div>
                         <div class="col-md-6">
                             <x-input-label for="phone" :value="__('Phone')" />
-                            <x-text-input id="phone" name="phone" type="tel" class="mt-1 block w-100" :value="old('phone', $user->phone)" />
+                            <x-text-input id="phone" name="phone" type="tel" class="mt-1 block w-100 backgroundTransparant" :value="old('phone', $user->phone)" />
                             <x-input-error class="mt-2" :messages="$errors->get('phone')" />
                         </div>
                     </div>
@@ -68,9 +68,12 @@
                 </div>
 
                 <div class="col-lg-4 d-flex flex-column align-items-center">
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3 text-center">
                         <x-input-label for="picture" :value="__('Profile Picture')" />
-                        <input id="picture" name="picture" type="file" class="mt-1 block w-100 pictureInput" accept="image/*" onchange="previewImage(event)" />
+                        <label class="custom-file-upload btn btn-primary text-white mt-3">
+                            Upload picture
+                            <input id="picture" name="picture" type="file" class="mt-1 d-none" accept="image/*" onchange="previewImage(event)" />
+                        </label>
                         <x-input-error class="mt-2" :messages="$errors->get('picture')" />
                     </div>
                     <img id="picture-preview" src="{{ $user->picture ? asset('storage/img/profile-pictures/' . $user->picture) : asset('img/Standaard.png') }}" class="mt-2 pictureImg img-thumbnail" style="max-height: 200px;" />
@@ -99,6 +102,15 @@
             output.style.maxWidth = '200px'; // Max width
             output.style.minHeight = '200px'; // Min height
             output.style.minWidth = '200px'; // Min width
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    function previewImage(event) {
+        const reader = new FileReader();
+        reader.onload = function(){
+            const output = document.getElementById('picture-preview');
+            output.src = reader.result;
         };
         reader.readAsDataURL(event.target.files[0]);
     }
