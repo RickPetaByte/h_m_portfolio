@@ -1,4 +1,4 @@
-<section>
+<section class="colorBgProfile">
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
             {{ __('Update Password') }}
@@ -32,7 +32,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <button class="btn btn-primary text-white">{{ __('SAVE') }}</button>
 
             @if (session('status') === 'password-updated')
                 <p
