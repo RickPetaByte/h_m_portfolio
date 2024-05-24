@@ -1,11 +1,11 @@
 <x-guest-layout>
-    <img src="img/moon.png" id="icon" class="mr-5">
+    <img src="img/moon.png" class="mr-5 icon">
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <div class="card-body">
             <div>
-                <a href="/">
-                    <img src="{{ asset('img/LogoCircle.png') }}" alt="Logo" class="w-20 h-20 mx-auto imageLoginRegistration">
+                <a href="{{ route('dashboard') }}">
+                    <img id="logo" src="{{ asset('img/LogoCircle.png') }}" alt="Logo" class="w-20 h-20 mx-auto imageLoginRegistration">
                 </a>
             </div>
             <form action="">

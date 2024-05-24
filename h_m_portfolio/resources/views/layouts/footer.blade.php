@@ -1,24 +1,39 @@
-<!-- <footer class="navbar navbar-expand-lg pb-5 pt-5">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand text-white" href="#">LOGO</a>
-        <div class="navbar-collapse">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="#"><h1>Home</h1></a>
-                </li>
-            </ul>
-            <div class="d-flex list-inline">
-                
-                <li class="nav-item me-3">
-                    <a class="nav-link text-white" href="#"><h1>Login</h1></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#"><h1>Register</h1></a>
-                </li>
+<div class="footerTopDiv"></div>
+<footer class="colorSecond borderNav" id="footer">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex">
+                <!-- Logo -->
+                <div class="shrink-0 flex items-center">
+                    <a href="{{ route('dashboard') }}">
+                        <img id="footer-logo" src="{{ asset('img/LogoCircle.png') }}" alt="Logo" class="block h-12 w-auto">
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('about')" :active="request()->routeIs('dashboard')" class="border-none">
+                        <p class="colorFirst buttons aboutButton">{{ __('About') }}</p>
+                    </x-nav-link>
+                </div>
+            </div>
+
+            <div class="flex items-center ml-6 colorSecond border border-0">
+                <div class="ml-1">
+                    <p class="colorFirst fw-bold">
+                        Rick: 
+                        <a href="https://www.linkedin.com/in/rick-profile" target="_blank">
+                            <i class="iconRick textColorFooter fa-brands fa-linkedin"></i>
+                        </a>
+                    </p>
+                    <p class="colorFirst fw-bold">
+                        Jur: 
+                        <a href="https://www.linkedin.com/in/jur-profile" target="_blank">
+                            <i class="ml-4 textColorFooter fa-brands fa-linkedin"></i>
+                        </a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-</footer> -->
+</footer>

@@ -13,7 +13,7 @@
     <button class="btn btn-danger text-white" 
         x-data=""
         x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-    >{{ __('DELETE ACCOUNT') }}</button>
+    >{{ __('Delete account') }}<i class="fa-solid fa-trash ml-2 text-white"></i></button>
 
     <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
         <form method="post" action="{{ route('profile.destroy') }}" class="p-6 colorSecond">
@@ -44,11 +44,11 @@
 
             <div class="mt-6 flex justify-end">
                 <x-secondary-button x-on:click="$dispatch('close')">
-                    <p class="textColor">Cancel</p>
+                    <p class="textColorCancel">Cancel<i class="fa-solid fa-xmark ml-2"></i></p>
                 </x-secondary-button>
 
                 <x-danger-button class="ms-3">
-                    {{ __('Delete Account') }}
+                    {{ __('Delete Account') }}<i class="fa-solid fa-trash ml-2 text-white"></i>
                 </x-danger-button>
             </div>
         </form>
