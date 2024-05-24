@@ -16,15 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('dashboard');
 
 Route::get('/about', function () {
     return view('about');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return redirect('/');
+});
 
 Route::get('/create', function () {
     return view('create-portfolio');
