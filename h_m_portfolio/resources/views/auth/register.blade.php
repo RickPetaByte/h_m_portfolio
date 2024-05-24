@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <img src="img/moon.png" id="icon" class="mr-5">
+    <img src="img/moon.png" class="mr-5 icon">
     <form method="POST" action="{{ route('register') }}">
         @csrf
         <div class="card-body">

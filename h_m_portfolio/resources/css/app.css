@@ -22,7 +22,7 @@
 
 *
 {
-    font-family: "Radio Canada Big", sans-serif;
+    font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -45,7 +45,7 @@
     background-color: var(--hover-color) !important;
 }
 
-main, body, main
+main, body
 {
     background-color: var(--main-color) !important;
 }
@@ -67,17 +67,9 @@ main, body, main
 
 
 
-
-
-
-
-
-
-
-
-#icon
+.icon
 {
-    width: 30px;
+    width: 25px;
     cursor: pointer;
 }
 
@@ -114,14 +106,12 @@ select, textarea, input
 
 .colorFirst
 {
-    font-size: 18px;
+    font-size: 15px;
 }
 
-.welcomeText 
-{
-    font-size: 30px;
+.welcomeText {
+    font-size: 1.75rem;
     letter-spacing: 2px; 
-    font-family: 'Roboto', sans-serif; 
 }
 
 .borderNav 
@@ -150,10 +140,15 @@ select, textarea, input
     border-radius: 5px;
     border: 2px solid;
 
-    min-width: 200px;
-    min-height: 200px;
-    max-width: 200px;
-    min-width: 200px;
+    min-width: 230px;
+    min-height: 230px;
+    max-width: 230px;
+    min-width: 230px;
+}
+
+.textColorCancel, i
+{
+    color: black !important;
 }
 
 .custom-file-upload 
@@ -164,4 +159,31 @@ select, textarea, input
 .custom-file-upload input[type="file"] 
 {
     display: none;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1024px) {
+    .welcomeText {
+        font-size: 1.5rem; 
+    }
+}
+
+@media (max-width: 768px) {
+    .welcomeText {
+        font-size: 1.25rem; 
+    }
+}
+
+@media (max-width: 480px) {
+    .welcomeText {
+        font-size: 1rem; 
+    }
 }

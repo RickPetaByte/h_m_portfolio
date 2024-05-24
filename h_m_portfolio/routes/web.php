@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
 
 Route::get('/dashboard', function () {
     return redirect('/');

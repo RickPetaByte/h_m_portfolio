@@ -4,9 +4,6 @@
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                 {{ __('Profile Information') }}
             </h2>
-            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                {{ __("Update your account's profile information and email address.") }}
-            </p>
         </header>
 
         <form id="send-verification" method="post" action="{{ route('verification.send') }}">
@@ -61,7 +58,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <x-input-label for="about" :value="__('About Yourself')" />
+                        <x-input-label for="about" :value="__('About yourself')" />
                         <textarea id="about" name="about" class="mt-1 block w-100" rows="5" style="resize: none;">{{ old('about', $user->about) }}</textarea>
                         <x-input-error class="mt-2" :messages="$errors->get('about')" />
                     </div>
@@ -71,17 +68,17 @@
                     <div class="form-group mb-3 text-center">
                         <x-input-label for="picture" :value="__('Profile Picture')" />
                         <label class="custom-file-upload btn btn-primary text-white mt-3">
-                            Upload picture
+                            Upload picture<i class="fa-solid fa-upload ml-2 text-white"></i>
                             <input id="picture" name="picture" type="file" class="mt-1 d-none" accept="image/*" onchange="previewImage(event)" />
                         </label>
                         <x-input-error class="mt-2" :messages="$errors->get('picture')" />
                     </div>
-                    <img id="picture-preview" src="{{ $user->picture ? asset('storage/img/profile-pictures/' . $user->picture) : asset('img/Standaard.png') }}" class="mt-2 pictureImg img-thumbnail" style="max-height: 200px;" />
+                    <img id="picture-preview" src="{{ $user->picture ? asset('storage/img/profile-pictures/' . $user->picture) : asset('img/Standaard.png') }}" class="mt-2 pictureImg img-thumbnail" style="max-height: 230px;" />
                 </div>
             </div>
 
             <div class="d-flex justify-content-between align-items-center mt-4">
-                <button class="btn btn-primary text-white">{{ __('SAVE') }}</button>
+                <button class="btn btn-primary text-white">{{ __('Save') }}<i class="fa-solid fa-floppy-disk ml-2 text-white"></i></button>
                 @if (session('status') === 'profile-updated')
                     <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600 dark:text-gray-400">
                         {{ __('Saved.') }}
@@ -98,10 +95,10 @@
         reader.onload = function(){
             const output = document.getElementById('picture-preview');
             output.src = reader.result;
-            output.style.maxHeight = '200px'; // Max height
-            output.style.maxWidth = '200px'; // Max width
-            output.style.minHeight = '200px'; // Min height
-            output.style.minWidth = '200px'; // Min width
+            output.style.maxHeight = '230px'; // Max height
+            output.style.maxWidth = '230px'; // Max width
+            output.style.minHeight = '230px'; // Min height
+            output.style.minWidth = '230px'; // Min width
         };
         reader.readAsDataURL(event.target.files[0]);
     }
