@@ -14,12 +14,19 @@ function saveThemePreference(theme) {
 function restoreThemePreference() {
     const savedTheme = localStorage.getItem('theme');
     const iconElement = document.querySelector('.icon');
+    const logoElement = document.getElementById('logo');
+    const footerLogoElement = document.getElementById('footer-logo'); // Voeg deze regel toe
+
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-theme');
         iconElement.src = 'img/sun.png';
+        logoElement.src = 'img/LogoCircleWhite.png';
+        footerLogoElement.src = 'img/LogoCircleWhite.png'; // Voeg deze regel toe
     } else {
         document.body.classList.remove('dark-theme');
         iconElement.src = 'img/moon.png';
+        logoElement.src = 'img/LogoCircle.png';
+        footerLogoElement.src = 'img/LogoCircle.png'; // Voeg deze regel toe
     }
 }
 
@@ -42,13 +49,20 @@ document.querySelector('.icon').onclick = function() {
 // Functie om het thema te wijzigen
 function toggleTheme() {
     const iconElement = document.querySelector('.icon');
+    const logoElement = document.getElementById('logo');
+    const footerLogoElement = document.getElementById('footer-logo'); // Voeg deze regel toe
+
     if (document.body.classList.contains('dark-theme')) {
         document.body.classList.remove('dark-theme');
         iconElement.src = 'img/moon.png';
+        logoElement.src = 'img/LogoCircle.png';
+        footerLogoElement.src = 'img/LogoCircle.png'; // Voeg deze regel toe
         saveThemePreference('light'); // Opslaan van themavoorkeur als licht
     } else {
         document.body.classList.add('dark-theme');
         iconElement.src = 'img/sun.png';
+        logoElement.src = 'img/LogoCircleWhite.png';
+        footerLogoElement.src = 'img/LogoCircleWhite.png'; // Voeg deze regel toe
         saveThemePreference('dark'); // Opslaan van themavoorkeur als donker
     }
 }

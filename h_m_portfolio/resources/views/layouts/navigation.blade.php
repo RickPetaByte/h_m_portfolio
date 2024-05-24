@@ -6,14 +6,14 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="{{ asset('img/LogoCircle.png') }}" alt="Logo" class="block h-12 w-auto">
+                        <img id="logo" src="{{ asset('img/LogoCircle.png') }}" alt="Logo" class="block h-12 w-auto">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        <p class="colorFirst">{{ __('Homepage') }}</p>
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="border-none">
+                        <p class="colorFirst buttons">{{ __('Homepage') }}</p>
                     </x-nav-link>
                 </div>
             </div>
@@ -25,8 +25,9 @@
                     <img src="img/moon.png" class="mr-5 icon">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button class="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                                <div>
+                            <button class="buttons inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                <div class="flex items-center">
+                                    <img src="{{ Auth::user()->picture ? asset('storage/img/profile-pictures/' . Auth::user()->picture) : asset('img/Standaard.png') }}" class="nav-profile-img mr-3" />
                                     <p class="colorFirst">{{ Auth::user()->name }}</p>
                                 </div>
                                 <div class="ml-1">
@@ -64,13 +65,13 @@
             @else
                 <!-- Links for guests -->
                 <div class="hidden sm:flex sm:items-center sm:ml-6 colorSecond">
+                    <img src="img/moon.png" class="mr-5 icon">
                     <a href="{{ route('login') }}" class="buttonsHome ml-4 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 focus:outline-none transition ease-in-out duration-150 colorFirst">Login</a>
                     <a href="{{ route('register') }}" class="buttonsHome ml-4 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 focus:outline-none transition ease-in-out duration-150 colorFirst">Register</a>
                 </div>
             @endif
 
             <!-- Hamburger -->
-            
             <div class="-mr-2 flex items-center sm:hidden">
                 <img src="img/moon.png" class="mr-5 icon">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 transition duration-150 ease-in-out">
@@ -121,10 +122,10 @@
             <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                 <div class="mt-3 space-y-1 colorSecondHover">
                     <x-responsive-nav-link :href="route('login')">
-                        {{ __('Login') }}
+                        {{ __('Login') }} 
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('register')">
-                        {{ __('Register') }}
+                        {{ __('Register') }} 
                     </x-responsive-nav-link>
                 </div>
             </div>

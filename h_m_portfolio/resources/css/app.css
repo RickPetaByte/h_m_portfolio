@@ -6,7 +6,6 @@
 {
     --text-color: black;
     --second-color: white;
-    --hover-color: lightgray;
     --main-color: #efefef;
     --placeholder-color: none;
 }
@@ -15,7 +14,6 @@
 {
     --text-color: white;
     --second-color: #1e1e1e;
-    --hover-color: #252526;
     --main-color: #2d2d30;
     --placeholder-color: lightgray;
 }
@@ -37,12 +35,12 @@
 
 .colorSecondHover:hover
 {
-    background-color: var(--hover-color) !important;
+    background-color: var(--main-color) !important;
 }
 
 .colorSecondBorder
 {
-    background-color: var(--hover-color) !important;
+    background-color: var(--main-color) !important;
 }
 
 main, body
@@ -65,12 +63,32 @@ main, body
     color: var(--placeholder-color);
 }
 
+.buttons:hover
+{
+    background-color: var(--main-color);
+}
+
+.textColorFooter
+{
+    color: var(--text-color) !important;
+}
+
+
+
 
 
 .icon
 {
     width: 25px;
     cursor: pointer;
+}
+
+.nav-profile-img 
+{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%; 
+    object-fit: cover; 
 }
 
 select, textarea, input
@@ -109,7 +127,26 @@ select, textarea, input
     font-size: 15px;
 }
 
-.welcomeText {
+.colorFirst i 
+{
+    font-size: 20px;
+}
+
+.iconRick
+{
+    margin-left: 7px;
+}
+
+.buttons
+{
+    border: none !important;
+    border-radius: 5px;
+    padding: 10px 15px 10px 15px;
+    transition: 0.5s;
+}
+
+.welcomeText 
+{
     font-size: 1.75rem;
     letter-spacing: 2px; 
 }
@@ -170,20 +207,34 @@ select, textarea, input
 
 
 
-@media (max-width: 1024px) {
-    .welcomeText {
+@media (max-width: 1024px) 
+{
+    .welcomeText 
+    {
         font-size: 1.5rem; 
     }
 }
 
-@media (max-width: 768px) {
-    .welcomeText {
+@media (max-width: 768px) 
+{
+    .welcomeText 
+    {
         font-size: 1.25rem; 
     }
 }
 
-@media (max-width: 480px) {
-    .welcomeText {
+@media (max-width: 640px) 
+{
+    .aboutButton
+    {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) 
+{
+    .welcomeText 
+    {
         font-size: 1rem; 
     }
 }

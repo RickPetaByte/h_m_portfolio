@@ -4,8 +4,8 @@
         @csrf
         <div class="card-body">
             <div>
-                <a href="/">
-                    <img src="{{ asset('img/LogoCircle.png') }}" alt="Logo" class="w-20 h-20 mx-auto imageLoginRegistration">
+                <a href="{{ route('dashboard') }}">
+                    <img id="logo" src="{{ asset('img/LogoCircle.png') }}" alt="Logo" class="w-20 h-20 mx-auto imageLoginRegistration">
                 </a>
             </div>
             <form action="">

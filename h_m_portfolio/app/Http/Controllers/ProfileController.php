@@ -28,7 +28,7 @@ class ProfileController extends Controller
         if ($request->hasFile('picture')) {
             // Verwijder de oude afbeelding als deze bestaat
             if ($user->picture) {
-                $oldPicturePath = public_path('img/profile-pictures/' . $user->picture);
+                $oldPicturePath = public_path('storage/img/profile-pictures/' . $user->picture);
                 if (File::exists($oldPicturePath)) {
                     File::delete($oldPicturePath);
                 }
