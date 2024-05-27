@@ -1,39 +1,30 @@
-<div class="footerTopDiv"></div>
-<footer class="colorSecond borderNav" id="footer">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <img id="footer-logo" src="{{ asset('img/LogoCircle.png') }}" alt="Logo" class="block h-12 w-auto">
-                    </a>
-                </div>
+<footer class="footer-distributed colorSecond borderNav">
+    <div class="footer-left">
+        <img id="footer-logo" src="{{ asset('img/LogoCircle.png') }}" alt="Logo">
+        <p class="footer-links">
+            <a href="{{ route('about') }}" class="fw-bold">About<i class="fa-solid fa-bars iconNavBar iconNavBarColor"></i></a>
+        </p><br>
+        <p class="footer-company-name">Copyright © 2024 <strong>H:M Portfolio's</strong> All rights reserved</p>
+    </div>
 
-                <!-- Navigation Links -->
-                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('about')" :active="request()->routeIs('dashboard')" class="border-none">
-                        <p class="colorFirst buttons aboutButton">{{ __('About') }}</p>
-                    </x-nav-link>
-                </div>
-            </div>
-
-            <div class="flex items-center ml-6 colorSecond border border-0">
-                <div class="ml-1">
-                    <p class="colorFirst fw-bold">
-                        Rick: 
-                        <a href="https://www.linkedin.com/in/rick-profile" target="_blank">
-                            <i class="iconRick textColorFooter fa-brands fa-linkedin"></i>
-                        </a>
-                    </p>
-                    <p class="colorFirst fw-bold">
-                        Jur: 
-                        <a href="https://www.linkedin.com/in/jur-profile" target="_blank">
-                            <i class="ml-4 textColorFooter fa-brands fa-linkedin"></i>
-                        </a>
-                    </p>
-                </div>
-            </div>
+    <div class="footer-center">
+        <div>
+            <i class="fa fa-envelope iconFooter"></i>
+            <p><span>80925@roc-teraa.nl</span>
+                89153@roc-teraan.nl</p>
         </div>
+        <div>
+            <i class="fab fa-linkedin iconFooter"></i>
+            <p><span><a href="https://www.linkedin.com/in/rick-maas-software-developer/" target="_blank" class="hover:text-gray-300">Rick Maas</a></span>
+                <a href="https://www.linkedin.com/in/jur-heusschen/" target="_blank" class="hover:text-gray-300">Jur Heusschen</a></p>
+        </div>
+    </div>
+
+    <div class="footer-right">
+        <p class="footer-company-about">
+            <span>About this website</span>
+            <strong>H:M Portfolios</strong>
+            is a website where you can easily create a good portfolio. You can also edit the portfolio, such as changing colors, text, and more. You can also view portfolios of other people.
+        </p>
     </div>
 </footer>
