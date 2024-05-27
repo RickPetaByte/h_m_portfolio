@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +13,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/581ff810bc.js" crossorigin="anonymous"></script>
+
+        <!-- Icon -->
         <link rel="shortcut icon" href="img/LogoCircle2.png">
 
         <!-- Scripts -->
@@ -36,7 +38,7 @@
                 <main>
                     <div class="container mx-auto px-4">
                         <div class="flex justify-center">
-                            <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mt-10">
+                            <h1 class="text-3xl text-gray-900 dark:text-gray-100 mt-10">
                                 <p class="colorFirst welcomeText">Create your portfolio at H:M Portfolios</p>
                             </h1>
                         </div>
