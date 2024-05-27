@@ -3,11 +3,7 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
         <div class="card-body">
-            <div>
-                <a href="{{ route('dashboard') }}">
-                    <img id="logo" src="{{ asset('img/LogoCircle.png') }}" alt="Logo" class="w-20 h-20 mx-auto imageLoginRegistration">
-                </a>
-            </div>
+            <img id="logo" src="{{ asset('img/LogoCircle.png') }}" alt="Logo" class="w-20 h-20 mx-auto imageLoginRegistration">
             <form action="">
                 <!-- Name -->
                 <input id="name" class="form-control my-4 py-2 rounded backgroundTransparant"
@@ -40,7 +36,7 @@
                 <!-- Gender -->
                 <select id="gender" class="form-control my-4 py-2 rounded genderDropdown backgroundTransparant"
                         name="gender" required autocomplete="gender">
-                    <option value="" disabled selected>Select...</option>
+                    <option value="" disabled selected class="colorPlaceholder">Select...</option>
                     <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
                     <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
                 </select>
@@ -54,3 +50,20 @@
         </div>
     </form>
 </x-guest-layout>
+<style>
+    .genderDropdown 
+    {
+        appearance: none; 
+        -webkit-appearance: none; 
+        -moz-appearance: none; 
+        background: url('data:image/svg+xml;utf8,<svg fill="black" stroke="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>') no-repeat right 0.75rem center;
+        background-size: 1.5em;
+        padding-right: 2.5rem;
+        border: 1px solid #6b7280;
+    }
+</style>
+<script>
+    document.getElementById('logo').addEventListener('click', function() {
+        window.location.href = "{{ route('dashboard') }}";
+    });
+</script>
