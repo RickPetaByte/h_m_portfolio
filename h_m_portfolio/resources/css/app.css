@@ -73,10 +73,6 @@ main, body
     color: var(--text-color) !important;
 }
 
-
-
-
-
 .icon
 {
     width: 25px;
@@ -154,6 +150,7 @@ select, textarea, input
 .borderNav 
 {
     position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 -4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .textColor
@@ -169,6 +166,48 @@ select, textarea, input
 .imageLoginRegistration
 {
     margin-top: -25px;
+}
+
+.about-section 
+{
+    padding: 50px 0;
+}
+
+.about-heading 
+{
+    margin-bottom: 30px;
+}
+
+.about-card 
+{
+    background-color: var(--second-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-card img 
+{
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.about-card h1 
+{
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.about-card hr 
+{
+    margin: 20px auto;
+}
+
+.about-description 
+{
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify; 
 }
 
 .pictureImg
