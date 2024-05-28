@@ -12,6 +12,8 @@
     --placeholder-color: none;
     --infotext-color: rgb(145, 145, 145);
     --arrow-color: black;
+
+    --scrollbar-color: rgb(170, 169, 169);
 }
 
 .dark-theme
@@ -22,6 +24,8 @@
     --placeholder-color: lightgray;
     --infotext-color: rgb(109, 109, 109);
     --arrow-color: white;
+
+    --scrollbar-color: rgb(80, 80, 80);
 }
 
 /* ---------- CSS Variables ---------- */
@@ -36,6 +40,18 @@
     color: var(--text-color) !important;
 }
 
+::-webkit-scrollbar
+{
+    background-color: transparent;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background: var(--scrollbar-color);
+    border-radius: 100px;
+}
+
 /* ---------- Color settings ---------- */
 
 .colorSecond
@@ -46,6 +62,11 @@
 .colorSecondHover:hover
 {
     background-color: var(--main-color) !important;
+}
+
+.homepageResponsiveColor
+{
+    background-color: var(--second-color) !important;
 }
 
 main, body, .colorSecondBorder .themeSwitch
@@ -196,11 +217,6 @@ select, textarea, input
 
 /*  ---------- Profile page  ---------- */
 
-.colorBgProfile
-{
-    margin-top: -40px;
-}
-
 .pictureInput
 {
     margin: 10px 0px 20px 0px;
@@ -246,8 +262,6 @@ select, textarea, input
 {
     color: black !important;
 }
-
-
 
 .btnUploadPicture
 {
@@ -459,6 +473,7 @@ footer
 
 .footer-distributed .footer-right 
 {
+    margin-top: 12px;
     width: 35%;
 }
 
@@ -584,17 +599,30 @@ footer
     {
         position: static;
     }
+
     header 
     {
         padding-top: 40px;
     }
 }
 
+
+
 @media (max-width: 768px) 
 {
     .welcomeText 
     {
         font-size: 1.25rem; 
+    }
+
+    .btnHomepageNav
+    {
+        margin-left: -10px !important;
+    }
+
+    .iconThemeNavBar
+    {
+        margin-right: -10px !important;
     }
 }
 
@@ -603,6 +631,11 @@ footer
     .aboutButton
     {
         margin-top: 10px;
+    }
+
+    .iconThemeNavBar
+    {
+        margin-right: 10px !important;
     }
 }
 
