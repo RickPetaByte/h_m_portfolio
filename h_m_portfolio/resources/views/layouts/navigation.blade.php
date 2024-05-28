@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="border-none">
-                        <p class="colorFirst buttons">{{ __('Homepage') }}<i class="fa-solid fa-house iconNavBar iconNavBarColor"></i></p>
+                        <p class="colorFirst buttons"><i class="fa-solid fa-house iconNavBar iconNavBarColor"></i>{{ __('Homepage') }}</p>
                     </x-nav-link>
                 </div>
             </div>
@@ -21,7 +21,7 @@
             <!-- Middle Create Portfolio Button -->
             <div class="flex items-center justify-center flex-grow">
                 <a href="{{ route('create') }}" class="btn btn-primary btnCreate colorFirst inline-flex items-center px-4 text-white font-medium">
-                    Create<i class="fa-solid fa-pen-to-square text-white iconCreate"></i>
+                    <i class="fa-solid fa-pen-to-square text-white iconCreate"></i>Create
                 </a>
             </div>
             
@@ -52,7 +52,7 @@
                                 <div class="colorSecondBorder borderNavDropdown">
                                     <div class="colorSecond colorSecondHover">
                                         <x-dropdown-link :href="route('profile.edit')">
-                                            <p class="colorFirst">{{ __('Profile') }}<i class="fa-solid fa-user iconNavBar iconNavBarColor"></i></p>
+                                            <p class="colorFirst"><i class="fa-solid fa-user iconNavBar iconNavBarColor"></i>{{ __('Profile') }}</p>
                                         </x-dropdown-link>
                                     </div>
 
@@ -63,7 +63,7 @@
                                         <x-dropdown-link :href="route('logout')"
                                                 onclick="event.preventDefault();
                                                             this.closest('form').submit();">
-                                            <p class="colorFirst">{{ __('Log Out') }}<i class="fa-solid fa-right-from-bracket iconNavBar iconNavBarColor"></i></p>
+                                            <p class="colorFirst"><i class="fa-solid fa-right-from-bracket iconNavBar iconNavBarColor"></i>{{ __('Log Out') }}</p>
                                         </x-dropdown-link>
                                     </form>
                                 </div>
@@ -97,7 +97,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="colorSecondHover">
-                {{ __('Homepage') }}<i class="fa-solid fa-house iconNavBar iconNavBarColor"></i>
+                <i class="fa-solid fa-house iconNavBar iconNavBarColor"></i>{{ __('Homepage') }}
             </x-responsive-nav-link>
         </div>
         @if (Auth::check())
@@ -110,7 +110,7 @@
 
                 <div class="mt-3 space-y-1">
                     <x-responsive-nav-link :href="route('profile.edit')" class="colorSecondHover">
-                        <div>{{ __('Profile') }}<i class="fa-solid fa-user iconNavBar iconNavBarColor"></i></div>
+                        <div><i class="fa-solid fa-user iconNavBar iconNavBarColor"></i>{{ __('Profile') }}</div>
                     </x-responsive-nav-link>
 
                     <!-- Authentication -->
@@ -121,7 +121,7 @@
                                 onclick="event.preventDefault();
                                     this.closest('form').submit();" 
                                 class="colorSecondHover">
-                            {{ __('Log Out') }}<i class="fa-solid fa-right-from-bracket iconNavBar iconNavBarColor"></i>
+                            <i class="fa-solid fa-right-from-bracket iconNavBar iconNavBarColor"></i>{{ __('Log Out') }}
                         </x-responsive-nav-link>
                     </form>
                 </div>

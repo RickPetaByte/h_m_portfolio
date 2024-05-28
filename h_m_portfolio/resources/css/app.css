@@ -10,6 +10,7 @@
     --second-color: white;
     --main-color: #efefef;
     --placeholder-color: none;
+    --infotext-color: rgb(145, 145, 145);
     --arrow-color: black;
 }
 
@@ -19,6 +20,7 @@
     --second-color: #1e1e1e;
     --main-color: #2d2d30;
     --placeholder-color: lightgray;
+    --infotext-color: rgb(109, 109, 109);
     --arrow-color: white;
 }
 
@@ -140,7 +142,7 @@ select, textarea, input
 
 .iconCreate
 {
-    margin-left: 8px;
+    margin-right: 8px;
     font-size: 15px !important;
 }
 
@@ -152,7 +154,7 @@ select, textarea, input
 
 .iconNavBar
 {
-    margin-left: 8px;
+    margin-right: 8px;
     font-size: 15px !important;
 }
 
@@ -194,6 +196,11 @@ select, textarea, input
 
 /*  ---------- Profile page  ---------- */
 
+.colorBgProfile
+{
+    margin-top: -40px;
+}
+
 .pictureInput
 {
     margin: 10px 0px 20px 0px;
@@ -232,6 +239,105 @@ select, textarea, input
 }
 
 /*  ---------- Profile page  ---------- */
+
+/*  ---------- Create portfolio page  ---------- */
+
+.colorCheckBox
+{
+    color: black !important;
+}
+
+
+
+.btnUploadPicture
+{
+    letter-spacing: 1px;
+    font-weight: normal !important;
+}
+
+.textInfoPrivacy
+{
+    font-size: 13px;
+    color: var(--infotext-color) !important;
+}
+
+.btnCreatePortfolio
+{
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.aboutCreatePortfolio
+{
+    background: none;
+    border-color: #6b7280;
+    border-width: 1px;
+}
+
+.aboutCreatePortfolio:focus
+{
+    background: none;
+    border-color: #2563eb;
+    border-width: 1px;
+}
+
+.containerCreate
+{
+    max-width: 800px;
+    margin: 0 auto; 
+    padding-left: 20px; 
+    padding-right: 20px; 
+}
+
+.divCreatePage 
+{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.input-container 
+{
+    margin-bottom: 20px;
+}
+
+.input-container label 
+{
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-container input,
+.input-container textarea 
+{
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.input-container input[type="file"] 
+{
+    display: none;
+}
+
+.custom-file-upload 
+{
+    cursor: pointer;
+}
+
+#picture-preview 
+{
+    max-height: 230px;
+    max-width: 230px;
+    min-height: 230px;
+    min-width: 230px;
+}
+
+/*  ---------- Create portfolio page  ---------- */
 
 /* ---------- About ---------- */
 
@@ -294,7 +400,7 @@ footer
     width: 100%;
     text-align: left;
     font: normal 16px sans-serif;
-    padding: 50px 50px 60px 50px;
+    padding: 30px 40px 30px 40px;
     margin-top: 80px;
 }
 
@@ -314,11 +420,6 @@ footer
 {
     display: inline-block;
     vertical-align: top;
-}
-
-.footer-distributed .footer-left 
-{
-    width: 30%;
 }
 
 .footer-distributed .footer-links 
@@ -341,9 +442,22 @@ footer
     font-size: 14px;
     font-weight: normal;
     margin: 0;
+    
+}
+
+.footer-distributed .footer-left 
+{
+    width: 25%;
+
+    margin-left: 50px;
 }
 
 .footer-distributed .footer-center 
+{
+    width: 35%;
+}
+
+.footer-distributed .footer-right 
 {
     width: 35%;
 }
@@ -389,11 +503,6 @@ footer
 {
     color: #e0ac1c;
     text-decoration: none;
-}
-
-.footer-distributed .footer-right 
-{
-    width: 30%;
 }
 
 .footer-distributed .footer-company-about 
@@ -456,14 +565,27 @@ footer
     {
         margin-left: 0;
     }
+    .footer-distributed .footer-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        margin-left: 0px;
+    }
+    .footer-distributed .footer-left #footer-logo {
+        margin-left: 0; 
+        margin-bottom: 20px; 
+    }
 }
 
 @media (max-height:800px) 
 {
-    footer {
+    footer 
+    {
         position: static;
     }
-    header {
+    header 
+    {
         padding-top: 40px;
     }
 }
@@ -481,6 +603,13 @@ footer
     .aboutButton
     {
         margin-top: 10px;
+    }
+}
+
+@media (max-width: 576px) 
+{
+    .colorSecond {
+        margin-bottom: 20px;
     }
 }
 
