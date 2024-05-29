@@ -3,7 +3,7 @@
         <img id="footer-logo" src="{{ asset('img/LogoCircle.png') }}" alt="Logo">
         <p class="footer-links">
             <a href="{{ route('about') }}" class="fw-bold"><i class="fa-solid fa-bars iconNavBar iconNavBarColor"></i>About</a><br>
-            <a href="#" class="fw-bold"><i class="fa-solid fa-phone iconNavBar iconNavBarColor"></i>Contact</a>
+            <a href="{{ route('contact.show') }}" class="fw-bold"><i class="fa-solid fa-phone iconNavBar iconNavBarColor"></i>Contact</a>
         </p><br>
     </div>
 
