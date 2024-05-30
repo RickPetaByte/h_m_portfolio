@@ -258,25 +258,21 @@ select, textarea, input
 
 /*  ---------- Create portfolio page  ---------- */
 
-.colorCheckBox
-{
+.colorCheckBox {
     color: black !important;
 }
 
-.btnUploadPicture
-{
+.btnUploadPicture {
     letter-spacing: 1px;
     font-weight: normal !important;
 }
 
-.textInfoPrivacy
-{
+.textInfoPrivacy {
     font-size: 13px;
     color: var(--infotext-color) !important;
 }
 
-.btnCreatePortfolio
-{
+.btnCreatePortfolio {
     font-size: 18px;
     font-weight: bold;
     letter-spacing: 2px;
@@ -284,106 +280,144 @@ select, textarea, input
     padding-right: 50px;
 }
 
-.aboutCreatePortfolio
-{
+.aboutCreatePortfolio {
     background: none;
     border-color: #6b7280;
     border-width: 1px;
 }
 
-.aboutCreatePortfolio:focus
-{
+.aboutCreatePortfolio:focus {
     background: none;
     border-color: #2563eb;
     border-width: 1px;
 }
 
-.containerCreate
-{
-    max-width: 800px;
-    margin: 0 auto; 
-    padding-left: 20px; 
-    padding-right: 20px; 
+.containerCreate {
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: center; 
 }
 
-.divCreatePage 
-{
+.divCreatePage {
+    max-width: 800px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     border-radius: 10px;
+    margin: 0 auto; 
 }
 
-.input-container 
-{
+.input-container {
     margin-bottom: 20px;
 }
 
-.input-container label 
-{
+.input-container label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
 .input-container input,
-.input-container textarea 
-{
+.input-container textarea {
     border-radius: 5px;
     padding: 10px;
     box-sizing: border-box;
 }
 
-.input-container input[type="file"] 
-{
+.input-container input[type="file"] {
     display: none;
 }
 
-.custom-file-upload 
-{
+.custom-file-upload {
     cursor: pointer;
 }
 
-#picture-preview 
-{
+.divImgCreate {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto; 
+    margin-bottom: 20px;
+}
+
+#picture-preview {
     max-height: 230px;
     max-width: 230px;
     min-height: 230px;
     min-width: 230px;
 }
 
-.img-container 
-{
+/* Styling for the container with 4 images */
+.img-container-four {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     margin-bottom: 20px;
+    max-width: 960px;
 }
 
-.img-container .col-md-6 
-{
-    width: 50%;
+.img-container-four .col-md-6 {
+    width: 23%;
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
     margin-top: 10px;
 }
 
-.img-container .col-md-6 img 
-{
-    max-width: 80%;
+.img-container-four .col-md-6 img {
+    max-width: 100%;
     height: auto;
     border: 2px solid black;
     border-radius: 5px;
     transition: all 0.3s ease;
     cursor: pointer;
-    
 }
 
-.img-container .col-md-6 img.clicked 
-{
-    max-width: 90%;
+.img-container-four .col-md-6 img.clicked {
+    max-width: 100%;
     border: 6px solid blue;
 }
+
+.divImgChoose
+{
+    max-width: 900px !important;
+}
+
+/* Styling for the container with 6 images */
+.img-container-six {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    max-width: 850px; /* Match divImgChoose */
+}
+
+.img-container-six .col-md-6 {
+    width: 31%; /* Three images per row */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.img-container-six .col-md-6 img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.img-container-six .col-md-6 img.clicked {
+    max-width: 100%;
+    border: 6px solid blue;
+}
+
+/* .input-container.colorSecond.divImgCreate {
+    display: none;
+} */
 
 /*  ---------- Create portfolio page  ---------- */
 

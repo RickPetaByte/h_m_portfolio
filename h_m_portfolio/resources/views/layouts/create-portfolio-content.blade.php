@@ -63,23 +63,121 @@
             <p class="mt-3 textInfoPrivacy">If you select 'Yes' other people can't see your portfolio. If you select 'No' other people can see your portfolio.</p>
         </div>
 
-        <!-- Portfolio layout -->
-        <div class="input-container colorSecond divCreatePage">
+        <!-- Portfolio layout selection -->
+        <div class="input-container colorSecond divImgCreate divImgChoose">
             <label>Select portfolio style:</label>
-            <div class="input-container img-container">
+            <div class="input-container img-container img-container-four">
                 <div class="col-md-6">
-                    <img src="img/portfolio-3BW.png" class="img-fluid img-bordered" alt="Image 1">
+                    <img src="img/portfolios/blackwhite/portfolio-3BW.png" class="img-fluid img-bordered imageCreate" alt="portfolio-1">
                 </div>
                 <div class="col-md-6">
-                    <img src="img/portfolio-4BW.png" class="img-fluid img-bordered" alt="Image 2">
+                    <img src="img/portfolios/blackwhite/portfolio-4BW.png" class="img-fluid img-bordered imageCreate" alt="portfolio-2">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/blackwhite/portfolio-5BW.png" class="img-fluid img-bordered imageCreate" alt="portfolio-3">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/blackwhite/portfolio-6BW.png" class="img-fluid img-bordered imageCreate" alt="portfolio-4">
                 </div>
             </div>
-            <div class="input-container img-container">
+        </div>
+
+        <!-- Portfolio color selection for portfolio 1 -->
+        <div class="input-container colorSecond divImgCreate" id="portfolio-1-color-selection" style="display: none;">
+            <label>Select portfolio color:</label>
+            <div class="input-container img-container img-container-six">
                 <div class="col-md-6">
-                    <img src="img/portfolio-5BW.png" class="img-fluid img-bordered" alt="Image 3">
+                    <img src="img/portfolios/portfolio-1/Color/Color1-1.png" class="img-fluid img-bordered imageCreate" alt="Empty1-1">
                 </div>
                 <div class="col-md-6">
-                    <img src="img/portfolio-6BW.png" class="img-fluid img-bordered" alt="Image 4">
+                    <img src="img/portfolios/portfolio-1/Color/Color2-1.png" class="img-fluid img-bordered imageCreate" alt="Empty2-1">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-1/Color/Color3-1.png" class="img-fluid img-bordered imageCreate" alt="Empty3-1">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-1/Color/Color4-1.png" class="img-fluid img-bordered imageCreate" alt="Empty4-1">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-1/Color/Color5-1.png" class="img-fluid img-bordered imageCreate" alt="Empty5-1">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-1/Color/Color6-1.png" class="img-fluid img-bordered imageCreate" alt="Empty6-1">
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio color selection for portfolio 2 -->
+        <div class="input-container colorSecond divImgCreate" id="portfolio-2-color-selection" style="display: none;">
+            <label>Select portfolio color:</label>
+            <div class="input-container img-container img-container-six">
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-2/Color/Color1-2.png" class="img-fluid img-bordered imageCreate" alt="Empty1-2">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-2/Color/Color2-2.png" class="img-fluid img-bordered imageCreate" alt="Empty2-2">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-2/Color/Color3-2.png" class="img-fluid img-bordered imageCreate" alt="Empty3-2">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-2/Color/Color4-2.png" class="img-fluid img-bordered imageCreate" alt="Empty4-2">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-2/Color/Color5-2.png" class="img-fluid img-bordered imageCreate" alt="Empty5-2">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-2/Color/Color6-2.png" class="img-fluid img-bordered imageCreate" alt="Empty6-2">
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio color selection for portfolio 3 -->
+        <div class="input-container colorSecond divImgCreate" id="portfolio-3-color-selection" style="display: none;">
+            <label>Select portfolio color:</label>
+            <div class="input-container img-container img-container-six">
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-3/Color/Color1-3.png" class="img-fluid img-bordered imageCreate" alt="Empty1-3">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-3/Color/Color2-3.png" class="img-fluid img-bordered imageCreate" alt="Empty2-3">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-3/Color/Color3-3.png" class="img-fluid img-bordered imageCreate" alt="Empty3-3">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-3/Color/Color4-3.png" class="img-fluid img-bordered imageCreate" alt="Empty4-3">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-3/Color/Color5-3.png" class="img-fluid img-bordered imageCreate" alt="Empty5-3">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-3/Color/Color6-3.png" class="img-fluid img-bordered imageCreate" alt="Empty6-3">
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio color selection for portfolio 4 -->
+        <div class="input-container colorSecond divImgCreate" id="portfolio-4-color-selection" style="display: none;">
+            <label>Select portfolio color:</label>
+            <div class="input-container img-container img-container-six">
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-4/Color/Color1-4.png" class="img-fluid img-bordered imageCreate" alt="Empty1-4">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-4/Color/Color2-4.png" class="img-fluid img-bordered imageCreate" alt="Empty2-4">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-4/Color/Color3-4.png" class="img-fluid img-bordered imageCreate" alt="Empty3-4">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-4/Color/Color4-4.png" class="img-fluid img-bordered imageCreate" alt="Empty4-4">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-4/Color/Color5-4.png" class="img-fluid img-bordered imageCreate" alt="Empty5-4">
+                </div>
+                <div class="col-md-6">
+                    <img src="img/portfolios/portfolio-4/Color/Color6-4.png" class="img-fluid img-bordered imageCreate" alt="Empty6-4">
                 </div>
             </div>
         </div>
@@ -99,30 +197,4 @@
         };
         reader.readAsDataURL(event.target.files[0]);
     }
-
-    document.addEventListener('DOMContentLoaded', function () {
-        const images = document.querySelectorAll('.img-container img');
-
-        images.forEach(function (image) {
-            image.addEventListener('click', function () {
-                // Remove 'clicked' class from all images
-                images.forEach(function (img) {
-                    img.classList.remove('clicked');
-                });
-
-                // Add 'clicked' class to the clicked image
-                image.classList.add('clicked');
-            });
-        });
-
-        const createButton = document.querySelector('.btnCreatePortfolio');
-        createButton.addEventListener('click', function () {
-            const selectedImages = document.querySelectorAll('.img-container img.clicked');
-            const selectedImageAlt = [];
-            selectedImages.forEach(function (img) {
-                selectedImageAlt.push(img.alt);
-            });
-            alert("Selected images: " + selectedImageAlt.join(", "));
-        });
-    });
 </script>
