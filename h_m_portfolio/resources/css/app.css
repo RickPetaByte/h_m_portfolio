@@ -351,6 +351,40 @@ select, textarea, input
     min-width: 230px;
 }
 
+.img-container 
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.img-container .col-md-6 
+{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.img-container .col-md-6 img 
+{
+    max-width: 80%;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+}
+
+.img-container .col-md-6 img.clicked 
+{
+    max-width: 90%;
+    border: 6px solid blue;
+}
+
 /*  ---------- Create portfolio page  ---------- */
 
 /* ---------- About ---------- */

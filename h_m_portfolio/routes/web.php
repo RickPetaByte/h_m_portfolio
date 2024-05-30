@@ -13,10 +13,9 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-// Route::get('/contact', function () {
-//     // Mail::to('jurheusschen2@gmail.com')->send(new TestMail());
-//     return view('contact');
-// })->name('contact');
+Route::get('/portfolio-1', function () {
+    return view('portfolio-1');
+})->name('portfolio-1');
 
 Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
