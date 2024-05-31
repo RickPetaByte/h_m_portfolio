@@ -55,6 +55,7 @@
         <div class="input-container colorSecond divCreatePage">
             <label for="about">About:</label>
             <textarea name="about" class="form-control mt-3 aboutCreatePortfolio mt-1 block w-100 shadow-none" rows="5" style="resize: none;"></textarea>
+            <!-- Max 130 characters -->
         </div>
 
         <!-- Privacy -->

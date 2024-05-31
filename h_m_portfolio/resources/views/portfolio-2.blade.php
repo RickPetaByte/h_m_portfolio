@@ -25,12 +25,32 @@
         <div id="main">
             @include('layouts.navigation')
             <div class="container">
-                <div class="left-top"></div>
+                <div class="left-top">
+                    <h2 class="text-white">Title</h2>
+                    <h3 class="text-white">SubTitle</h3>
+                </div>
                 <div class="right-top">
+                    <div class="imgPortfolio"></div>
                 </div>
                 <div class="left-bottom">
+                    <h4 class="text-white">Specialties</h4>
+                    <div class="columns">
+                        <ul>
+                            <li class="text-white">One</li>
+                            <li class="text-white">Two</li>
+                            <li class="text-white">Three</li>
+                        </ul>
+                        <ul>
+                            <li class="text-white">Four</li>
+                            <li class="text-white">Five</li>
+                            <li class="text-white">Six</li>
+                        </ul>
+                    </div>
+                    <h5 class="text-white">Name</h5>
                 </div>
-                <div class="right-bottom">
+                <div class="right-bottom"></div>
+                <div class="absolute-container">
+                    <p class="text-white aboutPortfolio">About wwww wwww wwwwww ww www wwww ww wwww www w ww wwwww www ww</p>
                 </div>
             </div>
         </div>
@@ -54,8 +74,8 @@
     .container 
     {
         position: relative;
-        width: calc(126mm * 0.8);
-        height: calc(178.2mm * 0.8);
+        width: calc(126mm * 1.1);
+        height: calc(178.2mm * 1.1);
         max-width: 100vw;
         max-height: 100vh;
         margin-top: 20px;
@@ -93,18 +113,24 @@
         background-size: 200% 200%;
     }
 
-    /* .left-top::before 
+    .left-top h2 
     {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 110%;
-        background: var(--img-profile) no-repeat center center;
-        background-size: cover;
-        z-index: -1 !important;
-    } */
+        margin: 40px 0px 0px 30px;
+        font-size: 26px;
+        max-width: 250px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .left-top h3 
+    {
+        margin: 0px 0px 10px 30px;
+        font-size: 15px;
+        max-width: 250px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+    }
 
     .right-top 
     {
@@ -112,8 +138,20 @@
         right: 0;
         background: var(--img-location) right top;
         background-size: 200% 200%;
-        z-index: 1;
+        z-index: 100;
         color: white;
+    }
+
+    .imgPortfolio 
+    {
+        width: 215px !important;
+        height: 215px !important;
+        background: var(--img-profile) no-repeat center center;
+        background-size: cover;
+        z-index: 99;
+        margin: 138px 0px 0px 14px; 
+        border-radius: 200px;
+        border: 4px solid white;
     }
 
     .left-bottom 
@@ -122,7 +160,37 @@
         left: 0;
         background: var(--img-location) left bottom;
         background-size: 200% 200%;
-        z-index: 1;
+        z-index: 2;
+    }
+
+    .left-bottom h4 
+    {
+        margin-top: 80px;
+        margin-left: 30px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .columns 
+    {
+        display: flex;
+        margin-left: 30px;
+    }
+
+    .columns ul 
+    {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        margin-right: 20px; 
+    }
+
+    .columns ul li 
+    {
+        font-size: 15px;
+        max-width: 400px;
+        word-wrap: break-word;
+        margin-bottom: 5px; 
     }
 
     .right-bottom 
@@ -132,5 +200,42 @@
         background: var(--img-location) right bottom;
         background-size: 200% 200%;
         z-index: 1;
+    }
+
+    .left-bottom h5 
+    {
+        position: absolute;
+        bottom: 5px; 
+        margin-left: 10px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .absolute-container 
+    {
+        position: absolute;
+        top: 16rem; 
+        left: 3rem; 
+        width: 13rem; 
+        height: auto; 
+        z-index: 2;
+    }
+
+    .absolute-container .aboutPortfolio 
+    {
+        margin: 0; 
+    }
+
+    .aboutPortfolio 
+    {
+        font-size: 13px;
+    }
+
+    @media (max-width: 640px) 
+    {
+        .container 
+        {
+            display: none;
+        }
     }
 </style>

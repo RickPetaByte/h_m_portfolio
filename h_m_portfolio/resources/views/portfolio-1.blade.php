@@ -31,13 +31,13 @@
                     <h3 class="text-white">SubTitle</h3>
                 </div>
                 <div class="left-bottom">
-                    <p class="text-white aboutPortfolio" style="font-size: 13px;">About ---------- --- ------ ---- -------- ------------ -- -- ------- ------ --- -- ---- -------- --- ------------ ------ ---- ----</p>
+                    <p class="text-white aboutPortfolio">About wwww wwww wwwwww ww www wwww ww wwww www w ww wwwww www ww</p>
                     <h5 class="text-white">Name</h5>
                 </div>
                 <div class="right-bottom">
                     <h4>Specialties</h4>
                     <ul>
-                        <li>One</li>
+                        <li>Onewwwwww</li>
                         <li>Two</li>
                         <li>Three</li>
                         <li>Four</li>
@@ -50,6 +50,13 @@
     </div>
 </body>
 </html>
+
+<!-- Als de Title (h2): Alles hoger dan 10 characters is 26px font-size, onder de 10 characters is een font-size van 40px en onder de 5 characters dan font-size van 50px -->
+<!-- Als de SubTitle (h3): Alles hoger dan 10 characters is 15px font-size, onder de 10 characters is een font-size van 20px en onder de 5 characters dan font-size van 25px -->
+
+<!-- Als de About (p): Alles hoger de 85 characters is 13px font-size, onder de 85 characters is een font-size van 17px en onder de 50 characters font-size van 20px -->
+
+<!-- Als de Specialties (per list item): Alles hoger dan 10 characters is 15px font-size, onder de 10 characters is een font-size van 20px en onder de 5 characters dan font-size van 25px -->
 
 <style>
     :root 
@@ -67,8 +74,8 @@
     .container 
     {
         position: relative;
-        width: calc(126mm * 0.8);
-        height: calc(178.2mm * 0.8);
+        width: calc(126mm * 1.1);
+        height: calc(178.2mm * 1.1);
         max-width: 100vw;
         max-height: 100vh;
         margin-top: 20px;
@@ -131,7 +138,7 @@
 
     .right-top h2 
     {
-        margin: 30px 0px 0px 20px;
+        margin: 50px 0px 0px 30px;
         font-size: 26px;
         max-width: 180px;
         word-wrap: break-word;
@@ -141,7 +148,7 @@
 
     .right-top h3
     {
-        margin: 0px 0px 10px 20px;
+        margin: 0px 0px 10px 30px;
         font-size: 15px;
         max-width: 150px;
         word-wrap: break-word;
@@ -160,18 +167,9 @@
     .aboutPortfolio
     {
         margin: 30px 5px 10px 15px;
-        max-width: 150px;
+        font-size: 13px;
+        max-width: 200px;
         word-wrap: break-word;
-    }
-
-    .left-bottom h5 
-    {
-        position: absolute;
-        bottom: 5px; 
-        left: 50%; 
-        transform: translateX(-50%); 
-        font-size: 12px;
-        font-weight: bold;
     }
 
     .right-bottom 
@@ -182,11 +180,21 @@
         background-size: 200% 200%;
         z-index: 1;
         
-        display: flex; /* Gebruik flexbox om de inhoud te centreren */
-        flex-direction: column; /* Zet de richting van het flexbox-container naar kolom */
-        justify-content: center; /* Centreer de items verticaal */
-        align-items: center; /* Centreer de items horizontaal */
-        text-align: center; /* Centreer de tekst binnen de container */
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center; 
+        text-align: center; 
+    }
+
+    .left-bottom h5 
+    {
+        position: absolute;
+        bottom: 5px; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        font-size: 12px;
+        font-weight: bold;
     }
 
     .right-bottom h4
@@ -206,5 +214,13 @@
         font-size: 15px;
         max-width: 150px;
         word-wrap: break-word;
+    }
+    
+    @media (max-width: 640px) 
+    {
+        .container 
+        {
+            display: none;
+        }
     }
 </style>
