@@ -77,20 +77,6 @@
         border-radius: 5px;
     }
 
-    .container::before 
-    {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: inherit;
-        transform: rotate(-45deg);
-        transform-origin: top left;
-        z-index: -2;
-    }
-
     .left-top, .right-top, .left-bottom, .right-bottom 
     {
         position: absolute;
@@ -206,5 +192,19 @@
         font-size: 15px;
         max-width: 150px;
         word-wrap: break-word;
+    }
+
+    .container::before 
+    {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        transform: rotate(-45deg);
+        transform-origin: top left;
+        z-index: -2;
     }
 </style>

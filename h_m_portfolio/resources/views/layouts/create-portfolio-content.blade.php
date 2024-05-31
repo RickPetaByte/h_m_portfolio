@@ -3,8 +3,10 @@
         <!-- Title and SubTitle -->
         <div class="input-container colorSecond mt-5 divCreatePage">
             <label for="title">Title:</label>
+            <!-- Max 17 characters -->
             <x-text-input name="title" type="text" class="form-control mb-3 backgroundTransparant" />
-            <label for="subtitle">Sub-Title:</label>
+            <label for="subtitle">Sub-Title:</label> 
+            <!-- Max 17 characters -->
             <x-text-input name="subtitle" type="text" class="form-control backgroundTransparant" />
         </div>
 
@@ -25,21 +27,27 @@
                 <div class="col-md-4 mb-4 mt-2">
                     <x-text-input name="one" type="text" class="form-control backgroundTransparant" />
                 </div>
+                <!-- Max 20 characters -->
                 <div class="col-md-4 mb-4 mt-2">
                     <x-text-input name="two" type="text" class="form-control backgroundTransparant" />
                 </div>
+                <!-- Max 20 characters -->
                 <div class="col-md-4 mb-4 mt-2">
                     <x-text-input name="three" type="text" class="form-control backgroundTransparant" />
                 </div>
+                <!-- Max 20 characters -->
                 <div class="col-md-4 mb-4 mt-2">
                     <x-text-input name="four" type="text" class="form-control backgroundTransparant" />
                 </div>
+                <!-- Max 20 characters -->
                 <div class="col-md-4 mb-4 mt-2">
                     <x-text-input name="five" type="text" class="form-control backgroundTransparant" />
                 </div>
+                <!-- Max 20 characters -->
                 <div class="col-md-4 mb-4 mt-2">
                     <x-text-input name="six" type="text" class="form-control backgroundTransparant" />
                 </div>
+                <!-- Max 20 characters -->
             </div>
         </div>
 

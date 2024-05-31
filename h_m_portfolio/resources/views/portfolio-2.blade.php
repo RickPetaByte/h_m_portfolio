@@ -27,23 +27,10 @@
             <div class="container">
                 <div class="left-top"></div>
                 <div class="right-top">
-                    <h2 class="text-white">Title</h2>
-                    <h3 class="text-white">SubTitle</h3>
                 </div>
                 <div class="left-bottom">
-                    <p class="text-white aboutPortfolio" style="font-size: 13px;">About ---------- --- ------ ---- -------- ------------ -- -- ------- ------ --- -- ---- -------- --- ------------ ------ ---- ----</p>
-                    <h5 class="text-white">Name</h5>
                 </div>
                 <div class="right-bottom">
-                    <h4>Specialties</h4>
-                    <ul>
-                        <li>One</li>
-                        <li>Two</li>
-                        <li>Three</li>
-                        <li>Four</li>
-                        <li>Five</li>
-                        <li>Six</li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -54,7 +41,7 @@
 <style>
     :root 
     {
-        --img-location: url("img/portfolios/portfolio-1/Empty/Empty1-1.png");
+        --img-location: url("img/portfolios/portfolio-2/Empty/Empty1-2.png");
         --img-profile: url("img/rick.png");
     }
 
@@ -106,7 +93,7 @@
         background-size: 200% 200%;
     }
 
-    .left-top::before 
+    /* .left-top::before 
     {
         content: '';
         position: absolute;
@@ -117,7 +104,7 @@
         background: var(--img-profile) no-repeat center center;
         background-size: cover;
         z-index: -1 !important;
-    }
+    } */
 
     .right-top 
     {
@@ -129,25 +116,6 @@
         color: white;
     }
 
-    .right-top h2 
-    {
-        margin: 30px 0px 0px 20px;
-        font-size: 26px;
-        max-width: 180px;
-        word-wrap: break-word;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-
-    .right-top h3
-    {
-        margin: 0px 0px 10px 20px;
-        font-size: 15px;
-        max-width: 150px;
-        word-wrap: break-word;
-        text-transform: uppercase;
-    }
-
     .left-bottom 
     {
         bottom: 0;
@@ -157,23 +125,6 @@
         z-index: 1;
     }
 
-    .aboutPortfolio
-    {
-        margin: 30px 5px 10px 15px;
-        max-width: 150px;
-        word-wrap: break-word;
-    }
-
-    .left-bottom h5 
-    {
-        position: absolute;
-        bottom: 5px; 
-        left: 50%; 
-        transform: translateX(-50%); 
-        font-size: 12px;
-        font-weight: bold;
-    }
-
     .right-bottom 
     {
         bottom: 0;
@@ -181,30 +132,5 @@
         background: var(--img-location) right bottom;
         background-size: 200% 200%;
         z-index: 1;
-        
-        display: flex; /* Gebruik flexbox om de inhoud te centreren */
-        flex-direction: column; /* Zet de richting van het flexbox-container naar kolom */
-        justify-content: center; /* Centreer de items verticaal */
-        align-items: center; /* Centreer de items horizontaal */
-        text-align: center; /* Centreer de tekst binnen de container */
-    }
-
-    .right-bottom h4
-    {
-        margin-top: -130px;
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
-
-    .right-bottom ul
-    {
-        margin-bottom: -50px;
-    }
-
-    .right-bottom ul li
-    {
-        font-size: 15px;
-        max-width: 150px;
-        word-wrap: break-word;
     }
 </style>

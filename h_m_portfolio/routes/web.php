@@ -17,6 +17,18 @@ Route::get('/portfolio-1', function () {
     return view('portfolio-1');
 })->name('portfolio-1');
 
+Route::get('/portfolio-2', function () {
+    return view('portfolio-2');
+})->name('portfolio-2');
+
+Route::get('/portfolio-3', function () {
+    return view('portfolio-3');
+})->name('portfolio-3');
+
+Route::get('/portfolio-4', function () {
+    return view('portfolio-4');
+})->name('portfolio-4');
+
 Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
