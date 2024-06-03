@@ -25,19 +25,100 @@
         <div id="main">
             @include('layouts.navigation')
             <div class="container">
-                <div class="left-top"></div>
+                <div class="left-top">
+                    <div class="imgPortfolio"></div>
+                </div>
                 <div class="right-top">
+                    <h2>Title</h2>
+                    <h3>SubTitle</h3>
                 </div>
-                <div class="left-bottom">
+                <div class="bottom">
+                    <h4>Specialties</h4>
+                    <div class="columns">
+                        <ul>
+                            <li>One</li>
+                            <li>Two</li>
+                            <li>Three</li>
+                        </ul>
+                        <ul>
+                            <li>Four</li>
+                            <li>Five</li>
+                            <li>Six</li>
+                        </ul>
+                    </div>
+                    <h5>Name</h5>
                 </div>
-                <div class="right-bottom">
+                <div class="absolute-container">
+                    <p class="aboutPortfolio">About wwww wwww wwwwww ww www wwww ww wwww www w ww wwwww www ww</p>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function adjustFontSize() {
+            // Title (h2)
+            document.querySelectorAll('h2').forEach(element => {
+                const length = element.textContent.length;
+                if (length < 6) {
+                    element.style.fontSize = '40px';
+                } else if (length < 11) {
+                    element.style.fontSize = '30px';
+                } else {
+                    element.style.fontSize = '20px';
+                }
+            });
+
+            // SubTitle (h3)
+            document.querySelectorAll('h3').forEach(element => {
+                const length = element.textContent.length;
+                if (length < 6) {
+                    element.style.fontSize = '25px';
+                } else if (length < 11) {
+                    element.style.fontSize = '20px';
+                } else {
+                    element.style.fontSize = '15px';
+                }
+            });
+
+            // Name (h5)
+            document.querySelectorAll('h5').forEach(element => {
+                const length = element.textContent.length;
+                if (length < 6) {
+                    element.style.fontSize = '20px';
+                } else {
+                    element.style.fontSize = '15px';
+                }
+            });
+
+            // About (p)
+            document.querySelectorAll('.aboutPortfolio').forEach(element => {
+                const length = element.textContent.length;
+                if (length < 50) {
+                    element.style.fontSize = '20px';
+                } else if (length < 85) {
+                    element.style.fontSize = '17px';
+                } else {
+                    element.style.fontSize = '13px';
+                }
+            });
+
+            // Specialties (li)
+            document.querySelectorAll('.columns ul li').forEach(element => {
+                const length = element.textContent.length;
+                if (length < 6) {
+                    element.style.fontSize = '25px';
+                } else if (length < 11) {
+                    element.style.fontSize = '20px';
+                } else {
+                    element.style.fontSize = '15px';
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', adjustFontSize);
+    </script>
 </body>
 </html>
-
 <style>
     :root 
     {
@@ -64,30 +145,74 @@
         border-radius: 5px;
     }
 
-    @media (max-width: 640px) 
+    .imgPortfolio 
     {
-        .container 
-        {
-            width: calc(126mm * 0.7);
-            height: calc(178.2mm * 0.7);
-        }
+        width: 190px !important;
+        height: 190px !important;
+        background: var(--img-profile) no-repeat center center;
+        background-size: cover;
+        z-index: 99;
+        margin: 23px 0px 0px 27px; 
+        border-radius: 200px;
+        border: 4px solid white;
     }
 
-    .container::before 
+    .right-top h2 
     {
-        content: '';
+        margin: 40px 0px 0px -20px;
+        max-width: 250px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .right-top h3 
+    {
+        margin: 0px 0px 10px -20px;
+        max-width: 250px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+    }
+
+    .bottom h4 
+    {
+        margin-top: 20px;
+        margin-left: 30px;
+        margin-bottom: 30px;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .bottom h5 
+    {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: inherit;
-        transform: rotate(-45deg);
-        transform-origin: top left;
-        z-index: -2;
+        bottom: 5px; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        font-size: 12px;
+        font-weight: bold;
     }
 
-    .left-top, .right-top, .left-bottom, .right-bottom 
+    .columns 
+    {
+        display: flex;
+        margin-left: 30px;
+    }
+
+    .columns ul 
+    {
+        margin: 0;
+        padding: 10px;
+        list-style-type: none;
+        margin-right: 20px; 
+    }
+
+    .columns ul li 
+    {
+        margin-bottom: 15px; 
+    }
+
+    .left-top, .right-top, .bottom 
     {
         position: absolute;
         width: 50%;
@@ -102,19 +227,6 @@
         background-size: 200% 200%;
     }
 
-    /* .left-top::before 
-    {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 110%;
-        background: var(--img-profile) no-repeat center center;
-        background-size: cover;
-        z-index: -1 !important;
-    } */
-
     .right-top 
     {
         top: 0;
@@ -125,21 +237,36 @@
         color: white;
     }
 
-    .left-bottom 
+    .bottom 
     {
         bottom: 0;
         left: 0;
-        background: var(--img-location) left bottom;
-        background-size: 200% 200%;
+        width: 100%;
+        height: 50%;
+        background: var(--img-location) bottom;
+        background-size: 100% 200%;
         z-index: 1;
     }
 
-    .right-bottom 
+    .absolute-container 
     {
-        bottom: 0;
-        right: 0;
-        background: var(--img-location) right bottom;
-        background-size: 200% 200%;
-        z-index: 1;
+        position: absolute;
+        top: 12rem; 
+        left: 15rem; 
+        width: 14rem; 
+        height: auto; 
+        z-index: 5;
+    }
+
+    .absolute-container .aboutPortfolio 
+    {
+        margin: 0; 
+    }
+
+    @media (max-width: 640px) 
+    {
+        .container {
+            display: none;
+        }
     }
 </style>
