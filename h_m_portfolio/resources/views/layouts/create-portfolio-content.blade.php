@@ -1,5 +1,6 @@
 <div class="containerCreate">
-    <form action="#">
+    <form action="{{ route('edit-portfolio') }}" method="POST">
+        @csrf
         <!-- Title and SubTitle -->
         <div class="input-container colorSecond mt-5 divCreatePage">
             <label for="title">Title:</label>
@@ -191,6 +192,9 @@
             </div>
         </div>
 
+        @if(session('error'))
+            <p style="color: red;">{{ session('error')}}</p>
+        @endif
         <div class="text-center">
             <button type="submit" class="btn btn-primary btnCreatePortfolio text-white"><i class="fa-solid fa-pen-to-square text-white mr-2"></i>Create portfolio</button>
         </div>

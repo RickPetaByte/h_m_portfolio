@@ -144,7 +144,31 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedColorImageAlt = selectedColorImages.length > 0 ? selectedColorImages[0].alt : null;
 
         if (selectedLayout && selectedImageAlt && selectedColorImageAlt) {
-            alert("Selected image: " + selectedColorImageAlt);
+
+            // Verzamel de kleurcode uit de alt attribuut van de geselecteerde kleurafbeelding
+            const colorCode = selectedColorImageAlt.split('-')[1]; // Split de alt tekst en haal de kleurcode op
+
+            // Maak een formulier met verborgen velden voor de geselecteerde afbeeldinggegevens
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/next-page'; // De URL van de volgende pagina
+            
+            const templateInput = document.createElement('input');
+            templateInput.type = 'hidden';
+            templateInput.name = 'template';
+            templateInput.value = selectedImageAlt;
+            form.appendChild(templateInput);
+            
+            const colorInput = document.createElement('input');
+            colorInput.type = 'hidden';
+            colorInput.name = 'color';
+            colorInput.value = colorCode; // Gebruik de verkregen kleurcode
+            form.appendChild(colorInput);
+            
+            document.body.appendChild(form);
+            
+            // Verzend het formulier
+            form.submit();
         } else {
             alert("Please select a layout, a layout image, and a color image.");
         }

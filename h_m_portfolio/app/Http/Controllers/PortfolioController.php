@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class PortfolioController extends Controller
 {
@@ -55,6 +58,39 @@ class PortfolioController extends Controller
         ]);
     }
 
+    public function generateHtml($title, $text) //parameter layout weggehaald
+    {
+        if(!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+        $fileName = Auth::user()->name . '-' . time() . '.html';
+        $filePath = public_path($fileName);
+
+        $data = [
+            'title' => $title,
+            //text komt nog
+            'fileName' => $fileName,
+
+        ];
+
+        $htmlContent = View::make('dynamic-template', $data)->render();
+        $filePath = public_path($fileName);
+
+        File::put($filePath, $htmlContent);
+        
+        //Redirect naar de generated html file
+        return redirect('/' . $fileName)->with('success', 'Portfolio HTML file generated successfully');
+    }
+
+    public function showEditHtml($fileName) 
+    {
+        $filePath = public_path($fileName);
+        $htmlContent = File::get($filePath);
+
+        return view('edit-html', compact('htmlContent', 'fileName'));
+    }
+
     public function updateHtml(Request $request, $fileName)
     {
         $request->validate([
@@ -73,45 +109,13 @@ class PortfolioController extends Controller
         ])->render());
 
         //Update de title
-        $userText = UserText::where('user_id', Auth::id()->first());
+        $userText = Portfolio::where('user_id', Auth::id())->first();
         $userText->update(['title' => $newTitle, /*content komt nog*/ ]);
 
         return redirect('/' . $fileName)->with('success', 'HTML file updated successfully');
     }
 
-    public function generateHtml($title, $text) //parameter layout weggehaald
-    {
-        if(!Auth::check()) {
-            return redirect()->route('login');
-        }
-
-        $fileName = Auth::user()->name . '-' . time() . '.html';
-        $filePath = public_path($fileName);
-
-        $data = [
-            'title' => $title,
-            //text komt nog
-            'fileName' => $fileName,
-
-        ]
-
-        $htmlContent = View::make('dynamic-template', $data)->render();
-        $filePath = public_path($fileName);
-
-        File::put($filePath, $htmlContent);
-
-        return redirect('/' . $fileName)->with('success', 'Portfolio HTML file generated successfully');
-    }
-
-    public function showEditHtml($fileName) 
-    {
-        $filePath = public_path($fileName);
-        $htmlContent = File::get($filePath);
-
-        return view('edit-html', compact('htmlContent', 'fileName'));
-    }
-
-    public function downloadPDF($fileName) 
+    public function downloadPDF($fileName)
     {
         // Pad naar het gegenereerde HTML-bestand
         $htmlFilePath = public_path($fileName);
@@ -122,8 +126,11 @@ class PortfolioController extends Controller
         // Pad naar de locatie waar het PDF-bestand wordt opgeslagen
         $pdfFilePath = public_path($pdfFileName);
 
-        // Gebruik het volledige pad naar wkhtmltopdf
-        $wkhtmltopdfPath = 'C:/wkhtmltopdf/bin/wkhtmltopdf.exe';
+        // Haal de basisnaam van het commando op uit de .env bestand
+        $wkhtmltopdfBinary = 'wkhtmltopdf';
+
+        // Haal het pad naar de map op uit de .env bestand
+        $wkhtmltopdfPath = env('WKHTMLTOPDF_PATH', 'C:/wkhtmltopdf/bin/wkhtmltopdf.exe'); // Standaard pad, wijzig indien nodig
 
         // Controleer of de paden correct zijn
         if (!file_exists($wkhtmltopdfPath)) {
@@ -133,27 +140,27 @@ class PortfolioController extends Controller
             throw new \RuntimeException("HTML file not found at $htmlFilePath");
         }
 
-        // Bouw het commando op
-        $command = escapeshellcmd("$wkhtmltopdfPath $htmlFilePath $pdfFilePath");
+        // Combineer het pad met de basisnaam om het volledige pad naar het uitvoerbare bestand te vormen
+        $wkhtmltopdfFullPath = $wkhtmltopdfPath . DIRECTORY_SEPARATOR . $wkhtmltopdfBinary;
 
-        // Log het volledige commando voor foutopsporing
-        Log::info('Executing command: ' . $command);
+        // Bouw het commando op als een array
+        $command = [
+            $wkhtmltopdfBinary,
+            $htmlFilePath,
+            $pdfFilePath
+        ];
 
         // Uitvoeren van het commando
-        exec($command, $output, $returnVar);
+        $process = new Process($command);
+        $process->run();
 
-        // Log de output en de return value
-        Log::info('Command output: ' . implode("\n", $output));
-        Log::info('Command return value: ' . $returnVar);
-
-        // Probeer het PDF-bestand te downloaden, ongeacht de uitkomst van het commando
-        try {
-            return response()->download($pdfFilePath)->deleteFileAfterSend(true);
-        } catch (\Exception $e) {
-            // Log de fout en geef een gebruikersvriendelijke foutmelding
-            Log::error('Failed to download PDF: ' . $e->getMessage());
-            return response()->json(['error' => 'Failed to generate or download PDF.'], 500);
+        // Controleren op fouten
+        if (!$process->isSuccessful()) {
+            throw new ProcessFailedException($process);
         }
+
+        // Stuur het PDF-bestand naar de browser
+        return response()->download($pdfFilePath)->deleteFileAfterSend(true);
     }
 
 }
