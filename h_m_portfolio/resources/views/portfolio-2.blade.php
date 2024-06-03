@@ -82,7 +82,7 @@
                 }
             });
 
-            // SubTitle (h5)
+            // Name (h5)
             document.querySelectorAll('h5').forEach(element => {
                 const length = element.textContent.length;
                 if (length < 6) {

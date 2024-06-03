@@ -77,6 +77,16 @@
                 }
             });
 
+            // Name (h5)
+            document.querySelectorAll('h5').forEach(element => {
+                const length = element.textContent.length;
+                if (length < 6) {
+                    element.style.fontSize = '20px';
+                } else {
+                    element.style.fontSize = '15px';
+                }
+            });
+
             // About (p)
             document.querySelectorAll('.aboutPortfolio').forEach(element => {
                 const length = element.textContent.length;
