@@ -5,6 +5,8 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
+// -------------------- Black / White Theme --------------------
+
 // Functie om het huidige thema op te slaan in localStorage
 function saveThemePreference(theme) {
     localStorage.setItem('theme', theme);
@@ -77,3 +79,76 @@ document.querySelectorAll('.login-btn, .register-btn').forEach(function(button) 
         // Geef aan dat het thema niet gewijzigd moet worden
     });
 });
+
+// -------------------- Black / White Theme --------------------
+
+// -------------------- Portfolio selector Create page --------------------
+
+document.addEventListener('DOMContentLoaded', function () {
+    const layoutImages = document.querySelectorAll('.img-container-four .imageCreate');
+    const colorSections = {
+        'portfolio-1': document.getElementById('portfolio-1-color-selection'),
+        'portfolio-2': document.getElementById('portfolio-2-color-selection'),
+        'portfolio-3': document.getElementById('portfolio-3-color-selection'),
+        'portfolio-4': document.getElementById('portfolio-4-color-selection')
+    };
+
+    let selectedLayout = null; // Houd de geselecteerde lay-out bij
+
+    layoutImages.forEach(function (image) {
+        image.addEventListener('click', function () {
+            // Deselecteer eerst alle lay-outafbeeldingen
+            layoutImages.forEach(function (img) {
+                img.classList.remove('clicked');
+            });
+
+            // Selecteer de geklikte lay-outafbeelding en houd deze bij
+            image.classList.add('clicked');
+            selectedLayout = image.alt;
+
+            // Verberg alle kleursecties
+            Object.values(colorSections).forEach(function (section) {
+                section.style.display = 'none';
+            });
+
+            // Toon de kleursectie voor de geselecteerde lay-out
+            if (colorSections[selectedLayout]) {
+                colorSections[selectedLayout].style.display = 'block';
+            }
+        });
+    });
+
+    // Voeg event listeners toe aan de kleurafbeeldingen om te voorkomen dat er meer dan één wordt geselecteerd
+    Object.values(colorSections).forEach(function (section) {
+        const colorImages = section.querySelectorAll('.img-container img');
+
+        colorImages.forEach(function (colorImage) {
+            colorImage.addEventListener('click', function () {
+                // Deselecteer eerst alle kleurafbeeldingen in deze sectie
+                colorImages.forEach(function (img) {
+                    img.classList.remove('clicked');
+                });
+
+                // Selecteer de geklikte kleurafbeelding
+                colorImage.classList.add('clicked');
+            });
+        });
+    });
+
+    // Voeg event listener toe aan de knop om de selecties te valideren
+    const createButton = document.querySelector('.btnCreatePortfolio');
+    createButton.addEventListener('click', function () {
+        const selectedImages = document.querySelectorAll('.img-container-four .imageCreate.clicked');
+        const selectedImageAlt = selectedImages.length > 0 ? selectedImages[0].alt : null;
+        const selectedColorImages = document.querySelectorAll('.img-container-six .imageCreate.clicked');
+        const selectedColorImageAlt = selectedColorImages.length > 0 ? selectedColorImages[0].alt : null;
+
+        if (selectedLayout && selectedImageAlt && selectedColorImageAlt) {
+            alert("Selected image: " + selectedColorImageAlt);
+        } else {
+            alert("Please select a layout, a layout image, and a color image.");
+        }
+    });
+});
+
+// -------------------- Portfolio selector Create page --------------------

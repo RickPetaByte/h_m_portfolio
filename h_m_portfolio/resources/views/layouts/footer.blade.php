@@ -2,9 +2,9 @@
     <div class="footer-left">
         <img id="footer-logo" src="{{ asset('img/LogoCircle.png') }}" alt="Logo">
         <p class="footer-links">
-            <a href="{{ route('about') }}" class="fw-bold">About<i class="fa-solid fa-bars iconNavBar iconNavBarColor"></i></a>
+            <a href="{{ route('about') }}" class="fw-bold"><i class="fa-solid fa-bars iconNavBar iconNavBarColor"></i>About</a><br>
+            <a href="{{ route('contact.show') }}" class="fw-bold"><i class="fa-solid fa-phone iconNavBar iconNavBarColor"></i>Contact</a>
         </p><br>
-        <p class="footer-company-name">Copyright © 2024 <strong>H:M Portfolio's</strong> All rights reserved</p>
     </div>
 
     <div class="footer-center">
@@ -27,4 +27,5 @@
             is a website where you can easily create a good portfolio. You can also edit the portfolio, such as changing colors, text, and more. You can also view portfolios of other people.
         </p>
     </div>
+    <p class="footer-company-name text-center">© 2024 H:M Portfolio's. All rights reserved</p>
 </footer>

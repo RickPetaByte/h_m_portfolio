@@ -1,7 +1,7 @@
 <section class="colorBgProfile p-4">
     <div class="container">
         <header class="mb-4">
-            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+            <h2 class="text-lg font-medium">
                 {{ __('Profile Information') }}
             </h2>
         </header>
@@ -88,7 +88,6 @@
         </form>
     </div>
 </section>
-
 <script>
     function previewImage(event) {
         const reader = new FileReader();
