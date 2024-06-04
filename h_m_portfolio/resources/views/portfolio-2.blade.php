@@ -55,7 +55,6 @@
             </div>
         </div>
     </div>
-
     <script>
         function adjustFontSize() {
             // Title (h2)
@@ -119,22 +118,23 @@
 
         document.addEventListener('DOMContentLoaded', adjustFontSize);
     </script>
-
 </body>
 </html>
-
 <style>
-    :root {
+    :root 
+    {
         --img-location: url("img/portfolios/portfolio-2/Empty/Empty1-2.png");
         --img-profile: url("img/rick.png");
     }
 
-    body, html {
+    body, html 
+    {
         height: 100%;
         margin: 0;
     }
 
-    .container {
+    .container 
+    {
         position: relative;
         width: calc(126mm * 1.1);
         height: calc(178.2mm * 1.1);
@@ -146,33 +146,23 @@
         border-radius: 5px;
     }
 
-    .container::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: inherit;
-        transform: rotate(-45deg);
-        transform-origin: top left;
-        z-index: -2;
-    }
-
-    .left-top, .right-top, .left-bottom, .right-bottom {
+    .left-top, .right-top, .left-bottom, .right-bottom 
+    {
         position: absolute;
         width: 50%;
         height: 50%;
     }
 
-    .left-top {
+    .left-top 
+    {
         top: 0;
         left: 0;
         background: var(--img-location) left top;
         background-size: 200% 200%;
     }
 
-    .left-top h2 {
+    .left-top h2 
+    {
         margin: 40px 0px 0px 30px;
         max-width: 250px;
         word-wrap: break-word;
@@ -180,14 +170,16 @@
         font-weight: bold;
     }
 
-    .left-top h3 {
+    .left-top h3 
+    {
         margin: 0px 0px 10px 30px;
         max-width: 250px;
         word-wrap: break-word;
         text-transform: uppercase;
     }
 
-    .right-top {
+    .right-top 
+    {
         top: 0;
         right: 0;
         background: var(--img-location) right top;
@@ -196,7 +188,8 @@
         color: white;
     }
 
-    .imgPortfolio {
+    .imgPortfolio 
+    {
         width: 215px !important;
         height: 215px !important;
         background: var(--img-profile) no-repeat center center;
@@ -207,7 +200,8 @@
         border: 4px solid white;
     }
 
-    .left-bottom {
+    .left-bottom 
+    {
         bottom: 0;
         left: 0;
         background: var(--img-location) left bottom;
@@ -215,7 +209,8 @@
         z-index: 2;
     }
 
-    .left-bottom h4 {
+    .left-bottom h4 
+    {
         margin-top: 80px;
         margin-left: 30px;
         margin-bottom: 10px;
@@ -223,23 +218,27 @@
         font-size: 25px;
     }
 
-    .columns {
+    .columns 
+    {
         display: flex;
         margin-left: 30px;
     }
 
-    .columns ul {
+    .columns ul 
+    {
         margin: 0;
         padding: 0;
         list-style-type: none;
         margin-right: 20px; 
     }
 
-    .columns ul li {
+    .columns ul li 
+    {
         margin-bottom: 5px; 
     }
 
-    .right-bottom {
+    .right-bottom 
+    {
         bottom: 0;
         right: 0;
         background: var(--img-location) right bottom;
@@ -247,14 +246,16 @@
         z-index: 1;
     }
 
-    .left-bottom h5 {
+    .left-bottom h5 
+    {
         position: absolute;
         bottom: 5px; 
         margin-left: 10px;
         font-weight: bold;
     }
 
-    .absolute-container {
+    .absolute-container 
+    {
         position: absolute;
         top: 16rem; 
         left: 3rem; 
@@ -263,12 +264,15 @@
         z-index: 2;
     }
 
-    .absolute-container .aboutPortfolio {
+    .absolute-container .aboutPortfolio 
+    {
         margin: 0; 
     }
 
-    @media (max-width: 640px) {
-        .container {
+    @media (max-width: 640px) 
+    {
+        .container 
+        {
             display: none;
         }
     }
