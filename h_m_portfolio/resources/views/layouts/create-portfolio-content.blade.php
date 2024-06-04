@@ -5,10 +5,10 @@
         <div class="input-container colorSecond mt-5 divCreatePage">
             <label for="title">Title:</label>
             <!-- Max 17 characters -->
-            <x-text-input name="title" type="text" class="form-control mb-3 backgroundTransparant" />
+            <x-text-input name="title" type="text" id="title" class="form-control mb-3 backgroundTransparant" />
             <label for="subtitle">Sub-Title:</label> 
             <!-- Max 17 characters -->
-            <x-text-input name="subtitle" type="text" class="form-control backgroundTransparant" />
+            <x-text-input name="subtitle" type="text" id="subtitle" class="form-control backgroundTransparant" />
         </div>
 
         <!-- Image and Image Selection -->

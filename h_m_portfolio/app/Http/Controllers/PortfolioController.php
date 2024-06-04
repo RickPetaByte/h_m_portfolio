@@ -95,7 +95,7 @@ class PortfolioController extends Controller
     {
         $request->validate([
             'htmlTitle' => 'required|string',
-            'htmlContent' => 'required|string'
+            // 'htmlContent' => 'required|string'
         ]);
 
         $filePath = public_path($fileName);
