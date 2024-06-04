@@ -35,15 +35,15 @@
                     <h5 class="text-white">Name</h5>
                 </div>
                 <div class="right-bottom">
-                    <h4>Specialties</h4>
+                    <h4 class="text-dark">Specialties</h4>
                     <div class="columns">
                     <ul>
-                        <li>1. Drone vliegen</li>
-                        <li>2. Gamen</li>
-                        <li>3. Programeren</li>
-                        <li>4. Met vrienden afspreken</li>
-                        <li>5. Eten</li>
-                        <li>6. Tennissen</li>
+                        <li class="text-dark">1. Drone vliegen</li>
+                        <li class="text-dark">2. Gamen</li>
+                        <li class="text-dark">3. Programeren</li>
+                        <li class="text-dark">4. Met vrienden afspreken</li>
+                        <li class="text-dark">5. Eten</li>
+                        <li class="text-dark">6. Tennissen</li>
                     </ul>
                     </div>
                 </div>

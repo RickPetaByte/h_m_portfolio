@@ -31,12 +31,12 @@
                     <h3 class="text-white">SubTitle</h3>
                 </div>
                 <div class="right-top">
-                    <h4>Specialties</h4>
+                    <h4 class="text-dark">Specialties</h4>
                     <div class="columns">
                         <ul>
-                            <li>1. One</li>
-                            <li>2. Two</li>
-                            <li>3. Three</li>
+                            <li class="text-dark">1. One</li>
+                            <li class="text-dark">2. Two</li>
+                            <li class="text-dark">3. Three</li>
                         </ul>
                     </div>
                 </div>
@@ -46,11 +46,12 @@
                 <div class="right-bottom">
                     <div class="columns">
                         <ul>
-                            <li>4. Four</li>
-                            <li>5. Five</li>
-                            <li>6. Six</li>
+                            <li class="text-dark">4. Four</li>
+                            <li class="text-dark">5. Five</li>
+                            <li class="text-dark">6. Six</li>
                         </ul>
                     </div>
+                    <h5 class="text-dark">Name</h5>
                 </div>
             </div>
         </div>
@@ -209,6 +210,35 @@
         font-weight: bold;
         font-size: 25px;
         text-align: center;
+    }
+
+    .right-bottom h5 
+    {
+        position: absolute;
+        bottom: 5px; 
+        left: 45%; 
+        transform: translateX(-50%); 
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .right-top ul
+    {
+        margin-top: 70px;
+    }
+
+    .right-top ul li
+    {
+        max-width: 200px;
+        word-wrap: break-word;
+        margin: 30px 0px 0px 0px;
+    }
+
+    .right-bottom ul li
+    {
+        max-width: 200px;
+        word-wrap: break-word;
+        margin: 30px 0px 0px 0px;
     }
 
     .left-bottom 

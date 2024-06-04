@@ -29,27 +29,27 @@
                     <div class="imgPortfolio"></div>
                 </div>
                 <div class="right-top">
-                    <h2>Title</h2>
-                    <h3>SubTitle</h3>
+                    <h2 class="text-dark">Title</h2>
+                    <h3 class="text-dark">SubTitle</h3>
                 </div>
                 <div class="bottom">
-                    <h4>Specialties</h4>
+                    <h4 class="text-dark">Specialties</h4>
                     <div class="columns">
                         <ul>
-                            <li>One</li>
-                            <li>Two</li>
-                            <li>Three</li>
+                            <li class="text-dark">One</li>
+                            <li class="text-dark">Two</li>
+                            <li class="text-dark">Three</li>
                         </ul>
                         <ul>
-                            <li>Four</li>
-                            <li>Five</li>
-                            <li>Six</li>
+                            <li class="text-dark">Four</li>
+                            <li class="text-dark">Five</li>
+                            <li class="text-dark">Six</li>
                         </ul>
                     </div>
-                    <h5>Name</h5>
+                    <h5 class="text-dark">Name</h5>
                 </div>
                 <div class="absolute-container">
-                    <p class="aboutPortfolio">About wwww wwww wwwwww ww www wwww ww wwww www w ww wwwww www ww</p>
+                    <p class="aboutPortfolio text-dark">About wwww wwww wwwwww ww www wwww ww wwww www w ww wwwww www ww</p>
                 </div>
             </div>
         </div>
