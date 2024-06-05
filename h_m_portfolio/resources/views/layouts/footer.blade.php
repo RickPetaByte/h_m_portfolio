@@ -11,7 +11,7 @@
         <div>
             <i class="fa fa-envelope iconFooter"></i>
             <p><span>80925@roc-teraa.nl</span>
-                89153@roc-teraan.nl</p>
+                89153@roc-teraa.nl</p>
         </div>
         <div>
             <i class="fab fa-linkedin iconFooter"></i>
