@@ -10,8 +10,13 @@
     <div class="footer-center">
         <div>
             <i class="fa fa-envelope iconFooter"></i>
-            <p><span>80925@roc-teraa.nl</span>
-                89153@roc-teraa.nl</p>
+            <p>
+                <span>
+                    80925@roc-teraa.nl
+                    <br>
+                    89153@roc-teraa.nl
+                </span>
+            </p>
         </div>
         <div>
             <i class="fab fa-linkedin iconFooter"></i>
