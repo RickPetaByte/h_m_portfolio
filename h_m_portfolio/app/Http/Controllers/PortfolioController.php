@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class PortfolioController extends Controller
 {
+    public function showPortfolio($layout)
+    {
+        $portfolio = Portfolio::where('selected_image_alt', $layout . '.blade.php')->firstOrFail();
+        return view($layout, compact('portfolio'));
+    }
+
     public function show()
     {
         return view('create-portfolio');
@@ -15,7 +21,6 @@ class PortfolioController extends Controller
 
     public function store(Request $request)
     {
-        // Validatie van de invoer
         $request->validate([
             'title' => 'required|string|max:18',
             'subtitle' => 'required|string|max:18',
@@ -32,7 +37,6 @@ class PortfolioController extends Controller
             'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Maak een nieuwe portfolio aan en vul de velden
         $portfolio = new Portfolio([
             'title' => $request->input('title'),
             'subtitle' => $request->input('subtitle'),
@@ -49,18 +53,13 @@ class PortfolioController extends Controller
             'user_id' => Auth::id(),
         ]);
 
-        // Verwerk de afbeelding indien aanwezig
         if ($request->hasFile('picture')) {
-            // Sla de afbeelding op in de map 'public/img/portfolio-pictures'
-            $path = $request->file('picture')->store('img/portfolio-pictures', 'public');
-            // Sla het pad van de afbeelding op in de database
+            $path = $request->file('picture')->store('storage/img/portfolio-pictures', 'public');
             $portfolio->picture = $path;
         }
 
-        // Sla het portfolio op in de database
         $portfolio->save();
 
-        // Redirect naar de gewenste route met een succesbericht
-        return redirect()->route('portfolio.show')->with('success', 'Portfolio created successfully');
+        return response()->json(['success' => true, 'message' => 'Portfolio created successfully', 'layout' => $portfolio->selected_image_alt]);
     }
 }

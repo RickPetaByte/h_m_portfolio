@@ -10,9 +10,20 @@ class Portfolio extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'subtitle', 'one', 'two', 'three', 'four', 'five', 'six',
-        'about', 'private', 'selected_image_alt', 'selected_color_image_alt',
-        'picture', 'user_id'
+        'user_id', 
+        'title', 
+        'subtitle', 
+        'one', 
+        'two', 
+        'three', 
+        'four', 
+        'five', 
+        'six',
+        'about', 
+        'private', 
+        'selected_image_alt', 
+        'selected_color_image_alt',
+        'picture', 
     ];
 
     public function user()

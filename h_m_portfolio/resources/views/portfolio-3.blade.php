@@ -123,7 +123,7 @@
     :root 
     {
         --img-location: url("img/portfolios/portfolio-3/Empty/Empty1-3.png");
-        --img-profile: url("img/rick.png");
+        --img-profile: url("storage/img/portfolio-pictures/NUNJpZ7NWwD0ZpwGF3oI7lduyzFBGHl59C0gSO3I.jpg");
     }
 
     body, html 

@@ -125,7 +125,7 @@
     :root 
     {
         --img-location: url("img/portfolios/portfolio-4/Empty/Empty1-4.png");
-        --img-profile: url("img/rick.png");
+        --img-profile: url("storage/img/portfolio-pictures/NUNJpZ7NWwD0ZpwGF3oI7lduyzFBGHl59C0gSO3I.jpg");
     }
 
     body, html 
