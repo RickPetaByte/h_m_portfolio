@@ -10,27 +10,14 @@
     <div class="footer-center">
         <div>
             <i class="fa fa-envelope iconFooter"></i>
-            <p>
-                <span>
-                    80925@roc-teraa.nl
-                    <br>
-                    89153@roc-teraa.nl
-                </span>
-            </p>
+            <p><span>80925@roc-teraa.nl</span>
+                89153@roc-teraan.nl</p>
         </div>
-        <div>
-            <i class="fab fa-linkedin iconFooter"></i>
-            <p><span><a href="https://www.linkedin.com/in/rick-maas-software-developer/" target="_blank" class="hover:text-gray-300">Rick Maas</a></span>
-                <a href="https://www.linkedin.com/in/jur-heusschen/" target="_blank" class="hover:text-gray-300">Jur Heusschen</a></p>
+        <!-- Footer Opmerking -->
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <p class="footer-company-name">© 2024 H:M Portfolio's. Alle rechten voorbehouden.</p>
+            </div>
         </div>
     </div>
-
-    <div class="footer-right">
-        <p class="footer-company-about">
-            <span>About this website</span>
-            <strong>H:M Portfolios</strong>
-            is a website where you can easily create a good portfolio. You can also edit the portfolio, such as changing colors, text, and more. You can also view portfolios of other people.
-        </p>
-    </div>
-    <p class="footer-company-name text-center">© 2024 H:M Portfolio's. All rights reserved</p>
 </footer>
