@@ -39,7 +39,6 @@
                 </div>
             </form>
         </div> <!-- This closes the .col-6 div -->
-    
         <div class="col-xxl-6">
             <h1 class="text-center fs-bold mt-3 fs-4 fw-semibold">Contact Details</h1>
             <div class="input-container colorSecond mt-3 divCreatePage">

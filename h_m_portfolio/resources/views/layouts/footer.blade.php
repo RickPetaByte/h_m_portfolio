@@ -1,15 +1,15 @@
-<footer class="container-fluid pt-5 pb-5 footer-boxshadow colorSecond">
+<footer class="container-fluid pt-5 pb-5 position-relative mt-5 footer-boxshadow colorSecond">
     <div class="container">
         <div class="row g-5">
             <!-- Logo en Links -->
-            <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 d-flex justify-content-center flex-row align-items-center align-items-md-center align-items-lg-end align-items-xl-start align-items-xxl-center">
+            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-1 d-flex justify-content-center flex-row align-items-center align-items-md-center align-items-lg-end align-items-xl-start align-items-xxl-center">
                 <img id="footer-logo" src="{{ asset('img/LogoCircle.png') }}" alt="Logo">
                 
             </div>
             <!-- Contactinformatie -->
-            <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6 d-flex flex-row align-items-center remove-flex-responsive">
-                <div class="d-flex w-100 remove-flex-responsive">
-                    <div class="d-flex flex-column w-50">
+            <div class="col-sm-12 col-md-12 col-lg-10 col-xl-6 d-flex flex-row align-items-center contact-responsive">
+                <div class="d-md-flex d-sm-flex w-100">
+                    <div class="d-flex flex-column mb-3 mb-md-0 w-100 justify-content-center align-items-center">
                         <a href="{{ route('about') }}" class="fw-bold">
                             <i class="fa-solid fa-bars iconNavBar iconNavBarColor"></i> About
                         </a>
@@ -37,18 +37,19 @@
                 </div>
             </div>
             <!-- Over deze website -->
-            <div class="col-md-11 col-lg-11 col-xl-11 col-xxl-4 mx-auto">
+            <div class="col-md-11 col-lg-11 col-xl-11 col-xxl-5 mx-auto info-responsive">
                 
-                <span>Over deze website:</span>
+                <span>About this website:</span>
                 <br class="mb-2">
-                <strong>H:M Portfolios</strong> is een website waar je gemakkelijk een goed portfolio kunt maken. Je kunt ook het portfolio bewerken, zoals kleuren, tekst en meer wijzigen. Je kunt ook portfoliowebsites van anderen bekijken.
+                <strong>H:M Portfolios</strong>
+                <span>is a website where you can easily create a good portfolio. You can also edit the portfolio, such as changing colors, text, and more. You can also view the portfolio websites of others.</span>
                 
             </div>
         </div>
         <!-- Footer Opmerking -->
         <div class="row mt-5">
             <div class="col-12 text-center">
-                <p class="footer-company-name">© 2024 H:M Portfolio's. Alle rechten voorbehouden.</p>
+                <p class="footer-company-name">© 2024 H:M Portfolio's. All rights reserved.</p>
             </div>
         </div>
     </div>

@@ -310,7 +310,7 @@ select, textarea, input
 
 .divCreatePage 
 {
-    /* width: 740px; */
+    width: 800px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     border-radius: 10px;
@@ -319,7 +319,7 @@ select, textarea, input
 
 .input-container 
 {
-    /* margin-bottom: 20px; */
+    margin-bottom: 20px;
 }
 
 .input-container label 
@@ -793,20 +793,20 @@ footer
     }
 }
 
-/* @media (max-width: 1000px) 
+@media screen and (min-device-width: 1202px) and (max-device-width: 1524px) 
 {
-    .responsive-flex 
+    .contact-responsive 
     {
-        justify-content: center;
-    }
-} */
-
-@media only screen and (max-width: 638px) 
-{
-    .remove-flex-responsive 
-    {
-        display: block;
+        width: 90%;
     }
 }
+
+@media screen and (min-device-width: 1402px) and (max-device-width: 1518px)
+{
+    .info-responsive 
+    {
+        width: 100%;
+    }
+} 
 
 /* ---------- Responsive ---------- */
