@@ -18,34 +18,6 @@
                 </div>
             </div>
 
-            <!-- Middle Create Portfolio Button -->
-            @if (Auth::check()) <!-- Controleren of gebruiker is ingelogd -->
-                @php
-                    $userName = Auth::user()->name;
-                    $files = glob(public_path("$userName*"));
-                @endphp
-                
-                @if(count($files) === 0)
-                    <div class="flex items-center justify-center flex-grow">
-                        <a href="{{ route('create-portfolio') }}" class="btn btn-primary btnCreate colorFirst inline-flex items-center px-4 text-white font-medium">
-                            <i class="fa-solid fa-pen-to-square text-white iconCreate"></i>Create
-                        </a>
-                    </div>
-                @else
-                    <div class="flex items-center justify-center flex-grow">
-                        <a href="{{ asset(basename($files[0])) }}" class="btn btn-primary btnCreate colorFirst inline-flex items-center px-4 text-white font-medium">
-                            <i class="fa-solid fa-eye text-white iconCreate"></i>Show
-                        </a>
-                    </div>
-                @endif
-            @else
-                <div class="flex items-center justify-center flex-grow">
-                    <a href="{{ route('create-portfolio') }}" class="btn btn-primary btnCreate colorFirst inline-flex items-center px-4 text-white font-medium">
-                        <i class="fa-solid fa-pen-to-square text-white iconCreate"></i>Create
-                    </a>
-                </div>
-            @endif
-
             <div class="flex items-center">
                 <img src="img/moon.png" class="mr-5 icon iconThemeNavBar">
                 <!-- Check if user is authenticated -->

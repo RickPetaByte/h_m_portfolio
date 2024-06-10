@@ -432,6 +432,42 @@ select, textarea, input
     border: 6px solid blue;
 }
 
+
+
+.selected 
+{
+    border: 4px solid blue;
+    border-radius: 5px;
+}
+
+.bottemClass
+{
+    margin-bottom: 20px;
+}
+
+.img-bordered
+{
+    border-radius: 5px;
+}
+
+
+
+.save-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.save-btn.active {
+    display: inline-block;
+}
+
+
+
+
+
 /*  ---------- Create portfolio page  ---------- */
 
 /* ---------- About ---------- */
