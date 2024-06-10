@@ -1,12 +1,24 @@
 <div class="containerCreate">
+<<<<<<< HEAD
     <form id="portfolio-form" action="{{ route('portfolio.store') }}" method="POST" enctype="multipart/form-data">
+=======
+    <form action="{{ route('edit-portfolio') }}" method="POST">
+>>>>>>> debcda734c4dfb4f754000f6edbded4635ba9936
         @csrf
         <!-- Title and SubTitle -->
         <div class="input-container colorSecond mt-5 divCreatePage">
             <label for="title">Title:</label>
+<<<<<<< HEAD
             <x-text-input name="title" type="text" class="form-control mb-3 backgroundTransparant" maxlength="18" required />
             <label for="subtitle">Sub-Title:</label>
             <x-text-input name="subtitle" type="text" class="form-control backgroundTransparant" maxlength="18" required />
+=======
+            <!-- Max 17 characters -->
+            <x-text-input name="title" type="text" id="title" class="form-control mb-3 backgroundTransparant" />
+            <label for="subtitle">Sub-Title:</label> 
+            <!-- Max 17 characters -->
+            <x-text-input name="subtitle" type="text" id="subtitle" class="form-control backgroundTransparant" />
+>>>>>>> debcda734c4dfb4f754000f6edbded4635ba9936
         </div>
 
         <!-- Image and Image Selection -->
@@ -187,10 +199,16 @@
             </div>
         </div>
 
+<<<<<<< HEAD
         <input type="hidden" id="selected_image_alt" name="selected_image_alt" />
         <input type="hidden" id="selected_color_image_alt" name="selected_color_image_alt" />
 
         <!-- Create Portfolio Button -->
+=======
+        @if(session('error'))
+            <p style="color: red;">{{ session('error')}}</p>
+        @endif
+>>>>>>> debcda734c4dfb4f754000f6edbded4635ba9936
         <div class="text-center">
             <button type="submit" class="btn btn-primary btnCreatePortfolio text-white">
                 <i class="fa-solid fa-pen-to-square text-white mr-2"></i>Create portfolio

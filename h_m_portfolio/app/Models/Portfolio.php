@@ -9,6 +9,7 @@ class Portfolio extends Model
 {
     use HasFactory;
 
+<<<<<<< HEAD
     protected $fillable = [
         'user_id', 
         'title', 
@@ -25,9 +26,16 @@ class Portfolio extends Model
         'selected_color_image_alt',
         'picture', 
     ];
+=======
+    protected $fillable = ['user_id', 'title']; //voor nu alleen title, zometeen nog content
+>>>>>>> debcda734c4dfb4f754000f6edbded4635ba9936
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> debcda734c4dfb4f754000f6edbded4635ba9936
