@@ -1,7 +1,7 @@
 <div class="container text-center mt-5">
     <h1 class="display-4 font-weight-bold text-uppercase">About</h1>
 </div>
-<section class="about-section">
+<section class="pt-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-3 col-md-6 mb-4">
