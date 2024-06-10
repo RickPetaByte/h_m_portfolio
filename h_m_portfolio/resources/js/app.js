@@ -80,6 +80,9 @@ document.querySelectorAll('.login-btn, .register-btn').forEach(function(button) 
     });
 });
 
+<<<<<<< HEAD
+// -------------------- Black / White Theme --------------------
+=======
 // -------------------- Black / White Theme --------------------
 
 // -------------------- Portfolio selector Create page --------------------
@@ -176,3 +179,4 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // -------------------- Portfolio selector Create page --------------------
+>>>>>>> debcda734c4dfb4f754000f6edbded4635ba9936

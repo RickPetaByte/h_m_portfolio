@@ -27,24 +27,24 @@
             <div class="container">
                 <div class="left-top"></div>
                 <div class="right-top">
-                    <h2 class="text-white">Title</h2>
-                    <h3 class="text-white">SubTitle</h3>
+                    <h2 class="text-white">{{ $portfolio->title }}</h2>
+                    <h3 class="text-white">{{ $portfolio->subtitle }}</h3>
                 </div>
                 <div class="left-bottom">
-                    <p class="text-white aboutPortfolio">About ww wwwww wwwwawdawwwwwwwwwwwwwwwwwwwwwwwwwwwwww ww</p>
+                    <p class="text-white aboutPortfolio">{{ $portfolio->about }}</p>
                     <h5 class="text-white">Name</h5>
                 </div>
                 <div class="right-bottom">
                     <h4 class="text-dark">Specialties</h4>
                     <div class="columns">
-                    <ul>
-                        <li class="text-dark">1. Drone vliegen</li>
-                        <li class="text-dark">2. Gamen</li>
-                        <li class="text-dark">3. Programeren</li>
-                        <li class="text-dark">4. Met vrienden afspreken</li>
-                        <li class="text-dark">5. Eten</li>
-                        <li class="text-dark">6. Tennissen</li>
-                    </ul>
+                        <ul>
+                            <li class="text-dark">1. {{ $portfolio->one }}</li>
+                            <li class="text-dark">2. {{ $portfolio->two }}</li>
+                            <li class="text-dark">3. {{ $portfolio->three }}</li>
+                            <li class="text-dark">4. {{ $portfolio->four }}</li>
+                            <li class="text-dark">5. {{ $portfolio->five }}</li>
+                            <li class="text-dark">6. {{ $portfolio->six }}</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -56,11 +56,11 @@
             document.querySelectorAll('h2').forEach(element => {
                 const length = element.textContent.length;
                 if (length < 6) {
-                    element.style.fontSize = '50px';
-                } else if (length < 11) {
                     element.style.fontSize = '40px';
+                } else if (length < 11) {
+                    element.style.fontSize = '30px';
                 } else {
-                    element.style.fontSize = '26px';
+                    element.style.fontSize = '24px';
                 }
             });
 
@@ -118,8 +118,8 @@
 <style>
     :root 
     {
-        --img-location: url("img/portfolios/portfolio-1/Empty/Empty1-1.png");
-        --img-profile: url("img/rick.png");
+        --img-location: url("{{ $portfolio->selected_color_image_alt }}");
+        --img-profile: url("{{ $portfolio->picture }}");
     }
 
     body, html 
