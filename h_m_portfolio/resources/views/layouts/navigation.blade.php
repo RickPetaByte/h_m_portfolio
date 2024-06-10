@@ -20,7 +20,7 @@
 
             <!-- Middle Create Portfolio Button -->
             <div class="flex items-center justify-center flex-grow">
-                <a href="{{ route('portfolio.show') }}" class="btn btn-primary btnCreate colorFirst inline-flex items-center px-4 text-white font-medium">
+                <a href="#" class="btn btn-primary btnCreate colorFirst inline-flex items-center px-4 text-white font-medium">
                     <i class="fa-solid fa-pen-to-square text-white iconCreate"></i>Create
                 </a>
             </div>
