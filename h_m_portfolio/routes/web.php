@@ -23,20 +23,16 @@ Route::get('/dynamic-template', [FileController::class, 'showDynamicTemplate']);
 
 Route::get('/portfolio-generator', [PortfolioController::class, 'showGeneratorPage']);
 Route::post('/generate-portfolio', [PortfolioController::class, 'generatePortfolio']);
+Route::post('/delete-portfolio', [PortfolioController::class, 'deletePortfolio'])->name('delete-portfolio');
 
-Route::get('/edit-html/{fileName}', [PortfolioController::class, 'showEditHtml'])->name('edit-html');
-Route::post('/update-html/{fileName}', [PortfolioController::class, 'updateHtml'])->name('update-html');
-Route::post('/update-portfolio', [PortfolioController::class, 'updatePortfolio'])->middleware('auth');
+// Route::get('/edit-html/{fileName}', [PortfolioController::class, 'showEditHtml'])->name('edit-html');
+// Route::post('/update-html/{fileName}', [PortfolioController::class, 'updateHtml'])->name('update-html');
+// Route::post('/update-portfolio', [PortfolioController::class, 'updatePortfolio'])->middleware('auth');
 
 Route::middleware('auth')->group(function () {
-
-
-
     Route::get('/create-portfolio', [UserTextController::class, 'showForm'])->name('create-portfolio');
     Route::post('/store-text', [UserTextController::class, 'storeText'])->name('store-text');
     Route::get('/generate-html', [UserTextController::class, 'generateHtml'])->name('generate-html');
-
-
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

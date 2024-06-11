@@ -21,11 +21,24 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        <div class="min-h-screen">
-            @include('layouts.navigation')
+        @if (Auth::check()) 
+            @php
+                $userName = Auth::user()->name;
+                $files = glob(public_path("$userName*"));
+            @endphp
+            
+            @if(count($files) === 0)
+                <div class="min-h-screen">
+                    @include('layouts.navigation')
 
-            @include('layouts.create-portfolio-content')
-        </div>
-        @include('layouts.footer')
+                    @include('layouts.create-portfolio-content')
+                </div>
+                @include('layouts.footer')
+            @else
+                <script>
+                    window.location.href = "{{ asset(basename($files[0])) }}";
+                </script>
+            @endif
+        @endif
     </body>
 </html>

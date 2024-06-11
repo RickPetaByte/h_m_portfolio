@@ -24,6 +24,13 @@
 <div class="min-h-screen full-height flex-center" id="outer-container">
     @include('layouts.navigation-2')
     <div id="main">
+        <form action="{{ route('delete-portfolio') }}" method="POST" onsubmit="return confirm('Are you sure you want to delete the portfolio?');">
+            @csrf
+            <input type="hidden" name="file_name" value="{{ $fileName }}">
+            <button type="submit" class="btn btn-danger text-white fw-bold" id="deleteButton">
+                <i class="fa fa-trash text-white mr-2"></i>Delete Portfolio
+            </button>
+        </form>
         <div class="container">
             <div class="left-top"></div>
             <div class="right-top">
@@ -181,6 +188,18 @@
         --img-profile: url("storage/{{ $picture }}");
     }
 
+    #deleteButton 
+    {
+        position: relative;
+        right: -80%; 
+        top: 86px;
+        transform: translateY(-50%);
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
     .text-white
     {
         color: white !important;
@@ -222,8 +241,8 @@
     .container 
     {
         position: relative;
-        width: calc(126mm * 1.1);
-        height: calc(178.2mm * 1.1);
+        width: calc(126mm * 1.2);
+        height: calc(178.2mm * 1.2);
         max-width: 100vw;
         max-height: 100vh;
         margin-top: 20px;

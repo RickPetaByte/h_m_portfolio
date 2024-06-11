@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
-use Symfony\Component\Process\Process;
-use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class UserTextController extends Controller
 {
@@ -30,6 +28,7 @@ class UserTextController extends Controller
             'five' => 'required|string|max:255',
             'six' => 'required|string|max:255',
             'private' => 'required|boolean',
+            
             'selected_color_image_alt' => 'required|string',
             'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
