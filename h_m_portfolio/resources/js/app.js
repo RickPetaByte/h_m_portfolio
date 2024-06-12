@@ -80,23 +80,33 @@ document.querySelectorAll('.login-btn, .register-btn').forEach(function(button) 
     });
 });
 
-// -------------------- Portfolio selector Create page --------------------
+// -------------------- Create portfolio page (Portfolio selecter) -------------------- 
+
 document.addEventListener('DOMContentLoaded', function () {
     const layoutImages = document.querySelectorAll('.img-container-four .imageCreate');
     const colorSections = {
-        'portfolio-1': document.getElementById('portfolio-1-color-selection'),
-        'portfolio-2': document.getElementById('portfolio-2-color-selection'),
-        'portfolio-3': document.getElementById('portfolio-3-color-selection'),
-        'portfolio-4': document.getElementById('portfolio-4-color-selection')
+        'dynamic-template': document.getElementById('portfolio-1-color-selection'),
+        'dynamic-template-2': document.getElementById('portfolio-2-color-selection'),
+        'dynamic-template-3': document.getElementById('portfolio-3-color-selection'),
+        'dynamic-template-4': document.getElementById('portfolio-4-color-selection')
     };
 
     let selectedLayout = null; // Houd de geselecteerde lay-out bij
+    let selectedColorImage = null; // Houd de geselecteerde kleurafbeelding bij
 
     layoutImages.forEach(function (image) {
         image.addEventListener('click', function () {
             // Deselecteer eerst alle lay-outafbeeldingen
             layoutImages.forEach(function (img) {
                 img.classList.remove('clicked');
+            });
+
+            // Verwijder alle .clicked klassen van kleurafbeeldingen in alle secties
+            Object.values(colorSections).forEach(function (section) {
+                const colorImages = section.querySelectorAll('.img-container img');
+                colorImages.forEach(function (img) {
+                    img.classList.remove('clicked');
+                });
             });
 
             // Selecteer de geklikte lay-outafbeelding en houd deze bij
@@ -112,6 +122,9 @@ document.addEventListener('DOMContentLoaded', function () {
             if (colorSections[selectedLayout]) {
                 colorSections[selectedLayout].style.display = 'block';
             }
+
+            // Update de hidden input met de geselecteerde layout
+            document.getElementById('selected_layout').value = selectedLayout;
         });
     });
 
@@ -128,9 +141,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Selecteer de geklikte kleurafbeelding
                 colorImage.classList.add('clicked');
+                selectedColorImage = colorImage.alt;
+
+                // Update de hidden input met de geselecteerde kleurafbeelding
+                document.getElementById('selected_image').value = selectedColorImage;
             });
         });
     });
 });
-
-// -------------------- Portfolio selector Create page --------------------

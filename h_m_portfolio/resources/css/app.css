@@ -394,7 +394,7 @@ select, textarea, input
 .img-container-four .col-md-6 img.clicked 
 {
     max-width: 100%;
-    border: 6px solid blue;
+    border: 5px solid blue;
 }
 
 .divImgChoose
@@ -407,11 +407,11 @@ select, textarea, input
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 20px;
-    max-width: 850px; /* Match divImgChoose */
+    max-width: 850px; 
 }
 
 .img-container-six .col-md-6 {
-    width: 31%; /* Three images per row */
+    width: 31%; 
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
@@ -436,7 +436,7 @@ select, textarea, input
 
 .selected 
 {
-    border: 4px solid blue;
+    border: 3px solid blue;
     border-radius: 5px;
 }
 

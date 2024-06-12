@@ -21,13 +21,7 @@ Route::post('/contact', [ContactController::class, 'send'])->name('contact.send'
 Route::get('/create-html-file', [FileController::class, 'createHtmlFile']);
 Route::get('/dynamic-template', [FileController::class, 'showDynamicTemplate']);
 
-Route::get('/portfolio-generator', [PortfolioController::class, 'showGeneratorPage']);
-Route::post('/generate-portfolio', [PortfolioController::class, 'generatePortfolio']);
 Route::post('/delete-portfolio', [PortfolioController::class, 'deletePortfolio'])->name('delete-portfolio');
-
-// Route::get('/edit-html/{fileName}', [PortfolioController::class, 'showEditHtml'])->name('edit-html');
-// Route::post('/update-html/{fileName}', [PortfolioController::class, 'updateHtml'])->name('update-html');
-// Route::post('/update-portfolio', [PortfolioController::class, 'updatePortfolio'])->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/create-portfolio', [UserTextController::class, 'showForm'])->name('create-portfolio');

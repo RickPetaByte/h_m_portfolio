@@ -15,6 +15,7 @@ class UserTextController extends Controller
         return view('create-portfolio');
     }
 
+
     public function storeText(Request $request)
     {
         $validatedData = $request->validate([
@@ -28,7 +29,7 @@ class UserTextController extends Controller
             'five' => 'required|string|max:255',
             'six' => 'required|string|max:255',
             'private' => 'required|boolean',
-            
+            'selected_image_alt' => 'required|string',
             'selected_color_image_alt' => 'required|string',
             'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -51,13 +52,13 @@ class UserTextController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-
+    
         $userText = UserText::where('user_id', Auth::id())->latest()->first();
-
+    
         if (!$userText) {
             return redirect()->route('create-portfolio')->with('error', 'No text found for the user.');
         }
-
+    
         $data = [
             'title' => $userText->title,
             'subtitle' => $userText->subtitle,
@@ -69,16 +70,19 @@ class UserTextController extends Controller
             'five' => $userText->five,
             'six' => $userText->six,
             'private' => $userText->private,
+            'selected_image_alt' => $userText->selected_image_alt,
             'selected_color_image_alt' => $userText->selected_color_image_alt,
-            'fileName' => Auth::user()->name . '-' . time() . '.html',
+            'fileName' => Auth::user()->name . '-' . time() . '-' . ($userText->private ? 'private' : 'public') . '.html',
             'name' => Auth::user()->name,
             'picture' => $userText->picture
         ];
-
-        $htmlContent = View::make('dynamic-template', $data)->render();
-
+    
+        $templateName = $userText->selected_image_alt;
+    
+        $htmlContent = View::make($templateName, $data)->render();
+    
         File::put(public_path($data['fileName']), $htmlContent);
-
+    
         return redirect('/' . $data['fileName'])->with('success', 'Portfolio HTML file generated successfully.');
     }
 }

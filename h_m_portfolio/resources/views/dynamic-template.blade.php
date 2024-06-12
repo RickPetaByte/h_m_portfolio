@@ -231,7 +231,6 @@
         display: inline-block;
     }
 
-
     body, html 
     {
         height: 100%;
