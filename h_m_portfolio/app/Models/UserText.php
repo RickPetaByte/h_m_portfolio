@@ -9,7 +9,22 @@ class UserText extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'title'];
+    protected $fillable = [
+        'user_id', 
+        'text', 
+        'title', 
+        'subtitle', 
+        'one', 
+        'two', 
+        'three', 
+        'four', 
+        'five', 
+        'six', 
+        'private', 
+        'selected_image_alt', 
+        'selected_color_image_alt',
+        'picture'
+    ];
 
     public function user()
     {

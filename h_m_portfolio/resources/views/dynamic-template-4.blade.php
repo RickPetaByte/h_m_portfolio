@@ -32,27 +32,33 @@
             </button>
         </form>
         <div class="container">
-            <div class="left-top"></div>
-            <div class="right-top">
+            <div class="left-top">
+                <div class="imgPortfolio"></div>
                 <h2 class="text-white editable" id="editableTitle">{{ $title }}</h2>
                 <h3 class="text-white editable" id="editableSubtitle">{{ $subtitle }}</h3>
             </div>
-            <div class="left-bottom">
-                <p class="text-white aboutPortfolio editable" id="editableText">{{ $text }}</p>
-                <h5 class="text-white">{{ $name }}</h5>
-            </div>
-            <div class="right-bottom">
+            <div class="right-top">
                 <h4 class="text-dark">Specialties</h4>
                 <div class="columns">
                     <ul>
                         <li class="text-dark editable" id="editableOne">1. {{ $one }}</li>
                         <li class="text-dark editable" id="editableTwo">2. {{ $two }}</li>
                         <li class="text-dark editable" id="editableThree">3. {{ $three }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="left-bottom">
+                <p class="text-white aboutPortfolio editable" id="editableText">{{ $text }}</p>
+            </div>
+            <div class="right-bottom">
+                <div class="columns">
+                    <ul>
                         <li class="text-dark editable" id="editableFour">4. {{ $four }}</li>
                         <li class="text-dark editable" id="editableFive">5. {{ $five }}</li>
                         <li class="text-dark editable" id="editableSix">6. {{ $six }}</li>
                     </ul>
                 </div>
+                <h5 class="text-dark">{{ $name }}</h5>
             </div>
         </div>
     </div>
@@ -124,7 +130,7 @@
             } else if (length < 11) {
                 element.style.fontSize = '30px';
             } else {
-                element.style.fontSize = '24px';
+                element.style.fontSize = '20px';
             }
         });
 
@@ -132,9 +138,9 @@
         document.querySelectorAll('h3').forEach(element => {
             const length = element.textContent.length;
             if (length < 6) {
-                element.style.fontSize = '25px';
-            } else if (length < 11) {
                 element.style.fontSize = '20px';
+            } else if (length < 11) {
+                element.style.fontSize = '17px';
             } else {
                 element.style.fontSize = '15px';
             }
@@ -240,8 +246,8 @@
     .container 
     {
         position: relative;
-        width: calc(126mm * 1.2);
-        height: calc(178.2mm * 1.2);
+        width: calc(126mm * 1.1);
+        height: calc(178.2mm * 1.1);
         max-width: 100vw;
         max-height: 100vh;
         margin-top: 20px;
@@ -265,19 +271,6 @@
         background-size: 200% 200%;
     }
 
-    .left-top::before 
-    {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 110%;
-        background: var(--img-profile) no-repeat center center;
-        background-size: cover;
-        z-index: -1 !important;
-    }
-
     .right-top 
     {
         top: 0;
@@ -288,21 +281,73 @@
         color: white;
     }
 
-    .right-top h2 
+    .imgPortfolio 
     {
-        margin: 50px 0px 0px 30px;
+        width: 210px !important;
+        height: 210px !important;
+        background: var(--img-profile) no-repeat center center;
+        background-size: cover;
+        z-index: 99;
+        margin: 11px 0px 0px 8px; 
+        border-radius: 200px;
+        border: 4px solid white;
+    }
+
+    .left-top h2 
+    {
         max-width: 180px;
         word-wrap: break-word;
         text-transform: uppercase;
         font-weight: bold;
+        margin-top: 10px;
+        margin-left: 15px;
+        text-align: center;
     }
 
-    .right-top h3
+    .left-top h3
     {
-        margin: 0px 0px 10px 30px;
-        max-width: 150px;
+        max-width: 180px;
         word-wrap: break-word;
         text-transform: uppercase;
+        margin-left: 15px;
+        text-align: center;
+    }
+
+    .right-top h4
+    {
+        margin: 40px 0px 10px -20px;
+        font-weight: bold;
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .right-bottom h5 
+    {
+        position: absolute;
+        bottom: 5px; 
+        left: 45%; 
+        transform: translateX(-50%); 
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .right-top ul
+    {
+        margin-top: 70px;
+    }
+
+    .right-top ul li
+    {
+        max-width: 200px;
+        word-wrap: break-word;
+        margin: 30px 0px 0px 0px;
+    }
+
+    .right-bottom ul li
+    {
+        max-width: 200px;
+        word-wrap: break-word;
+        margin: 30px 0px 0px 0px;
     }
 
     .left-bottom 
@@ -316,9 +361,9 @@
 
     .aboutPortfolio
     {
-        margin: 30px 5px 10px 15px;
-        max-width: 200px;
+        margin: 40px 15px 10px 25px;
         word-wrap: break-word;
+        max-width: 160px;
     }
 
     .right-bottom 
@@ -328,12 +373,6 @@
         background: var(--img-location) right bottom;
         background-size: 200% 200%;
         z-index: 1;
-        
-        display: flex; 
-        flex-direction: column; 
-        justify-content: center; 
-        align-items: center; 
-        text-align: center; 
     }
 
     .left-bottom h5 
@@ -352,18 +391,6 @@
         margin-bottom: 10px;
         font-weight: bold;
         font-size: 25px;
-    }
-
-    .right-bottom ul
-    {
-        margin-bottom: -50px;
-    }
-
-    .right-bottom ul li
-    {
-        max-width: 150px;
-        word-wrap: break-word;
-        margin: 10px;
     }
     
     @media (max-width: 640px) 
