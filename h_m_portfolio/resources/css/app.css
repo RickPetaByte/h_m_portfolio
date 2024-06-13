@@ -310,6 +310,14 @@ select, textarea, input
 
 .divCreatePage 
 {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto; 
+}
+
+.divCreatePageCreate
+{
     width: 800px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -402,7 +410,8 @@ select, textarea, input
     max-width: 900px !important;
 }
 
-.img-container-six {
+.img-container-six 
+{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -410,7 +419,8 @@ select, textarea, input
     max-width: 850px; 
 }
 
-.img-container-six .col-md-6 {
+.img-container-six .col-md-6 
+{
     width: 31%; 
     display: flex;
     justify-content: center;
@@ -418,7 +428,8 @@ select, textarea, input
     margin-top: 10px;
 }
 
-.img-container-six .col-md-6 img {
+.img-container-six .col-md-6 img 
+{
     max-width: 100%;
     height: auto;
     border: 2px solid black;
@@ -427,12 +438,11 @@ select, textarea, input
     cursor: pointer;
 }
 
-.img-container-six .col-md-6 img.clicked {
+.img-container-six .col-md-6 img.clicked 
+{
     max-width: 100%;
     border: 6px solid blue;
 }
-
-
 
 .selected 
 {
@@ -450,9 +460,8 @@ select, textarea, input
     border-radius: 5px;
 }
 
-
-
-.save-btn {
+.save-btn 
+{
     display: none;
     position: fixed;
     bottom: 20px;
@@ -460,13 +469,10 @@ select, textarea, input
     z-index: 1000;
 }
 
-.save-btn.active {
+.save-btn.active 
+{
     display: inline-block;
 }
-
-
-
-
 
 /*  ---------- Create portfolio page  ---------- */
 
@@ -594,11 +600,6 @@ footer
     display: inline-block;
     vertical-align: top;
 }
-
-/* .footer-distributed .footer-links 
-{
-    margin: 20px 0 12px;
-} */
 
 .footer-distributed a 
 {
@@ -808,13 +809,6 @@ footer
         width: 400px;
     }
 }
-
-/* @media (max-width: 576px) 
-{
-    .colorSecond {
-        margin-bottom: 20px;
-    }
-} */
 
 @media (max-width: 480px) 
 {

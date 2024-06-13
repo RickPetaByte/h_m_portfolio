@@ -1,14 +1,14 @@
 <div class="containerCreate">
     <form action="{{ route('store-text') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="input-container colorSecond mt-5 divCreatePage">
+        <div class="input-container colorSecond mt-5 divCreatePageCreate">
             <label for="title">Title:</label>
             <x-text-input type="text" name="title" class="form-control mb-3 backgroundTransparant" id="title" maxlength="18" required />
             <label for="subtitle">Sub Title:</label>
             <x-text-input type="text" name="subtitle" class="form-control backgroundTransparant" id="subtitle" maxlength="18" required />
         </div>
 
-        <div class="input-container colorSecond divCreatePage">
+        <div class="input-container colorSecond divCreatePageCreate">
             <label class="custom-file-upload btn btn-primary text-white btnUploadPicture">
                 <i class="fa-solid fa-upload mr-2 text-white"></i>Upload picture
                 <input id="picture" name="picture" type="file" accept="image/*" onchange="previewImage(event)" />
@@ -16,7 +16,7 @@
             <img id="picture-preview" src="img/Standaard.png" class="mt-4 img-thumbnail d-block mx-auto" />
         </div>
 
-        <div class="input-container colorSecond divCreatePage">
+        <div class="input-container colorSecond divCreatePageCreate">
             <label>Things about yourself:</label>
             <div class="row">
                 <div class="col-md-4 mb-4 mt-2">
@@ -40,12 +40,12 @@
             </div>
         </div>
 
-        <div class="input-container colorSecond divCreatePage">
+        <div class="input-container colorSecond divCreatePageCreate">
             <label for="text">About:</label>
             <textarea name="text" id="text" rows="4" cols="50" class="form-control mt-3 aboutCreatePortfolio mt-1 block w-100 shadow-none" style="resize: none;" required></textarea>
         </div>
 
-        <div class="input-container colorSecond divCreatePage">
+        <div class="input-container colorSecond divCreatePageCreate">
             <label>Private:</label>
             <div class="form-check mt-2">
                 <input type="radio" id="yes" name="private" value="1" class="form-check-input colorCheckBox shadow-none" checked>
