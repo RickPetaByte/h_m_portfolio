@@ -54,6 +54,204 @@
                     </ul>
                 </div>
             </div>
+
+
+
+            <style>
+                :root 
+                {
+                    --img-location: url("{{ $selected_color_image_alt }}");
+                    --img-profile: url("storage/{{ $picture }}");
+                }
+
+                #deleteButton 
+                {
+                    position: relative;
+                    right: -80%; 
+                    top: 86px;
+                    transform: translateY(-50%);
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+
+                .text-white
+                {
+                    color: white !important;
+                }
+
+                .editable 
+                {
+                    cursor: pointer;
+                    border: 1px dashed transparent;
+                }
+
+                .editable:hover 
+                {
+                    border: 1px dashed #ccc;
+                }
+                
+                .editing 
+                {
+                    border: 1px solid #000;
+                }
+
+                .save-btn 
+                {
+                    display: none;
+                    margin-top: 10px;
+                }
+
+                .save-btn.active 
+                {
+                    display: inline-block;
+                }
+
+                body, html 
+                {
+                    height: 100%;
+                    margin: 0;
+                }
+
+                .container 
+                {
+                    position: relative;
+                    width: calc(126mm * 1.2);
+                    height: calc(178.2mm * 1.2);
+                    max-width: 100vw;
+                    max-height: 100vh;
+                    margin-top: 20px;
+                    overflow: hidden;
+                    border: 3px solid black;
+                    border-radius: 5px;
+                }
+
+                .left-top, .right-top, .left-bottom, .right-bottom 
+                {
+                    position: absolute;
+                    width: 50%;
+                    height: 50%;
+                }
+
+                .left-top 
+                {
+                    top: 0;
+                    left: 0;
+                    background: var(--img-location) left top;
+                    background-size: 200% 200%;
+                }
+
+                .left-top::before 
+                {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 110%;
+                    background: var(--img-profile) no-repeat center center;
+                    background-size: cover;
+                    z-index: -1 !important;
+                }
+
+                .right-top 
+                {
+                    top: 0;
+                    right: 0;
+                    background: var(--img-location) right top;
+                    background-size: 200% 200%;
+                    z-index: 1;
+                    color: white;
+                }
+
+                .right-top h2 
+                {
+                    margin: 50px 0px 0px 30px;
+                    max-width: 180px;
+                    word-wrap: break-word;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                }
+
+                .right-top h3
+                {
+                    margin: 0px 0px 10px 30px;
+                    max-width: 150px;
+                    word-wrap: break-word;
+                    text-transform: uppercase;
+                }
+
+                .left-bottom 
+                {
+                    bottom: 0;
+                    left: 0;
+                    background: var(--img-location) left bottom;
+                    background-size: 200% 200%;
+                    z-index: 1;
+                }
+
+                .aboutPortfolio
+                {
+                    margin: 30px 5px 10px 15px;
+                    max-width: 200px;
+                    word-wrap: break-word;
+                }
+
+                .right-bottom 
+                {
+                    bottom: 0;
+                    right: 0;
+                    background: var(--img-location) right bottom;
+                    background-size: 200% 200%;
+                    z-index: 1;
+                    
+                    display: flex; 
+                    flex-direction: column; 
+                    justify-content: center; 
+                    align-items: center; 
+                    text-align: center; 
+                }
+
+                .left-bottom h5 
+                {
+                    position: absolute;
+                    bottom: 5px; 
+                    left: 50%; 
+                    transform: translateX(-50%); 
+                    font-size: 12px;
+                    font-weight: bold;
+                }
+
+                .right-bottom h4
+                {
+                    margin-top: -130px;
+                    margin-bottom: 10px;
+                    font-weight: bold;
+                    font-size: 25px;
+                }
+
+                .right-bottom ul
+                {
+                    margin-bottom: -50px;
+                }
+
+                .right-bottom ul li
+                {
+                    max-width: 150px;
+                    word-wrap: break-word;
+                    margin: 10px;
+                }
+                
+                @media (max-width: 640px) 
+                {
+                    .container 
+                    {
+                        display: none;
+                    }
+                }
+            </style>
+
         </div>
     </div>
 </div>
@@ -181,196 +379,3 @@
 </body>
 </html>
 
-<style>
-    :root 
-    {
-        --img-location: url("{{ $selected_color_image_alt }}");
-        --img-profile: url("storage/{{ $picture }}");
-    }
-
-    #deleteButton 
-    {
-        position: relative;
-        right: -80%; 
-        top: 86px;
-        transform: translateY(-50%);
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .text-white
-    {
-        color: white !important;
-    }
-
-    .editable 
-    {
-        cursor: pointer;
-        border: 1px dashed transparent;
-    }
-
-    .editable:hover 
-    {
-        border: 1px dashed #ccc;
-    }
-    .editing 
-    {
-        border: 1px solid #000;
-    }
-
-    .save-btn 
-    {
-        display: none;
-        margin-top: 10px;
-    }
-
-    .save-btn.active 
-    {
-        display: inline-block;
-    }
-
-    body, html 
-    {
-        height: 100%;
-        margin: 0;
-    }
-
-    .container 
-    {
-        position: relative;
-        width: calc(126mm * 1.2);
-        height: calc(178.2mm * 1.2);
-        max-width: 100vw;
-        max-height: 100vh;
-        margin-top: 20px;
-        overflow: hidden;
-        border: 3px solid black;
-        border-radius: 5px;
-    }
-
-    .left-top, .right-top, .left-bottom, .right-bottom 
-    {
-        position: absolute;
-        width: 50%;
-        height: 50%;
-    }
-
-    .left-top 
-    {
-        top: 0;
-        left: 0;
-        background: var(--img-location) left top;
-        background-size: 200% 200%;
-    }
-
-    .left-top::before 
-    {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 110%;
-        background: var(--img-profile) no-repeat center center;
-        background-size: cover;
-        z-index: -1 !important;
-    }
-
-    .right-top 
-    {
-        top: 0;
-        right: 0;
-        background: var(--img-location) right top;
-        background-size: 200% 200%;
-        z-index: 1;
-        color: white;
-    }
-
-    .right-top h2 
-    {
-        margin: 50px 0px 0px 30px;
-        max-width: 180px;
-        word-wrap: break-word;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-
-    .right-top h3
-    {
-        margin: 0px 0px 10px 30px;
-        max-width: 150px;
-        word-wrap: break-word;
-        text-transform: uppercase;
-    }
-
-    .left-bottom 
-    {
-        bottom: 0;
-        left: 0;
-        background: var(--img-location) left bottom;
-        background-size: 200% 200%;
-        z-index: 1;
-    }
-
-    .aboutPortfolio
-    {
-        margin: 30px 5px 10px 15px;
-        max-width: 200px;
-        word-wrap: break-word;
-    }
-
-    .right-bottom 
-    {
-        bottom: 0;
-        right: 0;
-        background: var(--img-location) right bottom;
-        background-size: 200% 200%;
-        z-index: 1;
-        
-        display: flex; 
-        flex-direction: column; 
-        justify-content: center; 
-        align-items: center; 
-        text-align: center; 
-    }
-
-    .left-bottom h5 
-    {
-        position: absolute;
-        bottom: 5px; 
-        left: 50%; 
-        transform: translateX(-50%); 
-        font-size: 12px;
-        font-weight: bold;
-    }
-
-    .right-bottom h4
-    {
-        margin-top: -130px;
-        margin-bottom: 10px;
-        font-weight: bold;
-        font-size: 25px;
-    }
-
-    .right-bottom ul
-    {
-        margin-bottom: -50px;
-    }
-
-    .right-bottom ul li
-    {
-        max-width: 150px;
-        word-wrap: break-word;
-        margin: 10px;
-    }
-    
-    @media (max-width: 640px) 
-    {
-        .container 
-        {
-            display: none;
-        }
-    }
-</style>

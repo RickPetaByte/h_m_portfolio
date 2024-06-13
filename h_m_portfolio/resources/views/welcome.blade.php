@@ -34,16 +34,46 @@
                     </header>
                 @endif
 
-                <!-- Main Content -->
-                <main>
-                    <div class="container mx-auto px-4">
-                        <div class="flex justify-center">
-                            <h1 class="text-3xl text-gray-900 dark:text-gray-100 mt-10">
-                                <p class="colorFirst welcomeText">Create your portfolio at H:M Portfolios</p>
-                            </h1>
+
+            <!-- Main Content -->
+            <main>
+                <div class="container mx-auto px-4">
+                    <div class="flex justify-center">
+                        <h1 class="text-3xl text-gray-900 dark:text-gray-100 mt-10">
+                            <p class="colorFirst welcomeText">Create your portfolio at H:M Portfolios</p>
+                        </h1>
+                    </div>
+
+                    <div class="mt-10">
+                        @php
+                            $files = glob(public_path('*.html'));
+                            $publicPath = asset('');
+                        @endphp
+
+                        <div class="row">
+                            @foreach($files as $file)
+                                @php
+                                    // Extract the file name from the full path
+                                    $fileName = basename($file);
+                                @endphp
+                                <div class="col-md-6 mb-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <iframe src="{{ route('html.preview', ['file' => $fileName]) }}" width="100%" height="800px"></iframe>
+                                            <p class="mt-2 text-center">{{ $fileName }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
-                </main>
+                </div>
+            </main>
+
+
+
+
+
 
                 <!-- Logout Message -->
                 @if(session('status'))

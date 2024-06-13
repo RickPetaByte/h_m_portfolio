@@ -42,7 +42,7 @@
 
         <div class="input-container colorSecond divCreatePageCreate">
             <label for="text">About:</label>
-            <textarea name="text" id="text" rows="4" cols="50" class="form-control mt-3 aboutCreatePortfolio mt-1 block w-100 shadow-none" style="resize: none;" required></textarea>
+            <textarea maxlength="130" name="text" id="text" rows="4" cols="50" class="form-control mt-3 aboutCreatePortfolio mt-1 block w-100 shadow-none" style="resize: none;" required></textarea>
         </div>
 
         <div class="input-container colorSecond divCreatePageCreate">
@@ -198,6 +198,30 @@
 </div>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const updateCharCount = (input) => {
+            const maxLength = input.getAttribute("maxlength");
+            const charCount = input.value.length;
+            const remainingChars = maxLength - charCount;
+            const charCountSpan = input.nextElementSibling;
+            charCountSpan.textContent = `Remaining characters: ${remainingChars}`;
+        };
+
+        const initCharCountDisplay = () => {
+            const inputs = document.querySelectorAll('input[maxlength], textarea[maxlength]');
+            inputs.forEach(input => {
+                const charCountSpan = document.createElement('span');
+                charCountSpan.className = 'char-count';
+                input.insertAdjacentElement('afterend', charCountSpan);
+                updateCharCount(input);
+
+                input.addEventListener('input', () => updateCharCount(input));
+            });
+        };
+
+        initCharCountDisplay();
+    });
+
     function previewImage(event) {
         const picturePreview = document.getElementById('picture-preview');
         picturePreview.src = URL.createObjectURL(event.target.files[0]);
@@ -206,3 +230,13 @@
         }
     }
 </script>
+
+<style>
+    .char-count {
+        display: block;
+        font-size: 0.875em;
+        color: #555;
+        margin-top: 0.25em;
+        text-align: right;
+    }
+</style>
