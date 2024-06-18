@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="dOGABn07CGFAeNZsQlhLKHv6rC1RI9wOGzn1PtY1">
+    <meta name="csrf-token" content="il4HZdT4gklkEnylXmOFbpUZADrOG3t5bPvJQPUK">
 
     <title>H:M | Portfolio's</title>
 
@@ -82,7 +82,7 @@
 
                                     <!-- Authentication -->
                                     <form method="POST" action="http://127.0.0.1:8000/logout" class="colorSecond colorSecondHover">
-                                        <input type="hidden" name="_token" value="dOGABn07CGFAeNZsQlhLKHv6rC1RI9wOGzn1PtY1" autocomplete="off">
+                                        <input type="hidden" name="_token" value="il4HZdT4gklkEnylXmOFbpUZADrOG3t5bPvJQPUK" autocomplete="off">
                                         <a class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 dark:text-gray-300 hover:-100 focus:outline-none transition duration-150 ease-in-out" href="http://127.0.0.1:8000/logout" onclick="event.preventDefault();
                                                             this.closest('form').submit();"><p class="colorFirst"><i class="fa-solid fa-right-from-bracket iconNavBar iconNavBarColor"></i>Log Out</p></a>
                                     </form>
@@ -128,7 +128,7 @@
 
                     <!-- Authentication -->
                     <form method="POST" action="http://127.0.0.1:8000/logout">
-                        <input type="hidden" name="_token" value="dOGABn07CGFAeNZsQlhLKHv6rC1RI9wOGzn1PtY1" autocomplete="off">
+                        <input type="hidden" name="_token" value="il4HZdT4gklkEnylXmOFbpUZADrOG3t5bPvJQPUK" autocomplete="off">
                         <a class="block w-full ps-3 pe-4 py-2 border-l-4 border-transparent text-start text-base font-medium text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 hover:border-gray-300 dark:hover:border-gray-600 focus:outline-none focus:text-gray-800 dark:focus:text-gray-200 focus:bg-gray-50 focus:border-gray-300 dark:focus:border-gray-600 transition duration-150 ease-in-out colorSecondHover" href="http://127.0.0.1:8000/logout" onclick="event.preventDefault();
                                     this.closest('form').submit();">
     <i class="fa-solid fa-right-from-bracket iconNavBar iconNavBarColor"></i>Log Out
@@ -138,28 +138,39 @@
             </div>
             </div>
 </nav>    <div id="main">
+        <form action="http://127.0.0.1:8000/delete-portfolio" method="POST" onsubmit="return confirm('Are you sure you want to delete the portfolio?');">
+            <input type="hidden" name="_token" value="il4HZdT4gklkEnylXmOFbpUZADrOG3t5bPvJQPUK" autocomplete="off">            <input type="hidden" name="file_name" value="Jurico-1718695051-private.html">
+            <button type="submit" class="btn btn-danger text-white fw-bold" id="deleteButton">
+                <i class="fa fa-trash text-white mr-2"></i>Delete Portfolio
+            </button>
+        </form>
         <div class="container">
-            <div class="left-top"></div>
+            <div class="left-top">
+                <h2 class="text-white editable" id="editableTitle">uthjgu</h2>
+                <h3 class="text-white editable" id="editableTitle">jykhiu</h3>
+            </div>
             <div class="right-top">
-                <h2 class="text-white editable" id="editableTitle">Jur</h2>
-                <h3 class="text-white editable" id="editableSubtitle">Jurico</h3>
+                <div class="imgPortfolio"></div>
             </div>
             <div class="left-bottom">
-                <p class="text-white aboutPortfolio editable" id="editableText">hjh mfbn tuyjhgdfh nyjt hgdf7 tunhfjk utyjuf hnuty gfhgnut yghjkcfv hubj</p>
-                <h5 class="text-white">Jurico</h5>
-            </div>
-            <div class="right-bottom">
-                <h4 class="text-dark">Specialties</h4>
-                <div class="columns">
+                <h4 class="text-white">Specialties</h4>
+                <div class="columns" style="width: 375px;">
                     <ul>
-                        <li class="text-dark editable" id="editableOne">1. jkjykmfhnjumgktnk</li>
-                        <li class="text-dark editable" id="editableTwo">2. fjdbnuyt</li>
-                        <li class="text-dark editable" id="editableThree">3. jfjn</li>
-                        <li class="text-dark editable" id="editableFour">4. ytugyfbhny</li>
-                        <li class="text-dark editable" id="editableFive">5. tygfhyjt</li>
-                        <li class="text-dark editable" id="editableSix">6. fytju,ghb wadw</li>
+                        <li class="text-white editable" id="editableOne">ghkumyjh</li>
+                        <li class="text-white editable" id="editableOne">gmgn</li>
+                        <li class="text-white editable" id="editableOne">ujyh</li>
+                    </ul>
+                    <ul>
+                        <li class="text-white editable" id="editableOne">fgjhymbn</li>
+                        <li class="text-white editable" id="editableOne">fjjythgf</li>
+                        <li class="text-white editable" id="editableOne">jyhtgf</li>
                     </ul>
                 </div>
+                <h5 class="text-white">Jurico</h5>
+            </div>
+            <div class="right-bottom"></div>
+            <div class="absolute-container">
+                <p class="text-white aboutPortfolio editable" id="editableTitle">htgbfhyhntgncfvgbnjuykgmv nb,hj mjkhb mjkhunbgv mww</p>
             </div>
         </div>
     </div>
@@ -227,11 +238,11 @@
         document.querySelectorAll('h2').forEach(element => {
             const length = element.textContent.length;
             if (length < 6) {
-                element.style.fontSize = '40px';
+                element.style.fontSize = '50px';
             } else if (length < 11) {
-                element.style.fontSize = '30px';
+                element.style.fontSize = '40px';
             } else {
-                element.style.fontSize = '24px';
+                element.style.fontSize = '26px';
             }
         });
 
@@ -291,8 +302,20 @@
 <style>
     :root 
     {
-        --img-location: url("img/portfolios/portfolio-1/Empty/Empty3-1.png");
-        --img-profile: url("storage/pictures/7ry1vVedyBleO5x4Go1SDCFvL5JTwOUbNp5d3Vbz.jpg");
+        --img-location: url("img/portfolios/portfolio-2/Empty/Empty5-2.png");
+        --img-profile: url("storage/pictures/zQtkzCmSvaCeB006SrUfda1KSaQUUqxLcgwmquu1.jpg");
+    }
+
+    #deleteButton 
+    {
+        position: relative;
+        right: -80%; 
+        top: 86px;
+        transform: translateY(-50%);
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
     }
 
     .text-white
@@ -325,7 +348,6 @@
     {
         display: inline-block;
     }
-
 
     body, html 
     {
@@ -361,17 +383,21 @@
         background-size: 200% 200%;
     }
 
-    .left-top::before 
+    .left-top h2 
     {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 110%;
-        background: var(--img-profile) no-repeat center center;
-        background-size: cover;
-        z-index: -1 !important;
+        margin: 40px 0px 0px 30px;
+        max-width: 250px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .left-top h3 
+    {
+        margin: 0px 0px 10px 30px;
+        max-width: 250px;
+        word-wrap: break-word;
+        text-transform: uppercase;
     }
 
     .right-top 
@@ -380,25 +406,20 @@
         right: 0;
         background: var(--img-location) right top;
         background-size: 200% 200%;
-        z-index: 1;
+        z-index: 100;
         color: white;
     }
 
-    .right-top h2 
+    .imgPortfolio 
     {
-        margin: 50px 0px 0px 30px;
-        max-width: 180px;
-        word-wrap: break-word;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-
-    .right-top h3
-    {
-        margin: 0px 0px 10px 30px;
-        max-width: 150px;
-        word-wrap: break-word;
-        text-transform: uppercase;
+        width: 215px !important;
+        height: 215px !important;
+        background: var(--img-profile) no-repeat center center;
+        background-size: cover;
+        z-index: 99;
+        margin: 138px 0px 0px 14px; 
+        border-radius: 200px;
+        border: 4px solid white;
     }
 
     .left-bottom 
@@ -407,14 +428,35 @@
         left: 0;
         background: var(--img-location) left bottom;
         background-size: 200% 200%;
-        z-index: 1;
+        z-index: 2;
     }
 
-    .aboutPortfolio
+    .left-bottom h4 
     {
-        margin: 30px 5px 10px 15px;
-        max-width: 200px;
-        word-wrap: break-word;
+        margin-top: 80px;
+        margin-left: 30px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .columns 
+    {
+        display: flex;
+        margin-left: 30px;
+    }
+
+    .columns ul 
+    {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        margin-right: 20px; 
+    }
+
+    .columns ul li 
+    {
+        margin-bottom: 5px; 
     }
 
     .right-bottom 
@@ -424,44 +466,31 @@
         background: var(--img-location) right bottom;
         background-size: 200% 200%;
         z-index: 1;
-        
-        display: flex; 
-        flex-direction: column; 
-        justify-content: center; 
-        align-items: center; 
-        text-align: center; 
     }
 
     .left-bottom h5 
     {
         position: absolute;
         bottom: 5px; 
-        left: 50%; 
-        transform: translateX(-50%); 
-        font-size: 12px;
+        margin-left: 10px;
         font-weight: bold;
     }
 
-    .right-bottom h4
+    .absolute-container 
     {
-        margin-top: -130px;
-        margin-bottom: 10px;
-        font-weight: bold;
-        font-size: 25px;
+        position: absolute;
+        top: 16rem; 
+        left: 3rem; 
+        width: 13rem; 
+        height: auto; 
+        z-index: 2;
     }
 
-    .right-bottom ul
+    .absolute-container .aboutPortfolio 
     {
-        margin-bottom: -50px;
+        margin: 0; 
     }
 
-    .right-bottom ul li
-    {
-        max-width: 150px;
-        word-wrap: break-word;
-        margin: 10px;
-    }
-    
     @media (max-width: 640px) 
     {
         .container 

@@ -22,7 +22,7 @@ class PortfolioController extends Controller
 
         if (File::exists($filePath)) {
             File::delete($filePath);
-            return redirect('/dashboard')->with('message', 'Bestand succesvol verwijderd');
+            return redirect('/dashboard')->with('message', 'Deleted successfully!');
         }
     }
 }
