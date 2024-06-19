@@ -395,9 +395,9 @@
     
     @media (max-width: 640px) 
     {
-        .container 
+        /* .container 
         {
             display: none;
-        }
+        } */
     }
 </style>

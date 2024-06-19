@@ -20,12 +20,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
-        iframe {
-            width: 50%;
-            height: 1100px;
-            border: none;
-            overflow: hidden; /* Voeg dit toe om scrollen te voorkomen */
-        }
+
     </style>
 </head>
 <body class="font-sans antialiased">
@@ -47,13 +42,19 @@
             <div class="container mx-auto px-4">
                 <div class="flex justify-center">
                     <h1 class="text-3xl text-gray-900 dark:text-gray-100 mt-10">
-                        <p class="colorFirst welcomeText">Create your portfolio at H:M Portfolios</p>
+                        <p class="colorFirst welcomeText">Portfolios other people made:</p>
                     </h1>
                 </div>
 
-                <?php foreach ($htmlFiles as $filename => $content): ?>
-                    <iframe srcdoc="<?= htmlspecialchars($content) ?>" scrolling="no"></iframe>
-                <?php endforeach; ?>
+                <div class="iframe-container">
+                    <?php foreach ($htmlFiles as $filename => $content): ?>
+                        <div class="iframe-wrapper">
+                            <div class="iframe-content">
+                                <iframe srcdoc="<?= htmlspecialchars($content) ?>" scrolling="no"></iframe>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </main>
 

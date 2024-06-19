@@ -28,6 +28,15 @@ Route::get('/dynamic-template', [FileController::class, 'showDynamicTemplate']);
 
 Route::post('/delete-portfolio', [PortfolioController::class, 'deletePortfolio'])->name('delete-portfolio');
 
+
+
+
+Route::get('/edit-html/{fileName}', [PortfolioController::class, 'showEditHtml'])->name('edit-html');
+Route::post('/update-html/{fileName}', [PortfolioController::class, 'updateHtml'])->name('update-html');
+
+
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/create-portfolio', [UserTextController::class, 'showForm'])->name('create-portfolio');
     Route::post('/store-text', [UserTextController::class, 'storeText'])->name('store-text');

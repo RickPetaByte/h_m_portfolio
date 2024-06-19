@@ -19,6 +19,26 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        .editable {
+            cursor: pointer;
+            border: 1px dashed transparent;
+        }
+        .editable:hover {
+            border: 1px dashed #ccc;
+        }
+        .editing {
+            border: 1px solid #000;
+        }
+        .save-btn {
+            display: none;
+            margin-top: 10px;
+        }
+        .save-btn.active {
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
 <div class="min-h-screen full-height flex-center" id="outer-container">
@@ -34,281 +54,118 @@
         <div class="container">
             <div class="left-top"></div>
             <div class="right-top">
-                <h2 class="text-white editable" id="editableTitle">{{ $title }}</h2>
-                <h3 class="text-white editable" id="editableSubtitle">{{ $subtitle }}</h3>
+                <h2 class="text-white" id="editableTitle">{{ $title }}</h2>
+                <!-- <h3 class="text-white" id="editableSubtitle">{{ $subtitle }}</h3> -->
             </div>
             <div class="left-bottom">
-                <p class="text-white aboutPortfolio editable" id="editableText">{{ $text }}</p>
-                <h5 class="text-white">{{ $name }}</h5>
+                <p class="text-white aboutPortfolio" id="editableText">{{ $text }}</p>
             </div>
             <div class="right-bottom">
                 <h4 class="text-dark">Specialties</h4>
                 <div class="columns">
                     <ul>
-                        <li class="text-dark editable" id="editableOne">1. {{ $one }}</li>
-                        <li class="text-dark editable" id="editableTwo">2. {{ $two }}</li>
-                        <li class="text-dark editable" id="editableThree">3. {{ $three }}</li>
-                        <li class="text-dark editable" id="editableFour">4. {{ $four }}</li>
-                        <li class="text-dark editable" id="editableFive">5. {{ $five }}</li>
-                        <li class="text-dark editable" id="editableSix">6. {{ $six }}</li>
                     </ul>
                 </div>
             </div>
-
-
-
-            <style>
-                :root 
-                {
-                    --img-location: url("{{ $selected_color_image_alt }}");
-                    --img-profile: url("storage/{{ $picture }}");
-                }
-
-                #deleteButton 
-                {
-                    position: relative;
-                    right: -80%; 
-                    top: 86px;
-                    transform: translateY(-50%);
-                    padding: 10px 20px;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                }
-
-                .text-white
-                {
-                    color: white !important;
-                }
-
-                .editable 
-                {
-                    cursor: pointer;
-                    border: 1px dashed transparent;
-                }
-
-                .editable:hover 
-                {
-                    border: 1px dashed #ccc;
-                }
-                
-                .editing 
-                {
-                    border: 1px solid #000;
-                }
-
-                .save-btn 
-                {
-                    display: none;
-                    margin-top: 10px;
-                }
-
-                .save-btn.active 
-                {
-                    display: inline-block;
-                }
-
-                body, html 
-                {
-                    height: 100%;
-                    margin: 0;
-                }
-
-                .container 
-                {
-                    position: relative;
-                    width: calc(126mm * 1.2);
-                    height: calc(178.2mm * 1.2);
-                    max-width: 100vw;
-                    max-height: 100vh;
-                    margin-top: 20px;
-                    overflow: hidden;
-                    border: 3px solid black;
-                    border-radius: 5px;
-                }
-
-                .left-top, .right-top, .left-bottom, .right-bottom 
-                {
-                    position: absolute;
-                    width: 50%;
-                    height: 50%;
-                }
-
-                .left-top 
-                {
-                    top: 0;
-                    left: 0;
-                    background: var(--img-location) left top;
-                    background-size: 200% 200%;
-                }
-
-                .left-top::before 
-                {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 110%;
-                    background: var(--img-profile) no-repeat center center;
-                    background-size: cover;
-                    z-index: -1 !important;
-                }
-
-                .right-top 
-                {
-                    top: 0;
-                    right: 0;
-                    background: var(--img-location) right top;
-                    background-size: 200% 200%;
-                    z-index: 1;
-                    color: white;
-                }
-
-                .right-top h2 
-                {
-                    margin: 50px 0px 0px 30px;
-                    max-width: 180px;
-                    word-wrap: break-word;
-                    text-transform: uppercase;
-                    font-weight: bold;
-                }
-
-                .right-top h3
-                {
-                    margin: 0px 0px 10px 30px;
-                    max-width: 150px;
-                    word-wrap: break-word;
-                    text-transform: uppercase;
-                }
-
-                .left-bottom 
-                {
-                    bottom: 0;
-                    left: 0;
-                    background: var(--img-location) left bottom;
-                    background-size: 200% 200%;
-                    z-index: 1;
-                }
-
-                .aboutPortfolio
-                {
-                    margin: 30px 5px 10px 15px;
-                    max-width: 200px;
-                    word-wrap: break-word;
-                }
-
-                .right-bottom 
-                {
-                    bottom: 0;
-                    right: 0;
-                    background: var(--img-location) right bottom;
-                    background-size: 200% 200%;
-                    z-index: 1;
-                    
-                    display: flex; 
-                    flex-direction: column; 
-                    justify-content: center; 
-                    align-items: center; 
-                    text-align: center; 
-                }
-
-                .left-bottom h5 
-                {
-                    position: absolute;
-                    bottom: 5px; 
-                    left: 50%; 
-                    transform: translateX(-50%); 
-                    font-size: 12px;
-                    font-weight: bold;
-                }
-
-                .right-bottom h4
-                {
-                    margin-top: -130px;
-                    margin-bottom: 10px;
-                    font-weight: bold;
-                    font-size: 25px;
-                }
-
-                .right-bottom ul
-                {
-                    margin-bottom: -50px;
-                }
-
-                .right-bottom ul li
-                {
-                    max-width: 150px;
-                    word-wrap: break-word;
-                    margin: 10px;
-                }
-                
-                @media (max-width: 640px) 
-                {
-                    .container 
-                    {
-                        display: none;
-                    }
-                }
-            </style>
-
+            <button id="saveBtn" class="btn btn-primary save-btn">Save Edits</button>
         </div>
     </div>
+
+
+    <div>
+        <form id="editForm" action="{{ route('update-html', ['fileName' => $fileName]) }}" method="POST" style="display: none;">
+            @csrf
+            <input type="hidden" name="htmlTitle" id="htmlTitle">
+            <!-- <input type="hidden" name="htmlSubTitle" id="htmlSubTitle"> -->
+            <input type="hidden" name="htmlContent" id="htmlContent">
+        </form>
+    </div>
+
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const editables = document.querySelectorAll('.editable');
-        const saveButton = document.createElement('button');
-        saveButton.textContent = 'Opslaan';
-        saveButton.className = 'save-btn';
+    document.addEventListener('DOMContentLoaded', () => {
+        const editableTitle = document.getElementById('editableTitle');
 
-        document.body.appendChild(saveButton);
+        // const editableSubtitle = document.getElementById('editableSubtitle');
 
-        editables.forEach(element => {
-            element.addEventListener('dblclick', function() {
-                element.contentEditable = true;
-                element.classList.add('editing');
-                saveButton.classList.add('active');
-            });
-        });
+        const editableText = document.getElementById('editableText');
+        const saveBtn = document.getElementById('saveBtn');
+        const editForm = document.getElementById('editForm');
+        const htmlTitleInput = document.getElementById('htmlTitle');
 
-        saveButton.addEventListener('click', function() {
-            const updatedData = {};
+        // const htmlSubTitle = document.getElementById('htmlSubTitle');
 
-            editables.forEach(element => {
-                element.contentEditable = false;
-                element.classList.remove('editing');
-                updatedData[element.id] = element.textContent.trim();
-            });
+        const htmlContentInput = document.getElementById('htmlContent');
+        const downloadPdfBtn = document.getElementById('downloadPdfBtn');
 
-            saveButton.classList.remove('active');
-            saveData(updatedData);
-        });
-
-        function saveData(data) {
-            fetch('/store-text', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(result => {
-                if (result.success) {
-                    alert('Wijzigingen succesvol opgeslagen');
-                    location.reload();
-                } else {
-                    alert('Er is iets misgegaan. Probeer het opnieuw.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Er is iets misgegaan. Probeer het opnieuw.');
-            });
+        function enableEditing(element) {
+            element.contentEditable = true;
+            element.classList.add('editing');
+            saveBtn.classList.add('active');
+            element.focus();
         }
+
+        function disableEditing(element) {
+            element.contentEditable = false;
+            element.classList.remove('editing');
+        }
+
+        editableTitle.addEventListener('dblclick', () => {
+            enableEditing(editableTitle);
+        });
+
+        editableText.addEventListener('dblclick', () => {
+            enableEditing(editableText);
+        });
+
+        saveBtn.addEventListener('click', () => {
+            event.preventDefault();
+            disableEditing(editableTitle);
+            disableEditing(editableText);
+            saveBtn.classList.remove('active');
+
+            // Update the form values
+            htmlTitleInput.value = editableTitle.innerText.trim();
+            htmlContentInput.value = editableText.innerText.trim();
+
+            console.log('Title:', htmlTitleInput.value);
+            console.log('Content:', htmlContentInput.value);
+
+            // Submit the form
+            editForm.submit();
+        });
+
+        downloadPdfBtn.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            // Zorg ervoor dat 'fileName' correct gerenderd is door je server-side engine
+            var fileName = '{{ $fileName }}';
+
+            // Maak een AJAX-verzoek naar de route om het PDF-bestand te genereren en te downloaden
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/download-pdf/' + fileName, true);
+            xhr.responseType = 'blob';
+
+            xhr.onload = function () {
+                if (this.status === 200) {
+                    var blob = new Blob([this.response], { type: 'application/pdf' });
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = fileName.replace('.html', '.pdf');
+                    link.click();
+                }
+            };
+
+            xhr.send();
+        });
+
+        const hideDownButton = () => {
+            downloadPdfBtn.style.display = 'none';
+        };
+
+        // Roep de functie aan om de knop te verbergen als dat de bedoeling is
+        hideDownButton();
     });
 </script>
 
@@ -379,3 +236,199 @@
 </body>
 </html>
 
+<style>
+    :root 
+    {
+        --img-location: url("img/portfolios/portfolio-1/Empty/Empty5-1.png");
+        --img-profile: url("storage/pictures/HaYGItmFGA1PbJImOI64eQFkrKxjFEOxhjEbW0ky.jpg");
+    }
+
+    
+
+    #deleteButton 
+    {
+        position: relative;
+        right: -80%; 
+        top: 86px;
+        transform: translateY(-50%);
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .text-white
+    {
+        color: white !important;
+    }
+
+    .editable 
+    {
+        cursor: pointer;
+        border: 1px dashed transparent;
+    }
+
+    .editable:hover 
+    {
+        border: 1px dashed #ccc;
+    }
+    
+    .editing 
+    {
+        border: 1px solid #000;
+    }
+
+    .save-btn 
+    {
+        display: none;
+        margin-top: 10px;
+    }
+
+    .save-btn.active 
+    {
+        display: inline-block;
+    }
+
+    body, html 
+    {
+        height: 100%;
+        margin: 0;
+    }
+
+    .container 
+    {
+        position: relative;
+        width: calc(126mm * 1.2);
+        height: calc(178.2mm * 1.2);
+        max-width: 100vw;
+        max-height: 100vh;
+        margin-top: 20px;
+        overflow: hidden;
+        border: 3px solid black;
+        border-radius: 5px;
+    }
+
+    .left-top, .right-top, .left-bottom, .right-bottom 
+    {
+        position: absolute;
+        width: 50%;
+        height: 50%;
+    }
+
+    .left-top 
+    {
+        top: 0;
+        left: 0;
+        background: var(--img-location) left top;
+        background-size: 200% 200%;
+    }
+
+    .left-top::before 
+    {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 110%;
+        background: var(--img-profile) no-repeat center center;
+        background-size: cover;
+        z-index: -1 !important;
+    }
+
+    .right-top 
+    {
+        top: 0;
+        right: 0;
+        background: var(--img-location) right top;
+        background-size: 200% 200%;
+        z-index: 1;
+        color: white;
+    }
+
+    .right-top h2 
+    {
+        margin: 50px 0px 0px 30px;
+        max-width: 180px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .right-top h3
+    {
+        margin: 0px 0px 10px 30px;
+        max-width: 150px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+    }
+
+    .left-bottom 
+    {
+        bottom: 0;
+        left: 0;
+        background: var(--img-location) left bottom;
+        background-size: 200% 200%;
+        z-index: 1;
+    }
+
+    .aboutPortfolio
+    {
+        margin: 30px 5px 10px 15px;
+        max-width: 200px;
+        word-wrap: break-word;
+    }
+
+    .right-bottom 
+    {
+        bottom: 0;
+        right: 0;
+        background: var(--img-location) right bottom;
+        background-size: 200% 200%;
+        z-index: 1;
+        
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center; 
+        text-align: center; 
+    }
+
+    .left-bottom h5 
+    {
+        position: absolute;
+        bottom: 5px; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .right-bottom h4
+    {
+        margin-top: -130px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .right-bottom ul
+    {
+        margin-bottom: -50px;
+    }
+
+    .right-bottom ul li
+    {
+        max-width: 150px;
+        word-wrap: break-word;
+        margin: 10px;
+    }
+    
+    @media (max-width: 640px) 
+    {
+        /* .container 
+        {
+            display: none;
+        } */
+    }
+</style>
