@@ -19,6 +19,26 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        .editable {
+            cursor: pointer;
+            border: 1px dashed transparent;
+        }
+        .editable:hover {
+            border: 1px dashed #ccc;
+        }
+        .editing {
+            border: 1px solid #000;
+        }
+        .save-btn {
+            display: none;
+            margin-top: 10px;
+        }
+        .save-btn.active {
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
 <div class="min-h-screen full-height flex-center" id="outer-container">
@@ -36,89 +56,51 @@
                 <div class="imgPortfolio"></div>
             </div>
             <div class="right-top">
-                <h2 class="text-dark editable" id="editableTitle">{{ $title }}</h2>
-                <h3 class="text-dark editable" id="editableTitle">{{ $subtitle }}</h3>
+                <h2 class="text-dark" id="editableTitle">{{ $title }}</h2>
+                <h3 class="text-dark" id="editableSubtitle">{{ $subtitle }}</h3>
             </div>
             <div class="bottom">
                 <h4 class="text-dark">Specialties</h4>
                 <div class="columns">
                     <ul>
-                        <li class="text-dark editable" id="editableTitle">{{ $one }}</li>
-                        <li class="text-dark editable" id="editableTitle">{{ $two }}</li>
-                        <li class="text-dark editable" id="editableTitle">{{ $three }}</li>
+                        <li class="text-dark editable" id="editableOne">1. {{ $one }}</li>
+                        <li class="text-dark editable" id="editableTwo">2. {{ $two }}</li>
+                        <li class="text-dark editable" id="editableThree">3. {{ $three }}</li>
                     </ul>
                     <ul>
-                        <li class="text-dark editable" id="editableTitle">{{ $four }}</li>
-                        <li class="text-dark editable" id="editableTitle">{{ $five }}</li>
-                        <li class="text-dark editable" id="editableTitle">{{ $six }}</li>
+                        <li class="text-dark editable" id="editableFour">4. {{ $four }}</li>
+                        <li class="text-dark editable" id="editableFive">5. {{ $five }}</li>
+                        <li class="text-dark editable" id="editableSix">6. {{ $six }}</li>
                     </ul>
                 </div>
-                <h5 class="text-dark">{{ $name }}</h5>
+                <h5 class="text-dark" id="fixedName">{{ $name }}</h5>
             </div>
             <div class="absolute-container">
-                <p class="aboutPortfolio text-dark  editable" id="editableText">{{ $text }}</p>
+                <p class="text-dark aboutPortfolio" id="editableText">{{ $text }}</p>
             </div>
+            <button id="saveBtn" class="btn btn-primary save-btn text-white">Save Edits</button>
         </div>
+    </div>
+    <div>
+        <form id="editForm" action="{{ route('update-html', ['fileName' => $fileName]) }}" method="POST" style="display: none;">
+            @csrf
+            <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
+            <input type="hidden" name="htmlSubTitle" id="htmlSubTitle" maxlength="18">
+            <input type="hidden" name="htmlContent" id="htmlContent" maxlength="130">
+            <input type="hidden" name="htmlOne" id="htmlOne" maxlength="20">
+            <input type="hidden" name="htmlTwo" id="htmlTwo" maxlength="20">
+            <input type="hidden" name="htmlThree" id="htmlThree" maxlength="20">
+            <input type="hidden" name="htmlFour" id="htmlFour" maxlength="20">
+            <input type="hidden" name="htmlFive" id="htmlFive" maxlength="20">
+            <input type="hidden" name="htmlSix" id="htmlSix" maxlength="20">
+            <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="{{ $selected_image_alt }}">
+            <input type="hidden" name="htmlPicture" id="htmlPicture" value="{{ $picture }}">
+            <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl" value="{{ $selected_color_image_alt }}">
+        </form>
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const editables = document.querySelectorAll('.editable');
-        const saveButton = document.createElement('button');
-        saveButton.textContent = 'Opslaan';
-        saveButton.className = 'save-btn';
-
-        document.body.appendChild(saveButton);
-
-        editables.forEach(element => {
-            element.addEventListener('dblclick', function() {
-                element.contentEditable = true;
-                element.classList.add('editing');
-                saveButton.classList.add('active');
-            });
-        });
-
-        saveButton.addEventListener('click', function() {
-            const updatedData = {};
-
-            editables.forEach(element => {
-                element.contentEditable = false;
-                element.classList.remove('editing');
-                updatedData[element.id] = element.textContent.trim();
-            });
-
-            saveButton.classList.remove('active');
-            saveData(updatedData);
-        });
-
-        function saveData(data) {
-            fetch('/store-text', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(result => {
-                if (result.success) {
-                    alert('Wijzigingen succesvol opgeslagen');
-                    location.reload();
-                } else {
-                    alert('Er is iets misgegaan. Probeer het opnieuw.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Er is iets misgegaan. Probeer het opnieuw.');
-            });
-        }
-    });
-</script>
-
-<script>
+<script class="sendThisScriptToHomePage">
     function adjustFontSize() {
         // Title (h2)
         document.querySelectorAll('h2').forEach(element => {
@@ -195,10 +177,10 @@
     #deleteButton 
     {
         position: relative;
-        right: -80%; 
-        top: 86px;
+        right: 50%;
+        top: 32px;
         transform: translateY(-50%);
-        padding: 10px 20px;
+        padding: 6px 15px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
@@ -379,3 +361,79 @@
         } */
     }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const editableTitle = document.getElementById('editableTitle');
+    const editableSubtitle = document.getElementById('editableSubtitle');
+    const editableText = document.getElementById('editableText');
+    const editableOne = document.getElementById('editableOne');
+    const editableTwo = document.getElementById('editableTwo');
+    const editableThree = document.getElementById('editableThree');
+    const editableFour = document.getElementById('editableFour');
+    const editableFive = document.getElementById('editableFive');
+    const editableSix = document.getElementById('editableSix');
+
+    const saveBtn = document.getElementById('saveBtn');
+    const editForm = document.getElementById('editForm');
+
+    const htmlTitleInput = document.getElementById('htmlTitle');
+    const htmlSubTitleInput = document.getElementById('htmlSubTitle');
+    const htmlContentInput = document.getElementById('htmlContent');
+    const htmlOneInput = document.getElementById('htmlOne');
+    const htmlTwoInput = document.getElementById('htmlTwo');
+    const htmlThreeInput = document.getElementById('htmlThree');
+    const htmlFourInput = document.getElementById('htmlFour');
+    const htmlFiveInput = document.getElementById('htmlFive');
+    const htmlSixInput = document.getElementById('htmlSix');
+
+    function enableEditing(element) {
+        element.contentEditable = true;
+        element.classList.add('editing');
+        saveBtn.classList.add('active');
+        element.focus();
+    }
+
+    function disableEditing(element) {
+        element.contentEditable = false;
+        element.classList.remove('editing');
+    }
+
+    editableTitle.addEventListener('dblclick', () => enableEditing(editableTitle));
+    editableSubtitle.addEventListener('dblclick', () => enableEditing(editableSubtitle));
+    editableText.addEventListener('dblclick', () => enableEditing(editableText));
+    editableOne.addEventListener('dblclick', () => enableEditing(editableOne));
+    editableTwo.addEventListener('dblclick', () => enableEditing(editableTwo));
+    editableThree.addEventListener('dblclick', () => enableEditing(editableThree));
+    editableFour.addEventListener('dblclick', () => enableEditing(editableFour));
+    editableFive.addEventListener('dblclick', () => enableEditing(editableFive));
+    editableSix.addEventListener('dblclick', () => enableEditing(editableSix));
+
+    saveBtn.addEventListener('click', () => {
+        event.preventDefault();
+        disableEditing(editableTitle);
+        disableEditing(editableSubtitle);
+        disableEditing(editableText);
+        disableEditing(editableOne);
+        disableEditing(editableTwo);
+        disableEditing(editableThree);
+        disableEditing(editableFour);
+        disableEditing(editableFive);
+        disableEditing(editableSix);
+
+        saveBtn.classList.remove('active');
+
+        htmlTitleInput.value = editableTitle.innerText.trim();
+        htmlSubTitleInput.value = editableSubtitle.innerText.trim();
+        htmlContentInput.value = editableText.innerText.trim();
+        htmlOneInput.value = editableOne.innerText.trim().slice(3).trim();
+        htmlTwoInput.value = editableTwo.innerText.trim().slice(3).trim();
+        htmlThreeInput.value = editableThree.innerText.trim().slice(3).trim();
+        htmlFourInput.value = editableFour.innerText.trim().slice(3).trim();
+        htmlFiveInput.value = editableFive.innerText.trim().slice(3).trim();
+        htmlSixInput.value = editableSix.innerText.trim().slice(3).trim();
+
+        editForm.submit();
+    });
+});
+</script>

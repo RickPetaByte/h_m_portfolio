@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="FOtDcVBxAc4q9NEFC8Vr5di8LhVX67eKloiCxd67">
 
     <title>H:M | Portfolio's</title>
 
@@ -18,8 +18,7 @@
     <link rel="shortcut icon" href="img/LogoCircle2.png">
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    <script type="module" src="http://[::1]:5173/@vite/client"></script><link rel="stylesheet" href="http://[::1]:5173/resources/css/app.css" /><script type="module" src="http://[::1]:5173/resources/js/app.js"></script>
     <style>
         .editable {
             cursor: pointer;
@@ -42,51 +41,164 @@
 </head>
 <body>
 <div class="min-h-screen full-height flex-center" id="outer-container">
-    @include('layouts.navigation-2')
-    <div id="main">
-        <form action="{{ route('delete-portfolio') }}" method="POST" onsubmit="return confirm('Are you sure you want to delete the portfolio?');">
-            @csrf
-            <input type="hidden" name="file_name" value="{{ $fileName }}">
-            <button type="submit" class="btn btn-danger text-white fw-bold" id="deleteButton">
-                <i class="fa fa-trash text-white mr-2"></i>Delete Portfolio
-            </button>
-        </form>
-        <div class="container">
-            <div class="left-top">
-                <div class="imgPortfolio"></div>
-                <h2 class="text-white" id="editableTitle">{{ $title }}</h2>
-                <h3 class="text-white" id="editableSubtitle">{{ $subtitle }}</h3>
+    <nav x-data="{ open: false }" class="colorSecond borderNav">
+    <!-- Primary Navigation Menu -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex">
+                <!-- Logo -->
+                <div class="shrink-0 flex items-center">
+                    <a href="http://127.0.0.1:8000">
+                        <img id="logo" src="/img/LogoCircle.png" alt="Logo" class="block h-12 w-auto">
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex btnHomepageNav">
+                    <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border-gray-700 transition duration-150 ease-in-out border-none" href="http://127.0.0.1:8000">
+    <p class="colorFirst buttons"><i class="fa-solid fa-house iconNavBar iconNavBarColor"></i>Homepage</p>
+</a>
+                </div>
             </div>
+
+            <form action="http://127.0.0.1:8000/delete-portfolio" method="POST" onsubmit="return confirm('Are you sure you want to delete the portfolio?');">
+                <input type="hidden" name="_token" value="FOtDcVBxAc4q9NEFC8Vr5di8LhVX67eKloiCxd67" autocomplete="off">                <input type="hidden" name="file_name" value="Jur Heusschen-1718821018-private.html">
+                <button type="submit" class="btn btn-danger text-white fw-bold" id="deleteButton">
+                    <i class="fa fa-trash text-white mr-2"></i>Delete Portfolio
+                </button>
+            </form>
+
+            <div class="flex items-center">
+                <img src="img/moon.png" class="mr-5 icon iconThemeNavBar">
+
+                <!-- Hamburger -->
+                <!-- <img src="img/moon.png" class="mr-5 icon"> -->
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <!-- <img src="img/moon.png" class="mr-5 icon"> -->
+                    <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 transition duration-150 ease-in-out">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>    
+<div id="main">
+
+
+
+        <button id="sidebar-toggle" class="text-white"><i class="fa-solid fa-bars text-white"></i></button>
+        <div class="sidebar">
+            <div class="input-container divImgCreate" id="portfolio-1-color-selection">
+                <label>Select portfolio color:</label>
+                <div class="img-container-six">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="img/portfolios/portfolio-1/Color/Color1-1.png" class="img-fluid img-bordered imageCreate" alt="Color 1">
+                        </div>
+                        <div class="col-md-6">
+                            <img src="img/portfolios/portfolio-1/Color/Color2-1.png" class="img-fluid img-bordered imageCreate" alt="Color 2">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="img/portfolios/portfolio-1/Color/Color3-1.png" class="img-fluid img-bordered imageCreate" alt="Color 3">
+                        </div>
+                        <div class="col-md-6">
+                            <img src="img/portfolios/portfolio-1/Color/Color4-1.png" class="img-fluid img-bordered imageCreate" alt="Color 4">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="img/portfolios/portfolio-1/Color/Color5-1.png" class="img-fluid img-bordered imageCreate" alt="Color 5">
+                        </div>
+                        <div class="col-md-6">
+                            <img src="img/portfolios/portfolio-1/Color/Color6-1.png" class="img-fluid img-bordered imageCreate" alt="Color 6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            .sidebar {
+                width: 250px; /* Breedte van de sidebar */
+                height: 100vh; /* Volledige viewport hoogte */
+                position: fixed; /* Vastzetten aan het scherm */
+                top: 0;
+                left: -250px; /* Verberg de sidebar buiten het scherm */
+                background-color: #f0f0f0; /* Achtergrondkleur van de sidebar */
+                transition: left 0.3s ease; /* Animatie voor het openen/sluiten */
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optionele schaduw */
+                z-index: -900;
+            }
+
+            .sidebar.open {
+                left: 0; /* Toon de sidebar door deze naar links te verschuiven */
+            }
+
+            #sidebar-toggle {
+                position: fixed; /* Vastzetten aan het scherm */
+                top: 85px;
+                left: 20px;
+                z-index: 1000; /* Zorg ervoor dat de knop bovenop de sidebar staat */
+                background-color: #007bff; /* Achtergrondkleur van de knop */
+                color: #fff; /* Tekstkleur van de knop */
+                padding: 10px 20px; /* Padding van de knop */
+                border: none; /* Geen rand om de knop */
+                cursor: pointer; /* Verander de cursor naar een pointer bij hover */
+                border-radius: 5px; /* Optionele afronding van de hoeken */
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var sidebarToggle = document.getElementById('sidebar-toggle');
+                var sidebar = document.querySelector('.sidebar');
+
+                sidebarToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('open');
+                    if (sidebar.classList.contains('open')) {
+                        sidebarToggle.innerHTML = '<i class="fa-solid fa-xmark text-white"></i>';
+                    } else {
+                        sidebarToggle.innerHTML = '<i class="fa-solid fa-bars text-white"></i>';
+                    }
+                });
+            });
+        </script>
+
+
+
+        <div class="container">
+            <div class="left-top"></div>
             <div class="right-top">
+                <h2 class="text-white" id="editableTitle">jbhnm,jkhbvbn</h2>
+                <h3 class="text-white" id="editableSubtitle">mjhgvbnjh</h3>
+            </div>
+            <div class="left-bottom">
+                <p class="text-white aboutPortfolio" id="editableText">gbvn hgjfvcb nhgjfvcb nhjgfvcb nhgvc</p>
+                <h5 class="text-white" id="fixedName">Jur Heusschen</h5>
+            </div>
+            <div class="right-bottom">
                 <h4 class="text-dark">Specialties</h4>
                 <div class="columns">
                     <ul>
-                        <li class="text-dark editable" id="editableOne">1. {{ $one }}</li>
-                        <li class="text-dark editable" id="editableTwo">2. {{ $two }}</li>
-                        <li class="text-dark editable" id="editableThree">3. {{ $three }}</li>
+                        <li class="text-dark editable" id="editableOne">1. bgvb nhjg</li>
+                        <li class="text-dark editable" id="editableTwo">2. vbn mjhbgv</li>
+                        <li class="text-dark editable" id="editableThree">3. n mhjbgv n</li>
+                        <li class="text-dark editable" id="editableFour">4. mhjbgbv n</li>
+                        <li class="text-dark editable" id="editableFive">5. mhjgfvbc n</li>
+                        <li class="text-dark editable" id="editableSix">6. hgfvbcn hj</li>
                     </ul>
                 </div>
-            </div>
-            <div class="left-bottom">
-                <p class="text-white aboutPortfolio" id="editableText">{{ $text }}</p>
-            </div>
-            <div class="right-bottom">
-                <div class="columns">
-                    <ul>
-                        <li class="text-dark editable" id="editableFour">4. {{ $four }}</li>
-                        <li class="text-dark editable" id="editableFive">5. {{ $five }}</li>
-                        <li class="text-dark editable" id="editableSix">6. {{ $six }}</li>
-                    </ul>
-                </div>
-                <h5 class="text-dark" id="fixedName">{{ $name }}</h5>
             </div>
             <button id="saveBtn" class="btn btn-primary save-btn text-white">Save Edits</button>
         </div>
     </div>
     <div>
-        <form id="editForm" action="{{ route('update-html', ['fileName' => $fileName]) }}" method="POST" style="display: none;">
-            @csrf
-            <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
+        <form id="editForm" action="http://127.0.0.1:8000/update-html/Jur%20Heusschen-1718821018-private.html" method="POST" style="display: none;">
+            <input type="hidden" name="_token" value="FOtDcVBxAc4q9NEFC8Vr5di8LhVX67eKloiCxd67" autocomplete="off">            <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
             <input type="hidden" name="htmlSubTitle" id="htmlSubTitle" maxlength="18">
             <input type="hidden" name="htmlContent" id="htmlContent" maxlength="130">
             <input type="hidden" name="htmlOne" id="htmlOne" maxlength="20">
@@ -95,9 +207,9 @@
             <input type="hidden" name="htmlFour" id="htmlFour" maxlength="20">
             <input type="hidden" name="htmlFive" id="htmlFive" maxlength="20">
             <input type="hidden" name="htmlSix" id="htmlSix" maxlength="20">
-            <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="{{ $selected_image_alt }}">
-            <input type="hidden" name="htmlPicture" id="htmlPicture" value="{{ $picture }}">
-            <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl" value="{{ $selected_color_image_alt }}">
+            <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="dynamic-template">
+            <input type="hidden" name="htmlPicture" id="htmlPicture" value="pictures/WmZ4ic1RdaO8N18uyrCzzz1ZVITjsRaErRk0aR9s.jpg">
+            <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl" value="img/portfolios/portfolio-1/Empty/Empty5-1.png">
         </form>
     </div>
 </div>
@@ -112,7 +224,7 @@
             } else if (length < 11) {
                 element.style.fontSize = '30px';
             } else {
-                element.style.fontSize = '20px';
+                element.style.fontSize = '24px';
             }
         });
 
@@ -120,9 +232,9 @@
         document.querySelectorAll('h3').forEach(element => {
             const length = element.textContent.length;
             if (length < 6) {
-                element.style.fontSize = '20px';
+                element.style.fontSize = '25px';
             } else if (length < 11) {
-                element.style.fontSize = '17px';
+                element.style.fontSize = '20px';
             } else {
                 element.style.fontSize = '15px';
             }
@@ -172,8 +284,8 @@
 <style>
     :root 
     {
-        --img-location: url("{{ $selected_color_image_alt }}");
-        --img-profile: url("storage/{{ $picture }}");
+        --img-location: url("img/portfolios/portfolio-1/Empty/Empty5-1.png");
+        --img-profile: url("storage/pictures/WmZ4ic1RdaO8N18uyrCzzz1ZVITjsRaErRk0aR9s.jpg");
     }
 
     #deleteButton 
@@ -203,6 +315,7 @@
     {
         border: 1px dashed #ccc;
     }
+    
     .editing 
     {
         border: 1px solid #000;
@@ -228,8 +341,8 @@
     .container 
     {
         position: relative;
-        width: calc(126mm * 1.1);
-        height: calc(178.2mm * 1.1);
+        width: calc(126mm * 1.2);
+        height: calc(178.2mm * 1.2);
         max-width: 100vw;
         max-height: 100vh;
         margin-top: 20px;
@@ -253,6 +366,19 @@
         background-size: 200% 200%;
     }
 
+    .left-top::before 
+    {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 110%;
+        background: var(--img-profile) no-repeat center center;
+        background-size: cover;
+        z-index: -1 !important;
+    }
+
     .right-top 
     {
         top: 0;
@@ -263,73 +389,21 @@
         color: white;
     }
 
-    .imgPortfolio 
+    .right-top h2 
     {
-        width: 210px !important;
-        height: 210px !important;
-        background: var(--img-profile) no-repeat center center;
-        background-size: cover;
-        z-index: 99;
-        margin: 11px 0px 0px 8px; 
-        border-radius: 200px;
-        border: 4px solid white;
-    }
-
-    .left-top h2 
-    {
+        margin: 50px 0px 0px 30px;
         max-width: 180px;
         word-wrap: break-word;
         text-transform: uppercase;
         font-weight: bold;
-        margin-top: 10px;
-        margin-left: 15px;
-        text-align: center;
     }
 
-    .left-top h3
+    .right-top h3
     {
-        max-width: 180px;
+        margin: 0px 0px 10px 30px;
+        max-width: 150px;
         word-wrap: break-word;
         text-transform: uppercase;
-        margin-left: 15px;
-        text-align: center;
-    }
-
-    .right-top h4
-    {
-        margin: 40px 0px 10px -20px;
-        font-weight: bold;
-        font-size: 25px;
-        text-align: center;
-    }
-
-    .right-bottom h5 
-    {
-        position: absolute;
-        bottom: 5px; 
-        left: 45%; 
-        transform: translateX(-50%); 
-        font-size: 12px;
-        font-weight: bold;
-    }
-
-    .right-top ul
-    {
-        margin-top: 70px;
-    }
-
-    .right-top ul li
-    {
-        max-width: 200px;
-        word-wrap: break-word;
-        margin: 30px 0px 0px 0px;
-    }
-
-    .right-bottom ul li
-    {
-        max-width: 200px;
-        word-wrap: break-word;
-        margin: 30px 0px 0px 0px;
     }
 
     .left-bottom 
@@ -343,9 +417,9 @@
 
     .aboutPortfolio
     {
-        margin: 40px 15px 10px 25px;
+        margin: 30px 5px 10px 15px;
+        max-width: 200px;
         word-wrap: break-word;
-        max-width: 160px;
     }
 
     .right-bottom 
@@ -355,6 +429,12 @@
         background: var(--img-location) right bottom;
         background-size: 200% 200%;
         z-index: 1;
+        
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center; 
+        text-align: center; 
     }
 
     .left-bottom h5 
@@ -373,6 +453,18 @@
         margin-bottom: 10px;
         font-weight: bold;
         font-size: 25px;
+    }
+
+    .right-bottom ul
+    {
+        margin-bottom: -50px;
+    }
+
+    .right-bottom ul li
+    {
+        max-width: 150px;
+        word-wrap: break-word;
+        margin: 10px;
     }
     
     @media (max-width: 640px) 

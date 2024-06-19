@@ -55,6 +55,7 @@
                 <input type="radio" id="no" name="private" value="0" class="form-check-input colorCheckBox shadow-none">
                 <label for="no" class="form-check-label ml-3">No</label>
             </div>
+            <p class="infoText">If selected "Yes" only you can see your portfolio if "No" is selected everyone can see your portfolio!</p>
         </div>
 
         <div class="input-container colorSecond divImgCreate divImgChoose">
@@ -238,5 +239,12 @@
         color: #555;
         margin-top: 0.25em;
         text-align: right;
+    }
+
+    .infoText
+    {
+        margin: 8px 0px -5px 0px !important;
+        color: #9c9c9c !important;
+        font-size: 13px;
     }
 </style>

@@ -15,7 +15,6 @@ class UserTextController extends Controller
         return view('create-portfolio');
     }
 
-
     public function storeText(Request $request)
     {
         $validatedData = $request->validate([

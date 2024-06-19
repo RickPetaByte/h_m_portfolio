@@ -23,9 +23,6 @@ Route::get('/about', function () {
 Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
-Route::get('/create-html-file', [FileController::class, 'createHtmlFile']);
-Route::get('/dynamic-template', [FileController::class, 'showDynamicTemplate']);
-
 Route::post('/delete-portfolio', [PortfolioController::class, 'deletePortfolio'])->name('delete-portfolio');
 
 
