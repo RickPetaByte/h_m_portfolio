@@ -44,13 +44,96 @@
 <div class="min-h-screen full-height flex-center" id="outer-container">
     @include('layouts.navigation-2')
     <div id="main">
-        <form action="{{ route('delete-portfolio') }}" method="POST" onsubmit="return confirm('Are you sure you want to delete the portfolio?');">
-            @csrf
-            <input type="hidden" name="file_name" value="{{ $fileName }}">
-            <button type="submit" class="btn btn-danger text-white fw-bold" id="deleteButton">
-                <i class="fa fa-trash text-white mr-2"></i>Delete Portfolio
-            </button>
-        </form>
+        <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
+        <div class="sidebar">
+            @if ($selected_image_alt === 'dynamic-template')
+                @include('layouts.portfolio-1-color-selection')
+            @elseif ($selected_image_alt === 'dynamic-template-2')
+                @include('layouts.portfolio-2-color-selection')
+            @elseif ($selected_image_alt === 'dynamic-template-3')
+                @include('layouts.portfolio-3-color-selection')
+            @elseif ($selected_image_alt === 'dynamic-template-4')
+                @include('layouts.portfolio-4-color-selection')
+            @endif
+        </div>
+        <style>
+            .sidebar 
+            {
+                width: 250px;
+                height: 100vh; 
+                position: fixed; 
+                top: 0;
+                left: -250px; 
+                background-color: #f0f0f0;
+                transition: left 0.3s ease; 
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .layoutsSidebar
+            {
+                margin-top: 150px;
+            }
+        
+            .sidebar.open 
+            {
+                left: 0; 
+            }
+        
+            #sidebar-toggle 
+            {
+                position: fixed; 
+                top: 85px;
+                left: 20px;
+                z-index: 1000; 
+                background-color: #007bff; 
+                color: #fff; 
+                padding: 10px 20px; 
+                border: none; 
+                cursor: pointer; 
+                border-radius: 5px; 
+                transition: top 0.3s ease;
+            }
+        
+            #sidebar-toggle.open 
+            {
+                top: 35px; 
+            }
+        
+            .img-container 
+            {
+                display: flex;
+                flex-wrap: wrap;
+            }
+        
+            .img-container .col-md-6 
+            {
+                width: 50%;
+                box-sizing: border-box;
+                padding: 5px;
+            }
+        
+            .img-container .col-md-6:nth-child(2n+1) 
+            {
+                clear: left;
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var sidebarToggle = document.getElementById('sidebar-toggle');
+                var sidebarIcon = document.getElementById('sidebar-icon');
+                var sidebar = document.querySelector('.sidebar');
+        
+                sidebarToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('open');
+                    sidebarToggle.classList.toggle('open');
+                    if (sidebar.classList.contains('open')) {
+                        sidebarIcon.classList.replace('fa-bars', 'fa-xmark');
+                    } else {
+                        sidebarIcon.classList.replace('fa-xmark', 'fa-bars');
+                    }
+                });
+            });
+        </script>
         <div class="container">
             <div class="left-top">
                 <h2 class="text-white" id="editableTitle">{{ $title }}</h2>

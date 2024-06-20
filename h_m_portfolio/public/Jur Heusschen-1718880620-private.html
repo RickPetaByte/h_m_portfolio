@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="FOtDcVBxAc4q9NEFC8Vr5di8LhVX67eKloiCxd67">
+    <meta name="csrf-token" content="SVYwa7xACxknQr8zNynBik1KEjdhjnPyE9785oQG">
 
     <title>H:M | Portfolio's</title>
 
@@ -62,7 +62,7 @@
             </div>
 
             <form action="http://127.0.0.1:8000/delete-portfolio" method="POST" onsubmit="return confirm('Are you sure you want to delete the portfolio?');">
-                <input type="hidden" name="_token" value="FOtDcVBxAc4q9NEFC8Vr5di8LhVX67eKloiCxd67" autocomplete="off">                <input type="hidden" name="file_name" value="Jur Heusschen-1718821018-private.html">
+                <input type="hidden" name="_token" value="SVYwa7xACxknQr8zNynBik1KEjdhjnPyE9785oQG" autocomplete="off">                <input type="hidden" name="file_name" value="Jur Heusschen-1718880620-private.html">
                 <button type="submit" class="btn btn-danger text-white fw-bold" id="deleteButton">
                     <i class="fa fa-trash text-white mr-2"></i>Delete Portfolio
                 </button>
@@ -85,111 +85,131 @@
             </div>
         </div>
     </div>
-</nav>    
-<div id="main">
-
-
-
-        <button id="sidebar-toggle" class="text-white"><i class="fa-solid fa-bars text-white"></i></button>
+</nav>    <div id="main">
+        <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
         <div class="sidebar">
-            <div class="input-container divImgCreate" id="portfolio-1-color-selection">
-                <label>Select portfolio color:</label>
-                <div class="img-container-six">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="img/portfolios/portfolio-1/Color/Color1-1.png" class="img-fluid img-bordered imageCreate" alt="Color 1">
-                        </div>
-                        <div class="col-md-6">
-                            <img src="img/portfolios/portfolio-1/Color/Color2-1.png" class="img-fluid img-bordered imageCreate" alt="Color 2">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="img/portfolios/portfolio-1/Color/Color3-1.png" class="img-fluid img-bordered imageCreate" alt="Color 3">
-                        </div>
-                        <div class="col-md-6">
-                            <img src="img/portfolios/portfolio-1/Color/Color4-1.png" class="img-fluid img-bordered imageCreate" alt="Color 4">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="img/portfolios/portfolio-1/Color/Color5-1.png" class="img-fluid img-bordered imageCreate" alt="Color 5">
-                        </div>
-                        <div class="col-md-6">
-                            <img src="img/portfolios/portfolio-1/Color/Color6-1.png" class="img-fluid img-bordered imageCreate" alt="Color 6">
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            <div class="input-container layoutsSidebar" id="portfolio-1-color-selection">
+    <label class="text-center">Select portfolio color:</label>
+    <div class="input-container img-container img-container-six">
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-1/Color/Color1-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty1-1.png">
         </div>
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-1/Color/Color2-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty2-1.png">
+        </div>
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-1/Color/Color3-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty3-1.png">
+        </div>
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-1/Color/Color4-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty4-1.png">
+        </div>
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-1/Color/Color5-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty5-1.png">
+        </div>
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-1/Color/Color6-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty6-1.png">
+        </div>
+    </div>
+</div>                    </div>
         <style>
-            .sidebar {
-                width: 250px; /* Breedte van de sidebar */
-                height: 100vh; /* Volledige viewport hoogte */
-                position: fixed; /* Vastzetten aan het scherm */
+            .sidebar 
+            {
+                width: 250px;
+                height: 100vh; 
+                position: fixed; 
                 top: 0;
-                left: -250px; /* Verberg de sidebar buiten het scherm */
-                background-color: #f0f0f0; /* Achtergrondkleur van de sidebar */
-                transition: left 0.3s ease; /* Animatie voor het openen/sluiten */
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optionele schaduw */
-                z-index: -900;
+                left: -250px; 
+                background-color: #f0f0f0;
+                transition: left 0.3s ease; 
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             }
 
-            .sidebar.open {
-                left: 0; /* Toon de sidebar door deze naar links te verschuiven */
+            .layoutsSidebar
+            {
+                margin-top: 150px;
             }
-
-            #sidebar-toggle {
-                position: fixed; /* Vastzetten aan het scherm */
+        
+            .sidebar.open 
+            {
+                left: 0; 
+            }
+        
+            #sidebar-toggle 
+            {
+                position: fixed; 
                 top: 85px;
                 left: 20px;
-                z-index: 1000; /* Zorg ervoor dat de knop bovenop de sidebar staat */
-                background-color: #007bff; /* Achtergrondkleur van de knop */
-                color: #fff; /* Tekstkleur van de knop */
-                padding: 10px 20px; /* Padding van de knop */
-                border: none; /* Geen rand om de knop */
-                cursor: pointer; /* Verander de cursor naar een pointer bij hover */
-                border-radius: 5px; /* Optionele afronding van de hoeken */
+                z-index: 1000; 
+                background-color: #007bff; 
+                color: #fff; 
+                padding: 10px 20px; 
+                border: none; 
+                cursor: pointer; 
+                border-radius: 5px; 
+                transition: top 0.3s ease;
+            }
+        
+            #sidebar-toggle.open 
+            {
+                top: 35px; 
+            }
+        
+            .img-container 
+            {
+                display: flex;
+                flex-wrap: wrap;
+            }
+        
+            .img-container .col-md-6 
+            {
+                width: 50%;
+                box-sizing: border-box;
+                padding: 5px;
+            }
+        
+            .img-container .col-md-6:nth-child(2n+1) 
+            {
+                clear: left;
             }
         </style>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 var sidebarToggle = document.getElementById('sidebar-toggle');
+                var sidebarIcon = document.getElementById('sidebar-icon');
                 var sidebar = document.querySelector('.sidebar');
-
+        
                 sidebarToggle.addEventListener('click', function() {
                     sidebar.classList.toggle('open');
+                    sidebarToggle.classList.toggle('open');
                     if (sidebar.classList.contains('open')) {
-                        sidebarToggle.innerHTML = '<i class="fa-solid fa-xmark text-white"></i>';
+                        sidebarIcon.classList.replace('fa-bars', 'fa-xmark');
                     } else {
-                        sidebarToggle.innerHTML = '<i class="fa-solid fa-bars text-white"></i>';
+                        sidebarIcon.classList.replace('fa-xmark', 'fa-bars');
                     }
                 });
             });
         </script>
 
-
-
         <div class="container">
             <div class="left-top"></div>
             <div class="right-top">
-                <h2 class="text-white" id="editableTitle">jbhnm,jkhbvbn</h2>
-                <h3 class="text-white" id="editableSubtitle">mjhgvbnjh</h3>
+                <h2 class="text-white" id="editableTitle">ghvbnjbkm</h2>
+                <h3 class="text-white" id="editableSubtitle">hngbnv mjkh</h3>
             </div>
             <div class="left-bottom">
-                <p class="text-white aboutPortfolio" id="editableText">gbvn hgjfvcb nhgjfvcb nhjgfvcb nhgvc</p>
+                <p class="text-white aboutPortfolio" id="editableText">jbghgvf cbvnhjbyghf bvcnmhjgbfvcb nhjgyuhgvf bcvbnhjb vn</p>
                 <h5 class="text-white" id="fixedName">Jur Heusschen</h5>
             </div>
             <div class="right-bottom">
                 <h4 class="text-dark">Specialties</h4>
                 <div class="columns">
                     <ul>
-                        <li class="text-dark editable" id="editableOne">1. bgvb nhjg</li>
-                        <li class="text-dark editable" id="editableTwo">2. vbn mjhbgv</li>
-                        <li class="text-dark editable" id="editableThree">3. n mhjbgv n</li>
-                        <li class="text-dark editable" id="editableFour">4. mhjbgbv n</li>
-                        <li class="text-dark editable" id="editableFive">5. mhjgfvbc n</li>
-                        <li class="text-dark editable" id="editableSix">6. hgfvbcn hj</li>
+                        <li class="text-dark editable" id="editableOne">1. hungbfvnmjkhn</li>
+                        <li class="text-dark editable" id="editableTwo">2. uhygfbvcn hjk</li>
+                        <li class="text-dark editable" id="editableThree">3. bhgv n</li>
+                        <li class="text-dark editable" id="editableFour">4. mhjkunygbfhcv n</li>
+                        <li class="text-dark editable" id="editableFive">5. hjgbhgfvc vn</li>
+                        <li class="text-dark editable" id="editableSix">6. hjgbyfgh vnb</li>
                     </ul>
                 </div>
             </div>
@@ -197,8 +217,8 @@
         </div>
     </div>
     <div>
-        <form id="editForm" action="http://127.0.0.1:8000/update-html/Jur%20Heusschen-1718821018-private.html" method="POST" style="display: none;">
-            <input type="hidden" name="_token" value="FOtDcVBxAc4q9NEFC8Vr5di8LhVX67eKloiCxd67" autocomplete="off">            <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
+        <form id="colorForm" action="http://127.0.0.1:8000/update-html/Jur%20Heusschen-1718880620-private.html" method="POST" style="display: none;">
+            <input type="hidden" name="_token" value="SVYwa7xACxknQr8zNynBik1KEjdhjnPyE9785oQG" autocomplete="off">            <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
             <input type="hidden" name="htmlSubTitle" id="htmlSubTitle" maxlength="18">
             <input type="hidden" name="htmlContent" id="htmlContent" maxlength="130">
             <input type="hidden" name="htmlOne" id="htmlOne" maxlength="20">
@@ -208,8 +228,8 @@
             <input type="hidden" name="htmlFive" id="htmlFive" maxlength="20">
             <input type="hidden" name="htmlSix" id="htmlSix" maxlength="20">
             <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="dynamic-template">
-            <input type="hidden" name="htmlPicture" id="htmlPicture" value="pictures/WmZ4ic1RdaO8N18uyrCzzz1ZVITjsRaErRk0aR9s.jpg">
-            <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl" value="img/portfolios/portfolio-1/Empty/Empty5-1.png">
+            <input type="hidden" name="htmlPicture" id="htmlPicture" value="pictures/OFmZ5Ud30eD7KTJqLGuKtsdJUaSZ0OrgqtCO6tua.jpg">
+            <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl" value="img/portfolios/portfolio-1/Empty/Empty3-1.png">
         </form>
     </div>
 </div>
@@ -284,8 +304,8 @@
 <style>
     :root 
     {
-        --img-location: url("img/portfolios/portfolio-1/Empty/Empty5-1.png");
-        --img-profile: url("storage/pictures/WmZ4ic1RdaO8N18uyrCzzz1ZVITjsRaErRk0aR9s.jpg");
+        --img-location: url("img/portfolios/portfolio-1/Empty/Empty3-1.png");
+        --img-profile: url("storage/pictures/OFmZ5Ud30eD7KTJqLGuKtsdJUaSZ0OrgqtCO6tua.jpg");
     }
 
     #deleteButton 

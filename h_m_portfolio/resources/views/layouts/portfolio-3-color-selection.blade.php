@@ -1,5 +1,5 @@
-<div class="input-container colorSecond divImgCreate" id="portfolio-3-color-selection">
-    <label>Select portfolio color:</label>
+<div class="input-container layoutsSidebar" id="portfolio-3-color-selection">
+    <label class="text-center">Select portfolio color:</label>
     <div class="input-container img-container img-container-six">
         <div class="col-md-6">
             <img src="img/portfolios/portfolio-3/Color/Color1-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty1-3.png">

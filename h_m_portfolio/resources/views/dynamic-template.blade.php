@@ -44,10 +44,8 @@
 <div class="min-h-screen full-height flex-center" id="outer-container">
     @include('layouts.navigation-2')
     <div id="main">
-
-        <button id="sidebar-toggle">Open Sidebar</button>
+        <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
         <div class="sidebar">
-            <!-- Sidebar inhoud -->
             @if ($selected_image_alt === 'dynamic-template')
                 @include('layouts.portfolio-1-color-selection')
             @elseif ($selected_image_alt === 'dynamic-template-2')
@@ -59,51 +57,83 @@
             @endif
         </div>
         <style>
-            .sidebar {
-                width: 250px; /* Breedte van de sidebar */
-                height: 100vh; /* Volledige viewport hoogte */
-                position: fixed; /* Vastzetten aan het scherm */
+            .sidebar 
+            {
+                width: 250px;
+                height: 100vh; 
+                position: fixed; 
                 top: 0;
-                left: -250px; /* Verberg de sidebar buiten het scherm */
-                background-color: #f0f0f0; /* Achtergrondkleur van de sidebar */
-                transition: left 0.3s ease; /* Animatie voor het openen/sluiten */
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optionele schaduw */
+                left: -250px; 
+                background-color: #f0f0f0;
+                transition: left 0.3s ease; 
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             }
 
-            .sidebar.open {
-                left: 0; /* Toon de sidebar door deze naar links te verschuiven */
+            .layoutsSidebar
+            {
+                margin-top: 150px;
             }
-
-            #sidebar-toggle {
-                position: fixed; /* Vastzetten aan het scherm */
-                top: 20px;
+        
+            .sidebar.open 
+            {
+                left: 0; 
+            }
+        
+            #sidebar-toggle 
+            {
+                position: fixed; 
+                top: 85px;
                 left: 20px;
-                z-index: 1000; /* Zorg ervoor dat de knop bovenop de sidebar staat */
-                background-color: #007bff; /* Achtergrondkleur van de knop */
-                color: #fff; /* Tekstkleur van de knop */
-                padding: 10px 20px; /* Padding van de knop */
-                border: none; /* Geen rand om de knop */
-                cursor: pointer; /* Verander de cursor naar een pointer bij hover */
-                border-radius: 5px; /* Optionele afronding van de hoeken */
+                z-index: 1000; 
+                background-color: #007bff; 
+                color: #fff; 
+                padding: 10px 20px; 
+                border: none; 
+                cursor: pointer; 
+                border-radius: 5px; 
+                transition: top 0.3s ease;
+            }
+        
+            #sidebar-toggle.open 
+            {
+                top: 35px; 
+            }
+        
+            .img-container 
+            {
+                display: flex;
+                flex-wrap: wrap;
+            }
+        
+            .img-container .col-md-6 
+            {
+                width: 50%;
+                box-sizing: border-box;
+                padding: 5px;
+            }
+        
+            .img-container .col-md-6:nth-child(2n+1) 
+            {
+                clear: left;
             }
         </style>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 var sidebarToggle = document.getElementById('sidebar-toggle');
+                var sidebarIcon = document.getElementById('sidebar-icon');
                 var sidebar = document.querySelector('.sidebar');
-
+        
                 sidebarToggle.addEventListener('click', function() {
                     sidebar.classList.toggle('open');
+                    sidebarToggle.classList.toggle('open');
                     if (sidebar.classList.contains('open')) {
-                        sidebarToggle.textContent = 'Close Sidebar';
+                        sidebarIcon.classList.replace('fa-bars', 'fa-xmark');
                     } else {
-                        sidebarToggle.textContent = 'Open Sidebar';
+                        sidebarIcon.classList.replace('fa-xmark', 'fa-bars');
                     }
                 });
             });
         </script>
-
-
 
         <div class="container">
             <div class="left-top"></div>
@@ -132,7 +162,7 @@
         </div>
     </div>
     <div>
-        <form id="editForm" action="{{ route('update-html', ['fileName' => $fileName]) }}" method="POST" style="display: none;">
+        <form id="colorForm" action="{{ route('update-html', ['fileName' => $fileName]) }}" method="POST" style="display: none;">
             @csrf
             <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
             <input type="hidden" name="htmlSubTitle" id="htmlSubTitle" maxlength="18">
