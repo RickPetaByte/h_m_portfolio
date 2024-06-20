@@ -46,7 +46,7 @@
     <div id="main">
         <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
         <div class="sidebar">
-            @if ($selected_image_alt === 'dynamic-template')
+            @if ($selected_image_alt === 'dynamic-template-1')
                 @include('layouts.portfolio-1-color-selection')
             @elseif ($selected_image_alt === 'dynamic-template-2')
                 @include('layouts.portfolio-2-color-selection')
@@ -71,9 +71,14 @@
 
             .layoutsSidebar
             {
-                margin-top: 150px;
+                margin-top: 100px;
             }
         
+            .marginBottomSidebar
+            {
+                margin-bottom: -10px;
+            }
+
             .sidebar.open 
             {
                 left: 0; 
@@ -116,6 +121,11 @@
             {
                 clear: left;
             }
+
+            .img-selected 
+            {
+                outline: 2px solid blue; 
+            }
         </style>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -133,8 +143,26 @@
                     }
                 });
             });
-        </script>
 
+            document.addEventListener('DOMContentLoaded', function() {
+                var images = document.querySelectorAll('.img-container img');
+                var selectedLayout = document.getElementById('editableLayoutUrl');
+
+                images.forEach(function(img) {
+                    img.addEventListener('click', function() {
+                        images.forEach(function(image) {
+                            image.classList.remove('img-selected');
+                        });
+
+                        img.classList.add('img-selected');
+                        saveBtn.classList.add('active');
+
+                        var altText = img.getAttribute('alt');
+                        selectedLayout.textContent = altText;
+                    });
+                });
+            });
+        </script>
         <div class="container">
             <div class="left-top"></div>
             <div class="right-top">
@@ -158,11 +186,12 @@
                     </ul>
                 </div>
             </div>
-            <button id="saveBtn" class="btn btn-primary save-btn text-white">Save Edits</button>
+            <h4 id="editableLayoutUrl" style="display: none;">{{ $selected_color_image_alt }}</h4>
+            <button id="saveBtn" class="btn btn-primary save-btn text-white"><i class="fa-solid fa-floppy-disk text-white mr-1"></i>Save Edits</button>
         </div>
     </div>
     <div>
-        <form id="colorForm" action="{{ route('update-html', ['fileName' => $fileName]) }}" method="POST" style="display: none;">
+        <form id="editForm" action="{{ route('update-html', ['fileName' => $fileName]) }}" method="POST" style="display: none;">
             @csrf
             <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
             <input type="hidden" name="htmlSubTitle" id="htmlSubTitle" maxlength="18">
@@ -175,7 +204,7 @@
             <input type="hidden" name="htmlSix" id="htmlSix" maxlength="20">
             <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="{{ $selected_image_alt }}">
             <input type="hidden" name="htmlPicture" id="htmlPicture" value="{{ $picture }}">
-            <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl" value="{{ $selected_color_image_alt }}">
+            <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl">
         </form>
     </div>
 </div>
@@ -190,7 +219,7 @@
             } else if (length < 11) {
                 element.style.fontSize = '30px';
             } else {
-                element.style.fontSize = '24px';
+                element.style.fontSize = '20px';
             }
         });
 
@@ -307,8 +336,8 @@
     .container 
     {
         position: relative;
-        width: calc(126mm * 1.2);
-        height: calc(178.2mm * 1.2);
+        width: calc(126mm * 1.1);
+        height: calc(178.2mm * 1.1);
         max-width: 100vw;
         max-height: 100vh;
         margin-top: 20px;
@@ -443,77 +472,84 @@
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const editableTitle = document.getElementById('editableTitle');
-    const editableSubtitle = document.getElementById('editableSubtitle');
-    const editableText = document.getElementById('editableText');
-    const editableOne = document.getElementById('editableOne');
-    const editableTwo = document.getElementById('editableTwo');
-    const editableThree = document.getElementById('editableThree');
-    const editableFour = document.getElementById('editableFour');
-    const editableFive = document.getElementById('editableFive');
-    const editableSix = document.getElementById('editableSix');
+    document.addEventListener('DOMContentLoaded', () => {
+        const editableTitle = document.getElementById('editableTitle');
+        const editableSubtitle = document.getElementById('editableSubtitle');
+        const editableText = document.getElementById('editableText');
+        const editableOne = document.getElementById('editableOne');
+        const editableTwo = document.getElementById('editableTwo');
+        const editableThree = document.getElementById('editableThree');
+        const editableFour = document.getElementById('editableFour');
+        const editableFive = document.getElementById('editableFive');
+        const editableSix = document.getElementById('editableSix');
+        const editableLayoutUrl = document.getElementById('editableLayoutUrl');
 
-    const saveBtn = document.getElementById('saveBtn');
-    const editForm = document.getElementById('editForm');
+        const saveBtn = document.getElementById('saveBtn');
+        const editForm = document.getElementById('editForm');
 
-    const htmlTitleInput = document.getElementById('htmlTitle');
-    const htmlSubTitleInput = document.getElementById('htmlSubTitle');
-    const htmlContentInput = document.getElementById('htmlContent');
-    const htmlOneInput = document.getElementById('htmlOne');
-    const htmlTwoInput = document.getElementById('htmlTwo');
-    const htmlThreeInput = document.getElementById('htmlThree');
-    const htmlFourInput = document.getElementById('htmlFour');
-    const htmlFiveInput = document.getElementById('htmlFive');
-    const htmlSixInput = document.getElementById('htmlSix');
+        const htmlTitleInput = document.getElementById('htmlTitle');
+        const htmlSubTitleInput = document.getElementById('htmlSubTitle');
+        const htmlContentInput = document.getElementById('htmlContent');
+        const htmlOneInput = document.getElementById('htmlOne');
+        const htmlTwoInput = document.getElementById('htmlTwo');
+        const htmlThreeInput = document.getElementById('htmlThree');
+        const htmlFourInput = document.getElementById('htmlFour');
+        const htmlFiveInput = document.getElementById('htmlFive');
+        const htmlSixInput = document.getElementById('htmlSix');
+        const htmlLayoutUrlInput = document.getElementById('htmlLayoutUrl');
 
-    function enableEditing(element) {
-        element.contentEditable = true;
-        element.classList.add('editing');
-        saveBtn.classList.add('active');
-        element.focus();
-    }
+        function enableEditing(element) {
+            element.contentEditable = true;
+            element.classList.add('editing');
+            saveBtn.classList.add('active');
+            element.focus();
+        }
 
-    function disableEditing(element) {
-        element.contentEditable = false;
-        element.classList.remove('editing');
-    }
+        function disableEditing(element) {
+            element.contentEditable = false;
+            element.classList.remove('editing');
+        }
 
-    editableTitle.addEventListener('dblclick', () => enableEditing(editableTitle));
-    editableSubtitle.addEventListener('dblclick', () => enableEditing(editableSubtitle));
-    editableText.addEventListener('dblclick', () => enableEditing(editableText));
-    editableOne.addEventListener('dblclick', () => enableEditing(editableOne));
-    editableTwo.addEventListener('dblclick', () => enableEditing(editableTwo));
-    editableThree.addEventListener('dblclick', () => enableEditing(editableThree));
-    editableFour.addEventListener('dblclick', () => enableEditing(editableFour));
-    editableFive.addEventListener('dblclick', () => enableEditing(editableFive));
-    editableSix.addEventListener('dblclick', () => enableEditing(editableSix));
+        editableTitle.addEventListener('dblclick', () => enableEditing(editableTitle));
+        editableSubtitle.addEventListener('dblclick', () => enableEditing(editableSubtitle));
+        editableText.addEventListener('dblclick', () => enableEditing(editableText));
+        editableOne.addEventListener('dblclick', () => enableEditing(editableOne));
+        editableTwo.addEventListener('dblclick', () => enableEditing(editableTwo));
+        editableThree.addEventListener('dblclick', () => enableEditing(editableThree));
+        editableFour.addEventListener('dblclick', () => enableEditing(editableFour));
+        editableFive.addEventListener('dblclick', () => enableEditing(editableFive));
+        editableSix.addEventListener('dblclick', () => enableEditing(editableSix));
+        
+        editableLayoutUrl.addEventListener('dblclick', () => enableEditing(editableLayoutUrl));
 
-    saveBtn.addEventListener('click', () => {
-        event.preventDefault();
-        disableEditing(editableTitle);
-        disableEditing(editableSubtitle);
-        disableEditing(editableText);
-        disableEditing(editableOne);
-        disableEditing(editableTwo);
-        disableEditing(editableThree);
-        disableEditing(editableFour);
-        disableEditing(editableFive);
-        disableEditing(editableSix);
+        saveBtn.addEventListener('click', () => {
+            event.preventDefault();
+            disableEditing(editableTitle);
+            disableEditing(editableSubtitle);
+            disableEditing(editableText);
+            disableEditing(editableOne);
+            disableEditing(editableTwo);
+            disableEditing(editableThree);
+            disableEditing(editableFour);
+            disableEditing(editableFive);
+            disableEditing(editableSix);
+            
+            disableEditing(editableLayoutUrl);
 
-        saveBtn.classList.remove('active');
+            saveBtn.classList.remove('active');
 
-        htmlTitleInput.value = editableTitle.innerText.trim();
-        htmlSubTitleInput.value = editableSubtitle.innerText.trim();
-        htmlContentInput.value = editableText.innerText.trim();
-        htmlOneInput.value = editableOne.innerText.trim().slice(3).trim();
-        htmlTwoInput.value = editableTwo.innerText.trim().slice(3).trim();
-        htmlThreeInput.value = editableThree.innerText.trim().slice(3).trim();
-        htmlFourInput.value = editableFour.innerText.trim().slice(3).trim();
-        htmlFiveInput.value = editableFive.innerText.trim().slice(3).trim();
-        htmlSixInput.value = editableSix.innerText.trim().slice(3).trim();
+            htmlTitleInput.value = editableTitle.innerText.trim();
+            htmlSubTitleInput.value = editableSubtitle.innerText.trim();
+            htmlContentInput.value = editableText.innerText.trim();
+            htmlOneInput.value = editableOne.innerText.trim().slice(3).trim();
+            htmlTwoInput.value = editableTwo.innerText.trim().slice(3).trim();
+            htmlThreeInput.value = editableThree.innerText.trim().slice(3).trim();
+            htmlFourInput.value = editableFour.innerText.trim().slice(3).trim();
+            htmlFiveInput.value = editableFive.innerText.trim().slice(3).trim();
+            htmlSixInput.value = editableSix.innerText.trim().slice(3).trim();
+            htmlLayoutUrlInput.value = editableLayoutUrl.innerText.trim();
 
-        editForm.submit();
+            editForm.submit();
+        });
     });
-});
 </script>

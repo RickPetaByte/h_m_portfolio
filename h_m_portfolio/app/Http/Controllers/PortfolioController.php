@@ -38,6 +38,8 @@ class PortfolioController extends Controller
         $newFour = $request->input('htmlFour');
         $newFive = $request->input('htmlFive');
         $newSix = $request->input('htmlSix');
+
+        $newLayoutUrl = $request->input('htmlLayoutUrl');
     
         $user = Auth::user();
         $name = $user->name; 
@@ -57,7 +59,7 @@ class PortfolioController extends Controller
                 'six' => $newSix,
                 'selected_image_alt' => $request->input('htmlTemplate'),
                 'picture' => $request->input('htmlPicture'),
-                'selected_color_image_alt' => $request->input('htmlLayoutUrl'),
+                'selected_color_image_alt' => $newLayoutUrl,
                 'fileName' => $fileName,
                 'name' => $name,
             ])->render();
@@ -76,6 +78,7 @@ class PortfolioController extends Controller
                     'four' => $newFour,
                     'five' => $newFive,
                     'six' => $newSix,
+                    'selected_color_image_alt' => $newLayoutUrl,
                 ]);
             } else {
                 UserText::create([
@@ -89,6 +92,7 @@ class PortfolioController extends Controller
                     'four' => $newFour,
                     'five' => $newFive,
                     'six' => $newSix,
+                    'selected_color_image_alt' => $newLayoutUrl,
                 ]);
             }
     
@@ -98,7 +102,7 @@ class PortfolioController extends Controller
         }
     }
     
-    public function generateHtml($title, $subtitle, $text, $one, $two, $three, $four, $five, $six)
+    public function generateHtml($title, $subtitle, $text, $one, $two, $three, $four, $five, $six, $selected_color_image_alt)
     {
         if (!Auth::check()) {
             return redirect()->route('login');
@@ -120,6 +124,7 @@ class PortfolioController extends Controller
             'four' => $four,
             'five' => $five,
             'six' => $six,
+            'selected_color_image_alt' => $selected_color_image_alt,
             'fileName' => $fileName,
             'name' => $name, 
         ];
@@ -138,6 +143,7 @@ class PortfolioController extends Controller
             'four' => $four,
             'five' => $five,
             'six' => $six,
+            'selected_color_image_alt' => $selected_color_image_alt,
         ]);
     
         return redirect($fileName)->with('success', 'HTML file generated successfully.');

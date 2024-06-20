@@ -85,7 +85,7 @@ document.querySelectorAll('.login-btn, .register-btn').forEach(function(button) 
 document.addEventListener('DOMContentLoaded', function () {
     const layoutImages = document.querySelectorAll('.img-container-four .imageCreate');
     const colorSections = {
-        'dynamic-template': document.getElementById('portfolio-1-color-selection'),
+        'dynamic-template-1': document.getElementById('portfolio-1-color-selection'),
         'dynamic-template-2': document.getElementById('portfolio-2-color-selection'),
         'dynamic-template-3': document.getElementById('portfolio-3-color-selection'),
         'dynamic-template-4': document.getElementById('portfolio-4-color-selection')
