@@ -25,7 +25,6 @@ class HtmlController extends Controller
                 
                 $cleanedContent = $this->removeScriptTags($content);
                 $cleanedContent = $this->removeNavTag($cleanedContent);
-                $cleanedContent = $this->removeDeleteButton($cleanedContent);
                 $cleanedContent = $this->removeSidebarElements($cleanedContent);
                 
                 $cleanedFiles[$fileName] = $cleanedContent;
@@ -51,11 +50,6 @@ class HtmlController extends Controller
     private function removeNavTag($content)
     {
         return preg_replace('/<nav\b[^>]*>[\s\S]*?<\/nav>/i', '', $content);
-    }
-    
-    private function removeDeleteButton($content)
-    {
-        return preg_replace('/<button\b[^>]* id="deleteButton"[^>]*>[\s\S]*?<\/button>/i', '', $content);
     }
 
     private function removeSidebarElements($content)

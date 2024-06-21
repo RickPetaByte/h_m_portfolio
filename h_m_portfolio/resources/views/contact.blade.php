@@ -24,6 +24,12 @@
         <div class="min-h-screen">
             @include('layouts.navigation')
 
+            @if (session()->has('success'))
+                <div class="alert alert-success text-center mt-3 mb-2 alertSuccess" role="alert">
+                    <h4 class="fw-bold">Succes!</h4><p>{{ session('success') }}</p>
+                </div>
+            @endif
+
             @include('layouts.contact-content')
         </div>
         @include('layouts.footer')

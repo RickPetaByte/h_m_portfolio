@@ -2,12 +2,7 @@
     <h1 class="display-4 font-weight-bold text-uppercase mb-3">Contact</h1>
 </div>
 
-<div class="container"> <!--- containerCreate ---> 
-    @if (session()->has('success'))
-        <div class="alert alert-success text-center mt-3 mb-2 alertSuccess" role="alert">
-            <h4 class="fw-bold">Succes!</h4><p>{{ session('success') }}</p>
-        </div>
-    @endif
+<div class="container">
     <div class="row gx-5 d-flex">
         <div class="col-xxl-1"></div>
         <div class="col-xxl-5">
@@ -33,7 +28,7 @@
                     @error('message')
                         <p class="marginErrorsMessages">Message has to be at least 5 characters!</p>
                     @enderror
-                </div> <!-- This closes the .input-container div -->
+                </div>
     
                 <div class="text-center mt-3 mb-sm-6 mb-4">
                     <button type="submit" class="btn btn-primary btnCreatePortfolio text-white"><i class="fa-solid fa-pen-to-square text-white mr-2"></i>Send</button>
@@ -100,6 +95,5 @@
             </div>
         </div>
         <div class="col-xxl-1"></div>
-    </div>    
-    
+    </div>
 </div>

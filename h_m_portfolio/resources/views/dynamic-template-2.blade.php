@@ -44,7 +44,7 @@
 <div class="min-h-screen full-height flex-center" id="outer-container">
     @include('layouts.navigation-2')
     <div id="main">
-        <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
+    <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
         <div class="sidebar">
             @if ($selected_image_alt === 'dynamic-template-1')
                 @include('layouts.portfolio-1-color-selection')
@@ -55,76 +55,87 @@
             @elseif ($selected_image_alt === 'dynamic-template-4')
                 @include('layouts.portfolio-4-color-selection')
             @endif
+
+            <div class="privacy-section">
+                <label for="privacy" class="text-center privateLabel">Private:</label>
+                <div>
+                    <input type="radio" id="yes" name="privacy" value="1" class="btnYes">
+                    <label for="yes">Yes</label>
+                    <input type="radio" id="no" name="privacy" value="0" class="btnYes">
+                    <label for="no">No</label>
+                </div>
+            </div>
         </div>
         <style>
-            .sidebar 
-            {
+            .sidebar {
                 width: 250px;
-                height: 100vh; 
-                position: fixed; 
+                height: 100vh;
+                position: fixed;
                 top: 0;
-                left: -250px; 
+                left: -250px;
                 background-color: #f0f0f0;
-                transition: left 0.3s ease; 
+                transition: left 0.3s ease;
                 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             }
 
-            .layoutsSidebar
-            {
+            .btnYes {
+                margin-left: 50px;
+            }
+
+            .privateLabel {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
+                margin-top: -5px;
+            }
+
+            .layoutsSidebar {
                 margin-top: 100px;
             }
-        
-            .marginBottomSidebar
-            {
+
+            .marginBottomSidebar {
                 margin-bottom: -10px;
             }
 
-            .sidebar.open 
-            {
-                left: 0; 
+            .sidebar.open {
+                left: 0;
             }
-        
-            #sidebar-toggle 
-            {
-                position: fixed; 
+
+            #sidebar-toggle {
+                position: fixed;
                 top: 85px;
                 left: 20px;
-                z-index: 1000; 
-                background-color: #007bff; 
-                color: #fff; 
-                padding: 10px 20px; 
-                border: none; 
-                cursor: pointer; 
-                border-radius: 5px; 
+                z-index: 1000;
+                background-color: #007bff;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
                 transition: top 0.3s ease;
             }
-        
-            #sidebar-toggle.open 
-            {
-                top: 35px; 
+
+            #sidebar-toggle.open {
+                top: 35px;
             }
-        
-            .img-container 
-            {
+
+            .img-container {
                 display: flex;
                 flex-wrap: wrap;
             }
-        
-            .img-container .col-md-6 
-            {
+
+            .img-container .col-md-6 {
                 width: 50%;
                 box-sizing: border-box;
                 padding: 5px;
             }
-        
-            .img-container .col-md-6:nth-child(2n+1) 
-            {
+
+            .img-container .col-md-6:nth-child(2n+1) {
                 clear: left;
             }
 
-            .img-selected 
-            {
-                outline: 2px solid blue; 
+            .img-selected {
+                outline: 2px solid blue;
             }
         </style>
         <script>
@@ -132,7 +143,7 @@
                 var sidebarToggle = document.getElementById('sidebar-toggle');
                 var sidebarIcon = document.getElementById('sidebar-icon');
                 var sidebar = document.querySelector('.sidebar');
-        
+
                 sidebarToggle.addEventListener('click', function() {
                     sidebar.classList.toggle('open');
                     sidebarToggle.classList.toggle('open');
@@ -142,9 +153,7 @@
                         sidebarIcon.classList.replace('fa-xmark', 'fa-bars');
                     }
                 });
-            });
 
-            document.addEventListener('DOMContentLoaded', function() {
                 var images = document.querySelectorAll('.img-container img');
                 var selectedLayout = document.getElementById('editableLayoutUrl');
 
@@ -159,6 +168,22 @@
 
                         var altText = img.getAttribute('alt');
                         selectedLayout.textContent = altText;
+                    });
+                });
+
+                var radioButtons = document.querySelectorAll('input[name="privacy"]');
+                var privacyValue = document.getElementById('privacyValue');
+                var privateValue = "{{ $private }}"; // Voeg deze regel toe om de waarde van $private te krijgen
+
+                // Selecteer de juiste radiobutton op basis van de waarde van privateValue
+                radioButtons.forEach(function(radio) {
+                    if (radio.value == privateValue) {
+                        radio.checked = true;
+                    }
+
+                    radio.addEventListener('change', function() {
+                        privacyValue.textContent = this.value;
+                        saveBtn.classList.add('active');
                     });
                 });
             });
@@ -192,6 +217,7 @@
                 <p class="text-white aboutPortfolio" id="editableText">{{ $text }}</p>
             </div>
             <h4 id="editableLayoutUrl" style="display: none;">{{ $selected_color_image_alt }}</h4>
+            <h1 id="privacyValue" style="display: none;">{{ $private }}</h1>
             <button id="saveBtn" class="btn btn-primary save-btn text-white"><i class="fa-solid fa-floppy-disk text-white mr-1"></i>Save Edits</button>
         </div>
     </div>
@@ -210,6 +236,7 @@
             <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="{{ $selected_image_alt }}">
             <input type="hidden" name="htmlPicture" id="htmlPicture" value="{{ $picture }}">
             <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl">
+            <input type="hidden" name="htmlPrivacyValue" id="htmlPrivacyValue">
         </form>
     </div>
 </div>
@@ -495,6 +522,8 @@
         const editableSix = document.getElementById('editableSix');
         const editableLayoutUrl = document.getElementById('editableLayoutUrl');
 
+        const privacyValue = document.getElementById('privacyValue');
+
         const saveBtn = document.getElementById('saveBtn');
         const editForm = document.getElementById('editForm');
 
@@ -508,6 +537,8 @@
         const htmlFiveInput = document.getElementById('htmlFive');
         const htmlSixInput = document.getElementById('htmlSix');
         const htmlLayoutUrlInput = document.getElementById('htmlLayoutUrl');
+
+        const htmlPrivacyValue = document.getElementById('htmlPrivacyValue');
 
         function enableEditing(element) {
             element.contentEditable = true;
@@ -530,8 +561,9 @@
         editableFour.addEventListener('dblclick', () => enableEditing(editableFour));
         editableFive.addEventListener('dblclick', () => enableEditing(editableFive));
         editableSix.addEventListener('dblclick', () => enableEditing(editableSix));
-        
         editableLayoutUrl.addEventListener('dblclick', () => enableEditing(editableLayoutUrl));
+
+        privacyValue.addEventListener('dblclick', () => enableEditing(privacyValue));
 
         saveBtn.addEventListener('click', () => {
             event.preventDefault();
@@ -544,8 +576,9 @@
             disableEditing(editableFour);
             disableEditing(editableFive);
             disableEditing(editableSix);
-            
             disableEditing(editableLayoutUrl);
+
+            disableEditing(privacyValue);
 
             saveBtn.classList.remove('active');
 
@@ -559,6 +592,8 @@
             htmlFiveInput.value = editableFive.innerText.trim().slice(3).trim();
             htmlSixInput.value = editableSix.innerText.trim().slice(3).trim();
             htmlLayoutUrlInput.value = editableLayoutUrl.innerText.trim();
+
+            htmlPrivacyValue.value = privacyValue.innerText.trim();
 
             editForm.submit();
         });

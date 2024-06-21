@@ -26,8 +26,9 @@ class PortfolioController extends Controller
             'htmlTemplate' => 'required|string',
             'htmlPicture' => 'required|string',
             'htmlLayoutUrl' => 'required|string',
+            'htmlPrivacyValue' => 'required|string',
         ]);
-    
+
         $filePath = public_path($fileName);
         $newTitle = $request->input('htmlTitle');
         $newSubTitle = $request->input('htmlSubTitle');
@@ -38,14 +39,34 @@ class PortfolioController extends Controller
         $newFour = $request->input('htmlFour');
         $newFive = $request->input('htmlFive');
         $newSix = $request->input('htmlSix');
-
         $newLayoutUrl = $request->input('htmlLayoutUrl');
-    
+        $newPrivacyValue = $request->input('htmlPrivacyValue');
+
         $user = Auth::user();
-        $name = $user->name; 
-    
-        $templateFile = $request->input('htmlTemplate'); 
-    
+        $name = $user->name;
+
+        // Determine new file name
+        $fileNameParts = pathinfo($fileName);
+        $fileBaseName = $fileNameParts['filename'];
+        $fileExtension = $fileNameParts['extension'];
+
+        $newFileName = $fileBaseName;
+        if (str_ends_with($fileBaseName, '-public')) {
+            $newFileName = str_replace('-public', '', $fileBaseName);
+        } elseif (str_ends_with($fileBaseName, '-private')) {
+            $newFileName = str_replace('-private', '', $fileBaseName);
+        }
+
+        if ($newPrivacyValue == "0") {
+            $newFileName .= '-public.' . $fileExtension;
+        } else {
+            $newFileName .= '-private.' . $fileExtension;
+        }
+
+        $newFilePath = public_path($newFileName);
+
+        // Check if the template view exists
+        $templateFile = $request->input('htmlTemplate');
         if (view()->exists($templateFile)) {
             $html = View::make($templateFile, [
                 'title' => $newTitle,
@@ -60,12 +81,16 @@ class PortfolioController extends Controller
                 'selected_image_alt' => $request->input('htmlTemplate'),
                 'picture' => $request->input('htmlPicture'),
                 'selected_color_image_alt' => $newLayoutUrl,
-                'fileName' => $fileName,
+                'private' => $newPrivacyValue,
+                'fileName' => $newFileName,
                 'name' => $name,
             ])->render();
-    
-            File::put($filePath, $html);
-    
+
+            File::put($newFilePath, $html);
+            if ($filePath !== $newFilePath) {
+                File::delete($filePath);
+            }
+
             $userText = UserText::where('user_id', Auth::id())->first();
             if ($userText) {
                 $userText->update([
@@ -79,6 +104,8 @@ class PortfolioController extends Controller
                     'five' => $newFive,
                     'six' => $newSix,
                     'selected_color_image_alt' => $newLayoutUrl,
+                    'private' => $newPrivacyValue,
+                    'file_name' => $newFileName,
                 ]);
             } else {
                 UserText::create([
@@ -93,16 +120,18 @@ class PortfolioController extends Controller
                     'five' => $newFive,
                     'six' => $newSix,
                     'selected_color_image_alt' => $newLayoutUrl,
+                    'private' => $newPrivacyValue,
+                    'file_name' => $newFileName,
                 ]);
             }
-    
-            return redirect('/' . $fileName)->with('success', 'HTML file and database updated successfully.');
+
+            return redirect('/' . $newFileName)->with('success', 'HTML file and database updated successfully.');
         } else {
             return back()->withInput()->withErrors(['htmlTemplate' => 'Template file not found.']);
         }
     }
     
-    public function generateHtml($title, $subtitle, $text, $one, $two, $three, $four, $five, $six, $selected_color_image_alt)
+    public function generateHtml($title, $subtitle, $text, $one, $two, $three, $four, $five, $six, $selected_color_image_alt, $private)
     {
         if (!Auth::check()) {
             return redirect()->route('login');
@@ -125,6 +154,9 @@ class PortfolioController extends Controller
             'five' => $five,
             'six' => $six,
             'selected_color_image_alt' => $selected_color_image_alt,
+
+            'private' => $private,
+
             'fileName' => $fileName,
             'name' => $name, 
         ];
@@ -144,6 +176,8 @@ class PortfolioController extends Controller
             'five' => $five,
             'six' => $six,
             'selected_color_image_alt' => $selected_color_image_alt,
+
+            'private' => $private,
         ]);
     
         return redirect($fileName)->with('success', 'HTML file generated successfully.');
@@ -162,27 +196,26 @@ class PortfolioController extends Controller
         $request->validate([
             'file_name' => 'required|string',
         ]);
-    
+
         $fileName = $request->input('file_name');
         $filePath = public_path($fileName);
-    
+
         if (File::exists($filePath)) {
-            File::delete($filePath);
-    
-            $fileNameParts = pathinfo($fileName);
-            $fileBaseName = $fileNameParts['filename'];
-    
-            $userText = UserText::where('user_id', Auth::id())
-                                ->where('title', $fileBaseName)
-                                ->first();
-    
-            if ($userText) {
-                $userText->delete();
+            try {
+                File::delete($filePath);
+
+                // Optionally, update the database if you have a record of the file
+                $userText = UserText::where('user_id', Auth::id())->where('fileName', $fileName)->first();
+                if ($userText) {
+                    $userText->delete();
+                }
+
+                return redirect('/dashboard')->with('message', 'Bestand succesvol verwijderd');
+            } catch (\Exception $e) {
+                return redirect('/dashboard')->with('error', 'Er is een fout opgetreden bij het verwijderen van het bestand');
             }
-    
-            return redirect('/dashboard')->with('message', 'Deleted successfully!');
         } else {
-            return back()->withErrors(['message' => 'File not found.']);
+            return redirect('/dashboard')->with('error', 'Bestand niet gevonden');
         }
     }
 }
