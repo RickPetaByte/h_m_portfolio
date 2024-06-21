@@ -57,7 +57,15 @@
             @endif
 
             <div class="privacy-section">
-                <label for="privacy" class="text-center privateLabel">Private:</label>
+                <label for="privacy" class="text-center imageEditLabel">Select new image:</label>
+                <div class="image-container">
+                    <img id="display-image" src="img/Standaard.png" alt="Standard Image">
+                </div>
+            </div>
+            <input type="file" id="image-input" style="display: none;" accept="image/*">
+
+            <div class="privacy-section">
+                <label for="privacy" class="text-center privateLabel">Display for everyone:</label>
                 <div>
                     <input type="radio" id="yes" name="privacy" value="1" class="btnYes">
                     <label for="yes">Yes</label>
@@ -86,11 +94,33 @@
                 display: block;
                 font-weight: bold;
                 margin-bottom: 5px;
+                margin-top: 5px;
+            }
+
+            .imageEditLabel
+            {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
                 margin-top: -5px;
             }
 
+            .image-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+            .image-container img {
+                width: 120px;
+                height: 120px;
+                border: 2px solid black;
+                border-radius: 5px;
+            }
+
             .layoutsSidebar {
-                margin-top: 100px;
+                margin-top: 75px;
             }
 
             .marginBottomSidebar {
@@ -116,7 +146,7 @@
             }
 
             #sidebar-toggle.open {
-                top: 35px;
+                top: 15px;
             }
 
             .img-container {
@@ -173,7 +203,7 @@
 
                 var radioButtons = document.querySelectorAll('input[name="privacy"]');
                 var privacyValue = document.getElementById('privacyValue');
-                var privateValue = "{{ $private }}"; // Voeg deze regel toe om de waarde van $private te krijgen
+                var privateValue = "{{ $private }}"; 
 
                 // Selecteer de juiste radiobutton op basis van de waarde van privateValue
                 radioButtons.forEach(function(radio) {
@@ -186,6 +216,22 @@
                         saveBtn.classList.add('active');
                     });
                 });
+            });
+
+            // Image selector
+            document.getElementById('display-image').addEventListener('click', function() {
+                document.getElementById('image-input').click();
+            });
+
+            document.getElementById('image-input').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('display-image').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
             });
         </script>
         <div class="container">

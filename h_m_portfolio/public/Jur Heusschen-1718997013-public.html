@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="pX3jdoK0FWPpxjjCKzNF9Y9oqYRwfAGeJXZVQI27">
+    <meta name="csrf-token" content="fW58614Ks8Y2W72k0F8sUwmr0iYwCw8HYYDM7xY4">
 
     <title>H:M | Portfolio's</title>
 
@@ -62,7 +62,7 @@
             </div>
 
             <form action="http://127.0.0.1:8000/delete-portfolio" method="POST" onsubmit="return confirm('Are you sure you want to delete the portfolio?');">
-                <input type="hidden" name="_token" value="pX3jdoK0FWPpxjjCKzNF9Y9oqYRwfAGeJXZVQI27" autocomplete="off">                <input type="hidden" name="file_name" value="Jur Heusschen-1718964225-private.html">
+                <input type="hidden" name="_token" value="fW58614Ks8Y2W72k0F8sUwmr0iYwCw8HYYDM7xY4" autocomplete="off">                <input type="hidden" name="file_name" value="Jur Heusschen-1718997013-public.html">
                 <button type="submit" class="btn btn-danger text-white fw-bold" id="deleteButton">
                     <i class="fa fa-trash text-white mr-2"></i>Delete Portfolio
                 </button>
@@ -86,33 +86,41 @@
         </div>
     </div>
 </nav>    <div id="main">
-    <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
+        <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
         <div class="sidebar">
-                            <div class="input-container layoutsSidebar" id="portfolio-2-color-selection">
+                            <div class="input-container layoutsSidebar" id="portfolio-1-color-selection">
     <label class="text-center">Select portfolio color:</label>
     <div class="input-container img-container img-container-six">
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-2/Color/Color1-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty1-2.png">
+            <img src="img/portfolios/portfolio-1/Color/Color1-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty1-1.png">
         </div>
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-2/Color/Color2-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty2-2.png">
+            <img src="img/portfolios/portfolio-1/Color/Color2-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty2-1.png">
         </div>
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-2/Color/Color3-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty3-2.png">
+            <img src="img/portfolios/portfolio-1/Color/Color3-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty3-1.png">
         </div>
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-2/Color/Color4-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty4-2.png">
+            <img src="img/portfolios/portfolio-1/Color/Color4-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty4-1.png">
         </div>
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-2/Color/Color5-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty5-2.png">
+            <img src="img/portfolios/portfolio-1/Color/Color5-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty5-1.png">
         </div>
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-2/Color/Color6-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty6-2.png">
+            <img src="img/portfolios/portfolio-1/Color/Color6-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty6-1.png">
         </div>
     </div>
 </div>            
             <div class="privacy-section">
-                <label for="privacy" class="text-center privateLabel">Private:</label>
+                <label for="privacy" class="text-center imageEditLabel">Select new image:</label>
+                <div class="image-container">
+                    <img id="display-image" src="img/Standaard.png" alt="Standard Image">
+                </div>
+            </div>
+            <input type="file" id="image-input" style="display: none;" accept="image/*">
+
+            <div class="privacy-section">
+                <label for="privacy" class="text-center privateLabel">Display for everyone:</label>
                 <div>
                     <input type="radio" id="yes" name="privacy" value="1" class="btnYes">
                     <label for="yes">Yes</label>
@@ -141,11 +149,33 @@
                 display: block;
                 font-weight: bold;
                 margin-bottom: 5px;
+                margin-top: 5px;
+            }
+
+            .imageEditLabel
+            {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
                 margin-top: -5px;
             }
 
+            .image-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+            .image-container img {
+                width: 120px;
+                height: 120px;
+                border: 2px solid black;
+                border-radius: 5px;
+            }
+
             .layoutsSidebar {
-                margin-top: 100px;
+                margin-top: 75px;
             }
 
             .marginBottomSidebar {
@@ -171,7 +201,7 @@
             }
 
             #sidebar-toggle.open {
-                top: 35px;
+                top: 15px;
             }
 
             .img-container {
@@ -228,7 +258,7 @@
 
                 var radioButtons = document.querySelectorAll('input[name="privacy"]');
                 var privacyValue = document.getElementById('privacyValue');
-                var privateValue = "1"; // Voeg deze regel toe om de waarde van $private te krijgen
+                var privateValue = "0"; 
 
                 // Selecteer de juiste radiobutton op basis van de waarde van privateValue
                 radioButtons.forEach(function(radio) {
@@ -242,43 +272,54 @@
                     });
                 });
             });
+
+            // Image selector
+            document.getElementById('display-image').addEventListener('click', function() {
+                document.getElementById('image-input').click();
+            });
+
+            document.getElementById('image-input').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('display-image').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
         </script>
         <div class="container">
-            <div class="left-top">
-                <h2 class="text-white" id="editableTitle">AWDAWDWAD JYBGFB</h2>
-                <h3 class="text-white" id="editableSubtitle">HGNJUHYGBFNV</h3>
-            </div>
+            <div class="left-top"></div>
             <div class="right-top">
-                <div class="imgPortfolio"></div>
+                <h2 class="text-white" id="editableTitle">WWWW</h2>
+                <h3 class="text-white" id="editableSubtitle">HHGBCHV</h3>
             </div>
             <div class="left-bottom">
-                <h4 class="text-white">Specialties</h4>
-                <div class="columns" style="width: 375px;">
-                    <ul>
-                        <li class="text-white editable" id="editableOne">1. hgjgfbcv</li>
-                        <li class="text-white editable" id="editableTwo">2. nghfcf</li>
-                        <li class="text-white editable" id="editableThree">3. hngfv</li>
-                    </ul>
-                    <ul>
-                        <li class="text-white editable" id="editableFour">4. cbhtfvc</li>
-                        <li class="text-white editable" id="editableFive">5. bhygtfgv</li>
-                        <li class="text-white editable" id="editableSix">6. cbhnytfbg</li>
-                    </ul>
-                </div>
+                <p class="text-white aboutPortfolio" id="editableText">vnhbgfc vnhgbfcv nhgbv cvgc</p>
                 <h5 class="text-white" id="fixedName">Jur Heusschen</h5>
             </div>
-            <div class="right-bottom"></div>
-            <div class="absolute-container">
-                <p class="text-white aboutPortfolio" id="editableText">vnjyuhtgfvnjyuhtbgfcvhnjyhgfbcv nghjhgbfvc nghjbw wadwadw</p>
+            <div class="right-bottom">
+                <h4 class="text-dark">Specialties</h4>
+                <div class="columns">
+                    <ul>
+                        <li class="text-dark editable" id="editableOne">1. nfyfbdvc</li>
+                        <li class="text-dark editable" id="editableTwo">2. hcfv</li>
+                        <li class="text-dark editable" id="editableThree">3. nhgfvc</li>
+                        <li class="text-dark editable" id="editableFour">4. ghfvc</li>
+                        <li class="text-dark editable" id="editableFive">5. ghnf cv</li>
+                        <li class="text-dark editable" id="editableSix">6. nghfc</li>
+                    </ul>
+                </div>
             </div>
-            <h4 id="editableLayoutUrl" style="display: none;">img/portfolios/portfolio-2/Empty/Empty4-2.png</h4>
-            <h1 id="privacyValue" style="display: none;">1</h1>
+            <h4 id="editableLayoutUrl" style="display: none;">img/portfolios/portfolio-1/Empty/Empty4-1.png</h4>
+            <h1 id="privacyValue" style="display: none;">0</h1>
             <button id="saveBtn" class="btn btn-primary save-btn text-white"><i class="fa-solid fa-floppy-disk text-white mr-1"></i>Save Edits</button>
         </div>
     </div>
     <div>
-        <form id="editForm" action="http://127.0.0.1:8000/update-html/Jur%20Heusschen-1718964225-private.html" method="POST" style="display: none;">
-            <input type="hidden" name="_token" value="pX3jdoK0FWPpxjjCKzNF9Y9oqYRwfAGeJXZVQI27" autocomplete="off">            <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
+        <form id="editForm" action="http://127.0.0.1:8000/update-html/Jur%20Heusschen-1718997013-public.html" method="POST" style="display: none;">
+            <input type="hidden" name="_token" value="fW58614Ks8Y2W72k0F8sUwmr0iYwCw8HYYDM7xY4" autocomplete="off">            <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
             <input type="hidden" name="htmlSubTitle" id="htmlSubTitle" maxlength="18">
             <input type="hidden" name="htmlContent" id="htmlContent" maxlength="130">
             <input type="hidden" name="htmlOne" id="htmlOne" maxlength="20">
@@ -287,8 +328,8 @@
             <input type="hidden" name="htmlFour" id="htmlFour" maxlength="20">
             <input type="hidden" name="htmlFive" id="htmlFive" maxlength="20">
             <input type="hidden" name="htmlSix" id="htmlSix" maxlength="20">
-            <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="dynamic-template-2">
-            <input type="hidden" name="htmlPicture" id="htmlPicture" value="pictures/dKkoEAkKcx2zILR8iEz9mEUbKR5zoZybRl92wy7Z.jpg">
+            <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="dynamic-template-1">
+            <input type="hidden" name="htmlPicture" id="htmlPicture" value="pictures/gBGXJOVekVKA2b4doHk2OCCNWRico347n5cIVxFS.jpg">
             <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl">
             <input type="hidden" name="htmlPrivacyValue" id="htmlPrivacyValue">
         </form>
@@ -301,11 +342,11 @@
         document.querySelectorAll('h2').forEach(element => {
             const length = element.textContent.length;
             if (length < 6) {
-                element.style.fontSize = '50px';
-            } else if (length < 11) {
                 element.style.fontSize = '40px';
+            } else if (length < 11) {
+                element.style.fontSize = '30px';
             } else {
-                element.style.fontSize = '26px';
+                element.style.fontSize = '20px';
             }
         });
 
@@ -365,8 +406,8 @@
 <style>
     :root 
     {
-        --img-location: url("img/portfolios/portfolio-2/Empty/Empty4-2.png");
-        --img-profile: url("storage/pictures/dKkoEAkKcx2zILR8iEz9mEUbKR5zoZybRl92wy7Z.jpg");
+        --img-location: url("img/portfolios/portfolio-1/Empty/Empty4-1.png");
+        --img-profile: url("storage/pictures/gBGXJOVekVKA2b4doHk2OCCNWRico347n5cIVxFS.jpg");
     }
 
     #deleteButton 
@@ -396,6 +437,7 @@
     {
         border: 1px dashed #ccc;
     }
+    
     .editing 
     {
         border: 1px solid #000;
@@ -446,21 +488,17 @@
         background-size: 200% 200%;
     }
 
-    .left-top h2 
+    .left-top::before 
     {
-        margin: 40px 0px 0px 30px;
-        max-width: 250px;
-        word-wrap: break-word;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-
-    .left-top h3 
-    {
-        margin: 0px 0px 10px 30px;
-        max-width: 250px;
-        word-wrap: break-word;
-        text-transform: uppercase;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 110%;
+        background: var(--img-profile) no-repeat center center;
+        background-size: cover;
+        z-index: -1 !important;
     }
 
     .right-top 
@@ -469,20 +507,25 @@
         right: 0;
         background: var(--img-location) right top;
         background-size: 200% 200%;
-        z-index: 100;
+        z-index: 1;
         color: white;
     }
 
-    .imgPortfolio 
+    .right-top h2 
     {
-        width: 215px !important;
-        height: 215px !important;
-        background: var(--img-profile) no-repeat center center;
-        background-size: cover;
-        z-index: 99;
-        margin: 138px 0px 0px 14px; 
-        border-radius: 200px;
-        border: 4px solid white;
+        margin: 50px 0px 0px 30px;
+        max-width: 180px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .right-top h3
+    {
+        margin: 0px 0px 10px 30px;
+        max-width: 150px;
+        word-wrap: break-word;
+        text-transform: uppercase;
     }
 
     .left-bottom 
@@ -491,35 +534,14 @@
         left: 0;
         background: var(--img-location) left bottom;
         background-size: 200% 200%;
-        z-index: 2;
+        z-index: 1;
     }
 
-    .left-bottom h4 
+    .aboutPortfolio
     {
-        margin-top: 80px;
-        margin-left: 30px;
-        margin-bottom: 10px;
-        font-weight: bold;
-        font-size: 25px;
-    }
-
-    .columns 
-    {
-        display: flex;
-        margin-left: 30px;
-    }
-
-    .columns ul 
-    {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-        margin-right: 20px; 
-    }
-
-    .columns ul li 
-    {
-        margin-bottom: 5px; 
+        margin: 30px 5px 10px 15px;
+        max-width: 200px;
+        word-wrap: break-word;
     }
 
     .right-bottom 
@@ -529,31 +551,44 @@
         background: var(--img-location) right bottom;
         background-size: 200% 200%;
         z-index: 1;
+        
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center; 
+        text-align: center; 
     }
 
     .left-bottom h5 
     {
         position: absolute;
         bottom: 5px; 
-        margin-left: 10px;
+        left: 50%; 
+        transform: translateX(-50%); 
+        font-size: 12px;
         font-weight: bold;
     }
 
-    .absolute-container 
+    .right-bottom h4
     {
-        position: absolute;
-        top: 16rem; 
-        left: 3rem; 
-        width: 13rem; 
-        height: auto; 
-        z-index: 2;
+        margin-top: -130px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 25px;
     }
 
-    .absolute-container .aboutPortfolio 
+    .right-bottom ul
     {
-        margin: 0; 
+        margin-bottom: -50px;
     }
 
+    .right-bottom ul li
+    {
+        max-width: 150px;
+        word-wrap: break-word;
+        margin: 10px;
+    }
+    
     @media (max-width: 640px) 
     {
         /* .container 
