@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="W5Xwg7XDn68wRRRZO0kA2xUHDOI12WkHyz7RAt9j">
 
     <title>H:M | Portfolio's</title>
 
@@ -18,8 +18,7 @@
     <link rel="shortcut icon" href="img/LogoCircle2.png">
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    <script type="module" src="http://[::1]:5173/@vite/client"></script><link rel="stylesheet" href="http://[::1]:5173/resources/css/app.css" /><script type="module" src="http://[::1]:5173/resources/js/app.js"></script>
     <style>
         .editable {
             cursor: pointer;
@@ -42,100 +41,145 @@
 </head>
 <body>
 <div class="min-h-screen full-height flex-center" id="outer-container">
-    @include('layouts.navigation-2')
-    <div id="main">
-    <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
-        <div class="sidebar">
-            @if ($selected_image_alt === 'dynamic-template-1')
-                @include('layouts.portfolio-1-color-selection')
-            @elseif ($selected_image_alt === 'dynamic-template-2')
-                @include('layouts.portfolio-2-color-selection')
-            @elseif ($selected_image_alt === 'dynamic-template-3')
-                @include('layouts.portfolio-3-color-selection')
-            @elseif ($selected_image_alt === 'dynamic-template-4')
-                @include('layouts.portfolio-4-color-selection')
-            @endif
+    <nav x-data="{ open: false }" class="colorSecond borderNav">
+    <!-- Primary Navigation Menu -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex">
+                <!-- Logo -->
+                <div class="shrink-0 flex items-center">
+                    <a href="http://127.0.0.1:8000">
+                        <img id="logo" src="/img/LogoCircle.png" alt="Logo" class="block h-12 w-auto">
+                    </a>
+                </div>
 
-            <div class="privacy-section">
-                <label for="privacy" class="text-center privateLabel">Private:</label>
-                <div>
-                    <input type="radio" id="yes" name="privacy" value="1" class="btnYes">
-                    <label for="yes">Yes</label>
-                    <input type="radio" id="no" name="privacy" value="0" class="btnYes">
-                    <label for="no">No</label>
+                <!-- Navigation Links -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex btnHomepageNav">
+                    <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border-gray-700 transition duration-150 ease-in-out border-none" href="http://127.0.0.1:8000">
+    <p class="colorFirst buttons"><i class="fa-solid fa-house iconNavBar iconNavBarColor"></i>Homepage</p>
+</a>
+                </div>
+            </div>
+
+            <form action="http://127.0.0.1:8000/delete-portfolio" method="POST" onsubmit="return confirm('Are you sure you want to delete the portfolio?');">
+                <input type="hidden" name="_token" value="W5Xwg7XDn68wRRRZO0kA2xUHDOI12WkHyz7RAt9j" autocomplete="off">                <input type="hidden" name="file_name" value="Jurico-1718902914-public.html">
+                <button type="submit" class="btn btn-danger text-white fw-bold" id="deleteButton">
+                    <i class="fa fa-trash text-white mr-2"></i>Delete Portfolio
+                </button>
+            </form>
+
+            <div class="flex items-center">
+                <img src="img/moon.png" class="mr-5 icon iconThemeNavBar">
+
+                <!-- Hamburger -->
+                <!-- <img src="img/moon.png" class="mr-5 icon"> -->
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <!-- <img src="img/moon.png" class="mr-5 icon"> -->
+                    <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 transition duration-150 ease-in-out">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
+    </div>
+</nav>    <div id="main">
+        <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
+        <div class="sidebar">
+                            <div class="input-container layoutsSidebar" id="portfolio-2-color-selection">
+    <label class="text-center">Select portfolio color:</label>
+    <div class="input-container img-container img-container-six">
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-2/Color/Color1-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty1-2.png">
+        </div>
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-2/Color/Color2-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty2-2.png">
+        </div>
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-2/Color/Color3-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty3-2.png">
+        </div>
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-2/Color/Color4-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty4-2.png">
+        </div>
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-2/Color/Color5-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty5-2.png">
+        </div>
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-2/Color/Color6-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty6-2.png">
+        </div>
+    </div>
+</div>                    </div>
         <style>
-            .sidebar {
+            .sidebar 
+            {
                 width: 250px;
-                height: 100vh;
-                position: fixed;
+                height: 100vh; 
+                position: fixed; 
                 top: 0;
-                left: -250px;
+                left: -250px; 
                 background-color: #f0f0f0;
-                transition: left 0.3s ease;
+                transition: left 0.3s ease; 
                 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             }
 
-            .btnYes {
-                margin-left: 50px;
-            }
-
-            .privateLabel {
-                display: block;
-                font-weight: bold;
-                margin-bottom: 5px;
-                margin-top: -5px;
-            }
-
-            .layoutsSidebar {
+            .layoutsSidebar
+            {
                 margin-top: 100px;
             }
-
-            .marginBottomSidebar {
+        
+            .marginBottomSidebar
+            {
                 margin-bottom: -10px;
             }
 
-            .sidebar.open {
-                left: 0;
+            .sidebar.open 
+            {
+                left: 0; 
             }
-
-            #sidebar-toggle {
-                position: fixed;
+        
+            #sidebar-toggle 
+            {
+                position: fixed; 
                 top: 85px;
                 left: 20px;
-                z-index: 1000;
-                background-color: #007bff;
-                color: #fff;
-                padding: 10px 20px;
-                border: none;
-                cursor: pointer;
-                border-radius: 5px;
+                z-index: 1000; 
+                background-color: #007bff; 
+                color: #fff; 
+                padding: 10px 20px; 
+                border: none; 
+                cursor: pointer; 
+                border-radius: 5px; 
                 transition: top 0.3s ease;
             }
-
-            #sidebar-toggle.open {
-                top: 35px;
+        
+            #sidebar-toggle.open 
+            {
+                top: 35px; 
             }
-
-            .img-container {
+        
+            .img-container 
+            {
                 display: flex;
                 flex-wrap: wrap;
             }
-
-            .img-container .col-md-6 {
+        
+            .img-container .col-md-6 
+            {
                 width: 50%;
                 box-sizing: border-box;
                 padding: 5px;
             }
-
-            .img-container .col-md-6:nth-child(2n+1) {
+        
+            .img-container .col-md-6:nth-child(2n+1) 
+            {
                 clear: left;
             }
 
-            .img-selected {
-                outline: 2px solid blue;
+            .img-selected 
+            {
+                outline: 2px solid blue; 
             }
         </style>
         <script>
@@ -143,7 +187,7 @@
                 var sidebarToggle = document.getElementById('sidebar-toggle');
                 var sidebarIcon = document.getElementById('sidebar-icon');
                 var sidebar = document.querySelector('.sidebar');
-
+        
                 sidebarToggle.addEventListener('click', function() {
                     sidebar.classList.toggle('open');
                     sidebarToggle.classList.toggle('open');
@@ -153,7 +197,9 @@
                         sidebarIcon.classList.replace('fa-xmark', 'fa-bars');
                     }
                 });
+            });
 
+            document.addEventListener('DOMContentLoaded', function() {
                 var images = document.querySelectorAll('.img-container img');
                 var selectedLayout = document.getElementById('editableLayoutUrl');
 
@@ -170,33 +216,12 @@
                         selectedLayout.textContent = altText;
                     });
                 });
-
-                var radioButtons = document.querySelectorAll('input[name="privacy"]');
-                var privacyValue = document.getElementById('privacyValue');
-                var privateValue = "{{ $private }}"; // Voeg deze regel toe om de waarde van $private te krijgen
-
-                // Selecteer de juiste radiobutton op basis van de waarde van privateValue
-                radioButtons.forEach(function(radio) {
-                    if (radio.value == privateValue) {
-                        radio.checked = true;
-                    }
-
-                    radio.addEventListener('change', function() {
-                        privacyValue.textContent = this.value;
-                        saveBtn.classList.add('active');
-                    });
-                });
             });
         </script>
         <div class="container">
             <div class="left-top">
-<<<<<<< HEAD
-                <h2 class="text-white editable" id="editableTitle">{{ $title }}</h2>
-                <h3 class="text-white editable" id="editableSubtitle">{{ $subtitle }}</h3>
-=======
-                <h2 class="text-white" id="editableTitle">{{ $title }}</h2>
-                <h3 class="text-white" id="editableSubtitle">{{ $subtitle }}</h3>
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
+                <h2 class="text-white" id="editableTitle">JURICO WW</h2>
+                <h3 class="text-white" id="editableSubtitle">GFCBV N</h3>
             </div>
             <div class="right-top">
                 <div class="imgPortfolio"></div>
@@ -205,60 +230,29 @@
                 <h4 class="text-white">Specialties</h4>
                 <div class="columns" style="width: 375px;">
                     <ul>
-<<<<<<< HEAD
-                        <li class="text-white editable" id="editableOne">{{ $one }}</li>
-                        <li class="text-white editable" id="editableTwo">{{ $two }}</li>
-                        <li class="text-white editable" id="editableThree">{{ $three }}</li>
+                        <li class="text-white editable" id="editableOne">1. ghfcbv bh</li>
+                        <li class="text-white editable" id="editableTwo">2. gfcvhg</li>
+                        <li class="text-white editable" id="editableThree">3. fcvb g</li>
                     </ul>
                     <ul>
-                        <li class="text-white editable" id="editableFour">{{ $four }}</li>
-                        <li class="text-white editable" id="editableFive">{{ $five }}</li>
-                        <li class="text-white editable" id="editableSix">{{ $six }}</li>
-=======
-                        <li class="text-white editable" id="editableOne">1. {{ $one }}</li>
-                        <li class="text-white editable" id="editableTwo">2. {{ $two }}</li>
-                        <li class="text-white editable" id="editableThree">3. {{ $three }}</li>
-                    </ul>
-                    <ul>
-                        <li class="text-white editable" id="editableFour">4. {{ $four }}</li>
-                        <li class="text-white editable" id="editableFive">5. {{ $five }}</li>
-                        <li class="text-white editable" id="editableSix">6. {{ $six }}</li>
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
+                        <li class="text-white editable" id="editableFour">4. hfcng</li>
+                        <li class="text-white editable" id="editableFive">5. xbcgh</li>
+                        <li class="text-white editable" id="editableSix">6. bcn</li>
                     </ul>
                 </div>
-                <h5 class="text-white" id="fixedName">{{ $name }}</h5>
+                <h5 class="text-white" id="fixedName">Jurico</h5>
             </div>
             <div class="right-bottom"></div>
             <div class="absolute-container">
-<<<<<<< HEAD
-                <p class="text-white aboutPortfolio editable" id="editableText">{{ $text }}</p>
+                <p class="text-white aboutPortfolio" id="editableText">xbcvawd awd wa</p>
             </div>
-            <button id="saveBtn" class="btn btn-primary save-btn">Save Edits</button>
-            <form id="editForm" action="{{ route('update-html', ['fileName' => $fileName]) }}" method="POST" style="display: none;">
-                @csrf
-                <input type="hidden" name="htmlTitle" id="htmlTitle">
-                <input type="hidden" name="htmlSubtitle" id="htmlSubtitle">
-                <input type="hidden" name="htmlText" id="htmlText">
-                <input type="hidden" name="htmlOne" id="htmlOne">
-                <input type="hidden" name="htmlTwo" id="htmlTwo">
-                <input type="hidden" name="htmlThree" id="htmlThree">
-                <input type="hidden" name="htmlFour" id="htmlFour">
-                <input type="hidden" name="htmlFive" id="htmlFive">
-                <input type="hidden" name="htmlSix" id="htmlSix">
-            </form>
-=======
-                <p class="text-white aboutPortfolio" id="editableText">{{ $text }}</p>
-            </div>
-            <h4 id="editableLayoutUrl" style="display: none;">{{ $selected_color_image_alt }}</h4>
-            <h1 id="privacyValue" style="display: none;">{{ $private }}</h1>
+            <h4 id="editableLayoutUrl" style="display: none;">img/portfolios/portfolio-2/Empty/Empty3-2.png</h4>
             <button id="saveBtn" class="btn btn-primary save-btn text-white"><i class="fa-solid fa-floppy-disk text-white mr-1"></i>Save Edits</button>
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
         </div>
     </div>
     <div>
-        <form id="editForm" action="{{ route('update-html', ['fileName' => $fileName]) }}" method="POST" style="display: none;">
-            @csrf
-            <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
+        <form id="editForm" action="http://127.0.0.1:8000/update-html/Jurico-1718902914-public.html" method="POST" style="display: none;">
+            <input type="hidden" name="_token" value="W5Xwg7XDn68wRRRZO0kA2xUHDOI12WkHyz7RAt9j" autocomplete="off">            <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
             <input type="hidden" name="htmlSubTitle" id="htmlSubTitle" maxlength="18">
             <input type="hidden" name="htmlContent" id="htmlContent" maxlength="130">
             <input type="hidden" name="htmlOne" id="htmlOne" maxlength="20">
@@ -267,169 +261,15 @@
             <input type="hidden" name="htmlFour" id="htmlFour" maxlength="20">
             <input type="hidden" name="htmlFive" id="htmlFive" maxlength="20">
             <input type="hidden" name="htmlSix" id="htmlSix" maxlength="20">
-            <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="{{ $selected_image_alt }}">
-            <input type="hidden" name="htmlPicture" id="htmlPicture" value="{{ $picture }}">
+            <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="dynamic-template-2">
+            <input type="hidden" name="htmlPicture" id="htmlPicture" value="pictures/NQEAdCf4SmcnJopymRfyKQisVRmWcJ4PhtX3dTjE.jpg">
             <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl">
-            <input type="hidden" name="htmlPrivacyValue" id="htmlPrivacyValue">
         </form>
     </div>
 </div>
 
-<<<<<<< HEAD
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const editable = {
-            editableTitle: document.querySelector('#editableTitle'),
-            editableSubtitle: document.querySelector('#editableSubtitle'),
-            editableText: document.querySelector('#editableText'),
-            editableOne: document.querySelector('#editableOne'),
-            editableTwo: document.querySelector('#editableTwo'),
-            editableThree: document.querySelector('#editableThree'),
-            editableFour: document.querySelector('#editableFour'),
-            editableFive: document.querySelector('#editableFive'),
-            editableSix: document.querySelector('#editableSix'),
-            saveBtn: document.getElementById('saveBtn'),
-            htmlTitleInput: document.getElementById('htmlTitle'),
-            htmlSubtitleInput: document.getElementById('htmlSubtitle'),
-            htmlTextInput: document.getElementById('htmlText'),
-            htmlOne: document.getElementById('htmlOne'),
-            htmlTwo: document.getElementById('htmlTwo'),
-            htmlThree: document.getElementById('htmlThree'),
-            htmlFour: document.getElementById('htmlFour'),
-            htmlFive: document.getElementById('htmlFive'),
-            htmlSix: document.getElementById('htmlSix')
-        };
-        // const saveButton = document.createElement('button');
-        // saveButton.textContent = 'Opslaan';
-        // saveButton.className = 'save-btn';
-        // saveButton.style.display = 'none';
-
-        // document.body.appendChild(saveButton);
-
-        function enableEditing(element) {
-            element.contentEditable = true;
-            element.classList.add('editing');
-            editable.saveBtn.classList.add('active');
-            element.focus();
-        }
-        
-        function disableEditing(element) {
-            element.contentEditable = false;
-            element.classList.remove('editing');
-        }
-
-        function addDoubleClickEvent(elements) {
-            elements.forEach(element => {
-                if (element) {
-                    element.addEventListener('dblclick', () => {
-                        enableEditing(element);
-                    });
-                }
-            });
-        }
-
-        const editableElements = [
-            editable.editableTitle,
-            editable.editableSubtitle,
-            editable.editableText,
-            editable.editableOne,
-            editable.editableTwo,
-            editable.editableThree,
-            editable.editableFour,
-            editable.editableFive,
-            editable.editableSix
-        ];
-
-        addDoubleClickEvent(editableElements);
-
-        editable.saveBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            editableElements.forEach(element => disableEditing(element));
-            editable.saveBtn.classList.remove('active');
-
-            editable.htmlTitleInput.value = editable.editableTitle?.innerText.trim() || '';
-            editable.htmlSubtitleInput.value = editable.editableSubtitle?.innerText.trim() || '';
-            editable.htmlTextInput.value = editable.editableText?.innerText.trim() || '';
-            editable.htmlOne.value = editable.editableOne?.innerText.trim() || '';
-            editable.htmlTwo.value = editable.editableTwo?.innerText.trim() || '';
-            editable.htmlThree.value = editable.editableThree?.innerText.trim() || '';
-            editable.htmlFour.value = editable.editableFour?.innerText.trim() || '';
-            editable.htmlFive.value = editable.editableFive?.innerText.trim() || '';
-            editable.htmlSix.value = editable.editableSix?.innerText.trim() || '';
-            saveBtn.classList.remove('active');
-
-            // Update the form values
-            htmlTitleInput.value = editableTitle.innerText.trim();
-            htmlSubtitleInput.value = editableSubtitle.innerText.trim();
-            htmlTextInput.value = editableText.innerText.trim();
-            htmlOne.value = editableOne.innerText.trim();
-            htmlTwo.value = editableTwo.innerText.trim();
-            htmlThree.value = editableThree.innerText.trim();
-            htmlFour.value = editableFour.innerText.trim();
-            htmlFive.value = editableFive.innerText.trim();
-            htmlSix.value = editableSix.innerText.trim();      
-
-            console.log('Title:', htmlTitleInput.value);
-            console.log('Subtitle:', htmlSubtitleInput.value);
-            console.log('Text:', editableText.value);
-            console.log('One:', editableOne.value);
-            console.log('Two:', editableTwo.value);
-            console.log('Three:', editableThree.value);
-            console.log('Four:', editableFour.value);
-            console.log('Five:', editableFive.value);
-            console.log('Six:', editableSix);
-
-            // Submit the form
-            editForm.submit();
-        });
-
-        // saveButton.addEventListener('click', function() {
-        //     const updatedData = {};
-
-        //     editables.forEach(element => {
-        //         element.contentEditable = false;
-        //         element.classList.remove('editing');
-        //         updatedData[element.id] = element.textContent.trim();
-        //     });
-
-        //     saveButton.style.display = 'none';
-        //     saveData(updatedData);
-        // });
-
-        function saveData(data) {
-            document.getElementById('htmlTitle').value = data.editableTitle || '';
-            document.getElementById('htmlSubtitle').value = data.editableSubtitle || '';
-            document.getElementById('htmlText').value = data.editableText || '';
-            document.getElementById('htmlOne').value = data.editableOne || '';
-            document.getElementById('htmlTwo').value = data.editableTwo || '';
-            document.getElementById('htmlThree').value = data.editableThree || '';
-            document.getElementById('htmlFour').value = data.editableFour || '';
-            document.getElementById('htmlFive').value = data.editableFive || '';
-            document.getElementById('htmlSix').value = data.editableSix || '';
-
-            document.getElementById('editForm').submit();
-        }
-
-        var csrfToken = document.querySelector('[name="csrf_token"]').getAttribute('content');
-
-        function refreshToken() {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'refresh-csrf', true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                csrfToken = xhr.responseText; // het nieuwe token
-                }
-            };
-            xhr.send();
-        }
-
-        setInterval(refreshToken, 300 * 1000)
-
-        function adjustFontSize() {
-=======
 <script class="sendThisScriptToHomePage">
     function adjustFontSize() {
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
         // Title (h2)
         document.querySelectorAll('h2').forEach(element => {
             const length = element.textContent.length;
@@ -490,7 +330,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', adjustFontSize);
-    });
 </script>
 
 </body>
@@ -499,8 +338,8 @@
 <style>
     :root 
     {
-        --img-location: url("{{ $selected_color_image_alt }}");
-        --img-profile: url("storage/{{ $picture }}");
+        --img-location: url("img/portfolios/portfolio-2/Empty/Empty3-2.png");
+        --img-profile: url("storage/pictures/NQEAdCf4SmcnJopymRfyKQisVRmWcJ4PhtX3dTjE.jpg");
     }
 
     #deleteButton 
@@ -710,8 +549,6 @@
         const editableSix = document.getElementById('editableSix');
         const editableLayoutUrl = document.getElementById('editableLayoutUrl');
 
-        const privacyValue = document.getElementById('privacyValue');
-
         const saveBtn = document.getElementById('saveBtn');
         const editForm = document.getElementById('editForm');
 
@@ -725,8 +562,6 @@
         const htmlFiveInput = document.getElementById('htmlFive');
         const htmlSixInput = document.getElementById('htmlSix');
         const htmlLayoutUrlInput = document.getElementById('htmlLayoutUrl');
-
-        const htmlPrivacyValue = document.getElementById('htmlPrivacyValue');
 
         function enableEditing(element) {
             element.contentEditable = true;
@@ -749,9 +584,8 @@
         editableFour.addEventListener('dblclick', () => enableEditing(editableFour));
         editableFive.addEventListener('dblclick', () => enableEditing(editableFive));
         editableSix.addEventListener('dblclick', () => enableEditing(editableSix));
+        
         editableLayoutUrl.addEventListener('dblclick', () => enableEditing(editableLayoutUrl));
-
-        privacyValue.addEventListener('dblclick', () => enableEditing(privacyValue));
 
         saveBtn.addEventListener('click', () => {
             event.preventDefault();
@@ -764,9 +598,8 @@
             disableEditing(editableFour);
             disableEditing(editableFive);
             disableEditing(editableSix);
+            
             disableEditing(editableLayoutUrl);
-
-            disableEditing(privacyValue);
 
             saveBtn.classList.remove('active');
 
@@ -780,8 +613,6 @@
             htmlFiveInput.value = editableFive.innerText.trim().slice(3).trim();
             htmlSixInput.value = editableSix.innerText.trim().slice(3).trim();
             htmlLayoutUrlInput.value = editableLayoutUrl.innerText.trim();
-
-            htmlPrivacyValue.value = privacyValue.innerText.trim();
 
             editForm.submit();
         });

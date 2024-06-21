@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="pX3jdoK0FWPpxjjCKzNF9Y9oqYRwfAGeJXZVQI27">
 
     <title>H:M | Portfolio's</title>
 
@@ -18,8 +18,7 @@
     <link rel="shortcut icon" href="img/LogoCircle2.png">
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    <script type="module" src="http://[::1]:5173/@vite/client"></script><link rel="stylesheet" href="http://[::1]:5173/resources/css/app.css" /><script type="module" src="http://[::1]:5173/resources/js/app.js"></script>
     <style>
         .editable {
             cursor: pointer;
@@ -42,20 +41,76 @@
 </head>
 <body>
 <div class="min-h-screen full-height flex-center" id="outer-container">
-    @include('layouts.navigation-2')
-    <div id="main">
+    <nav x-data="{ open: false }" class="colorSecond borderNav">
+    <!-- Primary Navigation Menu -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex">
+                <!-- Logo -->
+                <div class="shrink-0 flex items-center">
+                    <a href="http://127.0.0.1:8000">
+                        <img id="logo" src="/img/LogoCircle.png" alt="Logo" class="block h-12 w-auto">
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex btnHomepageNav">
+                    <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border-gray-700 transition duration-150 ease-in-out border-none" href="http://127.0.0.1:8000">
+    <p class="colorFirst buttons"><i class="fa-solid fa-house iconNavBar iconNavBarColor"></i>Homepage</p>
+</a>
+                </div>
+            </div>
+
+            <form action="http://127.0.0.1:8000/delete-portfolio" method="POST" onsubmit="return confirm('Are you sure you want to delete the portfolio?');">
+                <input type="hidden" name="_token" value="pX3jdoK0FWPpxjjCKzNF9Y9oqYRwfAGeJXZVQI27" autocomplete="off">                <input type="hidden" name="file_name" value="Jur Heusschen-1718964225-private.html">
+                <button type="submit" class="btn btn-danger text-white fw-bold" id="deleteButton">
+                    <i class="fa fa-trash text-white mr-2"></i>Delete Portfolio
+                </button>
+            </form>
+
+            <div class="flex items-center">
+                <img src="img/moon.png" class="mr-5 icon iconThemeNavBar">
+
+                <!-- Hamburger -->
+                <!-- <img src="img/moon.png" class="mr-5 icon"> -->
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <!-- <img src="img/moon.png" class="mr-5 icon"> -->
+                    <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 transition duration-150 ease-in-out">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>    <div id="main">
     <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
         <div class="sidebar">
-            @if ($selected_image_alt === 'dynamic-template-1')
-                @include('layouts.portfolio-1-color-selection')
-            @elseif ($selected_image_alt === 'dynamic-template-2')
-                @include('layouts.portfolio-2-color-selection')
-            @elseif ($selected_image_alt === 'dynamic-template-3')
-                @include('layouts.portfolio-3-color-selection')
-            @elseif ($selected_image_alt === 'dynamic-template-4')
-                @include('layouts.portfolio-4-color-selection')
-            @endif
-
+                            <div class="input-container layoutsSidebar" id="portfolio-2-color-selection">
+    <label class="text-center">Select portfolio color:</label>
+    <div class="input-container img-container img-container-six">
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-2/Color/Color1-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty1-2.png">
+        </div>
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-2/Color/Color2-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty2-2.png">
+        </div>
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-2/Color/Color3-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty3-2.png">
+        </div>
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-2/Color/Color4-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty4-2.png">
+        </div>
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-2/Color/Color5-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty5-2.png">
+        </div>
+        <div class="col-md-6">
+            <img src="img/portfolios/portfolio-2/Color/Color6-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty6-2.png">
+        </div>
+    </div>
+</div>            
             <div class="privacy-section">
                 <label for="privacy" class="text-center privateLabel">Private:</label>
                 <div>
@@ -173,7 +228,7 @@
 
                 var radioButtons = document.querySelectorAll('input[name="privacy"]');
                 var privacyValue = document.getElementById('privacyValue');
-                var privateValue = "{{ $private }}"; // Voeg deze regel toe om de waarde van $private te krijgen
+                var privateValue = "1"; // Voeg deze regel toe om de waarde van $private te krijgen
 
                 // Selecteer de juiste radiobutton op basis van de waarde van privateValue
                 radioButtons.forEach(function(radio) {
@@ -190,72 +245,40 @@
         </script>
         <div class="container">
             <div class="left-top">
-                <div class="imgPortfolio"></div>
+                <h2 class="text-white" id="editableTitle">AWDAWDWAD JYBGFB</h2>
+                <h3 class="text-white" id="editableSubtitle">HGNJUHYGBFNV</h3>
             </div>
             <div class="right-top">
-<<<<<<< HEAD
-                <h2 class="text-dark editable" id="editableTitle">{{ $title }}</h2>
-                <h3 class="text-dark editable" id="editableSubtitle">{{ $subtitle }}</h3>
-=======
-                <h2 class="text-dark" id="editableTitle">{{ $title }}</h2>
-                <h3 class="text-dark" id="editableSubtitle">{{ $subtitle }}</h3>
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
+                <div class="imgPortfolio"></div>
             </div>
-            <div class="bottom">
-                <h4 class="text-dark">Specialties</h4>
-                <div class="columns">
+            <div class="left-bottom">
+                <h4 class="text-white">Specialties</h4>
+                <div class="columns" style="width: 375px;">
                     <ul>
-<<<<<<< HEAD
-                        <li class="text-dark editable" id="editableOne">{{ $one }}</li>
-                        <li class="text-dark editable" id="editableTwo">{{ $two }}</li>
-                        <li class="text-dark editable" id="editableThree">{{ $three }}</li>
+                        <li class="text-white editable" id="editableOne">1. hgjgfbcv</li>
+                        <li class="text-white editable" id="editableTwo">2. nghfcf</li>
+                        <li class="text-white editable" id="editableThree">3. hngfv</li>
                     </ul>
                     <ul>
-                        <li class="text-dark editable" id="editableFour">{{ $four }}</li>
-                        <li class="text-dark editable" id="editableFive">{{ $five }}</li>
-                        <li class="text-dark editable" id="editableSix">{{ $six }}</li>
-=======
-                        <li class="text-dark editable" id="editableOne">1. {{ $one }}</li>
-                        <li class="text-dark editable" id="editableTwo">2. {{ $two }}</li>
-                        <li class="text-dark editable" id="editableThree">3. {{ $three }}</li>
-                    </ul>
-                    <ul>
-                        <li class="text-dark editable" id="editableFour">4. {{ $four }}</li>
-                        <li class="text-dark editable" id="editableFive">5. {{ $five }}</li>
-                        <li class="text-dark editable" id="editableSix">6. {{ $six }}</li>
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
+                        <li class="text-white editable" id="editableFour">4. cbhtfvc</li>
+                        <li class="text-white editable" id="editableFive">5. bhygtfgv</li>
+                        <li class="text-white editable" id="editableSix">6. cbhnytfbg</li>
                     </ul>
                 </div>
-                <h5 class="text-dark" id="fixedName">{{ $name }}</h5>
+                <h5 class="text-white" id="fixedName">Jur Heusschen</h5>
             </div>
+            <div class="right-bottom"></div>
             <div class="absolute-container">
-                <p class="text-dark aboutPortfolio" id="editableText">{{ $text }}</p>
+                <p class="text-white aboutPortfolio" id="editableText">vnjyuhtgfvnjyuhtbgfcvhnjyhgfbcv nghjhgbfvc nghjbw wadwadw</p>
             </div>
-<<<<<<< HEAD
-            <button id="saveBtn" class="btn btn-primary save-btn">Save Edits</button>
-            <form id="editForm" action="{{ route('update-html', ['fileName' => $fileName]) }}" method="POST" style="display: none;">
-                @csrf
-                <input type="hidden" name="htmlTitle" id="htmlTitle">
-                <input type="hidden" name="htmlSubtitle" id="htmlSubtitle">
-                <input type="hidden" name="htmlText" id="htmlText">
-                <input type="hidden" name="htmlOne" id="htmlOne">
-                <input type="hidden" name="htmlTwo" id="htmlTwo">
-                <input type="hidden" name="htmlThree" id="htmlThree">
-                <input type="hidden" name="htmlFour" id="htmlFour">
-                <input type="hidden" name="htmlFive" id="htmlFive">
-                <input type="hidden" name="htmlSix" id="htmlSix">
-            </form>
-=======
-            <h4 id="editableLayoutUrl" style="display: none;">{{ $selected_color_image_alt }}</h4>
-            <h1 id="privacyValue" style="display: none;">{{ $private }}</h1>
+            <h4 id="editableLayoutUrl" style="display: none;">img/portfolios/portfolio-2/Empty/Empty4-2.png</h4>
+            <h1 id="privacyValue" style="display: none;">1</h1>
             <button id="saveBtn" class="btn btn-primary save-btn text-white"><i class="fa-solid fa-floppy-disk text-white mr-1"></i>Save Edits</button>
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
         </div>
     </div>
     <div>
-        <form id="editForm" action="{{ route('update-html', ['fileName' => $fileName]) }}" method="POST" style="display: none;">
-            @csrf
-            <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
+        <form id="editForm" action="http://127.0.0.1:8000/update-html/Jur%20Heusschen-1718964225-private.html" method="POST" style="display: none;">
+            <input type="hidden" name="_token" value="pX3jdoK0FWPpxjjCKzNF9Y9oqYRwfAGeJXZVQI27" autocomplete="off">            <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
             <input type="hidden" name="htmlSubTitle" id="htmlSubTitle" maxlength="18">
             <input type="hidden" name="htmlContent" id="htmlContent" maxlength="130">
             <input type="hidden" name="htmlOne" id="htmlOne" maxlength="20">
@@ -264,183 +287,16 @@
             <input type="hidden" name="htmlFour" id="htmlFour" maxlength="20">
             <input type="hidden" name="htmlFive" id="htmlFive" maxlength="20">
             <input type="hidden" name="htmlSix" id="htmlSix" maxlength="20">
-            <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="{{ $selected_image_alt }}">
-            <input type="hidden" name="htmlPicture" id="htmlPicture" value="{{ $picture }}">
+            <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="dynamic-template-2">
+            <input type="hidden" name="htmlPicture" id="htmlPicture" value="pictures/dKkoEAkKcx2zILR8iEz9mEUbKR5zoZybRl92wy7Z.jpg">
             <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl">
             <input type="hidden" name="htmlPrivacyValue" id="htmlPrivacyValue">
         </form>
     </div>
 </div>
 
-<<<<<<< HEAD
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const editable = {
-            editableTitle: document.querySelectorAll('.editableTitle'),
-            editableSubtitle: document.querySelectorAll('.editableSubtitle'),
-            editableText: document.querySelectorAll('.editableText'),
-            editableOne: document.querySelectorAll('.editableOne'),
-            editableTwo: document.querySelectorAll('.editableTwo'),
-            editableThree: document.querySelectorAll('.editableThree'),
-            editableFour: document.querySelectorAll('.editableFour'),
-            editableFive: document.querySelectorAll('.editableFive'),
-            editableSix: document.querySelectorAll('.editableSix'),
-            saveBtn: document.getElementById('saveBtn'),
-            htmlTitleInput: document.getElementById('htmlTitle'),
-            htmlSubtitleInput: document.getElementById('htmlSubtitle'),
-            htmlTextInput: document.getElementById('htmlText'),
-            htmlOne: document.getElementById('htmlOne'),
-            htmlTwo: document.getElementById('htmlTwo'),
-            htmlThree: document.getElementById('htmlThree'),
-            htmlFour: document.getElementById('htmlFour'),
-            htmlFive: document.getElementById('htmlFive'),
-            htmlSix: document.getElementById('htmlSix')
-        };
-        // const saveButton = document.createElement('button');
-        // saveButton.textContent = 'Opslaan';
-        // saveButton.className = 'save-btn';
-        // saveButton.style.display = 'none';
-
-        // document.body.appendChild(saveButton);
-
-        function enableEditing(element) {
-            // element.contentEditable = true;
-            element.classList.add('editing');
-            saveBtn.classList.add('active');
-            element.focus();
-        }
-        
-        function disableEditing(element) {
-            // element.contentEditable = false;
-            element.classList.remove('editing');
-        }
-
-        editableTitle.addEventListener('dblclick', () => {
-            enableEditing(editableTitle);
-        });
-
-        editableSubtitle.addEventListener('dblclick', () => {
-            enableEditing(editableSubtitle);
-        });
-
-        editableText.addEventListener('dblclick', () => {
-            enableEditing(editableText);
-        });
-
-        editableOne.addEventListener('dblclick', () => {
-            enableEditing(editableOne);
-        });
-
-        editableTwo.addEventListener('dblclick', () => {
-            enableEditing(editableTwo);
-        });
-
-        editableThree.addEventListener('dblclick', () => {
-            enableEditing(editableThree);
-        });
-
-        editableFour.addEventListener('dblclick', () => {
-            enableEditing(editableFour);
-        });
-
-        editableFive.addEventListener('dblclick', () => {
-            enableEditing(editableFive);
-        });
-
-        editableSix.addEventListener('dblclick', () => {
-            enableEditing(editableSix);
-        });
-
-        editable.forEach(element => {
-            element.addEventListener('dblclick', function() {
-                // element.contentEditable = true;
-                element.classList.add('editing');
-                saveButton.style.display = 'block';
-            });
-        });
-
-        saveBtn.addEventListener('click', () => {
-            event.preventDefault();
-            disableEditing(editableTitle);
-            disableEditing(editableSubtitle);
-            disableEditing(editableText);
-            disableEditing(editableOne);
-            disableEditing(editableTwo);
-            disableEditing(editableThree);
-            disableEditing(editableFour);
-            disableEditing(editableFive);
-            disableEditing(editableSix);
-            saveBtn.classList.remove('active');
-
-            // Update the form values
-            htmlTitleInput.value = editableTitle.innerText.trim();
-            htmlSubtitleInput.value = editableSubtitle.innerText.trim();
-            htmlTextInput.value = editableText.innerText.trim();
-            htmlOne.value = editableOne.innerText.trim();
-            htmlTwo.value = editableTwo.innerText.trim();
-            htmlThree.value = editableThree.innerText.trim();
-            htmlFour.value = editableFour.innerText.trim();
-            htmlFive.value = editableFive.innerText.trim();
-            htmlSix.value = editableSix.innerText.trim();      
-
-            console.log('Title:', htmlTitleInput.value);
-            console.log('Subtitle:', htmlSubtitleInput.value);
-            console.log('Text:', editableText.value);
-            console.log('One:', editableOne.value);
-            console.log('Two:', editableTwo.value);
-            console.log('Three:', editableThree.value);
-            console.log('Four:', editableFour.value);
-            console.log('Five:', editableFive.value);
-            console.log('Six:', editableSix);
-
-            // Submit the form
-            editForm.submit();
-        });
-
-        // saveButton.addEventListener('click', function() {
-        //     const updatedData = {};
-
-        //     editables.forEach(element => {
-        //         element.contentEditable = false;
-        //         element.classList.remove('editing');
-        //         updatedData[element.id] = element.textContent.trim();
-        //     });
-
-        //     saveButton.style.display = 'none';
-        //     saveData(updatedData);
-        // });
-
-        function saveData(data) {
-            document.getElementById('htmlTitle').value = data.editableTitle || '';
-            document.getElementById('htmlSubtitle').value = data.editableSubtitle || '';
-            document.getElementById('htmlText').value = data.editableText || '';
-            document.getElementById('htmlOne').value = data.editableOne || '';
-            document.getElementById('htmlTwo').value = data.editableTwo || '';
-            document.getElementById('htmlThree').value = data.editableThree || '';
-            document.getElementById('htmlFour').value = data.editableFour || '';
-            document.getElementById('htmlFive').value = data.editableFive || '';
-            document.getElementById('htmlSix').value = data.editableSix || '';
-
-            document.getElementById('editForm').submit();
-        }
-
-        var csrfToken = $('[name="csrf_token"]').attr('content');
-            
-        setInterval(refreshToken, 300); // 1 hour 
-        
-        function refreshToken(){
-            $.get('refresh-csrf').done(function(data){
-                csrfToken = data; // the new token
-            });
-        }
-
-        setInterval(refreshToken, 300); // 1 hour 
-
-        function adjustFontSize() {
-=======
 <script class="sendThisScriptToHomePage">
     function adjustFontSize() {
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
         // Title (h2)
         document.querySelectorAll('h2').forEach(element => {
             const length = element.textContent.length;
@@ -501,7 +357,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', adjustFontSize);
-    });
 </script>
 
 </body>
@@ -510,8 +365,8 @@
 <style>
     :root 
     {
-        --img-location: url("{{ $selected_color_image_alt }}");
-        --img-profile: url("storage/{{ $picture }}");
+        --img-location: url("img/portfolios/portfolio-2/Empty/Empty4-2.png");
+        --img-profile: url("storage/pictures/dKkoEAkKcx2zILR8iEz9mEUbKR5zoZybRl92wy7Z.jpg");
     }
 
     #deleteButton 
@@ -576,74 +431,7 @@
         border-radius: 5px;
     }
 
-    .imgPortfolio 
-    {
-        width: 190px !important;
-        height: 190px !important;
-        background: var(--img-profile) no-repeat center center;
-        background-size: cover;
-        z-index: 99;
-        margin: 23px 0px 0px 27px; 
-        border-radius: 200px;
-        border: 4px solid white;
-    }
-
-    .right-top h2 
-    {
-        margin: 40px 0px 0px -20px;
-        max-width: 250px;
-        word-wrap: break-word;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-
-    .right-top h3 
-    {
-        margin: 0px 0px 10px -20px;
-        max-width: 250px;
-        word-wrap: break-word;
-        text-transform: uppercase;
-    }
-
-    .bottom h4 
-    {
-        margin-top: 20px;
-        margin-left: 30px;
-        margin-bottom: 30px;
-        font-weight: bold;
-        font-size: 25px;
-    }
-
-    .bottom h5 
-    {
-        position: absolute;
-        bottom: 5px; 
-        left: 50%; 
-        transform: translateX(-50%); 
-        font-size: 12px;
-        font-weight: bold;
-    }
-
-    .columns 
-    {
-        display: flex;
-        margin-left: 30px;
-    }
-
-    .columns ul 
-    {
-        margin: 0;
-        padding: 10px;
-        list-style-type: none;
-        margin-right: 20px; 
-    }
-
-    .columns ul li 
-    {
-        margin-bottom: 15px; 
-    }
-
-    .left-top, .right-top, .bottom 
+    .left-top, .right-top, .left-bottom, .right-bottom 
     {
         position: absolute;
         width: 50%;
@@ -658,35 +446,107 @@
         background-size: 200% 200%;
     }
 
+    .left-top h2 
+    {
+        margin: 40px 0px 0px 30px;
+        max-width: 250px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .left-top h3 
+    {
+        margin: 0px 0px 10px 30px;
+        max-width: 250px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+    }
+
     .right-top 
     {
         top: 0;
         right: 0;
         background: var(--img-location) right top;
         background-size: 200% 200%;
-        z-index: 1;
+        z-index: 100;
         color: white;
     }
 
-    .bottom 
+    .imgPortfolio 
+    {
+        width: 215px !important;
+        height: 215px !important;
+        background: var(--img-profile) no-repeat center center;
+        background-size: cover;
+        z-index: 99;
+        margin: 138px 0px 0px 14px; 
+        border-radius: 200px;
+        border: 4px solid white;
+    }
+
+    .left-bottom 
     {
         bottom: 0;
         left: 0;
-        width: 100%;
-        height: 50%;
-        background: var(--img-location) bottom;
-        background-size: 100% 200%;
+        background: var(--img-location) left bottom;
+        background-size: 200% 200%;
+        z-index: 2;
+    }
+
+    .left-bottom h4 
+    {
+        margin-top: 80px;
+        margin-left: 30px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .columns 
+    {
+        display: flex;
+        margin-left: 30px;
+    }
+
+    .columns ul 
+    {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        margin-right: 20px; 
+    }
+
+    .columns ul li 
+    {
+        margin-bottom: 5px; 
+    }
+
+    .right-bottom 
+    {
+        bottom: 0;
+        right: 0;
+        background: var(--img-location) right bottom;
+        background-size: 200% 200%;
         z-index: 1;
+    }
+
+    .left-bottom h5 
+    {
+        position: absolute;
+        bottom: 5px; 
+        margin-left: 10px;
+        font-weight: bold;
     }
 
     .absolute-container 
     {
         position: absolute;
-        top: 12rem; 
-        left: 15rem; 
-        width: 14rem; 
+        top: 16rem; 
+        left: 3rem; 
+        width: 13rem; 
         height: auto; 
-        z-index: 5;
+        z-index: 2;
     }
 
     .absolute-container .aboutPortfolio 
@@ -696,7 +556,8 @@
 
     @media (max-width: 640px) 
     {
-        /* .container {
+        /* .container 
+        {
             display: none;
         } */
     }

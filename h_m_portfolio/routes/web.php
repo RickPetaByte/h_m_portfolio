@@ -6,9 +6,14 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserTextController;
 use App\Http\Controllers\PortfolioController;
+use Illuminate\Support\Facades\File;
+use App\Http\Controllers\HtmlController;
 
 Route::get('/', function () {
-    return view('welcome');
+    $htmlController = new HtmlController();
+    $htmlFiles = $htmlController->getHtmlFiles();
+
+    return view('welcome', ['htmlFiles' => $htmlFiles]);
 })->name('dashboard');
 
 Route::get('/about', function () {
@@ -18,14 +23,14 @@ Route::get('/about', function () {
 Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
-Route::get('/create-html-file', [FileController::class, 'createHtmlFile']);
-Route::get('/dynamic-template', [FileController::class, 'showDynamicTemplate']);
-
 Route::post('/delete-portfolio', [PortfolioController::class, 'deletePortfolio'])->name('delete-portfolio');
 Route::post('/update-html/{fileName}', [UserTextController::class, 'updateHtml'])->name('update-html');
 Route::get('refresh-csrf', function(){
     return csrf_token();
 });
+
+Route::get('/edit-html/{fileName}', [PortfolioController::class, 'showEditHtml'])->name('edit-html');
+Route::post('/update-html/{fileName}', [PortfolioController::class, 'updateHtml'])->name('update-html');
 
 Route::middleware('auth')->group(function () {
     Route::get('/create-portfolio', [UserTextController::class, 'showForm'])->name('create-portfolio');

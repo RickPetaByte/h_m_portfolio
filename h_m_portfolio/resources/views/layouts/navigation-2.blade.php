@@ -18,59 +18,16 @@
                 </div>
             </div>
 
+            <form action="{{ route('delete-portfolio') }}" method="POST" onsubmit="return confirm('Are you sure you want to delete the portfolio?');">
+                @csrf
+                <input type="hidden" name="file_name" value="{{ $fileName }}">
+                <button type="submit" class="btn btn-danger text-white fw-bold" id="deleteButton">
+                    <i class="fa fa-trash text-white mr-2"></i>Delete Portfolio
+                </button>
+            </form>
+
             <div class="flex items-center">
                 <img src="img/moon.png" class="mr-5 icon iconThemeNavBar">
-                <!-- Check if user is authenticated -->
-                @if (Auth::check())
-                    <!-- Settings Dropdown -->
-                    <div class="hidden sm:flex sm:items-center sm:ml-6 colorSecond border border-0">
-                        <!-- <img src="img/moon.png" class="mr-5 icon"> -->
-                        <x-dropdown align="right" width="48">
-                            <x-slot name="trigger">
-                                <button class="buttons inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                                    <div class="flex items-center">
-                                        <img src="{{ Auth::user()->picture ? asset('storage/img/profile-pictures/' . Auth::user()->picture) : asset('img/Standaard.png') }}" class="nav-profile-img mr-3" />
-                                        <p class="colorFirst">{{ Auth::user()->name }}</p>
-                                    </div>
-                                    <div class="ml-1">
-                                        <p class="colorFirst">
-                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </p>
-                                    </div>
-                                </button>
-                            </x-slot>
-
-                            <x-slot name="content">
-                                <div class="colorSecondBorder borderNavDropdown">
-                                    <div class="colorSecond colorSecondHover">
-                                        <x-dropdown-link :href="route('profile.edit')">
-                                            <p class="colorFirst"><i class="fa-solid fa-user iconNavBar iconNavBarColor"></i>{{ __('Profile') }}</p>
-                                        </x-dropdown-link>
-                                    </div>
-
-                                    <!-- Authentication -->
-                                    <form method="POST" action="{{ route('logout') }}" class="colorSecond colorSecondHover">
-                                        @csrf
-
-                                        <x-dropdown-link :href="route('logout')"
-                                                onclick="event.preventDefault();
-                                                            this.closest('form').submit();">
-                                            <p class="colorFirst"><i class="fa-solid fa-right-from-bracket iconNavBar iconNavBarColor"></i>{{ __('Log Out') }}</p>
-                                        </x-dropdown-link>
-                                    </form>
-                                </div>
-                            </x-slot>
-                        </x-dropdown>
-                    </div>
-                @else
-                    <!-- Links for guests -->
-                    <div class="hidden sm:flex sm:items-center sm:ml-6 colorSecond">
-                        <a href="{{ route('login') }}" class="buttonsHome ml-4 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 focus:outline-none transition ease-in-out duration-150 colorFirst">Login</a>
-                        <a href="{{ route('register') }}" class="buttonsHome ml-4 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 focus:outline-none transition ease-in-out duration-150 colorFirst">Register</a>
-                    </div>
-                @endif
 
                 <!-- Hamburger -->
                 <!-- <img src="img/moon.png" class="mr-5 icon"> -->
@@ -85,53 +42,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="colorSecondHover homepageResponsiveColor">
-                <i class="fa-solid fa-house iconNavBar iconNavBarColor"></i>{{ __('Homepage') }}
-            </x-responsive-nav-link>
-        </div>
-        @if (Auth::check())
-            <!-- Responsive Settings Options -->
-            <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-                <div class="px-4">
-                    <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                </div>
-
-                <div class="mt-3 space-y-1">
-                    <x-responsive-nav-link :href="route('profile.edit')" class="colorSecondHover">
-                        <div><i class="fa-solid fa-user iconNavBar iconNavBarColor"></i>{{ __('Profile') }}</div>
-                    </x-responsive-nav-link>
-
-                    <!-- Authentication -->
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-
-                        <x-responsive-nav-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                    this.closest('form').submit();" 
-                                class="colorSecondHover">
-                            <i class="fa-solid fa-right-from-bracket iconNavBar iconNavBarColor"></i>{{ __('Log Out') }}
-                        </x-responsive-nav-link>
-                    </form>
-                </div>
-            </div>
-        @else
-            <!-- Responsive links for guests -->
-            <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-                <div class="mt-3 space-y-1 colorSecondHover">
-                    <x-responsive-nav-link :href="route('login')">
-                        {{ __('Login') }} 
-                    </x-responsive-nav-link>
-                    <x-responsive-nav-link :href="route('register')">
-                        {{ __('Register') }} 
-                    </x-responsive-nav-link>
-                </div>
-            </div>
-        @endif
     </div>
 </nav>

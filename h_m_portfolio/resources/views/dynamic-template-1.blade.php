@@ -44,7 +44,7 @@
 <div class="min-h-screen full-height flex-center" id="outer-container">
     @include('layouts.navigation-2')
     <div id="main">
-    <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
+        <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
         <div class="sidebar">
             @if ($selected_image_alt === 'dynamic-template-1')
                 @include('layouts.portfolio-1-color-selection')
@@ -189,67 +189,31 @@
             });
         </script>
         <div class="container">
-            <div class="left-top">
-                <div class="imgPortfolio"></div>
-            </div>
+            <div class="left-top"></div>
             <div class="right-top">
-<<<<<<< HEAD
-                <h2 class="text-dark editable" id="editableTitle">{{ $title }}</h2>
-                <h3 class="text-dark editable" id="editableSubtitle">{{ $subtitle }}</h3>
-=======
-                <h2 class="text-dark" id="editableTitle">{{ $title }}</h2>
-                <h3 class="text-dark" id="editableSubtitle">{{ $subtitle }}</h3>
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
+                <h2 class="text-white" id="editableTitle">{{ $title }}</h2>
+                <h3 class="text-white" id="editableSubtitle">{{ $subtitle }}</h3>
             </div>
-            <div class="bottom">
+            <div class="left-bottom">
+                <p class="text-white aboutPortfolio" id="editableText">{{ $text }}</p>
+                <h5 class="text-white" id="fixedName">{{ $name }}</h5>
+            </div>
+            <div class="right-bottom">
                 <h4 class="text-dark">Specialties</h4>
                 <div class="columns">
                     <ul>
-<<<<<<< HEAD
-                        <li class="text-dark editable" id="editableOne">{{ $one }}</li>
-                        <li class="text-dark editable" id="editableTwo">{{ $two }}</li>
-                        <li class="text-dark editable" id="editableThree">{{ $three }}</li>
-                    </ul>
-                    <ul>
-                        <li class="text-dark editable" id="editableFour">{{ $four }}</li>
-                        <li class="text-dark editable" id="editableFive">{{ $five }}</li>
-                        <li class="text-dark editable" id="editableSix">{{ $six }}</li>
-=======
                         <li class="text-dark editable" id="editableOne">1. {{ $one }}</li>
                         <li class="text-dark editable" id="editableTwo">2. {{ $two }}</li>
                         <li class="text-dark editable" id="editableThree">3. {{ $three }}</li>
-                    </ul>
-                    <ul>
                         <li class="text-dark editable" id="editableFour">4. {{ $four }}</li>
                         <li class="text-dark editable" id="editableFive">5. {{ $five }}</li>
                         <li class="text-dark editable" id="editableSix">6. {{ $six }}</li>
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
                     </ul>
                 </div>
-                <h5 class="text-dark" id="fixedName">{{ $name }}</h5>
             </div>
-            <div class="absolute-container">
-                <p class="text-dark aboutPortfolio" id="editableText">{{ $text }}</p>
-            </div>
-<<<<<<< HEAD
-            <button id="saveBtn" class="btn btn-primary save-btn">Save Edits</button>
-            <form id="editForm" action="{{ route('update-html', ['fileName' => $fileName]) }}" method="POST" style="display: none;">
-                @csrf
-                <input type="hidden" name="htmlTitle" id="htmlTitle">
-                <input type="hidden" name="htmlSubtitle" id="htmlSubtitle">
-                <input type="hidden" name="htmlText" id="htmlText">
-                <input type="hidden" name="htmlOne" id="htmlOne">
-                <input type="hidden" name="htmlTwo" id="htmlTwo">
-                <input type="hidden" name="htmlThree" id="htmlThree">
-                <input type="hidden" name="htmlFour" id="htmlFour">
-                <input type="hidden" name="htmlFive" id="htmlFive">
-                <input type="hidden" name="htmlSix" id="htmlSix">
-            </form>
-=======
             <h4 id="editableLayoutUrl" style="display: none;">{{ $selected_color_image_alt }}</h4>
             <h1 id="privacyValue" style="display: none;">{{ $private }}</h1>
             <button id="saveBtn" class="btn btn-primary save-btn text-white"><i class="fa-solid fa-floppy-disk text-white mr-1"></i>Save Edits</button>
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
         </div>
     </div>
     <div>
@@ -272,184 +236,17 @@
     </div>
 </div>
 
-<<<<<<< HEAD
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const editable = {
-            editableTitle: document.querySelectorAll('.editableTitle'),
-            editableSubtitle: document.querySelectorAll('.editableSubtitle'),
-            editableText: document.querySelectorAll('.editableText'),
-            editableOne: document.querySelectorAll('.editableOne'),
-            editableTwo: document.querySelectorAll('.editableTwo'),
-            editableThree: document.querySelectorAll('.editableThree'),
-            editableFour: document.querySelectorAll('.editableFour'),
-            editableFive: document.querySelectorAll('.editableFive'),
-            editableSix: document.querySelectorAll('.editableSix'),
-            saveBtn: document.getElementById('saveBtn'),
-            htmlTitleInput: document.getElementById('htmlTitle'),
-            htmlSubtitleInput: document.getElementById('htmlSubtitle'),
-            htmlTextInput: document.getElementById('htmlText'),
-            htmlOne: document.getElementById('htmlOne'),
-            htmlTwo: document.getElementById('htmlTwo'),
-            htmlThree: document.getElementById('htmlThree'),
-            htmlFour: document.getElementById('htmlFour'),
-            htmlFive: document.getElementById('htmlFive'),
-            htmlSix: document.getElementById('htmlSix')
-        };
-        // const saveButton = document.createElement('button');
-        // saveButton.textContent = 'Opslaan';
-        // saveButton.className = 'save-btn';
-        // saveButton.style.display = 'none';
-
-        // document.body.appendChild(saveButton);
-
-        function enableEditing(element) {
-            // element.contentEditable = true;
-            element.classList.add('editing');
-            saveBtn.classList.add('active');
-            element.focus();
-        }
-        
-        function disableEditing(element) {
-            // element.contentEditable = false;
-            element.classList.remove('editing');
-        }
-
-        editableTitle.addEventListener('dblclick', () => {
-            enableEditing(editableTitle);
-        });
-
-        editableSubtitle.addEventListener('dblclick', () => {
-            enableEditing(editableSubtitle);
-        });
-
-        editableText.addEventListener('dblclick', () => {
-            enableEditing(editableText);
-        });
-
-        editableOne.addEventListener('dblclick', () => {
-            enableEditing(editableOne);
-        });
-
-        editableTwo.addEventListener('dblclick', () => {
-            enableEditing(editableTwo);
-        });
-
-        editableThree.addEventListener('dblclick', () => {
-            enableEditing(editableThree);
-        });
-
-        editableFour.addEventListener('dblclick', () => {
-            enableEditing(editableFour);
-        });
-
-        editableFive.addEventListener('dblclick', () => {
-            enableEditing(editableFive);
-        });
-
-        editableSix.addEventListener('dblclick', () => {
-            enableEditing(editableSix);
-        });
-
-        editable.forEach(element => {
-            element.addEventListener('dblclick', function() {
-                // element.contentEditable = true;
-                element.classList.add('editing');
-                saveButton.style.display = 'block';
-            });
-        });
-
-        saveBtn.addEventListener('click', () => {
-            event.preventDefault();
-            disableEditing(editableTitle);
-            disableEditing(editableSubtitle);
-            disableEditing(editableText);
-            disableEditing(editableOne);
-            disableEditing(editableTwo);
-            disableEditing(editableThree);
-            disableEditing(editableFour);
-            disableEditing(editableFive);
-            disableEditing(editableSix);
-            saveBtn.classList.remove('active');
-
-            // Update the form values
-            htmlTitleInput.value = editableTitle.innerText.trim();
-            htmlSubtitleInput.value = editableSubtitle.innerText.trim();
-            htmlTextInput.value = editableText.innerText.trim();
-            htmlOne.value = editableOne.innerText.trim();
-            htmlTwo.value = editableTwo.innerText.trim();
-            htmlThree.value = editableThree.innerText.trim();
-            htmlFour.value = editableFour.innerText.trim();
-            htmlFive.value = editableFive.innerText.trim();
-            htmlSix.value = editableSix.innerText.trim();      
-
-            console.log('Title:', htmlTitleInput.value);
-            console.log('Subtitle:', htmlSubtitleInput.value);
-            console.log('Text:', editableText.value);
-            console.log('One:', editableOne.value);
-            console.log('Two:', editableTwo.value);
-            console.log('Three:', editableThree.value);
-            console.log('Four:', editableFour.value);
-            console.log('Five:', editableFive.value);
-            console.log('Six:', editableSix);
-
-            // Submit the form
-            editForm.submit();
-        });
-
-        // saveButton.addEventListener('click', function() {
-        //     const updatedData = {};
-
-        //     editables.forEach(element => {
-        //         element.contentEditable = false;
-        //         element.classList.remove('editing');
-        //         updatedData[element.id] = element.textContent.trim();
-        //     });
-
-        //     saveButton.style.display = 'none';
-        //     saveData(updatedData);
-        // });
-
-        function saveData(data) {
-            document.getElementById('htmlTitle').value = data.editableTitle || '';
-            document.getElementById('htmlSubtitle').value = data.editableSubtitle || '';
-            document.getElementById('htmlText').value = data.editableText || '';
-            document.getElementById('htmlOne').value = data.editableOne || '';
-            document.getElementById('htmlTwo').value = data.editableTwo || '';
-            document.getElementById('htmlThree').value = data.editableThree || '';
-            document.getElementById('htmlFour').value = data.editableFour || '';
-            document.getElementById('htmlFive').value = data.editableFive || '';
-            document.getElementById('htmlSix').value = data.editableSix || '';
-
-            document.getElementById('editForm').submit();
-        }
-
-        var csrfToken = $('[name="csrf_token"]').attr('content');
-            
-        setInterval(refreshToken, 300); // 1 hour 
-        
-        function refreshToken(){
-            $.get('refresh-csrf').done(function(data){
-                csrfToken = data; // the new token
-            });
-        }
-
-        setInterval(refreshToken, 300); // 1 hour 
-
-        function adjustFontSize() {
-=======
 <script class="sendThisScriptToHomePage">
     function adjustFontSize() {
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
         // Title (h2)
         document.querySelectorAll('h2').forEach(element => {
             const length = element.textContent.length;
             if (length < 6) {
-                element.style.fontSize = '50px';
-            } else if (length < 11) {
                 element.style.fontSize = '40px';
+            } else if (length < 11) {
+                element.style.fontSize = '30px';
             } else {
-                element.style.fontSize = '26px';
+                element.style.fontSize = '20px';
             }
         });
 
@@ -501,7 +298,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', adjustFontSize);
-    });
 </script>
 
 </body>
@@ -541,6 +337,7 @@
     {
         border: 1px dashed #ccc;
     }
+    
     .editing 
     {
         border: 1px solid #000;
@@ -576,74 +373,7 @@
         border-radius: 5px;
     }
 
-    .imgPortfolio 
-    {
-        width: 190px !important;
-        height: 190px !important;
-        background: var(--img-profile) no-repeat center center;
-        background-size: cover;
-        z-index: 99;
-        margin: 23px 0px 0px 27px; 
-        border-radius: 200px;
-        border: 4px solid white;
-    }
-
-    .right-top h2 
-    {
-        margin: 40px 0px 0px -20px;
-        max-width: 250px;
-        word-wrap: break-word;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-
-    .right-top h3 
-    {
-        margin: 0px 0px 10px -20px;
-        max-width: 250px;
-        word-wrap: break-word;
-        text-transform: uppercase;
-    }
-
-    .bottom h4 
-    {
-        margin-top: 20px;
-        margin-left: 30px;
-        margin-bottom: 30px;
-        font-weight: bold;
-        font-size: 25px;
-    }
-
-    .bottom h5 
-    {
-        position: absolute;
-        bottom: 5px; 
-        left: 50%; 
-        transform: translateX(-50%); 
-        font-size: 12px;
-        font-weight: bold;
-    }
-
-    .columns 
-    {
-        display: flex;
-        margin-left: 30px;
-    }
-
-    .columns ul 
-    {
-        margin: 0;
-        padding: 10px;
-        list-style-type: none;
-        margin-right: 20px; 
-    }
-
-    .columns ul li 
-    {
-        margin-bottom: 15px; 
-    }
-
-    .left-top, .right-top, .bottom 
+    .left-top, .right-top, .left-bottom, .right-bottom 
     {
         position: absolute;
         width: 50%;
@@ -658,6 +388,19 @@
         background-size: 200% 200%;
     }
 
+    .left-top::before 
+    {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 110%;
+        background: var(--img-profile) no-repeat center center;
+        background-size: cover;
+        z-index: -1 !important;
+    }
+
     .right-top 
     {
         top: 0;
@@ -668,35 +411,88 @@
         color: white;
     }
 
-    .bottom 
+    .right-top h2 
+    {
+        margin: 50px 0px 0px 30px;
+        max-width: 180px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .right-top h3
+    {
+        margin: 0px 0px 10px 30px;
+        max-width: 150px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+    }
+
+    .left-bottom 
     {
         bottom: 0;
         left: 0;
-        width: 100%;
-        height: 50%;
-        background: var(--img-location) bottom;
-        background-size: 100% 200%;
+        background: var(--img-location) left bottom;
+        background-size: 200% 200%;
         z-index: 1;
     }
 
-    .absolute-container 
+    .aboutPortfolio
+    {
+        margin: 30px 5px 10px 15px;
+        max-width: 200px;
+        word-wrap: break-word;
+    }
+
+    .right-bottom 
+    {
+        bottom: 0;
+        right: 0;
+        background: var(--img-location) right bottom;
+        background-size: 200% 200%;
+        z-index: 1;
+        
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center; 
+        text-align: center; 
+    }
+
+    .left-bottom h5 
     {
         position: absolute;
-        top: 12rem; 
-        left: 15rem; 
-        width: 14rem; 
-        height: auto; 
-        z-index: 5;
+        bottom: 5px; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        font-size: 12px;
+        font-weight: bold;
     }
 
-    .absolute-container .aboutPortfolio 
+    .right-bottom h4
     {
-        margin: 0; 
+        margin-top: -130px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 25px;
     }
 
+    .right-bottom ul
+    {
+        margin-bottom: -50px;
+    }
+
+    .right-bottom ul li
+    {
+        max-width: 150px;
+        word-wrap: break-word;
+        margin: 10px;
+    }
+    
     @media (max-width: 640px) 
     {
-        /* .container {
+        /* .container 
+        {
             display: none;
         } */
     }
