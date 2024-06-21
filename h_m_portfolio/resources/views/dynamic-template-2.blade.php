@@ -190,13 +190,8 @@
         </script>
         <div class="container">
             <div class="left-top">
-<<<<<<< HEAD
-                <h2 class="text-white editable" id="editableTitle">{{ $title }}</h2>
-                <h3 class="text-white editable" id="editableSubtitle">{{ $subtitle }}</h3>
-=======
                 <h2 class="text-white" id="editableTitle">{{ $title }}</h2>
                 <h3 class="text-white" id="editableSubtitle">{{ $subtitle }}</h3>
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
             </div>
             <div class="right-top">
                 <div class="imgPortfolio"></div>
@@ -205,16 +200,6 @@
                 <h4 class="text-white">Specialties</h4>
                 <div class="columns" style="width: 375px;">
                     <ul>
-<<<<<<< HEAD
-                        <li class="text-white editable" id="editableOne">{{ $one }}</li>
-                        <li class="text-white editable" id="editableTwo">{{ $two }}</li>
-                        <li class="text-white editable" id="editableThree">{{ $three }}</li>
-                    </ul>
-                    <ul>
-                        <li class="text-white editable" id="editableFour">{{ $four }}</li>
-                        <li class="text-white editable" id="editableFive">{{ $five }}</li>
-                        <li class="text-white editable" id="editableSix">{{ $six }}</li>
-=======
                         <li class="text-white editable" id="editableOne">1. {{ $one }}</li>
                         <li class="text-white editable" id="editableTwo">2. {{ $two }}</li>
                         <li class="text-white editable" id="editableThree">3. {{ $three }}</li>
@@ -223,36 +208,17 @@
                         <li class="text-white editable" id="editableFour">4. {{ $four }}</li>
                         <li class="text-white editable" id="editableFive">5. {{ $five }}</li>
                         <li class="text-white editable" id="editableSix">6. {{ $six }}</li>
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
                     </ul>
                 </div>
                 <h5 class="text-white" id="fixedName">{{ $name }}</h5>
             </div>
             <div class="right-bottom"></div>
             <div class="absolute-container">
-<<<<<<< HEAD
-                <p class="text-white aboutPortfolio editable" id="editableText">{{ $text }}</p>
-            </div>
-            <button id="saveBtn" class="btn btn-primary save-btn">Save Edits</button>
-            <form id="editForm" action="{{ route('update-html', ['fileName' => $fileName]) }}" method="POST" style="display: none;">
-                @csrf
-                <input type="hidden" name="htmlTitle" id="htmlTitle">
-                <input type="hidden" name="htmlSubtitle" id="htmlSubtitle">
-                <input type="hidden" name="htmlText" id="htmlText">
-                <input type="hidden" name="htmlOne" id="htmlOne">
-                <input type="hidden" name="htmlTwo" id="htmlTwo">
-                <input type="hidden" name="htmlThree" id="htmlThree">
-                <input type="hidden" name="htmlFour" id="htmlFour">
-                <input type="hidden" name="htmlFive" id="htmlFive">
-                <input type="hidden" name="htmlSix" id="htmlSix">
-            </form>
-=======
                 <p class="text-white aboutPortfolio" id="editableText">{{ $text }}</p>
             </div>
             <h4 id="editableLayoutUrl" style="display: none;">{{ $selected_color_image_alt }}</h4>
             <h1 id="privacyValue" style="display: none;">{{ $private }}</h1>
             <button id="saveBtn" class="btn btn-primary save-btn text-white"><i class="fa-solid fa-floppy-disk text-white mr-1"></i>Save Edits</button>
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
         </div>
     </div>
     <div>
@@ -275,161 +241,8 @@
     </div>
 </div>
 
-<<<<<<< HEAD
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const editable = {
-            editableTitle: document.querySelector('#editableTitle'),
-            editableSubtitle: document.querySelector('#editableSubtitle'),
-            editableText: document.querySelector('#editableText'),
-            editableOne: document.querySelector('#editableOne'),
-            editableTwo: document.querySelector('#editableTwo'),
-            editableThree: document.querySelector('#editableThree'),
-            editableFour: document.querySelector('#editableFour'),
-            editableFive: document.querySelector('#editableFive'),
-            editableSix: document.querySelector('#editableSix'),
-            saveBtn: document.getElementById('saveBtn'),
-            htmlTitleInput: document.getElementById('htmlTitle'),
-            htmlSubtitleInput: document.getElementById('htmlSubtitle'),
-            htmlTextInput: document.getElementById('htmlText'),
-            htmlOne: document.getElementById('htmlOne'),
-            htmlTwo: document.getElementById('htmlTwo'),
-            htmlThree: document.getElementById('htmlThree'),
-            htmlFour: document.getElementById('htmlFour'),
-            htmlFive: document.getElementById('htmlFive'),
-            htmlSix: document.getElementById('htmlSix')
-        };
-        // const saveButton = document.createElement('button');
-        // saveButton.textContent = 'Opslaan';
-        // saveButton.className = 'save-btn';
-        // saveButton.style.display = 'none';
-
-        // document.body.appendChild(saveButton);
-
-        function enableEditing(element) {
-            element.contentEditable = true;
-            element.classList.add('editing');
-            editable.saveBtn.classList.add('active');
-            element.focus();
-        }
-        
-        function disableEditing(element) {
-            element.contentEditable = false;
-            element.classList.remove('editing');
-        }
-
-        function addDoubleClickEvent(elements) {
-            elements.forEach(element => {
-                if (element) {
-                    element.addEventListener('dblclick', () => {
-                        enableEditing(element);
-                    });
-                }
-            });
-        }
-
-        const editableElements = [
-            editable.editableTitle,
-            editable.editableSubtitle,
-            editable.editableText,
-            editable.editableOne,
-            editable.editableTwo,
-            editable.editableThree,
-            editable.editableFour,
-            editable.editableFive,
-            editable.editableSix
-        ];
-
-        addDoubleClickEvent(editableElements);
-
-        editable.saveBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            editableElements.forEach(element => disableEditing(element));
-            editable.saveBtn.classList.remove('active');
-
-            editable.htmlTitleInput.value = editable.editableTitle?.innerText.trim() || '';
-            editable.htmlSubtitleInput.value = editable.editableSubtitle?.innerText.trim() || '';
-            editable.htmlTextInput.value = editable.editableText?.innerText.trim() || '';
-            editable.htmlOne.value = editable.editableOne?.innerText.trim() || '';
-            editable.htmlTwo.value = editable.editableTwo?.innerText.trim() || '';
-            editable.htmlThree.value = editable.editableThree?.innerText.trim() || '';
-            editable.htmlFour.value = editable.editableFour?.innerText.trim() || '';
-            editable.htmlFive.value = editable.editableFive?.innerText.trim() || '';
-            editable.htmlSix.value = editable.editableSix?.innerText.trim() || '';
-            saveBtn.classList.remove('active');
-
-            // Update the form values
-            htmlTitleInput.value = editableTitle.innerText.trim();
-            htmlSubtitleInput.value = editableSubtitle.innerText.trim();
-            htmlTextInput.value = editableText.innerText.trim();
-            htmlOne.value = editableOne.innerText.trim();
-            htmlTwo.value = editableTwo.innerText.trim();
-            htmlThree.value = editableThree.innerText.trim();
-            htmlFour.value = editableFour.innerText.trim();
-            htmlFive.value = editableFive.innerText.trim();
-            htmlSix.value = editableSix.innerText.trim();      
-
-            console.log('Title:', htmlTitleInput.value);
-            console.log('Subtitle:', htmlSubtitleInput.value);
-            console.log('Text:', editableText.value);
-            console.log('One:', editableOne.value);
-            console.log('Two:', editableTwo.value);
-            console.log('Three:', editableThree.value);
-            console.log('Four:', editableFour.value);
-            console.log('Five:', editableFive.value);
-            console.log('Six:', editableSix);
-
-            // Submit the form
-            editForm.submit();
-        });
-
-        // saveButton.addEventListener('click', function() {
-        //     const updatedData = {};
-
-        //     editables.forEach(element => {
-        //         element.contentEditable = false;
-        //         element.classList.remove('editing');
-        //         updatedData[element.id] = element.textContent.trim();
-        //     });
-
-        //     saveButton.style.display = 'none';
-        //     saveData(updatedData);
-        // });
-
-        function saveData(data) {
-            document.getElementById('htmlTitle').value = data.editableTitle || '';
-            document.getElementById('htmlSubtitle').value = data.editableSubtitle || '';
-            document.getElementById('htmlText').value = data.editableText || '';
-            document.getElementById('htmlOne').value = data.editableOne || '';
-            document.getElementById('htmlTwo').value = data.editableTwo || '';
-            document.getElementById('htmlThree').value = data.editableThree || '';
-            document.getElementById('htmlFour').value = data.editableFour || '';
-            document.getElementById('htmlFive').value = data.editableFive || '';
-            document.getElementById('htmlSix').value = data.editableSix || '';
-
-            document.getElementById('editForm').submit();
-        }
-
-        var csrfToken = document.querySelector('[name="csrf_token"]').getAttribute('content');
-
-        function refreshToken() {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'refresh-csrf', true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                csrfToken = xhr.responseText; // het nieuwe token
-                }
-            };
-            xhr.send();
-        }
-
-        setInterval(refreshToken, 300 * 1000)
-
-        function adjustFontSize() {
-=======
 <script class="sendThisScriptToHomePage">
     function adjustFontSize() {
->>>>>>> 259e55ca24debe5c02f422009ed2f82ce4c96e9b
         // Title (h2)
         document.querySelectorAll('h2').forEach(element => {
             const length = element.textContent.length;
