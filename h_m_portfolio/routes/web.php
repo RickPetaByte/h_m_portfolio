@@ -22,6 +22,10 @@ Route::get('/create-html-file', [FileController::class, 'createHtmlFile']);
 Route::get('/dynamic-template', [FileController::class, 'showDynamicTemplate']);
 
 Route::post('/delete-portfolio', [PortfolioController::class, 'deletePortfolio'])->name('delete-portfolio');
+Route::post('/update-html/{fileName}', [UserTextController::class, 'updateHtml'])->name('update-html');
+Route::get('refresh-csrf', function(){
+    return csrf_token();
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/create-portfolio', [UserTextController::class, 'showForm'])->name('create-portfolio');

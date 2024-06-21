@@ -37,20 +37,20 @@
             </div>
             <div class="right-top">
                 <h2 class="text-dark editable" id="editableTitle">{{ $title }}</h2>
-                <h3 class="text-dark editable" id="editableTitle">{{ $subtitle }}</h3>
+                <h3 class="text-dark editable" id="editableSubtitle">{{ $subtitle }}</h3>
             </div>
             <div class="bottom">
                 <h4 class="text-dark">Specialties</h4>
                 <div class="columns">
                     <ul>
-                        <li class="text-dark editable" id="editableTitle">{{ $one }}</li>
-                        <li class="text-dark editable" id="editableTitle">{{ $two }}</li>
-                        <li class="text-dark editable" id="editableTitle">{{ $three }}</li>
+                        <li class="text-dark editable" id="editableOne">{{ $one }}</li>
+                        <li class="text-dark editable" id="editableTwo">{{ $two }}</li>
+                        <li class="text-dark editable" id="editableThree">{{ $three }}</li>
                     </ul>
                     <ul>
-                        <li class="text-dark editable" id="editableTitle">{{ $four }}</li>
-                        <li class="text-dark editable" id="editableTitle">{{ $five }}</li>
-                        <li class="text-dark editable" id="editableTitle">{{ $six }}</li>
+                        <li class="text-dark editable" id="editableFour">{{ $four }}</li>
+                        <li class="text-dark editable" id="editableFive">{{ $five }}</li>
+                        <li class="text-dark editable" id="editableSix">{{ $six }}</li>
                     </ul>
                 </div>
                 <h5 class="text-dark">{{ $name }}</h5>
@@ -58,77 +58,196 @@
             <div class="absolute-container">
                 <p class="aboutPortfolio text-dark  editable" id="editableText">{{ $text }}</p>
             </div>
+            <button id="saveBtn" class="btn btn-primary save-btn">Save Edits</button>
+            <form id="editForm" action="{{ route('update-html', ['fileName' => $fileName]) }}" method="POST" style="display: none;">
+                @csrf
+                <input type="hidden" name="htmlTitle" id="htmlTitle">
+                <input type="hidden" name="htmlSubtitle" id="htmlSubtitle">
+                <input type="hidden" name="htmlText" id="htmlText">
+                <input type="hidden" name="htmlOne" id="htmlOne">
+                <input type="hidden" name="htmlTwo" id="htmlTwo">
+                <input type="hidden" name="htmlThree" id="htmlThree">
+                <input type="hidden" name="htmlFour" id="htmlFour">
+                <input type="hidden" name="htmlFive" id="htmlFive">
+                <input type="hidden" name="htmlSix" id="htmlSix">
+            </form>
         </div>
     </div>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const editables = document.querySelectorAll('.editable');
-        const saveButton = document.createElement('button');
-        saveButton.textContent = 'Opslaan';
-        saveButton.className = 'save-btn';
+    document.addEventListener('DOMContentLoaded', () => {
+        const editable = {
+            editableTitle: document.querySelectorAll('.editableTitle'),
+            editableSubtitle: document.querySelectorAll('.editableSubtitle'),
+            editableText: document.querySelectorAll('.editableText'),
+            editableOne: document.querySelectorAll('.editableOne'),
+            editableTwo: document.querySelectorAll('.editableTwo'),
+            editableThree: document.querySelectorAll('.editableThree'),
+            editableFour: document.querySelectorAll('.editableFour'),
+            editableFive: document.querySelectorAll('.editableFive'),
+            editableSix: document.querySelectorAll('.editableSix'),
+            saveBtn: document.getElementById('saveBtn'),
+            htmlTitleInput: document.getElementById('htmlTitle'),
+            htmlSubtitleInput: document.getElementById('htmlSubtitle'),
+            htmlTextInput: document.getElementById('htmlText'),
+            htmlOne: document.getElementById('htmlOne'),
+            htmlTwo: document.getElementById('htmlTwo'),
+            htmlThree: document.getElementById('htmlThree'),
+            htmlFour: document.getElementById('htmlFour'),
+            htmlFive: document.getElementById('htmlFive'),
+            htmlSix: document.getElementById('htmlSix')
+        };
+        // const saveButton = document.createElement('button');
+        // saveButton.textContent = 'Opslaan';
+        // saveButton.className = 'save-btn';
+        // saveButton.style.display = 'none';
 
-        document.body.appendChild(saveButton);
+        // document.body.appendChild(saveButton);
 
-        editables.forEach(element => {
+        function enableEditing(element) {
+            // element.contentEditable = true;
+            element.classList.add('editing');
+            saveBtn.classList.add('active');
+            element.focus();
+        }
+        
+        function disableEditing(element) {
+            // element.contentEditable = false;
+            element.classList.remove('editing');
+        }
+
+        editableTitle.addEventListener('dblclick', () => {
+            enableEditing(editableTitle);
+        });
+
+        editableSubtitle.addEventListener('dblclick', () => {
+            enableEditing(editableSubtitle);
+        });
+
+        editableText.addEventListener('dblclick', () => {
+            enableEditing(editableText);
+        });
+
+        editableOne.addEventListener('dblclick', () => {
+            enableEditing(editableOne);
+        });
+
+        editableTwo.addEventListener('dblclick', () => {
+            enableEditing(editableTwo);
+        });
+
+        editableThree.addEventListener('dblclick', () => {
+            enableEditing(editableThree);
+        });
+
+        editableFour.addEventListener('dblclick', () => {
+            enableEditing(editableFour);
+        });
+
+        editableFive.addEventListener('dblclick', () => {
+            enableEditing(editableFive);
+        });
+
+        editableSix.addEventListener('dblclick', () => {
+            enableEditing(editableSix);
+        });
+
+        editable.forEach(element => {
             element.addEventListener('dblclick', function() {
-                element.contentEditable = true;
+                // element.contentEditable = true;
                 element.classList.add('editing');
-                saveButton.classList.add('active');
+                saveButton.style.display = 'block';
             });
         });
 
-        saveButton.addEventListener('click', function() {
-            const updatedData = {};
+        saveBtn.addEventListener('click', () => {
+            event.preventDefault();
+            disableEditing(editableTitle);
+            disableEditing(editableSubtitle);
+            disableEditing(editableText);
+            disableEditing(editableOne);
+            disableEditing(editableTwo);
+            disableEditing(editableThree);
+            disableEditing(editableFour);
+            disableEditing(editableFive);
+            disableEditing(editableSix);
+            saveBtn.classList.remove('active');
 
-            editables.forEach(element => {
-                element.contentEditable = false;
-                element.classList.remove('editing');
-                updatedData[element.id] = element.textContent.trim();
-            });
+            // Update the form values
+            htmlTitleInput.value = editableTitle.innerText.trim();
+            htmlSubtitleInput.value = editableSubtitle.innerText.trim();
+            htmlTextInput.value = editableText.innerText.trim();
+            htmlOne.value = editableOne.innerText.trim();
+            htmlTwo.value = editableTwo.innerText.trim();
+            htmlThree.value = editableThree.innerText.trim();
+            htmlFour.value = editableFour.innerText.trim();
+            htmlFive.value = editableFive.innerText.trim();
+            htmlSix.value = editableSix.innerText.trim();      
 
-            saveButton.classList.remove('active');
-            saveData(updatedData);
+            console.log('Title:', htmlTitleInput.value);
+            console.log('Subtitle:', htmlSubtitleInput.value);
+            console.log('Text:', editableText.value);
+            console.log('One:', editableOne.value);
+            console.log('Two:', editableTwo.value);
+            console.log('Three:', editableThree.value);
+            console.log('Four:', editableFour.value);
+            console.log('Five:', editableFive.value);
+            console.log('Six:', editableSix);
+
+            // Submit the form
+            editForm.submit();
         });
+
+        // saveButton.addEventListener('click', function() {
+        //     const updatedData = {};
+
+        //     editables.forEach(element => {
+        //         element.contentEditable = false;
+        //         element.classList.remove('editing');
+        //         updatedData[element.id] = element.textContent.trim();
+        //     });
+
+        //     saveButton.style.display = 'none';
+        //     saveData(updatedData);
+        // });
 
         function saveData(data) {
-            fetch('/store-text', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(result => {
-                if (result.success) {
-                    alert('Wijzigingen succesvol opgeslagen');
-                    location.reload();
-                } else {
-                    alert('Er is iets misgegaan. Probeer het opnieuw.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Er is iets misgegaan. Probeer het opnieuw.');
+            document.getElementById('htmlTitle').value = data.editableTitle || '';
+            document.getElementById('htmlSubtitle').value = data.editableSubtitle || '';
+            document.getElementById('htmlText').value = data.editableText || '';
+            document.getElementById('htmlOne').value = data.editableOne || '';
+            document.getElementById('htmlTwo').value = data.editableTwo || '';
+            document.getElementById('htmlThree').value = data.editableThree || '';
+            document.getElementById('htmlFour').value = data.editableFour || '';
+            document.getElementById('htmlFive').value = data.editableFive || '';
+            document.getElementById('htmlSix').value = data.editableSix || '';
+
+            document.getElementById('editForm').submit();
+        }
+
+        var csrfToken = $('[name="csrf_token"]').attr('content');
+            
+        setInterval(refreshToken, 300); // 1 hour 
+        
+        function refreshToken(){
+            $.get('refresh-csrf').done(function(data){
+                csrfToken = data; // the new token
             });
         }
-    });
-</script>
 
-<script>
-    function adjustFontSize() {
+        setInterval(refreshToken, 300); // 1 hour 
+
+        function adjustFontSize() {
         // Title (h2)
         document.querySelectorAll('h2').forEach(element => {
             const length = element.textContent.length;
             if (length < 6) {
-                element.style.fontSize = '40px';
+                element.style.fontSize = '50px';
             } else if (length < 11) {
-                element.style.fontSize = '30px';
+                element.style.fontSize = '40px';
             } else {
-                element.style.fontSize = '20px';
+                element.style.fontSize = '26px';
             }
         });
 
@@ -180,6 +299,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', adjustFontSize);
+    });
 </script>
 
 </body>
