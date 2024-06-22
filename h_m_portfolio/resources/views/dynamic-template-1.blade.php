@@ -44,7 +44,7 @@
 <div class="min-h-screen full-height flex-center" id="outer-container">
     @include('layouts.navigation-2')
     <div id="main">
-    <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
+        <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
         <div class="sidebar">
             @if ($selected_image_alt === 'dynamic-template-1')
                 @include('layouts.portfolio-1-color-selection')
@@ -189,33 +189,27 @@
             });
         </script>
         <div class="container">
-            <div class="left-top">
-                <div class="imgPortfolio"></div>
+            <div class="left-top"></div>
+            <div class="right-top">
                 <h2 class="text-white" id="editableTitle">{{ $title }}</h2>
                 <h3 class="text-white" id="editableSubtitle">{{ $subtitle }}</h3>
             </div>
-            <div class="right-top">
+            <div class="left-bottom">
+                <p class="text-white aboutPortfolio" id="editableText">{{ $text }}</p>
+                <h5 class="text-white" id="fixedName">{{ $name }}</h5>
+            </div>
+            <div class="right-bottom">
                 <h4 class="text-dark">Specialties</h4>
                 <div class="columns">
                     <ul>
                         <li class="text-dark editable" id="editableOne">1. {{ $one }}</li>
                         <li class="text-dark editable" id="editableTwo">2. {{ $two }}</li>
                         <li class="text-dark editable" id="editableThree">3. {{ $three }}</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="left-bottom">
-                <p class="text-white aboutPortfolio" id="editableText">{{ $text }}</p>
-            </div>
-            <div class="right-bottom">
-                <div class="columns">
-                    <ul>
                         <li class="text-dark editable" id="editableFour">4. {{ $four }}</li>
                         <li class="text-dark editable" id="editableFive">5. {{ $five }}</li>
                         <li class="text-dark editable" id="editableSix">6. {{ $six }}</li>
                     </ul>
                 </div>
-                <h5 class="text-dark" id="fixedName">{{ $name }}</h5>
             </div>
             <h4 id="editableLayoutUrl" style="display: none;">{{ $selected_color_image_alt }}</h4>
             <h1 id="privacyValue" style="display: none;">{{ $private }}</h1>
@@ -260,9 +254,9 @@
         document.querySelectorAll('h3').forEach(element => {
             const length = element.textContent.length;
             if (length < 6) {
-                element.style.fontSize = '20px';
+                element.style.fontSize = '25px';
             } else if (length < 11) {
-                element.style.fontSize = '17px';
+                element.style.fontSize = '20px';
             } else {
                 element.style.fontSize = '15px';
             }
@@ -343,6 +337,7 @@
     {
         border: 1px dashed #ccc;
     }
+    
     .editing 
     {
         border: 1px solid #000;
@@ -393,6 +388,19 @@
         background-size: 200% 200%;
     }
 
+    .left-top::before 
+    {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 110%;
+        background: var(--img-profile) no-repeat center center;
+        background-size: cover;
+        z-index: -1 !important;
+    }
+
     .right-top 
     {
         top: 0;
@@ -403,73 +411,21 @@
         color: white;
     }
 
-    .imgPortfolio 
+    .right-top h2 
     {
-        width: 210px !important;
-        height: 210px !important;
-        background: var(--img-profile) no-repeat center center;
-        background-size: cover;
-        z-index: 99;
-        margin: 11px 0px 0px 8px; 
-        border-radius: 200px;
-        border: 4px solid white;
-    }
-
-    .left-top h2 
-    {
+        margin: 50px 0px 0px 30px;
         max-width: 180px;
         word-wrap: break-word;
         text-transform: uppercase;
         font-weight: bold;
-        margin-top: 10px;
-        margin-left: 15px;
-        text-align: center;
     }
 
-    .left-top h3
+    .right-top h3
     {
-        max-width: 180px;
+        margin: 0px 0px 10px 30px;
+        max-width: 150px;
         word-wrap: break-word;
         text-transform: uppercase;
-        margin-left: 15px;
-        text-align: center;
-    }
-
-    .right-top h4
-    {
-        margin: 40px 0px 10px -20px;
-        font-weight: bold;
-        font-size: 25px;
-        text-align: center;
-    }
-
-    .right-bottom h5 
-    {
-        position: absolute;
-        bottom: 5px; 
-        left: 45%; 
-        transform: translateX(-50%); 
-        font-size: 12px;
-        font-weight: bold;
-    }
-
-    .right-top ul
-    {
-        margin-top: 70px;
-    }
-
-    .right-top ul li
-    {
-        max-width: 200px;
-        word-wrap: break-word;
-        margin: 30px 0px 0px 0px;
-    }
-
-    .right-bottom ul li
-    {
-        max-width: 200px;
-        word-wrap: break-word;
-        margin: 30px 0px 0px 0px;
     }
 
     .left-bottom 
@@ -483,9 +439,9 @@
 
     .aboutPortfolio
     {
-        margin: 40px 15px 10px 25px;
+        margin: 30px 5px 10px 15px;
+        max-width: 200px;
         word-wrap: break-word;
-        max-width: 160px;
     }
 
     .right-bottom 
@@ -495,6 +451,12 @@
         background: var(--img-location) right bottom;
         background-size: 200% 200%;
         z-index: 1;
+        
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center; 
+        text-align: center; 
     }
 
     .left-bottom h5 
@@ -513,6 +475,18 @@
         margin-bottom: 10px;
         font-weight: bold;
         font-size: 25px;
+    }
+
+    .right-bottom ul
+    {
+        margin-bottom: -50px;
+    }
+
+    .right-bottom ul li
+    {
+        max-width: 150px;
+        word-wrap: break-word;
+        margin: 10px;
     }
     
     @media (max-width: 640px) 

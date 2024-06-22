@@ -42,7 +42,7 @@
 
         <div class="input-container colorSecond divCreatePageCreate">
             <label for="text">About:</label>
-            <textarea name="text" id="text" rows="4" cols="50" class="form-control mt-3 aboutCreatePortfolio mt-1 block w-100 shadow-none" style="resize: none;" required></textarea>
+            <textarea maxlength="130" name="text" id="text" rows="4" cols="50" class="form-control mt-3 aboutCreatePortfolio mt-1 block w-100 shadow-none" style="resize: none;" required></textarea>
         </div>
 
         <div class="input-container colorSecond divCreatePageCreate">
@@ -55,21 +55,22 @@
                 <input type="radio" id="no" name="private" value="0" class="form-check-input colorCheckBox shadow-none">
                 <label for="no" class="form-check-label ml-3">No</label>
             </div>
+            <p class="infoText">If selected "Yes" only you can see your portfolio if "No" is selected everyone can see your portfolio!</p>
         </div>
 
         <div class="input-container colorSecond divImgCreate divImgChoose">
             <label>Select portfolio style:</label>
             <div class="input-container img-container img-container-four">
-                <div class="col-md-6">
-                    <img src="img/portfolios/blackwhite/portfolio-3BW.png" class="img-fluid img-bordered imageCreate" alt="dynamic-template">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
+                    <img src="img/portfolios/blackwhite/portfolio-3BW.png" class="img-fluid img-bordered imageCreate" alt="dynamic-template-1">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/blackwhite/portfolio-4BW.png" class="img-fluid img-bordered imageCreate" alt="dynamic-template-2">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/blackwhite/portfolio-5BW.png" class="img-fluid img-bordered imageCreate" alt="dynamic-template-3">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/blackwhite/portfolio-6BW.png" class="img-fluid img-bordered imageCreate" alt="dynamic-template-4">
                 </div>
             </div>
@@ -80,22 +81,22 @@
         <div class="input-container colorSecond divImgCreate" id="portfolio-1-color-selection" style="display: none;">
             <label>Select portfolio color:</label>
             <div class="input-container img-container img-container-six">
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-1/Color/Color1-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty1-1.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-1/Color/Color2-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty2-1.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-1/Color/Color3-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty3-1.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-1/Color/Color4-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty4-1.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-1/Color/Color5-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty5-1.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-1/Color/Color6-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty6-1.png">
                 </div>
             </div>
@@ -104,22 +105,22 @@
         <div class="input-container colorSecond divImgCreate" id="portfolio-2-color-selection" style="display: none;">
             <label>Select portfolio color:</label>
             <div class="input-container img-container img-container-six">
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-2/Color/Color1-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty1-2.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-2/Color/Color2-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty2-2.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-2/Color/Color3-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty3-2.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-2/Color/Color4-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty4-2.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-2/Color/Color5-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty5-2.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-2/Color/Color6-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty6-2.png">
                 </div>
             </div>
@@ -128,22 +129,22 @@
         <div class="input-container colorSecond divImgCreate" id="portfolio-3-color-selection" style="display: none;">
             <label>Select portfolio color:</label>
             <div class="input-container img-container img-container-six">
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-3/Color/Color1-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty1-3.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-3/Color/Color2-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty2-3.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-3/Color/Color3-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty3-3.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-3/Color/Color4-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty4-3.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-3/Color/Color5-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty5-3.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-3/Color/Color6-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty6-3.png">
                 </div>
             </div>
@@ -152,22 +153,22 @@
         <div class="input-container colorSecond divImgCreate" id="portfolio-4-color-selection" style="display: none;">
             <label>Select portfolio color:</label>
             <div class="input-container img-container img-container-six">
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-4/Color/Color1-4.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-4/Empty/Empty1-4.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-4/Color/Color2-4.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-4/Empty/Empty2-4.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-4/Color/Color3-4.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-4/Empty/Empty3-4.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-4/Color/Color4-4.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-4/Empty/Empty4-4.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-4/Color/Color5-4.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-4/Empty/Empty5-4.png">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 marginBottomCreatePortfolioPage">
                     <img src="img/portfolios/portfolio-4/Color/Color6-4.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-4/Empty/Empty6-4.png">
                 </div>
             </div>
@@ -198,6 +199,30 @@
 </div>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const updateCharCount = (input) => {
+            const maxLength = input.getAttribute("maxlength");
+            const charCount = input.value.length;
+            const remainingChars = maxLength - charCount;
+            const charCountSpan = input.nextElementSibling;
+            charCountSpan.textContent = `Remaining characters: ${remainingChars}`;
+        };
+
+        const initCharCountDisplay = () => {
+            const inputs = document.querySelectorAll('input[maxlength], textarea[maxlength]');
+            inputs.forEach(input => {
+                const charCountSpan = document.createElement('span');
+                charCountSpan.className = 'char-count';
+                input.insertAdjacentElement('afterend', charCountSpan);
+                updateCharCount(input);
+
+                input.addEventListener('input', () => updateCharCount(input));
+            });
+        };
+
+        initCharCountDisplay();
+    });
+
     function previewImage(event) {
         const picturePreview = document.getElementById('picture-preview');
         picturePreview.src = URL.createObjectURL(event.target.files[0]);
@@ -206,3 +231,20 @@
         }
     }
 </script>
+
+<style>
+    .char-count {
+        display: block;
+        font-size: 0.875em;
+        color: #555;
+        margin-top: 0.25em;
+        text-align: right;
+    }
+
+    .infoText
+    {
+        margin: 8px 0px -5px 0px !important;
+        color: #9c9c9c !important;
+        font-size: 13px;
+    }
+</style>
