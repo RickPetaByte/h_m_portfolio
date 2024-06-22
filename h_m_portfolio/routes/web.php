@@ -24,6 +24,10 @@ Route::get('/contact', [ContactController::class, 'show'])->name('contact.show')
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 Route::post('/delete-portfolio', [PortfolioController::class, 'deletePortfolio'])->name('delete-portfolio');
+Route::post('/update-html/{fileName}', [UserTextController::class, 'updateHtml'])->name('update-html');
+Route::get('refresh-csrf', function(){
+    return csrf_token();
+});
 
 Route::get('/edit-html/{fileName}', [PortfolioController::class, 'showEditHtml'])->name('edit-html');
 Route::post('/update-html/{fileName}', [PortfolioController::class, 'updateHtml'])->name('update-html');

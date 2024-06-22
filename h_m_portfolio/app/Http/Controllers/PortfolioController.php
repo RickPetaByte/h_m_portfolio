@@ -218,4 +218,5 @@ class PortfolioController extends Controller
             return redirect('/dashboard')->with('error', 'Bestand niet gevonden');
         }
     }
+
 }

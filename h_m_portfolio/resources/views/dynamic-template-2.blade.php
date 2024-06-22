@@ -303,6 +303,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', adjustFontSize);
+    });
 </script>
 
 </body>

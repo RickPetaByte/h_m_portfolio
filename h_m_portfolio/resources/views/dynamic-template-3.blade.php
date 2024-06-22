@@ -246,11 +246,11 @@
         document.querySelectorAll('h2').forEach(element => {
             const length = element.textContent.length;
             if (length < 6) {
-                element.style.fontSize = '40px';
+                element.style.fontSize = '50px';
             } else if (length < 11) {
-                element.style.fontSize = '30px';
+                element.style.fontSize = '40px';
             } else {
-                element.style.fontSize = '20px';
+                element.style.fontSize = '26px';
             }
         });
 
@@ -302,6 +302,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', adjustFontSize);
+    });
 </script>
 
 </body>

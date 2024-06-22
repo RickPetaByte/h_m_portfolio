@@ -84,4 +84,45 @@ class UserTextController extends Controller
     
         return redirect('/' . $data['fileName'])->with('success', 'Portfolio HTML file generated successfully.');
     }
+
+    public function updateHtml(Request $request, $fileName)
+    {
+        $request->validate([
+            'htmlTitle' => 'required|string',
+            'htmlSubtitle' => 'required|string',
+            'htmlText' => 'required|string',
+            'htmlOne' => 'required|string',
+            'htmlTwo' => 'required|string',
+            'htmlThree' => 'required|string',
+            'htmlFour' => 'required|string',
+            'htmlFive' => 'required|string',
+            'htmlSix' => 'required|string',
+        ]);
+    
+        $filePath = public_path($fileName);
+    
+        $data = [
+            'title' => $request->input('htmlTitle'),
+            'subtitle' => $request->input('htmlSubtitle'),
+            'text' => $request->input('htmlText'),
+            'one' => $request->input('htmlOne'),
+            'two' => $request->input('htmlTwo'),
+            'three' => $request->input('htmlThree'),
+            'four' => $request->input('htmlFour'),
+            'five' => $request->input('htmlFive'),
+            'six' => $request->input('htmlSix'),
+            'fileName' => $fileName,
+        ];
+    
+        File::put($filePath, View::make('dynamic-template', $data)->render());
+    
+        $userText = UserText::where('user_id', Auth::id())->first();
+        if ($userText) {
+            $userText->update($data);
+        } else {
+            UserText::create(array_merge($data, ['user_id' => Auth::id()]));
+        }
+    
+        return redirect('/' . $fileName)->with('success', 'HTML file and database updated successfully.');
+    }
 }
