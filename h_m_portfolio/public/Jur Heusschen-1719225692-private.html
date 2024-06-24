@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="fW58614Ks8Y2W72k0F8sUwmr0iYwCw8HYYDM7xY4">
+    <meta name="csrf-token" content="gT1a58yLm7xPMwXMVYVBIOep4xZB3ZlwiWTGTXBC">
 
     <title>H:M | Portfolio's</title>
 
@@ -62,7 +62,7 @@
             </div>
 
             <form action="http://127.0.0.1:8000/delete-portfolio" method="POST" onsubmit="return confirm('Are you sure you want to delete the portfolio?');">
-                <input type="hidden" name="_token" value="fW58614Ks8Y2W72k0F8sUwmr0iYwCw8HYYDM7xY4" autocomplete="off">                <input type="hidden" name="file_name" value="Jur Heusschen-1718997013-public.html">
+                <input type="hidden" name="_token" value="gT1a58yLm7xPMwXMVYVBIOep4xZB3ZlwiWTGTXBC" autocomplete="off">                <input type="hidden" name="file_name" value="Jur Heusschen-1719225692-private.html">
                 <button type="submit" class="btn btn-danger text-white fw-bold" id="deleteButton">
                     <i class="fa fa-trash text-white mr-2"></i>Delete Portfolio
                 </button>
@@ -86,41 +86,34 @@
         </div>
     </div>
 </nav>    <div id="main">
-        <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
+    <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
         <div class="sidebar">
-                            <div class="input-container layoutsSidebar" id="portfolio-1-color-selection">
+                            <div class="input-container layoutsSidebar" id="portfolio-3-color-selection">
     <label class="text-center">Select portfolio color:</label>
     <div class="input-container img-container img-container-six">
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-1/Color/Color1-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty1-1.png">
+            <img src="img/portfolios/portfolio-3/Color/Color1-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty1-3.png">
         </div>
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-1/Color/Color2-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty2-1.png">
+            <img src="img/portfolios/portfolio-3/Color/Color2-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty2-3.png">
         </div>
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-1/Color/Color3-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty3-1.png">
+            <img src="img/portfolios/portfolio-3/Color/Color3-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty3-3.png">
         </div>
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-1/Color/Color4-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty4-1.png">
+            <img src="img/portfolios/portfolio-3/Color/Color4-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty4-3.png">
         </div>
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-1/Color/Color5-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty5-1.png">
+            <img src="img/portfolios/portfolio-3/Color/Color5-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty5-3.png">
         </div>
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-1/Color/Color6-1.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-1/Empty/Empty6-1.png">
+            <img src="img/portfolios/portfolio-3/Color/Color6-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty6-3.png">
         </div>
     </div>
-</div>            
+</div>
+            
             <div class="privacy-section">
-                <label for="privacy" class="text-center imageEditLabel">Select new image:</label>
-                <div class="image-container">
-                    <img id="display-image" src="img/Standaard.png" alt="Standard Image">
-                </div>
-            </div>
-            <input type="file" id="image-input" style="display: none;" accept="image/*">
-
-            <div class="privacy-section">
-                <label for="privacy" class="text-center privateLabel">Display for everyone:</label>
+                <label for="privacy" class="text-center privateLabel">Private:</label>
                 <div>
                     <input type="radio" id="yes" name="privacy" value="1" class="btnYes">
                     <label for="yes">Yes</label>
@@ -149,33 +142,11 @@
                 display: block;
                 font-weight: bold;
                 margin-bottom: 5px;
-                margin-top: 5px;
-            }
-
-            .imageEditLabel
-            {
-                display: block;
-                font-weight: bold;
-                margin-bottom: 5px;
                 margin-top: -5px;
             }
 
-            .image-container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin-top: 10px;
-                margin-bottom: 20px;
-            }
-            .image-container img {
-                width: 120px;
-                height: 120px;
-                border: 2px solid black;
-                border-radius: 5px;
-            }
-
             .layoutsSidebar {
-                margin-top: 75px;
+                margin-top: 100px;
             }
 
             .marginBottomSidebar {
@@ -201,7 +172,7 @@
             }
 
             #sidebar-toggle.open {
-                top: 15px;
+                top: 35px;
             }
 
             .img-container {
@@ -258,7 +229,7 @@
 
                 var radioButtons = document.querySelectorAll('input[name="privacy"]');
                 var privacyValue = document.getElementById('privacyValue');
-                var privateValue = "0"; 
+                var privateValue = "1"; // Voeg deze regel toe om de waarde van $private te krijgen
 
                 // Selecteer de juiste radiobutton op basis van de waarde van privateValue
                 radioButtons.forEach(function(radio) {
@@ -272,64 +243,53 @@
                     });
                 });
             });
-
-            // Image selector
-            document.getElementById('display-image').addEventListener('click', function() {
-                document.getElementById('image-input').click();
-            });
-
-            document.getElementById('image-input').addEventListener('change', function(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.getElementById('display-image').src = e.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
         </script>
         <div class="container">
-            <div class="left-top"></div>
+            <div class="left-top">
+                <div class="imgPortfolio"></div>
+            </div>
             <div class="right-top">
-                <h2 class="text-white" id="editableTitle">WWWW</h2>
-                <h3 class="text-white" id="editableSubtitle">HHGBCHV</h3>
+                <h2 class="text-dark" id="editableTitle">WWW</h2>
+                <h3 class="text-dark" id="editableSubtitle">HNGFH</h3>
             </div>
-            <div class="left-bottom">
-                <p class="text-white aboutPortfolio" id="editableText">vnhbgfc vnhgbfcv nhgbv cvgc</p>
-                <h5 class="text-white" id="fixedName">Jur Heusschen</h5>
-            </div>
-            <div class="right-bottom">
-                <h4 class="text-dark">Specialties</h4>
+            <div class="bottom">
+                <h4 class="text-dark" id="editableSpecialties">wwwwww</h4>
                 <div class="columns">
                     <ul>
-                        <li class="text-dark editable" id="editableOne">1. nfyfbdvc</li>
-                        <li class="text-dark editable" id="editableTwo">2. hcfv</li>
-                        <li class="text-dark editable" id="editableThree">3. nhgfvc</li>
-                        <li class="text-dark editable" id="editableFour">4. ghfvc</li>
-                        <li class="text-dark editable" id="editableFive">5. ghnf cv</li>
-                        <li class="text-dark editable" id="editableSix">6. nghfc</li>
+                        <li class="text-dark editable" id="editableOne">1. 1. nyhhgfd</li>
+                        <li class="text-dark editable" id="editableTwo">2. 2. hcgbfjn</li>
+                        <li class="text-dark editable" id="editableThree">3. 3. yghhnj</li>
+                    </ul>
+                    <ul>
+                        <li class="text-dark editable" id="editableFour">4. 4. vgjhjf</li>
+                        <li class="text-dark editable" id="editableFive">5. 5. hgf</li>
+                        <li class="text-dark editable" id="editableSix">6. 6. njgfhcgbvnhgh</li>
                     </ul>
                 </div>
+                <h5 class="text-dark" id="fixedName">Jur Heusschen</h5>
             </div>
-            <h4 id="editableLayoutUrl" style="display: none;">img/portfolios/portfolio-1/Empty/Empty4-1.png</h4>
-            <h1 id="privacyValue" style="display: none;">0</h1>
+            <div class="absolute-container">
+                <p class="text-dark aboutPortfolio" id="editableText">bcgfhvnjybhcgf vhn cfv baw d</p>
+            </div>
+            <h4 id="editableLayoutUrl" style="display: none;">img/portfolios/portfolio-3/Empty/Empty2-3.png</h4>
+            <h1 id="privacyValue" style="display: none;">1</h1>
             <button id="saveBtn" class="btn btn-primary save-btn text-white"><i class="fa-solid fa-floppy-disk text-white mr-1"></i>Save Edits</button>
         </div>
     </div>
     <div>
-        <form id="editForm" action="http://127.0.0.1:8000/update-html/Jur%20Heusschen-1718997013-public.html" method="POST" style="display: none;">
-            <input type="hidden" name="_token" value="fW58614Ks8Y2W72k0F8sUwmr0iYwCw8HYYDM7xY4" autocomplete="off">            <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
+        <form id="editForm" action="http://127.0.0.1:8000/update-html/Jur%20Heusschen-1719225692-private.html" method="POST" style="display: none;">
+            <input type="hidden" name="_token" value="gT1a58yLm7xPMwXMVYVBIOep4xZB3ZlwiWTGTXBC" autocomplete="off">            <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
             <input type="hidden" name="htmlSubTitle" id="htmlSubTitle" maxlength="18">
             <input type="hidden" name="htmlContent" id="htmlContent" maxlength="130">
+            <input type="hidden" name="htmlSpecialties" id="htmlSpecialties" maxlength="18">
             <input type="hidden" name="htmlOne" id="htmlOne" maxlength="20">
             <input type="hidden" name="htmlTwo" id="htmlTwo" maxlength="20">
             <input type="hidden" name="htmlThree" id="htmlThree" maxlength="20">
             <input type="hidden" name="htmlFour" id="htmlFour" maxlength="20">
             <input type="hidden" name="htmlFive" id="htmlFive" maxlength="20">
             <input type="hidden" name="htmlSix" id="htmlSix" maxlength="20">
-            <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="dynamic-template-1">
-            <input type="hidden" name="htmlPicture" id="htmlPicture" value="pictures/gBGXJOVekVKA2b4doHk2OCCNWRico347n5cIVxFS.jpg">
+            <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="dynamic-template-3">
+            <input type="hidden" name="htmlPicture" id="htmlPicture" value="pictures/Bl7bNGThNq1uEGsjHSfWP1ae2pwZSqsB3KbRoeyP.jpg">
             <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl">
             <input type="hidden" name="htmlPrivacyValue" id="htmlPrivacyValue">
         </form>
@@ -406,14 +366,26 @@
 <style>
     :root 
     {
-        --img-location: url("img/portfolios/portfolio-1/Empty/Empty4-1.png");
-        --img-profile: url("storage/pictures/gBGXJOVekVKA2b4doHk2OCCNWRico347n5cIVxFS.jpg");
+        --img-location: url("img/portfolios/portfolio-3/Empty/Empty2-3.png");
+        --img-profile: url("storage/pictures/Bl7bNGThNq1uEGsjHSfWP1ae2pwZSqsB3KbRoeyP.jpg");
     }
 
     #deleteButton 
     {
         position: relative;
-        right: 50%;
+        right: 0%;
+        top: 32px;
+        transform: translateY(-50%);
+        padding: 6px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #downloadButton
+    {
+        position: relative;
+        right: 75%;
         top: 32px;
         transform: translateY(-50%);
         padding: 6px 15px;
@@ -437,7 +409,6 @@
     {
         border: 1px dashed #ccc;
     }
-    
     .editing 
     {
         border: 1px solid #000;
@@ -473,7 +444,74 @@
         border-radius: 5px;
     }
 
-    .left-top, .right-top, .left-bottom, .right-bottom 
+    .imgPortfolio 
+    {
+        width: 190px !important;
+        height: 190px !important;
+        background: var(--img-profile) no-repeat center center;
+        background-size: cover;
+        z-index: 99;
+        margin: 23px 0px 0px 27px; 
+        border-radius: 200px;
+        border: 4px solid white;
+    }
+
+    .right-top h2 
+    {
+        margin: 40px 0px 0px -20px;
+        max-width: 250px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .right-top h3 
+    {
+        margin: 0px 0px 10px -20px;
+        max-width: 250px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+    }
+
+    .bottom h4 
+    {
+        margin-top: 20px;
+        margin-left: 30px;
+        margin-bottom: 30px;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .bottom h5 
+    {
+        position: absolute;
+        bottom: 5px; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .columns 
+    {
+        display: flex;
+        margin-left: 30px;
+    }
+
+    .columns ul 
+    {
+        margin: 0;
+        padding: 10px;
+        list-style-type: none;
+        margin-right: 20px; 
+    }
+
+    .columns ul li 
+    {
+        margin-bottom: 15px; 
+    }
+
+    .left-top, .right-top, .bottom 
     {
         position: absolute;
         width: 50%;
@@ -488,19 +526,6 @@
         background-size: 200% 200%;
     }
 
-    .left-top::before 
-    {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 110%;
-        background: var(--img-profile) no-repeat center center;
-        background-size: cover;
-        z-index: -1 !important;
-    }
-
     .right-top 
     {
         top: 0;
@@ -511,88 +536,35 @@
         color: white;
     }
 
-    .right-top h2 
-    {
-        margin: 50px 0px 0px 30px;
-        max-width: 180px;
-        word-wrap: break-word;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-
-    .right-top h3
-    {
-        margin: 0px 0px 10px 30px;
-        max-width: 150px;
-        word-wrap: break-word;
-        text-transform: uppercase;
-    }
-
-    .left-bottom 
+    .bottom 
     {
         bottom: 0;
         left: 0;
-        background: var(--img-location) left bottom;
-        background-size: 200% 200%;
+        width: 100%;
+        height: 50%;
+        background: var(--img-location) bottom;
+        background-size: 100% 200%;
         z-index: 1;
     }
 
-    .aboutPortfolio
-    {
-        margin: 30px 5px 10px 15px;
-        max-width: 200px;
-        word-wrap: break-word;
-    }
-
-    .right-bottom 
-    {
-        bottom: 0;
-        right: 0;
-        background: var(--img-location) right bottom;
-        background-size: 200% 200%;
-        z-index: 1;
-        
-        display: flex; 
-        flex-direction: column; 
-        justify-content: center; 
-        align-items: center; 
-        text-align: center; 
-    }
-
-    .left-bottom h5 
+    .absolute-container 
     {
         position: absolute;
-        bottom: 5px; 
-        left: 50%; 
-        transform: translateX(-50%); 
-        font-size: 12px;
-        font-weight: bold;
+        top: 12rem; 
+        left: 15rem; 
+        width: 14rem; 
+        height: auto; 
+        z-index: 5;
     }
 
-    .right-bottom h4
+    .absolute-container .aboutPortfolio 
     {
-        margin-top: -130px;
-        margin-bottom: 10px;
-        font-weight: bold;
-        font-size: 25px;
+        margin: 0; 
     }
 
-    .right-bottom ul
-    {
-        margin-bottom: -50px;
-    }
-
-    .right-bottom ul li
-    {
-        max-width: 150px;
-        word-wrap: break-word;
-        margin: 10px;
-    }
-    
     @media (max-width: 640px) 
     {
-        /* .container 
-        {
+        /* .container {
             display: none;
         } */
     }
@@ -603,6 +575,9 @@
         const editableTitle = document.getElementById('editableTitle');
         const editableSubtitle = document.getElementById('editableSubtitle');
         const editableText = document.getElementById('editableText');
+
+        const editableSpecialties = document.getElementById('editableSpecialties');
+
         const editableOne = document.getElementById('editableOne');
         const editableTwo = document.getElementById('editableTwo');
         const editableThree = document.getElementById('editableThree');
@@ -610,7 +585,6 @@
         const editableFive = document.getElementById('editableFive');
         const editableSix = document.getElementById('editableSix');
         const editableLayoutUrl = document.getElementById('editableLayoutUrl');
-
         const privacyValue = document.getElementById('privacyValue');
 
         const saveBtn = document.getElementById('saveBtn');
@@ -619,6 +593,9 @@
         const htmlTitleInput = document.getElementById('htmlTitle');
         const htmlSubTitleInput = document.getElementById('htmlSubTitle');
         const htmlContentInput = document.getElementById('htmlContent');
+
+        const htmlSpecialtiesInput = document.getElementById('htmlSpecialties');
+
         const htmlOneInput = document.getElementById('htmlOne');
         const htmlTwoInput = document.getElementById('htmlTwo');
         const htmlThreeInput = document.getElementById('htmlThree');
@@ -626,7 +603,6 @@
         const htmlFiveInput = document.getElementById('htmlFive');
         const htmlSixInput = document.getElementById('htmlSix');
         const htmlLayoutUrlInput = document.getElementById('htmlLayoutUrl');
-
         const htmlPrivacyValue = document.getElementById('htmlPrivacyValue');
 
         function enableEditing(element) {
@@ -644,6 +620,9 @@
         editableTitle.addEventListener('dblclick', () => enableEditing(editableTitle));
         editableSubtitle.addEventListener('dblclick', () => enableEditing(editableSubtitle));
         editableText.addEventListener('dblclick', () => enableEditing(editableText));
+
+        editableSpecialties.addEventListener('dblclick', () => enableEditing(editableSpecialties));
+
         editableOne.addEventListener('dblclick', () => enableEditing(editableOne));
         editableTwo.addEventListener('dblclick', () => enableEditing(editableTwo));
         editableThree.addEventListener('dblclick', () => enableEditing(editableThree));
@@ -651,7 +630,6 @@
         editableFive.addEventListener('dblclick', () => enableEditing(editableFive));
         editableSix.addEventListener('dblclick', () => enableEditing(editableSix));
         editableLayoutUrl.addEventListener('dblclick', () => enableEditing(editableLayoutUrl));
-
         privacyValue.addEventListener('dblclick', () => enableEditing(privacyValue));
 
         saveBtn.addEventListener('click', () => {
@@ -659,6 +637,9 @@
             disableEditing(editableTitle);
             disableEditing(editableSubtitle);
             disableEditing(editableText);
+
+            disableEditing(editableSpecialties);
+
             disableEditing(editableOne);
             disableEditing(editableTwo);
             disableEditing(editableThree);
@@ -666,7 +647,6 @@
             disableEditing(editableFive);
             disableEditing(editableSix);
             disableEditing(editableLayoutUrl);
-
             disableEditing(privacyValue);
 
             saveBtn.classList.remove('active');
@@ -674,14 +654,16 @@
             htmlTitleInput.value = editableTitle.innerText.trim();
             htmlSubTitleInput.value = editableSubtitle.innerText.trim();
             htmlContentInput.value = editableText.innerText.trim();
-            htmlOneInput.value = editableOne.innerText.trim().slice(3).trim();
-            htmlTwoInput.value = editableTwo.innerText.trim().slice(3).trim();
-            htmlThreeInput.value = editableThree.innerText.trim().slice(3).trim();
-            htmlFourInput.value = editableFour.innerText.trim().slice(3).trim();
-            htmlFiveInput.value = editableFive.innerText.trim().slice(3).trim();
-            htmlSixInput.value = editableSix.innerText.trim().slice(3).trim();
-            htmlLayoutUrlInput.value = editableLayoutUrl.innerText.trim();
 
+            htmlSpecialtiesInput.value = editableSpecialties.innerText.trim();
+
+            htmlOneInput.value = editableOne.innerText.trim();
+            htmlTwoInput.value = editableTwo.innerText.trim();
+            htmlThreeInput.value = editableThree.innerText.trim();
+            htmlFourInput.value = editableFour.innerText.trim();
+            htmlFiveInput.value = editableFive.innerText.trim();
+            htmlSixInput.value = editableSix.innerText.trim();
+            htmlLayoutUrlInput.value = editableLayoutUrl.innerText.trim();
             htmlPrivacyValue.value = privacyValue.innerText.trim();
 
             editForm.submit();

@@ -15,6 +15,7 @@ class CreateUserTextsTable extends Migration
             $table->string('title')->nullable();
             $table->string('subtitle')->nullable();
             $table->string('picture')->nullable();
+            $table->string('specialties')->nullable();
             $table->string('one')->nullable();
             $table->string('two')->nullable();
             $table->string('three')->nullable();

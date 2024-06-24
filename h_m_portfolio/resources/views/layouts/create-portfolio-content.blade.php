@@ -45,6 +45,8 @@
             <textarea maxlength="130" name="text" id="text" rows="4" cols="50" class="form-control mt-3 aboutCreatePortfolio mt-1 block w-100 shadow-none" style="resize: none;" required></textarea>
         </div>
 
+        <input type="hidden" id="specialties" name="specialties" value="Specialties">
+
         <div class="input-container colorSecond divCreatePageCreate">
             <label>Private:</label>
             <div class="form-check mt-2">

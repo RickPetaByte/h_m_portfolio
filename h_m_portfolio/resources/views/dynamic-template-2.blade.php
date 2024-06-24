@@ -197,7 +197,7 @@
                 <div class="imgPortfolio"></div>
             </div>
             <div class="left-bottom">
-                <h4 class="text-white">Specialties</h4>
+                <h4 class="text-dark" id="editableSpecialties">{{ $specialties }}</h4>
                 <div class="columns" style="width: 375px;">
                     <ul>
                         <li class="text-white editable" id="editableOne">1. {{ $one }}</li>
@@ -227,6 +227,7 @@
             <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
             <input type="hidden" name="htmlSubTitle" id="htmlSubTitle" maxlength="18">
             <input type="hidden" name="htmlContent" id="htmlContent" maxlength="130">
+            <input type="hidden" name="htmlSpecialties" id="htmlSpecialties" maxlength="18">
             <input type="hidden" name="htmlOne" id="htmlOne" maxlength="20">
             <input type="hidden" name="htmlTwo" id="htmlTwo" maxlength="20">
             <input type="hidden" name="htmlThree" id="htmlThree" maxlength="20">
@@ -318,7 +319,19 @@
     #deleteButton 
     {
         position: relative;
-        right: 50%;
+        right: 0%;
+        top: 32px;
+        transform: translateY(-50%);
+        padding: 6px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #downloadButton
+    {
+        position: relative;
+        right: 75%;
         top: 32px;
         transform: translateY(-50%);
         padding: 6px 15px;
@@ -514,6 +527,9 @@
         const editableTitle = document.getElementById('editableTitle');
         const editableSubtitle = document.getElementById('editableSubtitle');
         const editableText = document.getElementById('editableText');
+
+        const editableSpecialties = document.getElementById('editableSpecialties');
+
         const editableOne = document.getElementById('editableOne');
         const editableTwo = document.getElementById('editableTwo');
         const editableThree = document.getElementById('editableThree');
@@ -521,7 +537,6 @@
         const editableFive = document.getElementById('editableFive');
         const editableSix = document.getElementById('editableSix');
         const editableLayoutUrl = document.getElementById('editableLayoutUrl');
-
         const privacyValue = document.getElementById('privacyValue');
 
         const saveBtn = document.getElementById('saveBtn');
@@ -530,6 +545,9 @@
         const htmlTitleInput = document.getElementById('htmlTitle');
         const htmlSubTitleInput = document.getElementById('htmlSubTitle');
         const htmlContentInput = document.getElementById('htmlContent');
+
+        const htmlSpecialtiesInput = document.getElementById('htmlSpecialties');
+
         const htmlOneInput = document.getElementById('htmlOne');
         const htmlTwoInput = document.getElementById('htmlTwo');
         const htmlThreeInput = document.getElementById('htmlThree');
@@ -537,7 +555,6 @@
         const htmlFiveInput = document.getElementById('htmlFive');
         const htmlSixInput = document.getElementById('htmlSix');
         const htmlLayoutUrlInput = document.getElementById('htmlLayoutUrl');
-
         const htmlPrivacyValue = document.getElementById('htmlPrivacyValue');
 
         function enableEditing(element) {
@@ -555,6 +572,9 @@
         editableTitle.addEventListener('dblclick', () => enableEditing(editableTitle));
         editableSubtitle.addEventListener('dblclick', () => enableEditing(editableSubtitle));
         editableText.addEventListener('dblclick', () => enableEditing(editableText));
+
+        editableSpecialties.addEventListener('dblclick', () => enableEditing(editableSpecialties));
+
         editableOne.addEventListener('dblclick', () => enableEditing(editableOne));
         editableTwo.addEventListener('dblclick', () => enableEditing(editableTwo));
         editableThree.addEventListener('dblclick', () => enableEditing(editableThree));
@@ -562,7 +582,6 @@
         editableFive.addEventListener('dblclick', () => enableEditing(editableFive));
         editableSix.addEventListener('dblclick', () => enableEditing(editableSix));
         editableLayoutUrl.addEventListener('dblclick', () => enableEditing(editableLayoutUrl));
-
         privacyValue.addEventListener('dblclick', () => enableEditing(privacyValue));
 
         saveBtn.addEventListener('click', () => {
@@ -570,6 +589,9 @@
             disableEditing(editableTitle);
             disableEditing(editableSubtitle);
             disableEditing(editableText);
+
+            disableEditing(editableSpecialties);
+
             disableEditing(editableOne);
             disableEditing(editableTwo);
             disableEditing(editableThree);
@@ -577,7 +599,6 @@
             disableEditing(editableFive);
             disableEditing(editableSix);
             disableEditing(editableLayoutUrl);
-
             disableEditing(privacyValue);
 
             saveBtn.classList.remove('active');
@@ -585,14 +606,16 @@
             htmlTitleInput.value = editableTitle.innerText.trim();
             htmlSubTitleInput.value = editableSubtitle.innerText.trim();
             htmlContentInput.value = editableText.innerText.trim();
-            htmlOneInput.value = editableOne.innerText.trim().slice(3).trim();
-            htmlTwoInput.value = editableTwo.innerText.trim().slice(3).trim();
-            htmlThreeInput.value = editableThree.innerText.trim().slice(3).trim();
-            htmlFourInput.value = editableFour.innerText.trim().slice(3).trim();
-            htmlFiveInput.value = editableFive.innerText.trim().slice(3).trim();
-            htmlSixInput.value = editableSix.innerText.trim().slice(3).trim();
-            htmlLayoutUrlInput.value = editableLayoutUrl.innerText.trim();
 
+            htmlSpecialtiesInput.value = editableSpecialties.innerText.trim();
+
+            htmlOneInput.value = editableOne.innerText.trim();
+            htmlTwoInput.value = editableTwo.innerText.trim();
+            htmlThreeInput.value = editableThree.innerText.trim();
+            htmlFourInput.value = editableFour.innerText.trim();
+            htmlFiveInput.value = editableFive.innerText.trim();
+            htmlSixInput.value = editableSix.innerText.trim();
+            htmlLayoutUrlInput.value = editableLayoutUrl.innerText.trim();
             htmlPrivacyValue.value = privacyValue.innerText.trim();
 
             editForm.submit();

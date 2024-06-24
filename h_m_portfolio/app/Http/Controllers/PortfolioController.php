@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 
+use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
+
 class PortfolioController extends Controller
 {
     public function updateHtml(Request $request, $fileName)
@@ -17,6 +19,7 @@ class PortfolioController extends Controller
             'htmlTitle' => 'required|string',
             'htmlSubTitle' => 'required|string',
             'htmlContent' => 'required|string',
+            'htmlSpecialties' => 'required|string',
             'htmlOne' => 'required|string',
             'htmlTwo' => 'required|string',
             'htmlThree' => 'required|string',
@@ -33,6 +36,9 @@ class PortfolioController extends Controller
         $newTitle = $request->input('htmlTitle');
         $newSubTitle = $request->input('htmlSubTitle');
         $newContent = $request->input('htmlContent');
+
+        $newSpecialties = $request->input('htmlSpecialties');
+
         $newOne = $request->input('htmlOne');
         $newTwo = $request->input('htmlTwo');
         $newThree = $request->input('htmlThree');
@@ -72,6 +78,7 @@ class PortfolioController extends Controller
                 'title' => $newTitle,
                 'subtitle' => $newSubTitle,
                 'text' => $newContent,
+                'specialties' => $newSpecialties,
                 'one' => $newOne,
                 'two' => $newTwo,
                 'three' => $newThree,
@@ -97,6 +104,7 @@ class PortfolioController extends Controller
                     'title' => $newTitle,
                     'subtitle' => $newSubTitle,
                     'text' => $newContent,
+                    'specialties' => $newSpecialties,
                     'one' => $newOne,
                     'two' => $newTwo,
                     'three' => $newThree,
@@ -113,6 +121,7 @@ class PortfolioController extends Controller
                     'title' => $newTitle,
                     'subtitle' => $newSubTitle,
                     'text' => $newContent,
+                    'specialties' => $newSpecialties,
                     'one' => $newOne,
                     'two' => $newTwo,
                     'three' => $newThree,
@@ -131,7 +140,7 @@ class PortfolioController extends Controller
         }
     }
     
-    public function generateHtml($title, $subtitle, $text, $one, $two, $three, $four, $five, $six, $selected_color_image_alt, $private)
+    public function generateHtml($title, $subtitle, $text, $specialties, $one, $two, $three, $four, $five, $six, $selected_color_image_alt, $private)
     {
         if (!Auth::check()) {
             return redirect()->route('login');
@@ -147,6 +156,7 @@ class PortfolioController extends Controller
             'title' => $title,
             'subtitle' => $subtitle,
             'text' => $text,
+            'specialties' => $specialties,
             'one' => $one,
             'two' => $two,
             'three' => $three,
@@ -154,9 +164,7 @@ class PortfolioController extends Controller
             'five' => $five,
             'six' => $six,
             'selected_color_image_alt' => $selected_color_image_alt,
-
             'private' => $private,
-
             'fileName' => $fileName,
             'name' => $name, 
         ];
@@ -169,6 +177,7 @@ class PortfolioController extends Controller
             'title' => $title,
             'subtitle' => $subtitle,
             'text' => $text,
+            'specialties' => $specialties,
             'one' => $one,
             'two' => $two,
             'three' => $three,
@@ -176,7 +185,6 @@ class PortfolioController extends Controller
             'five' => $five,
             'six' => $six,
             'selected_color_image_alt' => $selected_color_image_alt,
-
             'private' => $private,
         ]);
     
@@ -204,7 +212,6 @@ class PortfolioController extends Controller
             try {
                 File::delete($filePath);
 
-                // Optionally, update the database if you have a record of the file
                 $userText = UserText::where('user_id', Auth::id())->where('fileName', $fileName)->first();
                 if ($userText) {
                     $userText->delete();

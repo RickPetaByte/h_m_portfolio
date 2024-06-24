@@ -14,6 +14,7 @@ class UserText extends Model
         'text', 
         'title', 
         'subtitle', 
+        'specialties',
         'one', 
         'two', 
         'three', 
