@@ -3,16 +3,40 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="gT1a58yLm7xPMwXMVYVBIOep4xZB3ZlwiWTGTXBC">
+    <meta name="csrf-token" content="EUg5fznE7zmbdChHInt9VQm1tToFazhmhxcIFuh6">
 
-    <title>H:M | Portfolio's</title>
+    <title>H:M | Portfolio's | Edit</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/581ff810bc.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Font Family -->
+    <!-- Font 1 -->
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- "Roboto", sans-serif; -->
+
+    <!-- Font 2 -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- "Montserrat", sans-serif; -->
+
+    <!-- Font 3 -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <!-- "Oswald", sans-serif; -->
+
+    <!-- Font 4 -->
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <!-- "Russo One", sans-serif; -->
+    
+    <!-- Font 5 -->
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+ES+Deco:wght@100..400&display=swap" rel="stylesheet">
+    <!-- "Playwrite ES Deco", cursive; -->
 
     <!-- Icon -->
     <link rel="shortcut icon" href="img/LogoCircle2.png">
@@ -61,12 +85,40 @@
                 </div>
             </div>
 
-            <form action="http://127.0.0.1:8000/delete-portfolio" method="POST" onsubmit="return confirm('Are you sure you want to delete the portfolio?');">
-                <input type="hidden" name="_token" value="gT1a58yLm7xPMwXMVYVBIOep4xZB3ZlwiWTGTXBC" autocomplete="off">                <input type="hidden" name="file_name" value="Jur Heusschen-1719225692-private.html">
-                <button type="submit" class="btn btn-danger text-white fw-bold" id="deleteButton">
+            <form method="POST">
+                <input type="hidden" name="_token" value="EUg5fznE7zmbdChHInt9VQm1tToFazhmhxcIFuh6" autocomplete="off">                <input type="hidden" name="file_name" value="Jur Heusschen-1719319146-public.html">
+                <button type="button" class="btn btn-danger text-white fw-bold" id="deleteButton" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i class="fa fa-trash text-white mr-2"></i>Delete Portfolio
                 </button>
             </form>
+
+            <!-- Model if you delete portfolio -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Portfolio</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <span>Are you sure you want to delete the portfolio?</span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                <i class="fa-solid fa-xmark text-white mr-2"></i>
+                                <span class="text-white">No</span>
+                            </button>
+                            <form action="http://127.0.0.1:8000/delete-portfolio" method="POST">
+                                <input type="hidden" name="_token" value="EUg5fznE7zmbdChHInt9VQm1tToFazhmhxcIFuh6" autocomplete="off">                                <input type="hidden" name="file_name" value="Jur Heusschen-1719319146-public.html">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa fa-trash text-white mr-2"></i>
+                                    <span class="text-white ">Yes</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="flex items-center">
                 <img src="img/moon.png" class="mr-5 icon iconThemeNavBar">
@@ -86,39 +138,59 @@
         </div>
     </div>
 </nav>    <div id="main">
-    <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
+        <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
         <div class="sidebar">
-                            <div class="input-container layoutsSidebar" id="portfolio-3-color-selection">
+                            <div class="input-container layoutsSidebar" id="portfolio-2-color-selection">
     <label class="text-center">Select portfolio color:</label>
     <div class="input-container img-container img-container-six">
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-3/Color/Color1-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty1-3.png">
+            <img src="img/portfolios/portfolio-2/Color/Color1-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty1-2.png">
         </div>
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-3/Color/Color2-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty2-3.png">
+            <img src="img/portfolios/portfolio-2/Color/Color2-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty2-2.png">
         </div>
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-3/Color/Color3-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty3-3.png">
+            <img src="img/portfolios/portfolio-2/Color/Color3-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty3-2.png">
         </div>
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-3/Color/Color4-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty4-3.png">
+            <img src="img/portfolios/portfolio-2/Color/Color4-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty4-2.png">
         </div>
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-3/Color/Color5-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty5-3.png">
+            <img src="img/portfolios/portfolio-2/Color/Color5-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty5-2.png">
         </div>
         <div class="col-md-6">
-            <img src="img/portfolios/portfolio-3/Color/Color6-3.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-3/Empty/Empty6-3.png">
+            <img src="img/portfolios/portfolio-2/Color/Color6-2.png" class="img-fluid img-bordered imageCreate" alt="img/portfolios/portfolio-2/Empty/Empty6-2.png">
         </div>
     </div>
-</div>
-            
+</div>            
+            <!-- <div class="privacy-section">
+                <label for="privacy" class="text-center imageEditLabel">Select new image:</label>
+                <div class="image-container">
+                    <img id="display-image" src="img/Standaard.png" alt="Standard Image">
+                </div>
+            </div>
+            <input type="file" id="image-input" style="display: none;" accept="image/*"> -->
+
             <div class="privacy-section">
-                <label for="privacy" class="text-center privateLabel">Private:</label>
+                <label for="privacy" class="text-center privateLabel">Display for everyone:</label>
                 <div>
                     <input type="radio" id="yes" name="privacy" value="1" class="btnYes">
                     <label for="yes">Yes</label>
                     <input type="radio" id="no" name="privacy" value="0" class="btnYes">
                     <label for="no">No</label>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <label for="font-select" class="text-center privateLabel mt-3">Select lettertype:</label>
+                <div class="mt-2 mb-3 ml-5 mr-5">
+                    <select id="font-select" class="form-control backgroundTransparant aboutCreatePortfolio" onchange="updateInput()">
+                        <option class="roboto" value="Roboto">Roboto</option>
+                        <option class="montserrat" value="Montserrat">Montserrat</option>
+                        <option class="oswald" value="Oswald">Oswald</option>
+                        <option class="russoOne" value="Russo One">Russo One</option>
+                        <option class="playwrite" value="Playwrite ES Deco">Playwrite ES Deco</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -142,11 +214,33 @@
                 display: block;
                 font-weight: bold;
                 margin-bottom: 5px;
+                margin-top: 5px;
+            }
+
+            .imageEditLabel
+            {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
                 margin-top: -5px;
             }
 
+            .image-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+            .image-container img {
+                width: 120px;
+                height: 120px;
+                border: 2px solid black;
+                border-radius: 5px;
+            }
+
             .layoutsSidebar {
-                margin-top: 100px;
+                margin-top: 75px;
             }
 
             .marginBottomSidebar {
@@ -172,7 +266,7 @@
             }
 
             #sidebar-toggle.open {
-                top: 35px;
+                top: 15px;
             }
 
             .img-container {
@@ -195,6 +289,7 @@
             }
         </style>
         <script>
+            // Sidebar toggle functionality
             document.addEventListener('DOMContentLoaded', function() {
                 var sidebarToggle = document.getElementById('sidebar-toggle');
                 var sidebarIcon = document.getElementById('sidebar-icon');
@@ -210,6 +305,7 @@
                     }
                 });
 
+                // Image selection functionality
                 var images = document.querySelectorAll('.img-container img');
                 var selectedLayout = document.getElementById('editableLayoutUrl');
 
@@ -227,11 +323,11 @@
                     });
                 });
 
+                // Privacy radio button functionality
                 var radioButtons = document.querySelectorAll('input[name="privacy"]');
                 var privacyValue = document.getElementById('privacyValue');
-                var privateValue = "1"; // Voeg deze regel toe om de waarde van $private te krijgen
+                var privateValue = "0"; // Assuming $private is a server-side variable
 
-                // Selecteer de juiste radiobutton op basis van de waarde van privateValue
                 radioButtons.forEach(function(radio) {
                     if (radio.value == privateValue) {
                         radio.checked = true;
@@ -243,42 +339,88 @@
                     });
                 });
             });
+
+            // Display selected font family
+            document.addEventListener('DOMContentLoaded', function() {
+                var familyValue = "Roboto"; // Assuming $family is a server-side variable
+                var selectElement = document.getElementById('font-select');
+                selectElement.value = familyValue;
+
+                var editableFamily = document.getElementById('editableFamily');
+                editableFamily.textContent = familyValue;
+            });
+
+            // Update font family selection
+            function updateInput() {
+                var selectElement = document.getElementById('font-select');
+                var selectedValue = selectElement.value;
+
+                var editableFamily = document.getElementById('editableFamily');
+                editableFamily.textContent = selectedValue;
+
+                var saveBtn = document.getElementById('saveBtn');
+                saveBtn.classList.add('active');
+            }
+
+            // Image display and selection
+            document.getElementById('display-image').addEventListener('click', function() {
+                document.getElementById('image-input').click();
+            });
+
+            document.getElementById('image-input').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('display-image').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
         </script>
         <div class="container">
             <div class="left-top">
-                <div class="imgPortfolio"></div>
+                <h2 class="text-white" id="editableTitle">LKHJTMGB</h2>
+                <h3 class="text-white" id="editableSubtitle">NYJUG</h3>
             </div>
             <div class="right-top">
-                <h2 class="text-dark" id="editableTitle">WWW</h2>
-                <h3 class="text-dark" id="editableSubtitle">HNGFH</h3>
+                <div class="imgPortfolio"></div>
+                <input type="file" id="image-input" style="display: none;" accept="image/*">
             </div>
-            <div class="bottom">
-                <h4 class="text-dark" id="editableSpecialties">wwwwww</h4>
-                <div class="columns">
+            <div class="left-bottom">
+                <h4 class="text-white" id="editableSpecialties">Specialties</h4>
+                <div class="columns" style="width: 375px;">
                     <ul>
-                        <li class="text-dark editable" id="editableOne">1. 1. nyhhgfd</li>
-                        <li class="text-dark editable" id="editableTwo">2. 2. hcgbfjn</li>
-                        <li class="text-dark editable" id="editableThree">3. 3. yghhnj</li>
+                        <li class="text-white editable" id="editableOne">1. jhnhyghj</li>
+                        <li class="text-white editable" id="editableTwo">2. nyygfh</li>
+                        <li class="text-white editable" id="editableThree">3. junft</li>
                     </ul>
                     <ul>
-                        <li class="text-dark editable" id="editableFour">4. 4. vgjhjf</li>
-                        <li class="text-dark editable" id="editableFive">5. 5. hgf</li>
-                        <li class="text-dark editable" id="editableSix">6. 6. njgfhcgbvnhgh</li>
+                        <li class="text-white editable" id="editableFour">4. ygnytgv</li>
+                        <li class="text-white editable" id="editableFive">5. jfyvgn</li>
+                        <li class="text-white editable" id="editableSix">6. hguvgh</li>
                     </ul>
                 </div>
-                <h5 class="text-dark" id="fixedName">Jur Heusschen</h5>
+                <h5 class="text-white" id="fixedName">Jur Heusschen</h5>
             </div>
+            <div class="right-bottom"></div>
             <div class="absolute-container">
-                <p class="text-dark aboutPortfolio" id="editableText">bcgfhvnjybhcgf vhn cfv baw d</p>
+                <p class="text-white aboutPortfolio" id="editableText">juyfhgvjyugvf wwwbvnhhvgw a d</p>
             </div>
-            <h4 id="editableLayoutUrl" style="display: none;">img/portfolios/portfolio-3/Empty/Empty2-3.png</h4>
-            <h1 id="privacyValue" style="display: none;">1</h1>
+            <h4 id="editableLayoutUrl" style="display: none;">img/portfolios/portfolio-2/Empty/Empty5-2.png</h4>
+            <h4 id="editableFamily" style="display: none;">Roboto</h4>
+            <h1 id="privacyValue" style="display: none;">0</h1>
+
+
+            <h4 id="pictureUrl" style="display: none;">pictures/ZuFlNvLdCVsbIOQRNJLRsk9a9dDrHZEt3lBe8qxP.jpg</h4>
+
+
             <button id="saveBtn" class="btn btn-primary save-btn text-white"><i class="fa-solid fa-floppy-disk text-white mr-1"></i>Save Edits</button>
         </div>
     </div>
     <div>
-        <form id="editForm" action="http://127.0.0.1:8000/update-html/Jur%20Heusschen-1719225692-private.html" method="POST" style="display: none;">
-            <input type="hidden" name="_token" value="gT1a58yLm7xPMwXMVYVBIOep4xZB3ZlwiWTGTXBC" autocomplete="off">            <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
+        <form id="editForm" action="http://127.0.0.1:8000/update-html/Jur%20Heusschen-1719319146-public.html" method="POST" style="display: none;">
+            <input type="hidden" name="_token" value="EUg5fznE7zmbdChHInt9VQm1tToFazhmhxcIFuh6" autocomplete="off">            <input type="hidden" name="htmlTitle" id="htmlTitle" maxlength="18">
             <input type="hidden" name="htmlSubTitle" id="htmlSubTitle" maxlength="18">
             <input type="hidden" name="htmlContent" id="htmlContent" maxlength="130">
             <input type="hidden" name="htmlSpecialties" id="htmlSpecialties" maxlength="18">
@@ -288,10 +430,11 @@
             <input type="hidden" name="htmlFour" id="htmlFour" maxlength="20">
             <input type="hidden" name="htmlFive" id="htmlFive" maxlength="20">
             <input type="hidden" name="htmlSix" id="htmlSix" maxlength="20">
-            <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="dynamic-template-3">
-            <input type="hidden" name="htmlPicture" id="htmlPicture" value="pictures/Bl7bNGThNq1uEGsjHSfWP1ae2pwZSqsB3KbRoeyP.jpg">
+            <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="dynamic-template-2">
+            <input type="hidden" name="htmlPicture" id="htmlPicture" value="pictures/ZuFlNvLdCVsbIOQRNJLRsk9a9dDrHZEt3lBe8qxP.jpg">
             <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl">
             <input type="hidden" name="htmlPrivacyValue" id="htmlPrivacyValue">
+            <input type="hidden" name="htmlFamily" id="htmlFamily">
         </form>
     </div>
 </div>
@@ -302,11 +445,11 @@
         document.querySelectorAll('h2').forEach(element => {
             const length = element.textContent.length;
             if (length < 6) {
-                element.style.fontSize = '40px';
+                element.style.fontSize = '50px';
             } else if (length < 11) {
-                element.style.fontSize = '30px';
+                element.style.fontSize = '40px';
             } else {
-                element.style.fontSize = '20px';
+                element.style.fontSize = '26px';
             }
         });
 
@@ -360,32 +503,72 @@
     document.addEventListener('DOMContentLoaded', adjustFontSize);
 </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Get the imgPortfolio div, image input, and pictureUrl h1 element
+        const imgPortfolio = document.querySelector('.imgPortfolio');
+        const imageInput = document.getElementById('image-input');
+        const pictureUrl = document.getElementById('pictureUrl');
+        
+        // Event listener to open file input when imgPortfolio is clicked
+        imgPortfolio.addEventListener('click', () => {
+            imageInput.click();
+        });
+
+        // Event listener to change the image when a new file is selected
+        imageInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const formData = new FormData();
+                formData.append('image', file);
+
+                fetch('http://127.0.0.1:8000/upload-image', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': 'EUg5fznE7zmbdChHInt9VQm1tToFazhmhxcIFuh6',
+                    },
+                    body: formData,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.path) {
+                        const imageUrlPath = `${data.path}`;
+                        const displayPath = imageUrlPath.replace('/storage/', '');
+                        imgPortfolio.style.backgroundImage = `url(${imageUrlPath})`;
+                        pictureUrl.textContent = displayPath;
+                    } else {
+                        alert('Image upload failed. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error uploading image:', error);
+                    alert('Image upload failed. Please try again.');
+                });
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
 
 <style>
     :root 
     {
-        --img-location: url("img/portfolios/portfolio-3/Empty/Empty2-3.png");
-        --img-profile: url("storage/pictures/Bl7bNGThNq1uEGsjHSfWP1ae2pwZSqsB3KbRoeyP.jpg");
+        --img-location: url("img/portfolios/portfolio-2/Empty/Empty5-2.png");
+        --img-profile: url("storage/pictures/ZuFlNvLdCVsbIOQRNJLRsk9a9dDrHZEt3lBe8qxP.jpg");
+        --font-size: "Roboto";
+    }
+
+    .imgPortfolio 
+    {
+        cursor: pointer;
     }
 
     #deleteButton 
     {
         position: relative;
-        right: 0%;
-        top: 32px;
-        transform: translateY(-50%);
-        padding: 6px 15px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    #downloadButton
-    {
-        position: relative;
-        right: 75%;
+        right: 50%;
         top: 32px;
         transform: translateY(-50%);
         padding: 6px 15px;
@@ -444,74 +627,7 @@
         border-radius: 5px;
     }
 
-    .imgPortfolio 
-    {
-        width: 190px !important;
-        height: 190px !important;
-        background: var(--img-profile) no-repeat center center;
-        background-size: cover;
-        z-index: 99;
-        margin: 23px 0px 0px 27px; 
-        border-radius: 200px;
-        border: 4px solid white;
-    }
-
-    .right-top h2 
-    {
-        margin: 40px 0px 0px -20px;
-        max-width: 250px;
-        word-wrap: break-word;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-
-    .right-top h3 
-    {
-        margin: 0px 0px 10px -20px;
-        max-width: 250px;
-        word-wrap: break-word;
-        text-transform: uppercase;
-    }
-
-    .bottom h4 
-    {
-        margin-top: 20px;
-        margin-left: 30px;
-        margin-bottom: 30px;
-        font-weight: bold;
-        font-size: 25px;
-    }
-
-    .bottom h5 
-    {
-        position: absolute;
-        bottom: 5px; 
-        left: 50%; 
-        transform: translateX(-50%); 
-        font-size: 12px;
-        font-weight: bold;
-    }
-
-    .columns 
-    {
-        display: flex;
-        margin-left: 30px;
-    }
-
-    .columns ul 
-    {
-        margin: 0;
-        padding: 10px;
-        list-style-type: none;
-        margin-right: 20px; 
-    }
-
-    .columns ul li 
-    {
-        margin-bottom: 15px; 
-    }
-
-    .left-top, .right-top, .bottom 
+    .left-top, .right-top, .left-bottom, .right-bottom 
     {
         position: absolute;
         width: 50%;
@@ -526,45 +642,126 @@
         background-size: 200% 200%;
     }
 
+    .left-top h2 
+    {
+        margin: 40px 0px 0px 30px;
+        max-width: 250px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: var(--font-size) !important;
+    }
+
+    .left-top h3 
+    {
+        margin: 0px 0px 10px 30px;
+        max-width: 250px;
+        word-wrap: break-word;
+        text-transform: uppercase;
+        font-family: var(--font-size) !important;
+    }
+
     .right-top 
     {
         top: 0;
         right: 0;
         background: var(--img-location) right top;
         background-size: 200% 200%;
-        z-index: 1;
+        z-index: 100;
         color: white;
     }
 
-    .bottom 
+    .imgPortfolio 
+    {
+        width: 215px !important;
+        height: 215px !important;
+        background: var(--img-profile) no-repeat center center;
+        background-size: cover;
+        z-index: 99;
+        margin: 138px 0px 0px 14px; 
+        border-radius: 200px;
+        border: 4px solid white;
+    }
+
+    .left-bottom 
     {
         bottom: 0;
         left: 0;
-        width: 100%;
-        height: 50%;
-        background: var(--img-location) bottom;
-        background-size: 100% 200%;
+        background: var(--img-location) left bottom;
+        background-size: 200% 200%;
+        z-index: 2;
+    }
+
+    .left-bottom h4 
+    {
+        margin-top: 80px;
+        margin-left: 30px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 25px;
+        font-family: var(--font-size) !important;
+    }
+
+    .columns 
+    {
+        display: flex;
+        margin-left: 30px;
+    }
+
+    .columns ul 
+    {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        margin-right: 20px; 
+        font-family: var(--font-size) !important;
+    }
+
+    .columns ul li 
+    {
+        margin-bottom: 5px; 
+        font-family: var(--font-size) !important;
+    }
+
+    .right-bottom 
+    {
+        bottom: 0;
+        right: 0;
+        background: var(--img-location) right bottom;
+        background-size: 200% 200%;
         z-index: 1;
+    }
+
+    .left-bottom h5 
+    {
+        position: absolute;
+        bottom: 5px; 
+        margin-left: 10px;
+        font-weight: bold;
+        font-family: var(--font-size) !important;
     }
 
     .absolute-container 
     {
         position: absolute;
-        top: 12rem; 
-        left: 15rem; 
-        width: 14rem; 
+        top: 16rem; 
+        left: 3rem; 
+        width: 13rem; 
         height: auto; 
-        z-index: 5;
+        z-index: 2;
+        font-family: var(--font-size) !important;
     }
 
     .absolute-container .aboutPortfolio 
     {
         margin: 0; 
+        font-family: var(--font-size) !important;
     }
 
     @media (max-width: 640px) 
     {
-        /* .container {
+        /* .container 
+        {
             display: none;
         } */
     }
@@ -572,12 +769,11 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // Get all editable elements
         const editableTitle = document.getElementById('editableTitle');
         const editableSubtitle = document.getElementById('editableSubtitle');
         const editableText = document.getElementById('editableText');
-
         const editableSpecialties = document.getElementById('editableSpecialties');
-
         const editableOne = document.getElementById('editableOne');
         const editableTwo = document.getElementById('editableTwo');
         const editableThree = document.getElementById('editableThree');
@@ -586,16 +782,16 @@
         const editableSix = document.getElementById('editableSix');
         const editableLayoutUrl = document.getElementById('editableLayoutUrl');
         const privacyValue = document.getElementById('privacyValue');
+        const editableFamily = document.getElementById('editableFamily');
 
+        // Get form inputs and save button
         const saveBtn = document.getElementById('saveBtn');
         const editForm = document.getElementById('editForm');
 
         const htmlTitleInput = document.getElementById('htmlTitle');
         const htmlSubTitleInput = document.getElementById('htmlSubTitle');
         const htmlContentInput = document.getElementById('htmlContent');
-
         const htmlSpecialtiesInput = document.getElementById('htmlSpecialties');
-
         const htmlOneInput = document.getElementById('htmlOne');
         const htmlTwoInput = document.getElementById('htmlTwo');
         const htmlThreeInput = document.getElementById('htmlThree');
@@ -604,25 +800,27 @@
         const htmlSixInput = document.getElementById('htmlSix');
         const htmlLayoutUrlInput = document.getElementById('htmlLayoutUrl');
         const htmlPrivacyValue = document.getElementById('htmlPrivacyValue');
+        const htmlFamily = document.getElementById('htmlFamily');
 
+        // Function to enable editing on double click
         function enableEditing(element) {
             element.contentEditable = true;
             element.classList.add('editing');
-            saveBtn.classList.add('active');
-            element.focus();
+            saveBtn.classList.add('active'); // Add active class to save button
+            element.focus(); // Focus on the element being edited
         }
 
+        // Function to disable editing and remove active classes
         function disableEditing(element) {
             element.contentEditable = false;
             element.classList.remove('editing');
         }
 
+        // Double click event listeners to enable editing
         editableTitle.addEventListener('dblclick', () => enableEditing(editableTitle));
         editableSubtitle.addEventListener('dblclick', () => enableEditing(editableSubtitle));
         editableText.addEventListener('dblclick', () => enableEditing(editableText));
-
         editableSpecialties.addEventListener('dblclick', () => enableEditing(editableSpecialties));
-
         editableOne.addEventListener('dblclick', () => enableEditing(editableOne));
         editableTwo.addEventListener('dblclick', () => enableEditing(editableTwo));
         editableThree.addEventListener('dblclick', () => enableEditing(editableThree));
@@ -631,15 +829,17 @@
         editableSix.addEventListener('dblclick', () => enableEditing(editableSix));
         editableLayoutUrl.addEventListener('dblclick', () => enableEditing(editableLayoutUrl));
         privacyValue.addEventListener('dblclick', () => enableEditing(privacyValue));
+        editableFamily.addEventListener('dblclick', () => enableEditing(editableFamily));
 
+        // Save button click event listener
         saveBtn.addEventListener('click', () => {
-            event.preventDefault();
+            event.preventDefault(); // Prevent form submission
+
+            // Disable editing for all elements and remove active class from save button
             disableEditing(editableTitle);
             disableEditing(editableSubtitle);
             disableEditing(editableText);
-
             disableEditing(editableSpecialties);
-
             disableEditing(editableOne);
             disableEditing(editableTwo);
             disableEditing(editableThree);
@@ -648,25 +848,26 @@
             disableEditing(editableSix);
             disableEditing(editableLayoutUrl);
             disableEditing(privacyValue);
+            disableEditing(editableFamily);
 
-            saveBtn.classList.remove('active');
+            saveBtn.classList.remove('active'); // Remove active class from save button
 
+            // Assign inner text values to corresponding hidden form inputs
             htmlTitleInput.value = editableTitle.innerText.trim();
             htmlSubTitleInput.value = editableSubtitle.innerText.trim();
             htmlContentInput.value = editableText.innerText.trim();
-
             htmlSpecialtiesInput.value = editableSpecialties.innerText.trim();
-
-            htmlOneInput.value = editableOne.innerText.trim();
-            htmlTwoInput.value = editableTwo.innerText.trim();
-            htmlThreeInput.value = editableThree.innerText.trim();
-            htmlFourInput.value = editableFour.innerText.trim();
-            htmlFiveInput.value = editableFive.innerText.trim();
-            htmlSixInput.value = editableSix.innerText.trim();
+            htmlOneInput.value = editableOne.innerText.trim().slice(3).trim();
+            htmlTwoInput.value = editableTwo.innerText.trim().slice(3).trim();
+            htmlThreeInput.value = editableThree.innerText.trim().slice(3).trim();
+            htmlFourInput.value = editableFour.innerText.trim().slice(3).trim();
+            htmlFiveInput.value = editableFive.innerText.trim().slice(3).trim();
+            htmlSixInput.value = editableSix.innerText.trim().slice(3).trim();
             htmlLayoutUrlInput.value = editableLayoutUrl.innerText.trim();
             htmlPrivacyValue.value = privacyValue.innerText.trim();
+            htmlFamily.value = editableFamily.innerText.trim();
 
-            editForm.submit();
+            editForm.submit(); // Submit the form
         });
     });
 </script>

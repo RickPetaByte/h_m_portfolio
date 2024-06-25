@@ -5,14 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>H:M | Portfolio's</title>
+    <title>H:M | Portfolio's | Edit</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/581ff810bc.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Font Family -->
+    <!-- Font 1 -->
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- "Roboto", sans-serif; -->
+
+    <!-- Font 2 -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- "Montserrat", sans-serif; -->
+
+    <!-- Font 3 -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <!-- "Oswald", sans-serif; -->
+
+    <!-- Font 4 -->
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <!-- "Russo One", sans-serif; -->
+    
+    <!-- Font 5 -->
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+ES+Deco:wght@100..400&display=swap" rel="stylesheet">
+    <!-- "Playwrite ES Deco", cursive; -->
 
     <!-- Icon -->
     <link rel="shortcut icon" href="img/LogoCircle2.png">
@@ -44,7 +68,7 @@
 <div class="min-h-screen full-height flex-center" id="outer-container">
     @include('layouts.navigation-2')
     <div id="main">
-    <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
+        <button id="sidebar-toggle"><i id="sidebar-icon" class="fa-solid fa-bars text-white"></i></button>
         <div class="sidebar">
             @if ($selected_image_alt === 'dynamic-template-1')
                 @include('layouts.portfolio-1-color-selection')
@@ -56,13 +80,34 @@
                 @include('layouts.portfolio-4-color-selection')
             @endif
 
+            <!-- <div class="privacy-section">
+                <label for="privacy" class="text-center imageEditLabel">Select new image:</label>
+                <div class="image-container">
+                    <img id="display-image" src="img/Standaard.png" alt="Standard Image">
+                </div>
+            </div>
+            <input type="file" id="image-input" style="display: none;" accept="image/*"> -->
+
             <div class="privacy-section">
-                <label for="privacy" class="text-center privateLabel">Private:</label>
+                <label for="privacy" class="text-center privateLabel">Display for everyone:</label>
                 <div>
                     <input type="radio" id="yes" name="privacy" value="1" class="btnYes">
                     <label for="yes">Yes</label>
                     <input type="radio" id="no" name="privacy" value="0" class="btnYes">
                     <label for="no">No</label>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <label for="font-select" class="text-center privateLabel mt-3">Select lettertype:</label>
+                <div class="mt-2 mb-3 ml-5 mr-5">
+                    <select id="font-select" class="form-control backgroundTransparant aboutCreatePortfolio" onchange="updateInput()">
+                        <option class="roboto" value="Roboto">Roboto</option>
+                        <option class="montserrat" value="Montserrat">Montserrat</option>
+                        <option class="oswald" value="Oswald">Oswald</option>
+                        <option class="russoOne" value="Russo One">Russo One</option>
+                        <option class="playwrite" value="Playwrite ES Deco">Playwrite ES Deco</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -86,11 +131,33 @@
                 display: block;
                 font-weight: bold;
                 margin-bottom: 5px;
+                margin-top: 5px;
+            }
+
+            .imageEditLabel
+            {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
                 margin-top: -5px;
             }
 
+            .image-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+            .image-container img {
+                width: 120px;
+                height: 120px;
+                border: 2px solid black;
+                border-radius: 5px;
+            }
+
             .layoutsSidebar {
-                margin-top: 100px;
+                margin-top: 75px;
             }
 
             .marginBottomSidebar {
@@ -116,7 +183,7 @@
             }
 
             #sidebar-toggle.open {
-                top: 35px;
+                top: 15px;
             }
 
             .img-container {
@@ -139,6 +206,7 @@
             }
         </style>
         <script>
+            // Sidebar toggle functionality
             document.addEventListener('DOMContentLoaded', function() {
                 var sidebarToggle = document.getElementById('sidebar-toggle');
                 var sidebarIcon = document.getElementById('sidebar-icon');
@@ -154,6 +222,7 @@
                     }
                 });
 
+                // Image selection functionality
                 var images = document.querySelectorAll('.img-container img');
                 var selectedLayout = document.getElementById('editableLayoutUrl');
 
@@ -171,11 +240,11 @@
                     });
                 });
 
+                // Privacy radio button functionality
                 var radioButtons = document.querySelectorAll('input[name="privacy"]');
                 var privacyValue = document.getElementById('privacyValue');
-                var privateValue = "{{ $private }}"; // Voeg deze regel toe om de waarde van $private te krijgen
+                var privateValue = "{{ $private }}"; // Assuming $private is a server-side variable
 
-                // Selecteer de juiste radiobutton op basis van de waarde van privateValue
                 radioButtons.forEach(function(radio) {
                     if (radio.value == privateValue) {
                         radio.checked = true;
@@ -186,6 +255,44 @@
                         saveBtn.classList.add('active');
                     });
                 });
+            });
+
+            // Display selected font family
+            document.addEventListener('DOMContentLoaded', function() {
+                var familyValue = "{{ $family }}"; // Assuming $family is a server-side variable
+                var selectElement = document.getElementById('font-select');
+                selectElement.value = familyValue;
+
+                var editableFamily = document.getElementById('editableFamily');
+                editableFamily.textContent = familyValue;
+            });
+
+            // Update font family selection
+            function updateInput() {
+                var selectElement = document.getElementById('font-select');
+                var selectedValue = selectElement.value;
+
+                var editableFamily = document.getElementById('editableFamily');
+                editableFamily.textContent = selectedValue;
+
+                var saveBtn = document.getElementById('saveBtn');
+                saveBtn.classList.add('active');
+            }
+
+            // Image display and selection
+            document.getElementById('display-image').addEventListener('click', function() {
+                document.getElementById('image-input').click();
+            });
+
+            document.getElementById('image-input').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('display-image').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
             });
         </script>
         <div class="container">
@@ -216,6 +323,7 @@
                 <p class="text-dark aboutPortfolio" id="editableText">{{ $text }}</p>
             </div>
             <h4 id="editableLayoutUrl" style="display: none;">{{ $selected_color_image_alt }}</h4>
+            <h4 id="editableFamily" style="display: none;">{{ $family }}</h4>
             <h1 id="privacyValue" style="display: none;">{{ $private }}</h1>
             <button id="saveBtn" class="btn btn-primary save-btn text-white"><i class="fa-solid fa-floppy-disk text-white mr-1"></i>Save Edits</button>
         </div>
@@ -237,6 +345,7 @@
             <input type="hidden" name="htmlPicture" id="htmlPicture" value="{{ $picture }}">
             <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl">
             <input type="hidden" name="htmlPrivacyValue" id="htmlPrivacyValue">
+            <input type="hidden" name="htmlFamily" id="htmlFamily">
         </form>
     </div>
 </div>
@@ -313,24 +422,13 @@
     {
         --img-location: url("{{ $selected_color_image_alt }}");
         --img-profile: url("storage/{{ $picture }}");
+        --font-size: "{{ $family }}";
     }
 
     #deleteButton 
     {
         position: relative;
-        right: 0%;
-        top: 32px;
-        transform: translateY(-50%);
-        padding: 6px 15px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    #downloadButton
-    {
-        position: relative;
-        right: 75%;
+        right: 50%;
         top: 32px;
         transform: translateY(-50%);
         padding: 6px 15px;
@@ -408,6 +506,7 @@
         word-wrap: break-word;
         text-transform: uppercase;
         font-weight: bold;
+        font-family: var(--font-size) !important;
     }
 
     .right-top h3 
@@ -416,6 +515,7 @@
         max-width: 250px;
         word-wrap: break-word;
         text-transform: uppercase;
+        font-family: var(--font-size) !important;
     }
 
     .bottom h4 
@@ -425,6 +525,7 @@
         margin-bottom: 30px;
         font-weight: bold;
         font-size: 25px;
+        font-family: var(--font-size) !important;
     }
 
     .bottom h5 
@@ -435,6 +536,7 @@
         transform: translateX(-50%); 
         font-size: 12px;
         font-weight: bold;
+        font-family: var(--font-size) !important;
     }
 
     .columns 
@@ -449,11 +551,13 @@
         padding: 10px;
         list-style-type: none;
         margin-right: 20px; 
+        font-family: var(--font-size) !important;
     }
 
     .columns ul li 
     {
         margin-bottom: 15px; 
+        font-family: var(--font-size) !important;
     }
 
     .left-top, .right-top, .bottom 
@@ -500,11 +604,13 @@
         width: 14rem; 
         height: auto; 
         z-index: 5;
+        font-family: var(--font-size) !important;
     }
 
     .absolute-container .aboutPortfolio 
     {
         margin: 0; 
+        font-family: var(--font-size) !important;
     }
 
     @media (max-width: 640px) 
@@ -517,12 +623,11 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // Get all editable elements
         const editableTitle = document.getElementById('editableTitle');
         const editableSubtitle = document.getElementById('editableSubtitle');
         const editableText = document.getElementById('editableText');
-
         const editableSpecialties = document.getElementById('editableSpecialties');
-
         const editableOne = document.getElementById('editableOne');
         const editableTwo = document.getElementById('editableTwo');
         const editableThree = document.getElementById('editableThree');
@@ -531,16 +636,16 @@
         const editableSix = document.getElementById('editableSix');
         const editableLayoutUrl = document.getElementById('editableLayoutUrl');
         const privacyValue = document.getElementById('privacyValue');
+        const editableFamily = document.getElementById('editableFamily');
 
+        // Get form inputs and save button
         const saveBtn = document.getElementById('saveBtn');
         const editForm = document.getElementById('editForm');
 
         const htmlTitleInput = document.getElementById('htmlTitle');
         const htmlSubTitleInput = document.getElementById('htmlSubTitle');
         const htmlContentInput = document.getElementById('htmlContent');
-
         const htmlSpecialtiesInput = document.getElementById('htmlSpecialties');
-
         const htmlOneInput = document.getElementById('htmlOne');
         const htmlTwoInput = document.getElementById('htmlTwo');
         const htmlThreeInput = document.getElementById('htmlThree');
@@ -549,25 +654,27 @@
         const htmlSixInput = document.getElementById('htmlSix');
         const htmlLayoutUrlInput = document.getElementById('htmlLayoutUrl');
         const htmlPrivacyValue = document.getElementById('htmlPrivacyValue');
+        const htmlFamily = document.getElementById('htmlFamily');
 
+        // Function to enable editing on double click
         function enableEditing(element) {
             element.contentEditable = true;
             element.classList.add('editing');
-            saveBtn.classList.add('active');
-            element.focus();
+            saveBtn.classList.add('active'); // Add active class to save button
+            element.focus(); // Focus on the element being edited
         }
 
+        // Function to disable editing and remove active classes
         function disableEditing(element) {
             element.contentEditable = false;
             element.classList.remove('editing');
         }
 
+        // Double click event listeners to enable editing
         editableTitle.addEventListener('dblclick', () => enableEditing(editableTitle));
         editableSubtitle.addEventListener('dblclick', () => enableEditing(editableSubtitle));
         editableText.addEventListener('dblclick', () => enableEditing(editableText));
-
         editableSpecialties.addEventListener('dblclick', () => enableEditing(editableSpecialties));
-
         editableOne.addEventListener('dblclick', () => enableEditing(editableOne));
         editableTwo.addEventListener('dblclick', () => enableEditing(editableTwo));
         editableThree.addEventListener('dblclick', () => enableEditing(editableThree));
@@ -576,15 +683,17 @@
         editableSix.addEventListener('dblclick', () => enableEditing(editableSix));
         editableLayoutUrl.addEventListener('dblclick', () => enableEditing(editableLayoutUrl));
         privacyValue.addEventListener('dblclick', () => enableEditing(privacyValue));
+        editableFamily.addEventListener('dblclick', () => enableEditing(editableFamily));
 
+        // Save button click event listener
         saveBtn.addEventListener('click', () => {
-            event.preventDefault();
+            event.preventDefault(); // Prevent form submission
+
+            // Disable editing for all elements and remove active class from save button
             disableEditing(editableTitle);
             disableEditing(editableSubtitle);
             disableEditing(editableText);
-
             disableEditing(editableSpecialties);
-
             disableEditing(editableOne);
             disableEditing(editableTwo);
             disableEditing(editableThree);
@@ -593,25 +702,26 @@
             disableEditing(editableSix);
             disableEditing(editableLayoutUrl);
             disableEditing(privacyValue);
+            disableEditing(editableFamily);
 
-            saveBtn.classList.remove('active');
+            saveBtn.classList.remove('active'); // Remove active class from save button
 
+            // Assign inner text values to corresponding hidden form inputs
             htmlTitleInput.value = editableTitle.innerText.trim();
             htmlSubTitleInput.value = editableSubtitle.innerText.trim();
             htmlContentInput.value = editableText.innerText.trim();
-
             htmlSpecialtiesInput.value = editableSpecialties.innerText.trim();
-
-            htmlOneInput.value = editableOne.innerText.trim();
-            htmlTwoInput.value = editableTwo.innerText.trim();
-            htmlThreeInput.value = editableThree.innerText.trim();
-            htmlFourInput.value = editableFour.innerText.trim();
-            htmlFiveInput.value = editableFive.innerText.trim();
-            htmlSixInput.value = editableSix.innerText.trim();
+            htmlOneInput.value = editableOne.innerText.trim().slice(3).trim();
+            htmlTwoInput.value = editableTwo.innerText.trim().slice(3).trim();
+            htmlThreeInput.value = editableThree.innerText.trim().slice(3).trim();
+            htmlFourInput.value = editableFour.innerText.trim().slice(3).trim();
+            htmlFiveInput.value = editableFive.innerText.trim().slice(3).trim();
+            htmlSixInput.value = editableSix.innerText.trim().slice(3).trim();
             htmlLayoutUrlInput.value = editableLayoutUrl.innerText.trim();
             htmlPrivacyValue.value = privacyValue.innerText.trim();
+            htmlFamily.value = editableFamily.innerText.trim();
 
-            editForm.submit();
+            editForm.submit(); // Submit the form
         });
     });
 </script>

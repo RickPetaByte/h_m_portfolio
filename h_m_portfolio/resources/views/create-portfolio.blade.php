@@ -14,6 +14,27 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/581ff810bc.js" crossorigin="anonymous"></script>
 
+        <!-- Font Family -->
+        <!-- Font 1 -->
+        <link href="https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <!-- "Roboto", sans-serif; -->
+
+        <!-- Font 2 -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <!-- "Montserrat", sans-serif; -->
+
+        <!-- Font 3 -->
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+        <!-- "Oswald", sans-serif; -->
+
+        <!-- Font 4 -->
+        <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+        <!-- "Russo One", sans-serif; -->
+        
+        <!-- Font 5 -->
+        <link href="https://fonts.googleapis.com/css2?family=Playwrite+ES+Deco:wght@100..400&display=swap" rel="stylesheet">
+        <!-- "Playwrite ES Deco", cursive; -->
+
         <!-- Icon -->
         <link rel="shortcut icon" href="img/LogoCircle2.png">
 
