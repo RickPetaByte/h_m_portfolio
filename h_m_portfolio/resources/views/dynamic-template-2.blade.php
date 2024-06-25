@@ -80,14 +80,6 @@
                 @include('layouts.portfolio-4-color-selection')
             @endif
 
-            <!-- <div class="privacy-section">
-                <label for="privacy" class="text-center imageEditLabel">Select new image:</label>
-                <div class="image-container">
-                    <img id="display-image" src="img/Standaard.png" alt="Standard Image">
-                </div>
-            </div>
-            <input type="file" id="image-input" style="display: none;" accept="image/*"> -->
-
             <div class="privacy-section">
                 <label for="privacy" class="text-center privateLabel">Display for everyone:</label>
                 <div>
@@ -327,11 +319,7 @@
             <h4 id="editableLayoutUrl" style="display: none;">{{ $selected_color_image_alt }}</h4>
             <h4 id="editableFamily" style="display: none;">{{ $family }}</h4>
             <h1 id="privacyValue" style="display: none;">{{ $private }}</h1>
-
-
             <h4 id="pictureUrl" style="display: none;">{{ $picture }}</h4>
-
-
             <button id="saveBtn" class="btn btn-primary save-btn text-white"><i class="fa-solid fa-floppy-disk text-white mr-1"></i>Save Edits</button>
         </div>
     </div>
@@ -349,7 +337,7 @@
             <input type="hidden" name="htmlFive" id="htmlFive" maxlength="20">
             <input type="hidden" name="htmlSix" id="htmlSix" maxlength="20">
             <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="{{ $selected_image_alt }}">
-            <input type="hidden" name="htmlPicture" id="htmlPicture" value="{{ $picture }}">
+            <input type="hidden" name="htmlPicture" id="htmlPicture">
             <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl">
             <input type="hidden" name="htmlPrivacyValue" id="htmlPrivacyValue">
             <input type="hidden" name="htmlFamily" id="htmlFamily">
@@ -421,52 +409,6 @@
     document.addEventListener('DOMContentLoaded', adjustFontSize);
 </script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Get the imgPortfolio div, image input, and pictureUrl h1 element
-        const imgPortfolio = document.querySelector('.imgPortfolio');
-        const imageInput = document.getElementById('image-input');
-        const pictureUrl = document.getElementById('pictureUrl');
-        
-        // Event listener to open file input when imgPortfolio is clicked
-        imgPortfolio.addEventListener('click', () => {
-            imageInput.click();
-        });
-
-        // Event listener to change the image when a new file is selected
-        imageInput.addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                const formData = new FormData();
-                formData.append('image', file);
-
-                fetch('{{ route("upload.image") }}', {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    },
-                    body: formData,
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.path) {
-                        const imageUrlPath = `${data.path}`;
-                        const displayPath = imageUrlPath.replace('/storage/', '');
-                        imgPortfolio.style.backgroundImage = `url(${imageUrlPath})`;
-                        pictureUrl.textContent = displayPath;
-                    } else {
-                        alert('Image upload failed. Please try again.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error uploading image:', error);
-                    alert('Image upload failed. Please try again.');
-                });
-            }
-        });
-    });
-</script>
-
 </body>
 </html>
 
@@ -476,11 +418,6 @@
         --img-location: url("{{ $selected_color_image_alt }}");
         --img-profile: url("storage/{{ $picture }}");
         --font-size: "{{ $family }}";
-    }
-
-    .imgPortfolio 
-    {
-        cursor: pointer;
     }
 
     #deleteButton 
@@ -599,6 +536,7 @@
         margin: 138px 0px 0px 14px; 
         border-radius: 200px;
         border: 4px solid white;
+        cursor: pointer;
     }
 
     .left-bottom 
@@ -687,6 +625,53 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // Get the imgPortfolio div, image input, and pictureUrl h1 element
+        const imgPortfolio = document.querySelector('.imgPortfolio');
+        const imageInput = document.getElementById('image-input');
+        const pictureUrl = document.getElementById('pictureUrl');
+        
+        // Event listener to open file input when imgPortfolio is clicked
+        imgPortfolio.addEventListener('click', () => {
+            imageInput.click();
+        });
+
+        // Event listener to change the image when a new file is selected
+        imageInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const formData = new FormData();
+                formData.append('image', file);
+
+                fetch('{{ route("upload.image") }}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    },
+                    body: formData,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.path) {
+                        const imageUrlPath = `${data.path}`;
+                        const displayPath = imageUrlPath.replace('/storage/', '');
+                        imgPortfolio.style.backgroundImage = `url(${imageUrlPath})`;
+                        saveBtn.classList.add('active');
+                        pictureUrl.textContent = displayPath;
+                    } else {
+                        alert('Image upload failed. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error uploading image:', error);
+                    alert('Image upload failed. Please try again.');
+                });
+            }
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
         // Get all editable elements
         const editableTitle = document.getElementById('editableTitle');
         const editableSubtitle = document.getElementById('editableSubtitle');
@@ -701,6 +686,7 @@
         const editableLayoutUrl = document.getElementById('editableLayoutUrl');
         const privacyValue = document.getElementById('privacyValue');
         const editableFamily = document.getElementById('editableFamily');
+        const pictureUrl = document.getElementById('pictureUrl');
 
         // Get form inputs and save button
         const saveBtn = document.getElementById('saveBtn');
@@ -719,6 +705,7 @@
         const htmlLayoutUrlInput = document.getElementById('htmlLayoutUrl');
         const htmlPrivacyValue = document.getElementById('htmlPrivacyValue');
         const htmlFamily = document.getElementById('htmlFamily');
+        const htmlPicture = document.getElementById('htmlPicture');
 
         // Function to enable editing on double click
         function enableEditing(element) {
@@ -748,6 +735,7 @@
         editableLayoutUrl.addEventListener('dblclick', () => enableEditing(editableLayoutUrl));
         privacyValue.addEventListener('dblclick', () => enableEditing(privacyValue));
         editableFamily.addEventListener('dblclick', () => enableEditing(editableFamily));
+        pictureUrl.addEventListener('dblclick', () => enableEditing(pictureUrl));
 
         // Save button click event listener
         saveBtn.addEventListener('click', () => {
@@ -767,6 +755,7 @@
             disableEditing(editableLayoutUrl);
             disableEditing(privacyValue);
             disableEditing(editableFamily);
+            disableEditing(pictureUrl);
 
             saveBtn.classList.remove('active'); // Remove active class from save button
 
@@ -784,6 +773,7 @@
             htmlLayoutUrlInput.value = editableLayoutUrl.innerText.trim();
             htmlPrivacyValue.value = privacyValue.innerText.trim();
             htmlFamily.value = editableFamily.innerText.trim();
+            htmlPicture.value = pictureUrl.innerText.trim();
 
             editForm.submit(); // Submit the form
         });

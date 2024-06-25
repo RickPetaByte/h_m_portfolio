@@ -52,6 +52,7 @@ class PortfolioController extends Controller
         $newLayoutUrl = $request->input('htmlLayoutUrl');
         $newPrivacyValue = $request->input('htmlPrivacyValue');
         $newFamily = $request->input('htmlFamily');
+        $newPicture = $request->input('htmlPicture');
 
         // Get current authenticated user
         $user = Auth::user();
@@ -93,7 +94,7 @@ class PortfolioController extends Controller
                 'five' => $newFive,
                 'six' => $newSix,
                 'selected_image_alt' => $request->input('htmlTemplate'),
-                'picture' => $request->input('htmlPicture'),
+                'picture' => $newPicture,
                 'selected_color_image_alt' => $newLayoutUrl,
                 'private' => $newPrivacyValue,
                 'family' => $newFamily,
@@ -127,6 +128,7 @@ class PortfolioController extends Controller
                     'private' => $newPrivacyValue,
                     'family' => $newFamily,
                     'file_name' => $newFileName,
+                    'picture' => $newPicture,
                 ]);
             } else {
                 UserText::create([
@@ -145,6 +147,7 @@ class PortfolioController extends Controller
                     'private' => $newPrivacyValue,
                     'family' => $newFamily,
                     'file_name' => $newFileName,
+                    'picture' => $newPicture,
                 ]);
             }
 
@@ -157,7 +160,7 @@ class PortfolioController extends Controller
     }
     
     // Generate HTML file based on provided data.
-    public function generateHtml($title, $subtitle, $text, $specialties, $one, $two, $three, $four, $five, $six, $selected_color_image_alt, $private, $family)
+    public function generateHtml($title, $subtitle, $text, $specialties, $one, $two, $three, $four, $five, $six, $selected_color_image_alt, $private, $family, $picture)
     {
         // Check if user is authenticated
         if (!Auth::check()) {
@@ -189,6 +192,7 @@ class PortfolioController extends Controller
             'family' => $family,
             'fileName' => $fileName,
             'name' => $name,
+            'picture' => $picture,
         ];
 
         // Render HTML from dynamic-template view with data
@@ -213,6 +217,7 @@ class PortfolioController extends Controller
             'selected_color_image_alt' => $selected_color_image_alt,
             'private' => $private,
             'family' => $family,
+            'picture' => $picture,
         ]);
 
         // Redirect to generated HTML file with success message

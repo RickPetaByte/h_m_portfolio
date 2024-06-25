@@ -79,15 +79,7 @@
             @elseif ($selected_image_alt === 'dynamic-template-4')
                 @include('layouts.portfolio-4-color-selection')
             @endif
-
-            <!-- <div class="privacy-section">
-                <label for="privacy" class="text-center imageEditLabel">Select new image:</label>
-                <div class="image-container">
-                    <img id="display-image" src="img/Standaard.png" alt="Standard Image">
-                </div>
-            </div>
-            <input type="file" id="image-input" style="display: none;" accept="image/*"> -->
-
+            
             <div class="privacy-section">
                 <label for="privacy" class="text-center privateLabel">Display for everyone:</label>
                 <div>
@@ -296,7 +288,10 @@
             });
         </script>
         <div class="container">
-            <div class="left-top"></div>
+            <div class="left-top">
+                <div class="imgPortfolio"></div>
+                <input type="file" id="image-input" style="display: none;" accept="image/*">
+            </div>
             <div class="right-top">
                 <h2 class="text-white" id="editableTitle">{{ $title }}</h2>
                 <h3 class="text-white" id="editableSubtitle">{{ $subtitle }}</h3>
@@ -321,6 +316,7 @@
             <h4 id="editableLayoutUrl" style="display: none;">{{ $selected_color_image_alt }}</h4>
             <h4 id="editableFamily" style="display: none;">{{ $family }}</h4>
             <h1 id="privacyValue" style="display: none;">{{ $private }}</h1>
+            <h4 id="pictureUrl" style="display: none;">{{ $picture }}</h4>
             <button id="saveBtn" class="btn btn-primary save-btn text-white"><i class="fa-solid fa-floppy-disk text-white mr-1"></i>Save Edits</button>
         </div>
     </div>
@@ -338,7 +334,7 @@
             <input type="hidden" name="htmlFive" id="htmlFive" maxlength="20">
             <input type="hidden" name="htmlSix" id="htmlSix" maxlength="20">
             <input type="hidden" name="htmlTemplate" id="htmlTemplate" value="{{ $selected_image_alt }}">
-            <input type="hidden" name="htmlPicture" id="htmlPicture" value="{{ $picture }}">
+            <input type="hidden" name="htmlPicture" id="htmlPicture">
             <input type="hidden" name="htmlLayoutUrl" id="htmlLayoutUrl">
             <input type="hidden" name="htmlPrivacyValue" id="htmlPrivacyValue">
             <input type="hidden" name="htmlFamily" id="htmlFamily">
@@ -433,7 +429,7 @@
         cursor: pointer;
     }
 
-    .text-white
+    .text-white 
     {
         color: white !important;
     }
@@ -448,7 +444,7 @@
     {
         border: 1px dashed #ccc;
     }
-    
+
     .editing 
     {
         border: 1px solid #000;
@@ -497,6 +493,7 @@
         left: 0;
         background: var(--img-location) left top;
         background-size: 200% 200%;
+        cursor: pointer;
     }
 
     .left-top::before 
@@ -506,10 +503,11 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 110%;
+        height: 103%;
         background: var(--img-profile) no-repeat center center;
         background-size: cover;
         z-index: -1 !important;
+        cursor: pointer;
     }
 
     .right-top 
@@ -532,7 +530,7 @@
         font-family: var(--font-size) !important;
     }
 
-    .right-top h3
+    .right-top h3 
     {
         margin: 0px 0px 10px 30px;
         max-width: 150px;
@@ -550,7 +548,7 @@
         z-index: 1;
     }
 
-    .aboutPortfolio
+    .aboutPortfolio 
     {
         margin: 30px 5px 10px 15px;
         max-width: 200px;
@@ -584,7 +582,7 @@
         font-family: var(--font-size) !important;
     }
 
-    .right-bottom h4
+    .right-bottom h4 
     {
         margin-top: -130px;
         margin-bottom: 10px;
@@ -593,19 +591,19 @@
         font-family: var(--font-size) !important;
     }
 
-    .right-bottom ul
+    .right-bottom ul 
     {
         margin-bottom: -50px;
     }
 
-    .right-bottom ul li
+    .right-bottom ul li 
     {
         max-width: 150px;
         word-wrap: break-word;
         margin: 10px;
         font-family: var(--font-size) !important;
     }
-    
+
     @media (max-width: 640px) 
     {
         /* .container 
@@ -614,6 +612,51 @@
         } */
     }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const imgPortfolio = document.querySelector('.left-top');
+        const imageInput = document.getElementById('image-input');
+        const pictureUrl = document.getElementById('pictureUrl');
+        const saveBtn = document.getElementById('saveBtn');
+
+        imgPortfolio.addEventListener('click', () => {
+            imageInput.click();
+        });
+
+        imageInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const formData = new FormData();
+                formData.append('image', file);
+
+                fetch('{{ route("upload.image") }}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    },
+                    body: formData,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.path) {
+                        const imageUrlPath = `${data.path}`;
+                        const displayPath = imageUrlPath.replace('/storage/', '');
+                        document.documentElement.style.setProperty('--img-profile', `url(${imageUrlPath})`);
+                        saveBtn.classList.add('active');
+                        pictureUrl.textContent = displayPath;
+                    } else {
+                        alert('Image upload failed. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error uploading image:', error);
+                    alert('Image upload failed. Please try again.');
+                });
+            }
+        });
+    });
+</script>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -631,6 +674,7 @@
         const editableLayoutUrl = document.getElementById('editableLayoutUrl');
         const privacyValue = document.getElementById('privacyValue');
         const editableFamily = document.getElementById('editableFamily');
+        const pictureUrl = document.getElementById('pictureUrl');
 
         // Get form inputs and save button
         const saveBtn = document.getElementById('saveBtn');
@@ -649,6 +693,7 @@
         const htmlLayoutUrlInput = document.getElementById('htmlLayoutUrl');
         const htmlPrivacyValue = document.getElementById('htmlPrivacyValue');
         const htmlFamily = document.getElementById('htmlFamily');
+        const htmlPicture = document.getElementById('htmlPicture');
 
         // Function to enable editing on double click
         function enableEditing(element) {
@@ -678,6 +723,7 @@
         editableLayoutUrl.addEventListener('dblclick', () => enableEditing(editableLayoutUrl));
         privacyValue.addEventListener('dblclick', () => enableEditing(privacyValue));
         editableFamily.addEventListener('dblclick', () => enableEditing(editableFamily));
+        pictureUrl.addEventListener('dblclick', () => enableEditing(pictureUrl));
 
         // Save button click event listener
         saveBtn.addEventListener('click', () => {
@@ -697,6 +743,7 @@
             disableEditing(editableLayoutUrl);
             disableEditing(privacyValue);
             disableEditing(editableFamily);
+            disableEditing(pictureUrl);
 
             saveBtn.classList.remove('active'); // Remove active class from save button
 
@@ -714,6 +761,7 @@
             htmlLayoutUrlInput.value = editableLayoutUrl.innerText.trim();
             htmlPrivacyValue.value = privacyValue.innerText.trim();
             htmlFamily.value = editableFamily.innerText.trim();
+            htmlPicture.value = pictureUrl.innerText.trim();
 
             editForm.submit(); // Submit the form
         });
