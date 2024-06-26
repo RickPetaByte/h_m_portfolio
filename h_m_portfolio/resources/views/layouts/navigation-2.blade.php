@@ -18,13 +18,23 @@
                 </div>
             </div>
 
-            <form method="POST">
-                @csrf
-                <input type="hidden" name="file_name" value="{{ $fileName }}">
-                <button type="button" class="btn btn-danger text-white fw-bold" id="deleteButton" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <i class="fa fa-trash text-white mr-2"></i>Delete Portfolio
-                </button>
-            </form>
+            <div class="d-flex justify-content-start mb-3">
+                <form method="POST" class="me-2">
+                    @csrf
+                    <input type="hidden" name="file_name" value="{{ $fileName }}">
+                    <button type="button" class="btn btn-danger text-white fw-bold" id="deleteButton" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="fa fa-trash text-white mr-2"></i>Delete Portfolio
+                    </button>
+                </form>
+
+                <form method="POST">
+                    @csrf
+                    <input type="hidden" name="file_name" value="{{ $fileName }}">
+                    <button type="button" class="btn btn-primary text-white fw-bold" id="downloadButton" data-bs-toggle="modal" data-bs-target="#downloadModal">
+                        <i class="fa fa-download text-white mr-2"></i>Download Portfolio
+                    </button>
+                </form>
+            </div>
 
             <!-- Model if you delete portfolio -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -50,6 +60,22 @@
                                     <span class="text-white ">Yes</span>
                                 </button>
                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal for downloading portfolio -->
+            <div class="modal fade" id="downloadModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Download Portfolio</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <img src="{{ asset('img/cross.png') }}" alt="Cross Image" class="img-fluid mb-3" style="width: 200px; height: 200px; display: block; margin: 0 auto;">
+                            <p>The downloading of portfolios is currently under development. Please check back later.</p>
                         </div>
                     </div>
                 </div>

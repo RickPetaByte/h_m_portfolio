@@ -422,7 +422,19 @@
     #deleteButton 
     {
         position: relative;
-        right: 50%;
+        right: 56%;
+        top: 32px;
+        transform: translateY(-50%);
+        padding: 6px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #downloadButton
+    {
+        position: relative;
+        right: 47%;
         top: 32px;
         transform: translateY(-50%);
         padding: 6px 15px;
