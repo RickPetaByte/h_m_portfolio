@@ -361,6 +361,11 @@ iframe
     margin: 0 auto; 
 }
 
+.marginSelectCreatePage
+{
+    margin-top: 10px;
+}
+
 .input-container 
 {
     margin-bottom: 20px;
@@ -374,7 +379,8 @@ iframe
 }
 
 .input-container input,
-.input-container textarea 
+.input-container textarea, 
+.input-container select
 {
     border-radius: 5px;
     padding: 10px;
@@ -512,6 +518,31 @@ iframe
 .save-btn.active 
 {
     display: inline-block;
+}
+
+.roboto
+{
+    font-family: "Roboto", sans-serif !important;
+}
+
+.montserrat
+{
+    font-family: "Montserrat", sans-serif !important;
+}
+
+.oswald
+{
+    font-family: "Oswald", sans-serif !important;
+}
+
+.russoOne
+{
+    font-family: "Russo One", sans-serif !important;
+}
+
+.playwrite
+{
+    font-family: "Playwrite ES Deco", cursive !important;
 }
 
 /*  ---------- Create portfolio page  ---------- */
@@ -662,8 +693,6 @@ footer
 .footer-distributed .footer-left 
 {
     width: 25%;
-
-    /* margin-left: 50px; */
 }
 
 .footer-distributed .footer-center 

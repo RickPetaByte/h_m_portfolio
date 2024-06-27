@@ -45,6 +45,8 @@
             <textarea maxlength="130" name="text" id="text" rows="4" cols="50" class="form-control mt-3 aboutCreatePortfolio mt-1 block w-100 shadow-none" style="resize: none;" required></textarea>
         </div>
 
+        <input type="hidden" id="specialties" name="specialties" value="Specialties">
+
         <div class="input-container colorSecond divCreatePageCreate">
             <label>Private:</label>
             <div class="form-check mt-2">
@@ -56,6 +58,19 @@
                 <label for="no" class="form-check-label ml-3">No</label>
             </div>
             <p class="infoText">If selected "Yes" only you can see your portfolio if "No" is selected everyone can see your portfolio!</p>
+        </div>
+
+        <div class="input-container colorSecond divCreatePageCreate">
+            <label for="font-select">Select lettertype:</label>
+            <div class="marginSelectCreatePage">
+                <select id="font-select" class="form-control backgroundTransparant aboutCreatePortfolio" onchange="updateInput()">
+                    <option class="roboto" value="Roboto">Roboto</option>
+                    <option class="montserrat" value="Montserrat">Montserrat</option>
+                    <option class="oswald" value="Oswald">Oswald</option>
+                    <option class="russoOne" value="Russo One">Russo One</option>
+                    <option class="playwrite" value="Playwrite ES Deco">Playwrite ES Deco</option>
+                </select>
+            </div>
         </div>
 
         <div class="input-container colorSecond divImgCreate divImgChoose">
@@ -175,6 +190,22 @@
         </div> 
 
         <input type="hidden" name="selected_color_image_alt" id="selected_image" value="">
+
+        <input type="text" name="family" id="font-family" style="display: none;">
+
+        <script>
+            function updateInput() {
+                var select = document.getElementById("font-select");
+                var input = document.getElementById("font-family");
+                input.value = select.value;
+            }
+
+            document.addEventListener("DOMContentLoaded", function() {
+                var select = document.getElementById("font-select");
+                var input = document.getElementById("font-family");
+                input.value = select.options[0].value;
+            });
+        </script>
 
         <div class="text-center mb-5">
             <button type="submit" class="btn btn-primary btnCreatePortfolio text-white">
