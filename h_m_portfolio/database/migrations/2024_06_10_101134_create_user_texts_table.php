@@ -15,6 +15,7 @@ class CreateUserTextsTable extends Migration
             $table->string('title')->nullable();
             $table->string('subtitle')->nullable();
             $table->string('picture')->nullable();
+            $table->string('specialties')->nullable();
             $table->string('one')->nullable();
             $table->string('two')->nullable();
             $table->string('three')->nullable();
@@ -22,6 +23,7 @@ class CreateUserTextsTable extends Migration
             $table->string('five')->nullable();
             $table->string('six')->nullable();
             $table->boolean('private')->default(true);
+            $table->string('family')->nullable();
             $table->string('selected_image_alt')->nullable();
             $table->string('selected_color_image_alt')->nullable();
             $table->timestamps();

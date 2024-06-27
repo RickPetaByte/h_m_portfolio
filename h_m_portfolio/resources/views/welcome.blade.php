@@ -27,7 +27,7 @@
         @include('layouts.navigation')
 
         <!-- Page Heading -->
-        @if (isset($header))
+        @if (isset($header)) <!-- Als er een header is meegegeven -->
             <header class="shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
@@ -55,13 +55,6 @@
                 </div>
             </div>
         </main>
-
-        <!-- Logout Message -->
-        @if(session('status'))
-            <div class="bg-green-200 text-green-800 py-2 px-4 border-green-400 rounded-lg my-4 mx-8">
-                {{ session('status') }}
-            </div>
-        @endif
     </div>
 </div>
 
